@@ -1,3 +1,16 @@
 # ninja log v5
-1	1571	6808942280149793	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
-1573	1862	6808942283191351	testing.exe	916ea81f95c622b4
+3	1216	6808966874781615	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+1216	1481	6808966877358879	testing.exe	916ea81f95c622b4
+3	1227	6808973975413230	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+15	1378	6808973977103109	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+7	1540	6808973978674551	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+14	903	6808975452679221	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
+6	1158	6808975455290381	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+19	1352	6808975457152307	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+10	1654	6808975460154991	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+1654	2041	6808975464011606	testing.exe	f39598ea082cdf6e
+20	2027	6808986602605567	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+12	2114	6808986603454298	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+7	2185	6808986604437294	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+16	2807	6808986610479750	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
+2807	3081	6808986613315871	testing.exe	f39598ea082cdf6e
