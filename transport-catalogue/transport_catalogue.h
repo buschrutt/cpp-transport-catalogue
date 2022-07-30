@@ -4,6 +4,7 @@
 #include <vector>
 #include <set>
 #include <unordered_map>
+#include <unordered_set>
 #include <string>
 #include "geo.h"
 
@@ -16,10 +17,9 @@ class TransportCatalogue{
 
     struct Stop{
         Coordinates coordinates;
-        std::map<std::string, double> distances;
+        std::unordered_map<std::string, double> distances;
         std::set<std::string> buses;
     };
-
 
 public:
 
