@@ -1,45 +1,45 @@
 #include "transport_catalogue.h"
 
-void TransportCatalogue::SetStop(const std::string& bus_stop, Coordinates coordinates){
-    stops_data_[bus_stop] = coordinates;
-    stop_to_buses_[bus_stop];
+void TransportCatalogue::SetStop(const std::string& stop_name, Coordinates coordinates){
+    stops_[stop_name].coordinates = coordinates;
+    stops_[stop_name];
 }
 
 void TransportCatalogue::SetStopDistance(const std::string& origin_name, const std::string& destination_name, double length){
-    stop_distances_[{origin_name, destination_name}] = length;
+    stops_[origin_name].distances[destination_name] = length;
 }
 
-void TransportCatalogue::SetBus(const std::string& bus_name, const std::vector<std::string>& bus, bool if_chain){
-    bus_types_[bus_name] = if_chain;
-    buses_data_[bus_name] = bus;
-    for (const std::string& stop : bus){
-        stop_to_buses_[stop].insert(bus_name);
+void TransportCatalogue::SetBus(const std::string& bus_name, const std::vector<std::string>& route, bool if_chain){
+    buses_[bus_name].is_chain = if_chain;
+    buses_[bus_name].route = route;
+    for (const std::string& stop_name : route){
+        stops_[stop_name].buses.insert(bus_name);
     }
 }
 
 std::set<std::string> TransportCatalogue::GetStopBuses(const std::string& stop_name){
     std::set<std::string> dummy;
-    if (stop_to_buses_.count(stop_name) < 1){
+    if (stops_.count(stop_name) < 1){
         dummy.insert(":");
         return dummy;
     }
-    return stop_to_buses_.at(stop_name);
+    return stops_.at(stop_name).buses;
 }
 
 size_t TransportCatalogue::BusStopCount(const std::string &bus_name){
-    if (buses_data_.count(bus_name) < 1){
+    if (buses_.count(bus_name) < 1){
         return 0;
     }
-    if (bus_types_.at(bus_name)){
-        return buses_data_.at(bus_name).size() + (buses_data_.at(bus_name).size() - 1);
+    if (buses_.at(bus_name).is_chain){
+        return buses_.at(bus_name).route.size() + (buses_.at(bus_name).route.size() - 1);
     } else {
-        return buses_data_.at(bus_name).size();
+        return buses_.at(bus_name).route.size();
     }
 }
 
 size_t TransportCatalogue::BusUniqStopCount(const std::string &bus_name){
     std::set<std::string> uniq_stops;
-    for (const std::string& stop : buses_data_.at(bus_name)){
+    for (const std::string& stop : buses_.at(bus_name).route){
         uniq_stops.insert(stop);
     }
     return uniq_stops.size();
@@ -48,31 +48,31 @@ size_t TransportCatalogue::BusUniqStopCount(const std::string &bus_name){
 std::pair<double, double> TransportCatalogue::BusRouteLength(const std::string &bus_name){
     double route_length = 0.0;
     std::pair<std::string, std::string> key;
-    for (int i = 1; i < buses_data_.at(bus_name).size(); i++){
-        key.second = buses_data_.at(bus_name)[i];
-        key.first = buses_data_.at(bus_name)[i - 1];
-        if (stop_distances_.count(key) < 1){
-            route_length += stop_distances_.at({key.second, key.first});
+    Coordinates c_origin{};
+    Coordinates c_destination{};
+    for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
+        key.second = buses_.at(bus_name).route[i];
+        key.first = buses_.at(bus_name).route[i - 1];
+        if (stops_.at(key.first).distances.count(key.second) < 1){
+            route_length += stops_.at(key.second).distances.at(key.first);
         } else {
-            route_length += stop_distances_.at(key);
+            route_length += stops_.at(key.first).distances.at(key.second);
         }
-        if (bus_types_.at(bus_name)){
-            if (stop_distances_.count({key.second, key.first}) < 1){
-                route_length += stop_distances_.at(key);
+        if (buses_.at(bus_name).is_chain){
+            if (stops_.at(key.second).distances.count(key.first) < 1){
+                route_length += stops_.at(key.first).distances.at(key.second);
             } else {
-                route_length += stop_distances_.at({key.second, key.first});
+                route_length += stops_.at(key.second).distances.at(key.first);
             }
         }
     }
-    Coordinates c_origin{};
-    Coordinates c_destination{};
     double chord_route_length = 0.0;
-    for (int i = 1; i < buses_data_.at(bus_name).size(); i++){
-        c_destination = stops_data_[buses_data_.at(bus_name)[i]];
-        c_origin = stops_data_[buses_data_.at(bus_name)[i-1]];
+    for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
+        c_destination = stops_.at(buses_.at(bus_name).route[i]).coordinates;
+        c_origin = stops_.at(buses_.at(bus_name).route[i-1]).coordinates;
         chord_route_length += ComputeDistance(c_origin, c_destination);
     }
-    if (bus_types_.at(bus_name)){
+    if (buses_.at(bus_name).is_chain){
         chord_route_length += chord_route_length;
     }
     return {route_length, route_length / chord_route_length};

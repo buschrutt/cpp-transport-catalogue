@@ -9,6 +9,18 @@
 
 class TransportCatalogue{
 
+    struct Bus{
+        bool is_chain;
+        std::vector<std::string> route;
+    };
+
+    struct Stop{
+        Coordinates coordinates;
+        std::map<std::string, double> distances;
+        std::set<std::string> buses;
+    };
+
+
 public:
 
     void SetStop(const std::string& bus_stop, Coordinates coordinates);
@@ -26,9 +38,6 @@ public:
     std::pair<double, double> BusRouteLength(const std::string &bus_name);
 
 private:
-    std::unordered_map<std::string, Coordinates> stops_data_;
-    std::unordered_map<std::string, std::set<std::string>> stop_to_buses_;
-    std::map<std::pair<std::string, std::string>, double> stop_distances_;
-    std::unordered_map<std::string, std::vector<std::string>> buses_data_;
-    std::unordered_map<std::string, bool> bus_types_;
+    std::unordered_map<std::string, Bus> buses_;
+    std::unordered_map<std::string, Stop> stops_;
 };
