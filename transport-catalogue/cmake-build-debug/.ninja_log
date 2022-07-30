@@ -59,3 +59,8 @@
 8	1556	6809040335040052	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
 13	1756	6809040336940970	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
 1756	1966	6809040339097817	testing.exe	f39598ea082cdf6e
+24	1383	6809049330126870	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+7	1459	6809049330929931	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+12	1510	6809049331291833	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+17	1800	6809049334306350	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
+1800	2033	6809049336567478	testing.exe	f39598ea082cdf6e

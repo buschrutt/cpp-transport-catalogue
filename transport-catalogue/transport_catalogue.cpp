@@ -47,6 +47,7 @@ size_t TransportCatalogue::BusUniqStopCount(const std::string &bus_name){
 
 std::pair<double, double> TransportCatalogue::BusRouteLength(const std::string &bus_name){
     double route_length = 0.0;
+    double chord_route_length = 0.0;
     std::pair<std::string, std::string> key;
     Coordinates c_origin{};
     Coordinates c_destination{};
@@ -58,6 +59,9 @@ std::pair<double, double> TransportCatalogue::BusRouteLength(const std::string &
         } else {
             route_length += stops_.at(key.first).distances.at(key.second);
         }
+        c_destination = stops_.at(buses_.at(bus_name).route[i]).coordinates;
+        c_origin = stops_.at(buses_.at(bus_name).route[i-1]).coordinates;
+        chord_route_length += ComputeDistance(c_origin, c_destination);
         if (buses_.at(bus_name).is_chain){
             if (stops_.at(key.second).distances.count(key.first) < 1){
                 route_length += stops_.at(key.first).distances.at(key.second);
@@ -65,12 +69,6 @@ std::pair<double, double> TransportCatalogue::BusRouteLength(const std::string &
                 route_length += stops_.at(key.second).distances.at(key.first);
             }
         }
-    }
-    double chord_route_length = 0.0;
-    for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
-        c_destination = stops_.at(buses_.at(bus_name).route[i]).coordinates;
-        c_origin = stops_.at(buses_.at(bus_name).route[i-1]).coordinates;
-        chord_route_length += ComputeDistance(c_origin, c_destination);
     }
     if (buses_.at(bus_name).is_chain){
         chord_route_length += chord_route_length;
