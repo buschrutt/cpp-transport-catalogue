@@ -1,1 +1,2 @@
-// место для вашего кода
+#include "input_reader.h"
+#include <iostream>
