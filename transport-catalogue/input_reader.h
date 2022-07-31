@@ -6,4 +6,4 @@
 
 void dbw_request_parsing (const std::string& input_string, TransportCatalogue& catalogue);
 
-void dbw_data_input (TransportCatalogue& catalogue);
+void dbw_data_input(TransportCatalogue &catalogue, std::istream& input);

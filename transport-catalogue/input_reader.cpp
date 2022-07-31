@@ -73,13 +73,13 @@ void dbw_request_parsing (const std::string& input_string, TransportCatalogue& c
     }
 }
 
-void dbw_data_input (TransportCatalogue& catalogue) {
+void dbw_data_input (TransportCatalogue& catalogue, istream& input) {
     int request_count;
     std::string input_string;
-    getline (std::cin, input_string);
+    getline (input, input_string);
     request_count = stoi(input_string);
     for (int i = 0; i < request_count; i++){
-        getline (std::cin, input_string);
+        getline (input, input_string);
         dbw_request_parsing (input_string, catalogue);
     }
 }

@@ -4,7 +4,7 @@
 
 int main() {
     TransportCatalogue catalogue;
-    dbw_data_input(catalogue);
-    dbr_data_input(catalogue);
+    dbw_data_input(catalogue, std::cin);
+    dbr_data_input(catalogue, std::cin);
     return 0;
 }

@@ -6,4 +6,4 @@
 
 void dbr_request_processing (const std::string& input_string, TransportCatalogue& catalogue);
 
-void dbr_data_input (TransportCatalogue& catalogue);
+void dbr_data_input (TransportCatalogue& catalogue, std::istream& input);
