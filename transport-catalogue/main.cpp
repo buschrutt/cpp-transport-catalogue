@@ -3,8 +3,8 @@
 #include "transport_catalogue.h"
 
 int main() {
-    TransportCatalogue catalogue;
-    dbw_data_input(catalogue, std::cin);
-    dbr_data_input(catalogue, std::cin);
+    catalogue::TransportCatalogue catalogue;
+    input_reader::dbw_data_input(catalogue, std::cin);
+    stat_reader::dbr_data_input(catalogue, std::cin);
     return 0;
 }

@@ -90,3 +90,12 @@
 3	896	6809402207418698	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
 9	1059	6809402208949129	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
 1060	1248	6809402210830976	testing.exe	f39598ea082cdf6e
+10	1000	6809417302057991	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+4	1052	6809417302516573	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+7	1097	6809417303025609	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+13	1287	6809417304874717	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
+1287	1547	6809417307370400	testing.exe	f39598ea082cdf6e
+10	738	6809422532811296	CMakeFiles/testing.dir/stat_reader.cpp.obj	8f71a1f322230ce
+7	746	6809422532903393	CMakeFiles/testing.dir/input_reader.cpp.obj	357141f469f1c024
+3	760	6809422533000111	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+760	961	6809422534944342	testing.exe	f39598ea082cdf6e

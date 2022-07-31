@@ -4,6 +4,10 @@
 #include <cmath>
 #include "transport_catalogue.h"
 
-void dbw_request_parsing (const std::string& input_string, TransportCatalogue& catalogue);
+namespace input_reader {
 
-void dbw_data_input(TransportCatalogue &catalogue, std::istream& input);
+    void dbw_parse_request (const std::string& input_string, catalogue::TransportCatalogue& catalogue);
+
+    void dbw_data_input(catalogue::TransportCatalogue &catalogue, std::istream& input);
+
+}
