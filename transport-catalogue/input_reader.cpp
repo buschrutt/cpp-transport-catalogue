@@ -75,7 +75,7 @@ namespace input_reader {
         }
     }
 
-    void dbw_data_input (catalogue::TransportCatalogue& catalogue, istream& input) {
+    istream& dbw_data_input (catalogue::TransportCatalogue& catalogue, istream& input) {
         int request_count;
         std::string input_string;
         getline (input, input_string);
@@ -84,6 +84,7 @@ namespace input_reader {
             getline (input, input_string);
             dbw_parse_request (input_string, catalogue);
         }
+        return input;
     }
 
 }

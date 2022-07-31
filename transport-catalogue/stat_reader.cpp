@@ -39,7 +39,7 @@ namespace stat_reader {
         }
     }
 
-    void dbr_data_input (catalogue::TransportCatalogue& catalogue, std::istream& input) {
+    istream& dbr_data_input (catalogue::TransportCatalogue& catalogue, std::istream& input) {
         int request_count;
         std::string input_string;
         getline (input, input_string);
@@ -48,6 +48,7 @@ namespace stat_reader {
             getline (input, input_string);
             dbr_parse_request (input_string, catalogue);
         }
+        return input;
     }
 
 }

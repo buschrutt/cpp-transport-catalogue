@@ -4,7 +4,6 @@ namespace catalogue {
 
     void TransportCatalogue::SetStop(const std::string& stop_name, Coordinates coordinates){
         stops_[stop_name].coordinates = coordinates;
-        stops_[stop_name];
     }
 
     void TransportCatalogue::SetStopDistance(const std::string& origin_name, const std::string& destination_name, double length){
@@ -40,8 +39,8 @@ namespace catalogue {
     }
 
     size_t TransportCatalogue::BusUniqStopCount(const std::string &bus_name){
-        std::set<std::string> uniq_stops;
-        for (const std::string& stop : buses_.at(bus_name).route){
+        std::set<std::string_view> uniq_stops;
+        for (const std::string_view stop : buses_.at(bus_name).route){
             uniq_stops.insert(stop);
         }
         return uniq_stops.size();

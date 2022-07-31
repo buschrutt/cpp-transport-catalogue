@@ -8,6 +8,6 @@ namespace input_reader {
 
     void dbw_parse_request (const std::string& input_string, catalogue::TransportCatalogue& catalogue);
 
-    void dbw_data_input(catalogue::TransportCatalogue &catalogue, std::istream& input);
+    std::istream& dbw_data_input(catalogue::TransportCatalogue &catalogue, std::istream& input);
 
 }
