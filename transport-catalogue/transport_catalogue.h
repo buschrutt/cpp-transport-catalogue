@@ -17,14 +17,14 @@ namespace catalogue {
         };
 
         struct Stop{
-            Coordinates coordinates;
+            geo::Coordinates coordinates;
             std::unordered_map<std::string, double> distances;
             std::set<std::string> buses;
         };
 
     public:
 
-        void SetStop(const std::string& bus_stop, Coordinates coordinates);
+        void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 
         void SetStopDistance(const std::string& origin_name, const std::string& destination_name, double length);
 

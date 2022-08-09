@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "transport_catalogue.h"
+#include "../transport_catalogue.h"
 
 namespace input_reader {
 

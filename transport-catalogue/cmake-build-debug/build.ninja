@@ -55,14 +55,20 @@ build CMakeFiles/testing.dir/main.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users
   OBJECT_DIR = CMakeFiles\testing.dir
   OBJECT_FILE_DIR = CMakeFiles\testing.dir
 
-build CMakeFiles/testing.dir/input_reader.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/input_reader.cpp || cmake_object_order_depends_target_testing
-  DEP_FILE = CMakeFiles\testing.dir\input_reader.cpp.obj.d
+build CMakeFiles/testing.dir/old_/input_reader.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/old_/input_reader.cpp || cmake_object_order_depends_target_testing
+  DEP_FILE = CMakeFiles\testing.dir\old_\input_reader.cpp.obj.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles\testing.dir
-  OBJECT_FILE_DIR = CMakeFiles\testing.dir
+  OBJECT_FILE_DIR = CMakeFiles\testing.dir\old_
 
-build CMakeFiles/testing.dir/stat_reader.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/stat_reader.cpp || cmake_object_order_depends_target_testing
-  DEP_FILE = CMakeFiles\testing.dir\stat_reader.cpp.obj.d
+build CMakeFiles/testing.dir/old_/stat_reader.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/old_/stat_reader.cpp || cmake_object_order_depends_target_testing
+  DEP_FILE = CMakeFiles\testing.dir\old_\stat_reader.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\testing.dir
+  OBJECT_FILE_DIR = CMakeFiles\testing.dir\old_
+
+build CMakeFiles/testing.dir/geo.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/geo.cpp || cmake_object_order_depends_target_testing
+  DEP_FILE = CMakeFiles\testing.dir\geo.cpp.obj.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles\testing.dir
   OBJECT_FILE_DIR = CMakeFiles\testing.dir
@@ -81,7 +87,7 @@ build CMakeFiles/testing.dir/transport_catalogue.cpp.obj: CXX_COMPILER__testing_
 #############################################
 # Link the executable testing.exe
 
-build testing.exe: CXX_EXECUTABLE_LINKER__testing_Debug CMakeFiles/testing.dir/main.cpp.obj CMakeFiles/testing.dir/input_reader.cpp.obj CMakeFiles/testing.dir/stat_reader.cpp.obj CMakeFiles/testing.dir/transport_catalogue.cpp.obj
+build testing.exe: CXX_EXECUTABLE_LINKER__testing_Debug CMakeFiles/testing.dir/main.cpp.obj CMakeFiles/testing.dir/old_/input_reader.cpp.obj CMakeFiles/testing.dir/old_/stat_reader.cpp.obj CMakeFiles/testing.dir/geo.cpp.obj CMakeFiles/testing.dir/transport_catalogue.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\testing.dir

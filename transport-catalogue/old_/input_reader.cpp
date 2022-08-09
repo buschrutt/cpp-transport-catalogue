@@ -36,7 +36,7 @@ namespace input_reader {
                 catalogue.SetBus(bus_name, bus_data, true);
             }
         } else if (input_string.substr(0, 4) == "Stop"){
-            Coordinates coordinates{};
+            geo::Coordinates coordinates{};
             auto colon_pos = input_string.find(':');
             std::string stop_name = input_string.substr(5, colon_pos - 5);
             std::string value_string = input_string.substr(colon_pos + 1);

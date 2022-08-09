@@ -2,7 +2,7 @@
 
 namespace catalogue {
 
-    void TransportCatalogue::SetStop(const std::string& stop_name, Coordinates coordinates){
+    void TransportCatalogue::SetStop(const std::string& stop_name, geo::Coordinates coordinates){
         stops_[stop_name].coordinates = coordinates;
     }
 
@@ -50,8 +50,8 @@ namespace catalogue {
         double route_length = 0.0;
         double chord_route_length = 0.0;
         std::pair<std::string, std::string> key;
-        Coordinates c_origin{};
-        Coordinates c_destination{};
+        geo::Coordinates c_origin{};
+        geo::Coordinates c_destination{};
         for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
             key.second = buses_.at(bus_name).route[i];
             key.first = buses_.at(bus_name).route[i - 1];
@@ -62,7 +62,7 @@ namespace catalogue {
             }
             c_destination = stops_.at(buses_.at(bus_name).route[i]).coordinates;
             c_origin = stops_.at(buses_.at(bus_name).route[i-1]).coordinates;
-            chord_route_length += ComputeDistance(c_origin, c_destination);
+            chord_route_length += geo::ComputeDistance(c_origin, c_destination);
             if (buses_.at(bus_name).is_chain){
                 if (stops_.at(key.second).distances.count(key.first) < 1){
                     route_length += stops_.at(key.first).distances.at(key.second);
