@@ -19,17 +19,19 @@ namespace json_reader {
                     std::reverse(stop_data.begin(),stop_data.end());
                     catalogue.SetBus(db_request.AsMap().at("name").AsString()
                                      , stop_data
-                                     , db_request.AsMap().at("is_roundtrip").AsBool());
+                                     , !db_request.AsMap().at("is_roundtrip").AsBool());
                 } else {
                     geo::Coordinates coordinates{};
                     coordinates.lat = db_request.AsMap().at("latitude").AsDouble();
                     coordinates.lng = db_request.AsMap().at("longitude").AsDouble();
                     catalogue.SetStop(db_request.AsMap().at("name").AsString()
                                       , coordinates);
-                    for (auto [key, length] : db_request.AsMap().at("road_distances").AsMap()){
-                        catalogue.SetStopDistance(db_request.AsMap().at("name").AsString()
-                                        , key
-                                        , length.AsDouble());
+                    if(db_request.AsMap().count("road_distances") > 0){
+                        for (auto [key, length] : db_request.AsMap().at("road_distances").AsMap()){
+                            catalogue.SetStopDistance(db_request.AsMap().at("name").AsString()
+                                    , key
+                                    , length.AsDouble());
+                        }
                     }
                 }
             }
@@ -52,11 +54,11 @@ namespace json_reader {
                         });
                     } else {
                         json_arr.emplace_back(json_lib::Dict{
-                                {"request_id:", std::to_string(db_request.AsMap().at("id").AsInt())},
-                                {"stop_count:", std::to_string(catalogue.BusStopCount(bus_name))},
-                                {"unique_stop_count:", std::to_string(catalogue.BusUniqStopCount(bus_name))},
-                                {"route_length:", std::to_string(catalogue.BusRouteLength(bus_name).first)},
-                                {"curvature:", std::to_string(catalogue.BusRouteLength(bus_name).second)}
+                                {"request_id:", db_request.AsMap().at("id").AsInt()},
+                                {"stop_count:", (int) catalogue.BusStopCount(bus_name)},
+                                {"unique_stop_count:", (int)catalogue.BusUniqStopCount(bus_name)},
+                                {"route_length:", catalogue.BusRouteLength(bus_name).first},
+                                {"curvature:", catalogue.BusRouteLength(bus_name).second}
                         });
                     }
                 } else {
@@ -72,7 +74,7 @@ namespace json_reader {
                             buffer_arr.emplace_back(value);
                         }
                         json_arr.emplace_back(json_lib::Dict{
-                                {"request_id:", std::to_string(db_request.AsMap().at("id").AsInt())},
+                                {"request_id:", db_request.AsMap().at("id").AsInt()},
                                 {"buses", buffer_arr}
                         });
                     }
@@ -80,6 +82,10 @@ namespace json_reader {
             }
         }
         return json_lib::Document{json_arr};
+    }
+
+    void func(std::stringstream & s){
+
     }
 
 }

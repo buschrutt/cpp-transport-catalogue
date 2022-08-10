@@ -1,16 +1,14 @@
 {
-  "name": "transport-catalogue",
-  "version": "1.0.0",
   "base_requests": [
     {
       "type": "Bus",
       "name": "114",
-      "stops": ["Sea station", "Riviersky bridge"],
+      "stops": ["Sea station", "River bridge"],
       "is_roundtrip": false
     },
     {
       "type": "Stop",
-      "name": "Riviersky bridge",
+      "name": "River bridge",
       "latitude": 43.587795,
       "longitude": 39.716901,
       "road_distances": {"Sea station": 850}
@@ -20,11 +18,11 @@
       "name": "Sea station",
       "latitude": 43.581969,
       "longitude": 39.719848,
-      "road_distances": {"Riviersky bridge": 850}
+      "road_distances": {"River bridge": 850}
     }
   ],
   "stat_requests": [
-    { "id": 1, "type": "Stop", "name": "Riviersky bridge" },
+    { "id": 1, "type": "Stop", "name": "River bridge" },
     { "id": 2, "type": "Bus", "name": "114" }
   ]
 }

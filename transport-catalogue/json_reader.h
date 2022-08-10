@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include "json.h"
 #include "transport_catalogue.h"
 

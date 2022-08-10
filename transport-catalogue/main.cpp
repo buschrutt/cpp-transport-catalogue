@@ -5,12 +5,15 @@
 #include "json.h"
 
 int main() {
-
     catalogue::TransportCatalogue catalogue;
-    json_lib::Document json_doc = json_lib::JsonFileLoad("json_source.json");
+    //dbw_data_input(catalogue);
+    //dbr_data_input(catalogue);
+    //json_lib::Document json_doc = json_lib::JsonFileLoad("json_source.json");
+    json_lib::Document json_doc = json_lib::JsonConsoleLoad(std::cin);
     json_reader::DBBuilder(json_doc, catalogue);
     json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue);
-    json_lib::JsonFileWrite(json_result, "json_result.json");
+    //json_lib::JsonFileWrite(json_result, "json_result.json");
+    json_lib::JsonConsoleOutput(json_doc);
     return 0;
 }
 

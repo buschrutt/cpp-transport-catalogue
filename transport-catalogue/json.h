@@ -8,7 +8,6 @@
 
 // ?? bool json_lib::JsonEquals(json_lib::Document d1, json_lib::Document d1,);
 
-
 #pragma once
 #include <iostream>
 #include <map>
@@ -144,16 +143,17 @@ namespace json_lib {
     Node LoadArray(const std::string& input_string);
 
 
-
-    std::ofstream & JsonOutput (const Document& doc, std::ofstream& output);
-
-    void JsonFileWrite(const Document& doc, std::string f_path);
-
     Document JsonBuilder(const std::string& f_clear_data);
 
     std::string JsonTrashDelete (std::string source_string);
 
     Document JsonFileLoad(const std::string& f_path);
+
+    void JsonFileWrite(const Document& doc, const std::string& f_path);
+
+    Document JsonConsoleLoad(std::istream& input);
+
+    void JsonConsoleOutput(const Document& doc);
 
     bool operator== (const Node & l, const Node & r);
 

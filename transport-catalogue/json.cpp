@@ -1,6 +1,7 @@
 #include "json.h"
 #include "json_reader.h"
 #include <utility>
+#include <sstream>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ namespace json_lib {
 
     namespace {
 
-        Node LoadNode(istream& input);
+        //Node LoadNode(istream& input);
         Node LoadArray(const std::string& input_string);
 
         std::string SpaceDelete(std::string s) {
@@ -205,7 +206,7 @@ namespace json_lib {
             return result_array;
         }
 
-        Node LoadNode(std::string node_string) {
+        Node LoadNode(const std::string& node_string) {
             std::string_view node_w = node_string;
             if (node_w == "nul" || node_w == "[" || node_w == "]" || node_w == "{"
                 || node_w == "}" || node_w == "tru" || node_w == "fals"){
@@ -225,7 +226,7 @@ namespace json_lib {
         }
     }  // namespace
 
-    std::ofstream & JsonOutput (const Document& doc, std::ofstream& output) {
+    void JsonOutput (const Document& doc, std::ostream& output) {
         if (doc.GetRoot().IsNull()){
             output << "null";
         }
@@ -305,7 +306,6 @@ namespace json_lib {
             }
             output << "}"s;
         }
-        return output;
     }
 
     Document::Document(Node root)
@@ -372,8 +372,20 @@ namespace json_lib {
         return JsonBuilder(JsonTrashDelete(f_data));
     }
 
-    void JsonFileWrite(const Document& doc, std::string f_path){
-        std::string a;
+    Document JsonConsoleLoad(std::istream& input){
+        std::string cin_line;
+        std::string cin_data;
+        input >> cin_data;
+        return {JsonBuilder(JsonTrashDelete(cin_data))};
+    }
+
+    void JsonConsoleOutput(const Document& doc){
+        std::ostringstream out;
+        json_lib::JsonOutput(Document{doc.GetRoot()}, out);
+        cout << out.str();
+    }
+
+    void JsonFileWrite(const Document& doc, const std::string& f_path){
         std::ofstream json_o_stream (f_path);
         if (json_o_stream.is_open()){
             JsonOutput(doc, json_o_stream);
