@@ -225,19 +225,7 @@ namespace json_lib {
         }
     }  // namespace
 
-    Document::Document(Node root)
-            : root_(move(root)) {
-    }
-
-    const Node& Document::GetRoot() const {
-        return root_;
-    }
-
-    Document JsonDbBuilder(const std::string& f_clear_data) {
-        return Document{LoadNode(f_clear_data)};
-    }
-
-    void Print(const Document& doc, std::ostream& output) {
+    void JsonPrintRare (const Document& doc, std::ostream& output) {
         if (doc.GetRoot().IsNull()){
             output << "null";
         }
@@ -298,7 +286,7 @@ namespace json_lib {
                 } else {
                     output << ","s;
                 }
-                Print(Document{node}, output);
+                JsonPrintRare(Document{node}, output);
             }
             output << "]"s;
         }
@@ -311,12 +299,74 @@ namespace json_lib {
                 } else {
                     output << ", "s;
                 }
-                Print(Document{key}, output);
+                JsonPrintRare(Document{key}, output);
                 output << ": "s;
-                Print(Document{value}, output);
+                JsonPrintRare(Document{value}, output);
             }
             output << "}"s;
         }
+    }
+
+    Document::Document(Node root)
+            : root_(move(root)) {
+    }
+
+    const Node& Document::GetRoot() const {
+        return root_;
+    }
+
+    Document JsonBuilder(const std::string& f_clear_data) {
+        return Document{LoadNode(f_clear_data)};
+    }
+
+    std::string JsonTrashDelete (std::string source_string){
+        std::string result_string;
+        auto itr = source_string.begin();
+        auto itr_step = itr;
+        while (itr != source_string.end()){
+            if (*itr == '\\'){
+                itr_step = itr;
+                itr_step++;
+                if (*itr_step == 't'){
+                    result_string.push_back('\t');
+                }
+                if (*itr_step == 'r'){
+                    result_string.push_back('\r');
+                }
+                if (*itr_step == 'n'){
+                    result_string.push_back('\n');
+                }
+                if (*itr_step == '\\'){
+                    result_string.push_back('\\');
+                }
+                if (*itr_step == '"'){
+                    result_string.push_back('\"');
+                }
+                itr++;
+            } else if (*itr != '\t' && *itr != '\n' && *itr != '\r' && *itr != '\\'){
+                result_string.push_back(*itr);
+            }
+            itr++;
+        }
+        result_string = result_string.substr(result_string.find_first_not_of(' '));
+        result_string = result_string.substr(0, result_string.find_last_not_of(' ') + 1);
+        if (result_string[0] == '\"' && result_string[result_string.size() - 1] == '\"'){
+            result_string = result_string.substr(1, result_string.size() - 2);
+        }
+        return result_string;
+    }
+
+    Document JsonFileLoad(const std::string& f_path){
+        std::string f_clear_data;
+        std::string f_data;
+        std::string f_line;
+        std::ifstream json_i_stream (f_path);
+        if (json_i_stream.is_open()){
+            while (std::getline(json_i_stream, f_line)){
+                f_data += f_line;
+            }
+        }
+        return JsonBuilder(JsonTrashDelete(f_data));
     }
 
     bool operator== (const Node & l, const Node & r){

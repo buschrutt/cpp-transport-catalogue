@@ -1,63 +1,38 @@
+#include <algorithm>
 #include "json_reader.h"
 
 
 namespace json_reader {
 
-    std::string TrashDelete (std::string source_string){
-        std::string result_string;
-        auto itr = source_string.begin();
-        auto itr_step = itr;
-        while (itr != source_string.end()){
-            if (*itr == '\\'){
-                itr_step = itr;
-                itr_step++;
-                if (*itr_step == 't'){
-                    result_string.push_back('\t');
+    void DBBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
+        if (json_doc.GetRoot().AsMap().count("base_requests") > 0 ){
+            auto db_request_arr = json_doc.GetRoot().AsMap().at("base_requests");
+            for (const auto& db_request : db_request_arr.AsArray()){
+                auto dd = db_request.AsMap().at("type");
+                if(dd.AsString() == "Bus"){
+                    std::vector<std::string> stop_data;
+                    for (const auto& stop : db_request.AsMap().at("stops").AsArray()){
+                        stop_data.push_back(stop.AsString());
+                    }
+                    std::reverse(stop_data.begin(),stop_data.end());
+                    catalogue.SetBus(db_request.AsMap().at("name").AsString()
+                                     , stop_data
+                                     , db_request.AsMap().at("is_roundtrip").AsBool());
+                } else {
+                    geo::Coordinates coordinates{};
+                    coordinates.lat = db_request.AsMap().at("latitude").AsDouble();
+                    coordinates.lng = db_request.AsMap().at("longitude").AsDouble();
+                    catalogue.SetStop(db_request.AsMap().at("name").AsString()
+                                      , coordinates);
+                    for (auto [key, length] : db_request.AsMap().at("road_distances").AsMap()){
+                        catalogue.SetStopDistance(db_request.AsMap().at("name").AsString()
+                                        , key
+                                        , length.AsDouble());
+                    }
                 }
-                if (*itr_step == 'r'){
-                    result_string.push_back('\r');
-                }
-                if (*itr_step == 'n'){
-                    result_string.push_back('\n');
-                }
-                if (*itr_step == '\\'){
-                    result_string.push_back('\\');
-                }
-                if (*itr_step == '"'){
-                    result_string.push_back('\"');
-                }
-                itr++;
-            } else if (*itr != '\t' && *itr != '\n' && *itr != '\r' && *itr != '\\'){
-                result_string.push_back(*itr);
-            }
-            itr++;
-        }
-        result_string = result_string.substr(result_string.find_first_not_of(' '));
-        result_string = result_string.substr(0, result_string.find_last_not_of(' ') + 1);
-        if (result_string[0] == '\"' && result_string[result_string.size() - 1] == '\"'){
-            result_string = result_string.substr(1, result_string.size() - 2);
-        }
-        return result_string;
-    }
-
-    std::string JsonFileRead(const std::string &f_name) {
-        std::string f_clear_data;
-        std::string f_data;
-        std::string f_line;
-        std::ifstream json_i_stream (f_name);
-        if (json_i_stream.is_open()){
-            while (std::getline(json_i_stream, f_line)){
-                f_data += f_line;
             }
         }
-        return TrashDelete(f_data);
     }
 
-    void JsonFileWrite(const json_lib::Document& json_doc, const std::string& f_name){
-        std::ofstream json_o_stream (f_name);
-        if (json_o_stream.is_open()){
-            Print(json_doc, json_o_stream);;
-        }
-    }
 
 }

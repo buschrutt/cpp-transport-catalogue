@@ -5,12 +5,16 @@
 #include "json.h"
 
 int main() {
-    //catalogue::TransportCatalogue catalogue;
-    std::string f_clear_data = json_reader::JsonFileRead("input.json");
-    json_lib::Document json_doc = json_lib::JsonDbBuilder(f_clear_data);
-    json_reader::JsonFileWrite(json_doc, "output.json");
+
+    catalogue::TransportCatalogue catalogue;
+    json_lib::Document json_doc = json_lib::JsonFileLoad("json_source.json");
+    json_reader::DBBuilder(json_doc, catalogue);
+    //std::string f_clear_data = json_reader::JsonFileRead("json_source.json");
+    //json_lib::Document json_doc = json_lib::JsonDbBuilder(f_clear_data);
+    //json_reader::JsonFileWrite(json_doc, "output.json");
     return 0;
 }
+
 
 
 

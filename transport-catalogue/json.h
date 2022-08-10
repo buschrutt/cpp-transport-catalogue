@@ -1,3 +1,13 @@
+// %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+//json_lib
+//json_lib::Document json_lib::JsonFileLoad(std::string f_path);
+//json_lib::Document json_lib::JsonBuilder(std::string f_clear_data);
+//std::string json_lib::JsonTrashDelete(std::string s_source);
+//void JsonPrintRare (const Document& d1, std::ostream& output);
+
+// ?? bool json_lib::JsonEquals(json_lib::Document d1, json_lib::Document d1,);
+
+
 #pragma once
 #include <iostream>
 #include <map>
@@ -133,7 +143,15 @@ namespace json_lib {
 
     Node LoadArray(const std::string& input_string);
 
-    Document JsonDbBuilder(const std::string& f_clear_data);
+
+
+    void JsonPrintRare(const Document& doc, std::ostream& output);
+
+    Document JsonBuilder(const std::string& f_clear_data);
+
+    std::string JsonTrashDelete (std::string source_string);
+
+    Document JsonFileLoad(const std::string& f_path);
 
     void Print(const Document& doc, std::ostream& output);
 
