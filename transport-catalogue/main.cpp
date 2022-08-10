@@ -9,13 +9,10 @@ int main() {
     catalogue::TransportCatalogue catalogue;
     json_lib::Document json_doc = json_lib::JsonFileLoad("json_source.json");
     json_reader::DBBuilder(json_doc, catalogue);
-    //std::string f_clear_data = json_reader::JsonFileRead("json_source.json");
-    //json_lib::Document json_doc = json_lib::JsonDbBuilder(f_clear_data);
-    //json_reader::JsonFileWrite(json_doc, "output.json");
+    json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue);
+    json_lib::JsonFileWrite(json_result, "json_result.json");
     return 0;
 }
-
-
 
 
 /*

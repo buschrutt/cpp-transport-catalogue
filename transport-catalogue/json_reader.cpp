@@ -1,4 +1,6 @@
 #include <algorithm>
+//#include <mmcobj.h>
+#include <string>
 #include "json_reader.h"
 
 
@@ -8,8 +10,8 @@ namespace json_reader {
         if (json_doc.GetRoot().AsMap().count("base_requests") > 0 ){
             auto db_request_arr = json_doc.GetRoot().AsMap().at("base_requests");
             for (const auto& db_request : db_request_arr.AsArray()){
-                auto dd = db_request.AsMap().at("type");
-                if(dd.AsString() == "Bus"){
+                auto node = db_request.AsMap().at("type");
+                if(node.AsString() == "Bus"){
                     std::vector<std::string> stop_data;
                     for (const auto& stop : db_request.AsMap().at("stops").AsArray()){
                         stop_data.push_back(stop.AsString());
@@ -34,5 +36,50 @@ namespace json_reader {
         }
     }
 
+    json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
+        json_lib::Array json_arr;
+        json_lib::Dict json_pair;
+        if (json_doc.GetRoot().AsMap().count("stat_requests") > 0 ){
+            auto db_request_arr = json_doc.GetRoot().AsMap().at("stat_requests");
+            for (const auto& db_request : db_request_arr.AsArray()){
+                auto node = db_request.AsMap().at("type");
+                if(node.AsString() == "Bus"){
+                    std::string bus_name = db_request.AsMap().at("name").AsString();
+                    if (catalogue.BusStopCount(bus_name) == 0){
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id", db_request.AsMap().at("id").AsInt(),},
+                                {"error_message", "not found"}
+                        });
+                    } else {
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id:", std::to_string(db_request.AsMap().at("id").AsInt())},
+                                {"stop_count:", std::to_string(catalogue.BusStopCount(bus_name))},
+                                {"unique_stop_count:", std::to_string(catalogue.BusUniqStopCount(bus_name))},
+                                {"route_length:", std::to_string(catalogue.BusRouteLength(bus_name).first)},
+                                {"curvature:", std::to_string(catalogue.BusRouteLength(bus_name).second)}
+                        });
+                    }
+                } else {
+                    std::string stop_name = db_request.AsMap().at("name").AsString();
+                    if (catalogue.GetStopBuses(stop_name).count(":") > 0){
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id", db_request.AsMap().at("id").AsInt(),},
+                                {"error_message", "not found"}
+                        });
+                    } else {
+                        json_lib::Array buffer_arr;
+                        for (const std::string& value : catalogue.GetStopBuses(stop_name)){
+                            buffer_arr.emplace_back(value);
+                        }
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id:", std::to_string(db_request.AsMap().at("id").AsInt())},
+                                {"buses", buffer_arr}
+                        });
+                    }
+                }
+            }
+        }
+        return json_lib::Document{json_arr};
+    }
 
 }

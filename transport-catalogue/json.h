@@ -1,6 +1,7 @@
 // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 //json_lib
 //json_lib::Document json_lib::JsonFileLoad(std::string f_path);
+//void json_lib::JsonFileWrite(std::string f_path);
 //json_lib::Document json_lib::JsonBuilder(std::string f_clear_data);
 //std::string json_lib::JsonTrashDelete(std::string s_source);
 //void JsonPrintRare (const Document& d1, std::ostream& output);
@@ -41,7 +42,6 @@ namespace json_lib {
         Node(bool value) : value_(value) {};
         Node(Array value) : value_(value) {};
         Node(Dict value) : value_(value) {};
-        //Node(Value value) : value_(std::move(value)) {};
 
         // %%%%%%%%%%  Type Check  %%%%%%%%%%
 
@@ -145,15 +145,15 @@ namespace json_lib {
 
 
 
-    void JsonPrintRare(const Document& doc, std::ostream& output);
+    std::ofstream & JsonOutput (const Document& doc, std::ofstream& output);
+
+    void JsonFileWrite(const Document& doc, std::string f_path);
 
     Document JsonBuilder(const std::string& f_clear_data);
 
     std::string JsonTrashDelete (std::string source_string);
 
     Document JsonFileLoad(const std::string& f_path);
-
-    void Print(const Document& doc, std::ostream& output);
 
     bool operator== (const Node & l, const Node & r);
 

@@ -225,7 +225,7 @@ namespace json_lib {
         }
     }  // namespace
 
-    void JsonPrintRare (const Document& doc, std::ostream& output) {
+    std::ofstream & JsonOutput (const Document& doc, std::ofstream& output) {
         if (doc.GetRoot().IsNull()){
             output << "null";
         }
@@ -286,7 +286,7 @@ namespace json_lib {
                 } else {
                     output << ","s;
                 }
-                JsonPrintRare(Document{node}, output);
+                JsonOutput(Document{node}, output);
             }
             output << "]"s;
         }
@@ -299,12 +299,13 @@ namespace json_lib {
                 } else {
                     output << ", "s;
                 }
-                JsonPrintRare(Document{key}, output);
+                JsonOutput(Document{key}, output);
                 output << ": "s;
-                JsonPrintRare(Document{value}, output);
+                JsonOutput(Document{value}, output);
             }
             output << "}"s;
         }
+        return output;
     }
 
     Document::Document(Node root)
@@ -365,8 +366,20 @@ namespace json_lib {
             while (std::getline(json_i_stream, f_line)){
                 f_data += f_line;
             }
+        } else {
+            std::cerr << "No file found" << std::endl;
         }
         return JsonBuilder(JsonTrashDelete(f_data));
+    }
+
+    void JsonFileWrite(const Document& doc, std::string f_path){
+        std::string a;
+        std::ofstream json_o_stream (f_path);
+        if (json_o_stream.is_open()){
+            JsonOutput(doc, json_o_stream);
+        } else {
+            std::cerr << "No file found" << std::endl;
+        }
     }
 
     bool operator== (const Node & l, const Node & r){
