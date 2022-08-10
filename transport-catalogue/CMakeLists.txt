@@ -4,10 +4,16 @@ project(untitled3)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(testing main.cpp
-        testing old_/input_reader.h
-        testing old_/stat_reader.h
-        testing transport_catalogue.h
-        testing old_/input_reader.cpp
-        testing old_/stat_reader.cpp
-        testing geo.cpp
-        testing transport_catalogue.cpp)
+        old_/input_reader.h
+        old_/stat_reader.h
+        transport_catalogue.h
+        old_/input_reader.cpp
+        old_/stat_reader.cpp
+        geo.cpp
+        domain.cpp
+        json.cpp
+        json_reader.cpp
+        map_renderer.cpp
+        request_handler.cpp
+        svg.cpp
+        transport_catalogue.cpp)

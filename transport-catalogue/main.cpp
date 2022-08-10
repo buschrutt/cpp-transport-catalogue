@@ -1,20 +1,34 @@
 #include "old_/input_reader.h"
 #include "old_/stat_reader.h"
 #include "transport_catalogue.h"
+#include "json_reader.h"
+#include "json.h"
 
 int main() {
-    catalogue::TransportCatalogue catalogue;
-    input_reader::dbw_data_input(catalogue, std::cin);
-    stat_reader::dbr_data_input(catalogue, std::cin);
+    //catalogue::TransportCatalogue catalogue;
+    std::string f_clear_data = json_reader::JsonFileRead("input.json");
+    json_lib::Document json_doc = json_lib::JsonDbBuilder(f_clear_data);
+    json_reader::JsonFileWrite(json_doc, "output.json");
     return 0;
 }
 
 
 
-
+/*
+     * Примерная структура программы:
+     *
+     * Считать JSON из stdin.
+     * Построить на его основе JSON базу данных транспортного справочника.
+     * Выполнить запросы к справочнику, находящиеся в массиве "stat_requests", построив JSON-массив
+     * с ответами.
+     * Вывести в stdout ответы в виде JSON
+     */
 
 
 /*
+  {
+  "name": "transport-catalogue",
+  "version": "1.0.0",
   "base_requests": [
     {
       "type": "Stop",
@@ -112,4 +126,5 @@ int main() {
     { "id": 1, "type": "Stop", "name": "Prazhskaya" },
     { "id": 1, "type": "Stop", "name": "Biryulyovo Zapadnoye" }
   ]
+}
   */
