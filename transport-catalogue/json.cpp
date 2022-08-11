@@ -20,17 +20,17 @@ namespace json_lib {
 
         Node LoadString(const std::string& input_string) {
             std::string s = input_string;
-            if (s == "null"){
+            if (s == "null"s){
                 return Node{};
-            } else if (s == "true" || s == "false"){
-                if (s == "true"){
+            } else if (s == "true"s || s == "false"s){
+                if (s == "true"s){
                     return Node{true};
                 } else {
                     return Node{false};
                 }
             } else {
                 if (s[0] == '\"' && s[s.size() - 1] != '\"'){
-                    throw json_lib::ParsingError ("ParsingError");
+                    throw json_lib::ParsingError ("ParsingError"s);
                 }
                 return Node{s};
             }
@@ -122,7 +122,6 @@ namespace json_lib {
                         }
                         // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     }
-                    //cout << "FLAG-- " << s.size() << "--of -- " << s[i] << endl;
                     buffer.push_back(s[i]);
                     i++;
                 }
@@ -141,9 +140,6 @@ namespace json_lib {
                     result_dict.emplace(node_key, LoadString(buffer));
                 }
                 buffer.clear();
-                if (s[i] == '}'){
-                    break;
-                }
             }
             return result_dict;
         }
@@ -194,29 +190,20 @@ namespace json_lib {
                         result_array.push_back(LoadString(node_s));
                     }
                     node_s.clear();
-                    //i++;
                 }
-                if (s[i] == ']'){
-                    break;
-                }
-            }
-            if (result_array.empty()){
-                auto a = Node(result_array);
             }
             return result_array;
         }
 
         Node LoadNode(const std::string& node_string) {
             std::string_view node_w = node_string;
-            if (node_w == "nul" || node_w == "[" || node_w == "]" || node_w == "{"
-                || node_w == "}" || node_w == "tru" || node_w == "fals"){
-                throw json_lib::ParsingError ("ParsingError");
+            if (node_w == "nul"s || node_w == "["s || node_w == "]"s || node_w == "{"s
+                || node_w == "}"s || node_w == "tru"s || node_w == "fals"s){
+                throw json_lib::ParsingError ("ParsingError"s);
             }
             if (isdigit(node_w[0]) || node_w[0] == '-'){
                 return LoadNumber(node_string);
             } else if ((node_w[0]) == '['){
-
-                auto aa = LoadArray(node_string);
                 return LoadArray(node_string);
             } else if ((node_w[0]) == '{'){
                 return LoadDict(node_string);
@@ -228,10 +215,10 @@ namespace json_lib {
 
     void JsonOutput (const Document& doc, std::ostream& output) {
         if (doc.GetRoot().IsNull()){
-            output << "null";
+            output << "null"s;
         }
         if (doc.GetRoot().IsString()){
-            std::string result = "\"";
+            std::string result = "\""s;
             std::string origin = doc.GetRoot().AsString();
             auto itr = origin.begin();
             while (itr != origin.end()){
@@ -367,16 +354,29 @@ namespace json_lib {
                 f_data += f_line;
             }
         } else {
-            std::cerr << "No file found" << std::endl;
+            std::cerr << "No file found"s << std::endl;
         }
         return JsonBuilder(JsonTrashDelete(f_data));
     }
 
     Document JsonConsoleLoad(std::istream& input){
-        std::string cin_line;
+        char c;
+        int b_count = 0;
         std::string cin_data;
-        input >> cin_data;
-        return {JsonBuilder(JsonTrashDelete(cin_data))};
+        while (input >> c){
+            if (c == '{'){
+                b_count++;
+            }
+            if (c == '}'){
+                b_count--;
+                if (b_count == 0){
+                    cin_data.push_back(c);
+                    break;
+                }
+            }
+            cin_data.push_back(c);
+        }
+        return {JsonBuilder(JsonTrashDelete({cin_data}))};
     }
 
     void JsonConsoleOutput(const Document& doc){
@@ -390,7 +390,7 @@ namespace json_lib {
         if (json_o_stream.is_open()){
             JsonOutput(doc, json_o_stream);
         } else {
-            std::cerr << "No file found" << std::endl;
+            std::cerr << "No file found"s << std::endl;
         }
     }
 
