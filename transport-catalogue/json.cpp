@@ -2,6 +2,7 @@
 #include "json_reader.h"
 #include <utility>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -10,247 +11,118 @@ namespace json_lib {
     namespace {
 
         //Node LoadNode(istream& input);
-        Node LoadArray(const std::string& input_string);
+        Node LoadNode(istream& input);
+        Node LoadArray(istream& input);
 
-        std::string SpaceDelete(std::string s) {
-            s = s.substr(s.find_first_not_of(' '));
-            s = s.substr(0, s.find_last_not_of(' ') + 1);
-            return s;
-        }
-
-        Node LoadString(const std::string& input_string) {
-            std::string s = input_string;
-            if (s == "null"s){
-                return Node{};
-            } else if (s == "true"s || s == "false"s){
-                if (s == "true"s){
-                    return Node{true};
-                } else {
-                    return Node{false};
+        Node LoadString(istream& input) {
+            bool flag_quotes_err = true;
+            char c;
+            string s;
+            while (input.get(c)) {
+                if (c == '"'){flag_quotes_err = false; break;}
+                if (c == '\\'){
+                    input.get(c);
+                    if (c == 'r'){s.push_back('\r'); continue;} else
+                    if (c == 'n'){s.push_back('\n'); continue;} else
+                    if (c == 't'){s.push_back('\t'); continue;} else
+                    if (c == '\"'){s += R"(")"s; continue;} else
+                    if (c == '\\'){s += R"(\)"s; continue;}
                 }
-            } else {
-                if (s[0] == '\"' && s[s.size() - 1] != '\"'){
-                    throw json_lib::ParsingError ("ParsingError"s);
+                if ((c != '\t' && c != '\r' && c != '\n' && c != '\"' && c != '\\')){
+                    s.push_back(c);
                 }
-                return Node{s};
             }
+            if (flag_quotes_err){
+                throw ParsingError ("ParsingError E0: flag_quotes_err");
+            }
+            return {move(s)};
         }
 
-        Node LoadNumber(const std::string& s){
-            if (s.find('.') == string::npos && s.find('e') == string::npos && s.find('E') == string::npos) {
+        Node LoadNumber(istream& input){
+            char c;
+            string s;
+            while (input >> c && c != ',' && c != ']' && c != '}'){
+                s.push_back(c);
+            }
+            if (c == ']' || c == '}') {input.putback(c);}
+            if (s == "nul" || s == "tru" || s == "fals"){
+                throw ParsingError ("ParsingError E1: nul, tru, fals");
+            }
+            if (s == "null"){
+                return Node{};
+            } else  if (s == "true"s){
+                return Node{true};
+            } else if (s == "false"s){
+                return Node{false};
+            }
+            if (!(s[0] == '-' || isdigit(s[0]))){
+                throw ParsingError ("ParsingError4");
+            }
+            if (s.find('.') == string::npos && s.find('+') == string::npos && s.find('e') == string::npos && s.find('E') == string::npos) {
                 return {stoi(s)};
             } else {
-                return {stod(s)};
+                double r = stod(s);
+                return r;
             }
         }
 
-        std::string FindMapString (size_t k, const std::string& s){
-            std::string s_return;
-            size_t step_count = 0;
-            for (size_t i = k; i < s.size(); i++){
-                if (s[i] == '{'){
-                    step_count++;
-                }
-                if (s[i] == '}'){
-                    step_count--;
-                }
-                s_return.push_back(s[i]);
-                if (step_count == 0){
-                    break;
-                }
-            }
-            return s_return;
-        }
-
-        std::string FindArrayString (size_t k, const std::string& s){
-            std::string s_return;
-            size_t step_count = 0;
-            for (size_t i = k; i < s.size(); i++){
-                if (s[i] == '['){
-                    step_count++;
-                }
-                if (s[i] == ']'){
-                    step_count--;
-                }
-                s_return.push_back(s[i]);
-                if (step_count == 0){
-                    break;
-                }
-            }
-            return s_return;
-        }
-
-        Dict LoadDict(const std::string& input_string){
-            std::string s = input_string;
-            std::string buffer;
-            std::string node_key;
-            Dict result_dict;
-            for(size_t i = 1; i < s.size(); i++){
-                while (s[i] != ','){
-                    if (s[i] == '}'){
-                        break;
-                    }
-                    if (s[i] == ':'){
-                        node_key = SpaceDelete(buffer);
-                        buffer.clear();
-                        i++;
-                        while (s[i] == ' '){
-                            i++;
-                        }
-                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                        if (s[i] == '{'){
-                            std::string map_string = FindMapString(i, s);
-                            node_key = node_key.substr(node_key.find_first_not_of('\"'), node_key.find_last_not_of('\"'));
-                            result_dict.emplace(node_key, (LoadDict(map_string)));
-                            i += map_string.size();
-                            while (s[i] == ' '){
-                                i++;
-                            }
-                            break;
-                        }
-                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                        if (s[i] == '['){
-                            std::string array_string = FindArrayString(i, s);
-                            node_key = node_key.substr(node_key.find_first_not_of('\"'), node_key.find_last_not_of('\"'));
-                            result_dict.emplace(node_key, (LoadArray(array_string)));
-                            i += array_string.size();
-                            while (s[i] == ' '){
-                                i++;
-                            }
-                            break;
-                        }
-                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                    }
-                    buffer.push_back(s[i]);
-                    i++;
-                }
-                if (buffer.empty()){
+        Dict LoadDict(istream& input){
+            char c;
+            Dict m;
+            std::string n_key;
+            Node value;
+            while (input.get(c) && c != '}') {
+                if (c == ':') {
+                    m.insert({move(n_key), LoadNode(input)});
                     continue;
                 }
-                buffer = SpaceDelete(buffer);
-                if (isdigit(buffer[0]) || buffer[0] == '-'){
-                    node_key = node_key.substr(node_key.find_first_not_of('\"'), node_key.find_last_not_of('\"'));
-                    result_dict.emplace(node_key, LoadNumber(buffer));
-                } else {
-                    node_key = node_key.substr(node_key.find_first_not_of('\"'), node_key.find_last_not_of('\"'));
-                    if (buffer.find('\"') != string::npos){
-                        buffer = buffer.substr(buffer.find_first_not_of('\"'), buffer.find_last_not_of('\"'));
-                    }
-                    result_dict.emplace(node_key, LoadString(buffer));
+                if (c == '\"'){
+                    n_key = LoadString(input).AsString();
                 }
-                buffer.clear();
             }
-            return result_dict;
+            //if (m.empty()){ throw ParsingError ("ParsingError E3: no stream after { --"); }
+            return m;
         }
 
-        Node LoadArray(const std::string& input_string){
-            std::string s = input_string;
-            std::string node_s;
-            Array result_array;
-            for(size_t i = 1; i < s.size(); i++){
-                while (s[i] == ' '){
-                    i++;
+        Node LoadArray(istream& input){
+            char c;
+            Array a;
+            while (input >> c && c != ']'){
+                if (c != ','){
+                    input.putback(c);
                 }
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                if (s[i] == '{'){
-                    std::string map_string = FindMapString(i, s);
-                    result_array.push_back(LoadDict(map_string));
-                    i += map_string.size();
-                    while (s[i] == ' '){
-                        i++;
-                    }
-                }
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                if (s[i] == '['){
-                    std::string array_string = FindArrayString(i, s);
-                    result_array.push_back(LoadArray(array_string));
-                    i += array_string.size();
-                    while (s[i] == ' '){
-                        i++;
-                    }
-                }
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                while (s[i] != ','){
-                    if (s[i] == ']'){
-                        break;
-                    }
-                    node_s.push_back(s[i]);
-                    i++;
-                }
-                if (!node_s.empty()){
-                    node_s = SpaceDelete(node_s);
-                    if (isdigit(node_s[0]) || node_s[0] == '-'){
-                        result_array.push_back(LoadNumber(node_s));
-                    } else {
-                        if (node_s.find('\"') != string::npos){
-                            node_s = node_s.substr(node_s.find_first_not_of('\"'), node_s.find_last_not_of('\"'));
-                        }
-                        result_array.push_back(LoadString(node_s));
-                    }
-                    node_s.clear();
-                }
+                a.push_back(move(LoadNode(input)));
             }
-            return result_array;
+            if (c != ']'){ throw ParsingError ("ParsingError E8:"); }
+            if (a.empty()){
+                a.push_back({nullptr});
+            }
+            return a;
         }
 
-        Node LoadNode(const std::string& node_string) {
-            std::string_view node_w = node_string;
-            if (node_w == "nul"s || node_w == "["s || node_w == "]"s || node_w == "{"s
-                || node_w == "}"s || node_w == "tru"s || node_w == "fals"s){
-                throw json_lib::ParsingError ("ParsingError"s);
-            }
-            if (isdigit(node_w[0]) || node_w[0] == '-'){
-                return LoadNumber(node_string);
-            } else if ((node_w[0]) == '['){
-                return LoadArray(node_string);
-            } else if ((node_w[0]) == '{'){
-                return LoadDict(node_string);
+        Node LoadNode(istream& input) {
+            char c;
+            input >> c;
+            if (c == '['){
+                return LoadArray(input);
+            } else if (c == '{'){
+                return LoadDict(input);
+            } else if (c == '"') {
+                return LoadString(input);
             } else {
-                return LoadString(node_string);
+                if (c == ']' || c == '}'){
+                    throw ParsingError ("ParsingError E2: ] } --");
+                }
+                input.putback(c);
+                return LoadNumber(input);
             }
         }
+
     }  // namespace
 
     void JsonOutput (const Document& doc, std::ostream& output) {
         if (doc.GetRoot().IsNull()){
-            output << "null"s;
-        }
-        if (doc.GetRoot().IsString()){
-            std::string result = "\""s;
-            std::string origin = doc.GetRoot().AsString();
-            auto itr = origin.begin();
-            while (itr != origin.end()){
-                if (*itr == '\r'){
-                    result.push_back('\\');
-                    result.push_back('r');
-                    itr++;
-                    continue;
-                }
-                if (*itr == '\n'){
-                    result.push_back('\\');
-                    result.push_back('n');
-                    itr++;
-                    continue;
-                }
-                if (*itr == '\"'){
-                    result.push_back('\\');
-                    result.push_back('"');
-                    itr++;
-                    continue;
-                }
-                if (*itr == '\\'){
-                    std::string s = R"(\\)"s;
-                    result += s;
-                    itr++;
-                    continue;
-                }
-                result.push_back(*itr);
-                itr++;
-            }
-            result.push_back('\"');
-            output << result;
+            output << "null";
         }
         if (doc.GetRoot().IsInt()){
             output << doc.GetRoot().AsInt();
@@ -264,6 +136,21 @@ namespace json_lib {
             } else {
                 output << "false"s;
             }
+        }
+        if (doc.GetRoot().IsString()){
+            std::string r = "\"";
+            std::string origin = doc.GetRoot().AsString();
+            auto itr = origin.begin();
+            while (itr != origin.end()){
+                if (*itr == '\r'){ r.push_back('\\'); r.push_back('r'); itr++; continue; }
+                if (*itr == '\n'){ r.push_back('\\'); r.push_back('n'); itr++; continue; }
+                if (*itr == '\"'){ r.push_back('\\'); r.push_back('"'); itr++; continue; }
+                if (*itr == '\\'){ std::string s = R"(\\)"s; r += s; itr++; continue; }
+                r.push_back(*itr);
+                itr++;
+            }
+            r.push_back('\"');
+            output << r;
         }
         if (doc.GetRoot().IsArray()){
             bool is_first_node = true;
@@ -303,45 +190,8 @@ namespace json_lib {
         return root_;
     }
 
-    Document JsonBuilder(const std::string& f_clear_data) {
-        return Document{LoadNode(f_clear_data)};
-    }
-
-    std::string JsonTrashDelete (std::string source_string){
-        std::string result_string;
-        auto itr = source_string.begin();
-        auto itr_step = itr;
-        while (itr != source_string.end()){
-            if (*itr == '\\'){
-                itr_step = itr;
-                itr_step++;
-                if (*itr_step == 't'){
-                    result_string.push_back('\t');
-                }
-                if (*itr_step == 'r'){
-                    result_string.push_back('\r');
-                }
-                if (*itr_step == 'n'){
-                    result_string.push_back('\n');
-                }
-                if (*itr_step == '\\'){
-                    result_string.push_back('\\');
-                }
-                if (*itr_step == '"'){
-                    result_string.push_back('\"');
-                }
-                itr++;
-            } else if (*itr != '\t' && *itr != '\n' && *itr != '\r' && *itr != '\\'){
-                result_string.push_back(*itr);
-            }
-            itr++;
-        }
-        result_string = result_string.substr(result_string.find_first_not_of(' '));
-        result_string = result_string.substr(0, result_string.find_last_not_of(' ') + 1);
-        if (result_string[0] == '\"' && result_string[result_string.size() - 1] == '\"'){
-            result_string = result_string.substr(1, result_string.size() - 2);
-        }
-        return result_string;
+    Document JsonBuilder(istream& input) {
+        return Document{LoadNode(input)};
     }
 
     Document JsonFileLoad(const std::string& f_path){
@@ -350,33 +200,15 @@ namespace json_lib {
         std::string f_line;
         std::ifstream json_i_stream (f_path);
         if (json_i_stream.is_open()){
-            while (std::getline(json_i_stream, f_line)){
-                f_data += f_line;
-            }
+            return JsonBuilder(json_i_stream);
         } else {
             std::cerr << "No file found"s << std::endl;
         }
-        return JsonBuilder(JsonTrashDelete(f_data));
+        return JsonBuilder(json_i_stream);
     }
 
     Document JsonConsoleLoad(std::istream& input){
-        char c;
-        int b_count = 0;
-        std::string cin_data;
-        while (input >> c){
-            if (c == '{'){
-                b_count++;
-            }
-            if (c == '}'){
-                b_count--;
-                if (b_count == 0){
-                    cin_data.push_back(c);
-                    break;
-                }
-            }
-            cin_data.push_back(c);
-        }
-        return {JsonBuilder(JsonTrashDelete({cin_data}))};
+        return {JsonBuilder(input)};
     }
 
     void JsonConsoleOutput(const Document& doc){
@@ -406,13 +238,7 @@ namespace json_lib {
     }
 
     bool operator!= (const Node & l, const Node & r){
-        if(l.IsNull() && r.IsNull()){return false;}
-        if(l.IsInt() && r.IsInt()){if(l.AsInt() == r.IsInt()){return false;}}
-        if(l.IsPureDouble() && r.IsPureDouble()){if(l.AsInt() == r.IsInt()){return false;}}
-        if(l.IsBool() && r.IsBool()){if(l.AsInt() == r.IsInt()){return false;}}
-        if(l.IsString() && r.IsString()){if(l.AsInt() == r.IsInt()){return false;}}
-        if(l.IsArray() && r.IsArray()){if(l.AsInt() == r.IsInt()){return false;}}
-        if(l.IsMap() && r.IsMap()){if(l.AsInt() == r.IsInt()){return false;}}
+        if(l == r){return false;}
         return true;
     }
 

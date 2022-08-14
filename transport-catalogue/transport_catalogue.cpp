@@ -53,8 +53,8 @@ namespace catalogue {
         geo::Coordinates c_origin{};
         geo::Coordinates c_destination{};
         for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
-            key.second = buses_.at(bus_name).route[i];
-            key.first = buses_.at(bus_name).route[i - 1];
+            key.first = buses_.at(bus_name).route[i];
+            key.second = buses_.at(bus_name).route[i - 1];
             if (stops_.at(key.first).distances.count(key.second) < 1){
                 route_length += stops_.at(key.second).distances.at(key.first);
             } else {
@@ -62,7 +62,7 @@ namespace catalogue {
             }
             c_destination = stops_.at(buses_.at(bus_name).route[i]).coordinates;
             c_origin = stops_.at(buses_.at(bus_name).route[i-1]).coordinates;
-            chord_route_length += geo::ComputeDistance(c_origin, c_destination);
+            chord_route_length += ComputeDistance(c_origin, c_destination);
             if (buses_.at(bus_name).is_chain){
                 if (stops_.at(key.second).distances.count(key.first) < 1){
                     route_length += stops_.at(key.first).distances.at(key.second);

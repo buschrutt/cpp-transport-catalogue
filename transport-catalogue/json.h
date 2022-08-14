@@ -33,14 +33,14 @@ namespace json_lib {
     public:
         using Value = std::variant<std::nullptr_t, Array, Dict, bool, int, double, std::string>;
 
-        Node() : value_(nullptr) {};
-        Node(std::nullptr_t) : value_(nullptr) {};
-        Node(int value) : value_(value) {};
-        Node(double value) : value_(value) {};
-        Node(std::string value) : value_(value) {};
-        Node(bool value) : value_(value) {};
-        Node(Array value) : value_(value) {};
-        Node(Dict value) : value_(value) {};
+        Node() : value_(nullptr) {}
+        Node(std::nullptr_t) : value_(nullptr) {}
+        Node(int value) : value_(value) {}
+        Node(double value) : value_(value) {}
+        Node(std::string value) : value_(value) {}
+        Node(bool value) : value_(value) {}
+        Node(Array value) : value_(std::move(value)) {};
+        Node(Dict value) : value_(std::move(value)) {};
 
         // %%%%%%%%%%  Type Check  %%%%%%%%%%
 
@@ -128,32 +128,29 @@ namespace json_lib {
         Node root_;
     };
 
-    std::string SpaceDelete(std::string s);
+    Node LoadString(std::istream& input);
 
-    Node LoadString(const std::string& input_string);
+    Node LoadNumber(std::istream& input);
 
-    Node LoadNumber(const std::string& input_string);
+    Dict LoadDict(std::istream& input);
 
-    std::string FindMapString (size_t k, const std::string& s);
-
-    std::string FindArrayString (size_t k, const std::string& s);
-
-    Dict LoadDict(const std::string& input_string);
-
-    Node LoadArray(const std::string& input_string);
-
-
-    Document JsonBuilder(const std::string& f_clear_data);
-
-    std::string JsonTrashDelete (std::string source_string);
+    Node LoadArray(std::istream& input);
 
     Document JsonFileLoad(const std::string& f_path);
 
-    void JsonFileWrite(const Document& doc, const std::string& f_path);
+    Document Load(std::istream& input);
+
+    void JsonOutput (const Document& doc, std::ostream& output);
+
+    Document JsonBuilder(std::istream& input);
+
+    Document JsonFileLoad(const std::string& f_path);
 
     Document JsonConsoleLoad(std::istream& input);
 
     void JsonConsoleOutput(const Document& doc);
+
+    void JsonFileWrite(const Document& doc, const std::string& f_path);
 
     bool operator== (const Node & l, const Node & r);
 
@@ -163,4 +160,4 @@ namespace json_lib {
 
     bool operator!= (const Document & l, const Document & r);
 
-}  // namespace json
+}  // namespace json_lib

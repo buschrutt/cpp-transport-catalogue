@@ -39,7 +39,7 @@ namespace stat_reader {
         }
     }
 
-    istream& dbr_data_input (catalogue::TransportCatalogue& catalogue, std::istream& input) {
+    [[maybe_unused]] istream& dbr_data_input (catalogue::TransportCatalogue& catalogue, std::istream& input) {
         int request_count;
         std::string input_string;
         getline (input, input_string);
