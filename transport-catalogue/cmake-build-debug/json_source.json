@@ -13,6 +13,12 @@
     },
     {
       "type": "Bus",
+      "name": "33",
+      "stops": [],
+      "is_roundtrip": true
+    },
+    {
+      "type": "Bus",
       "name": "114",
       "stops": [
         "Morskoy vokzal",

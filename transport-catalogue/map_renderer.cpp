@@ -1,5 +1,4 @@
 #include "map_renderer.h"
-
 #include <utility>
 #include <cmath>
 
@@ -7,25 +6,23 @@ using namespace std::literals;
 
 namespace renderer {
 
-    renderer::MapRenderer::RenderSettings::RenderSettings() = default;
+    renderer::RenderSettings::RenderSettings() = default;
 
     bool IsZero(double value) {
         return std::abs(value) < EPSILON;
     }
 
-    namespace shapes {
-        class Poly : public svg::Drawable {
-        public:
-            explicit Poly(svg::Polyline poly): poly_(std::move(poly)) {}
-            void Draw(svg::ObjectContainer &container) const override {
-                container.Add(poly_);
-            }
-        private:
-            svg::Polyline poly_;
-        };
-    }
+    class Poly : public svg::Drawable {
+    public:
+        explicit Poly(svg::Polyline poly): poly_(std::move(poly)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(poly_);
+        }
+    private:
+        svg::Polyline poly_;
+    };
 
-    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::MapRenderer::RenderSettings& settings){
+    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
         std::vector<geo::Coordinates> geo_coords;
         std::set <std::string> result_order;
         std::map <std::string, svg::Polyline> MapPolyLines;
@@ -39,15 +36,15 @@ namespace renderer {
             }
         }
         const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
-        // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+        // %%%%%%%%%% %%%%%%%%%% poly lines & formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         for (const auto& route : result_order){
             std::vector<std::string> bus = catalogue.GetAllBuses().at(route).route;
             if (bus.empty()){ continue;}
-            std::vector<std::string> direction1 = bus;
-            reverse(direction1.begin(),direction1.end());
+            std::vector<std::string> f_dir = bus; // f_dir forward direction order
+            reverse(f_dir.begin(),f_dir.end());
             svg::Polyline polyline;
-            for (const auto& stop : direction1){
+            for (const auto& stop : f_dir){ // round or forward-direction f_dir chain points adding
                 polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
                         .SetFillColor(svg::NoneColor)
                         .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
@@ -55,7 +52,7 @@ namespace renderer {
                         .SetStrokeLineCap(static_cast<svg::StrokeLineCap>(1))
                         .SetStrokeLineJoin(static_cast<svg::StrokeLineJoin>(5));
             }
-            if (catalogue.GetAllBuses().at(route).is_chain) {
+            if (catalogue.GetAllBuses().at(route).is_chain) { // if chain back-direction points adding
                 for (const auto& stop : bus){
                     if (bus[0] == stop){ continue;}
                     polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
@@ -66,13 +63,10 @@ namespace renderer {
                             .SetStrokeLineJoin(static_cast<svg::StrokeLineJoin>(5));
                 }
             }
-            MapPolyLines[route] = polyline;
+            picture.emplace_back(std::make_unique<Poly>(polyline)); // poly-lines unique_ptr
             color_count++;
         }
-        // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-        for (auto [key, poly] : MapPolyLines){
-            picture.emplace_back(std::make_unique<shapes::Poly>(poly));
-        }
+        // %%%%%%%%%% %%%%%%%%%% draw & render %%%%%%%%%% %%%%%%%%%%
         DrawPicture(picture, doc);
         doc.Render(std::cout);
     }

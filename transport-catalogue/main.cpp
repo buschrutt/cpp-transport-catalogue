@@ -14,7 +14,7 @@ int main() {
     json_lib::Document json_doc = json_lib::JsonFileLoad("json_source.json"s);
     //json_lib::Document json_doc = json_lib::JsonConsoleLoad(std::cin);
     json_reader::DBBuilder(json_doc, catalogue);
-    renderer::MapRenderer::RenderSettings render_settings = json_reader::RenderSettingsBuilder (json_doc);
+    renderer::RenderSettings render_settings = json_reader::RenderSettingsBuilder (json_doc);
     //json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue);
     //json_lib::JsonFileWrite(json_result, "json_result.json"s);
     //json_lib::JsonConsoleOutput(json_result);

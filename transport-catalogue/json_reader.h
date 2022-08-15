@@ -13,6 +13,6 @@ namespace json_reader {
 
     json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue);
 
-    renderer::MapRenderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc);
+    renderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc);
 
 }

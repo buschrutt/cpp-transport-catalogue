@@ -16,29 +16,28 @@ namespace renderer {
     inline const double EPSILON = 1e-6;
     using RgbaArray = std::pair<std::vector<int>, double>;
 
-    class MapRenderer {
+    class RenderSettings {
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
         //using Color = std::variant<RgbaArray, std::string>;
         using Color = std::variant<std::string>;
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     public:
-        struct RenderSettings{
-            RenderSettings();
-            int bus_label_font_size{};
-            int stop_label_font_size{};
-            double width{};
-            double height{};
-            double padding{};
-            double stop_radius{};
-            double line_width{};
-            double underlayer_width{};
-            std::pair<double, double> bus_label_offset;
-            std::pair<double, double> stop_label_offset;
-            std::string underlayer_color;
-            std::vector<std::string> color_palette;
-        };
+        RenderSettings();
+        int bus_label_font_size{};
+        int stop_label_font_size{};
+        double width{};
+        double height{};
+        double padding{};
+        double stop_radius{};
+        double line_width{};
+        double underlayer_width{};
+        std::pair<double, double> bus_label_offset;
+        std::pair<double, double> stop_label_offset;
+        std::string underlayer_color;
+        std::vector<std::string> color_palette;
     };
-    // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+
+    // %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
     bool IsZero(double value);
 
     class SphereProjector {
@@ -94,16 +93,15 @@ namespace renderer {
                     (max_lat_ - coords.lat) * zoom_coeff_ + padding_
             };
         }
-        // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     private:
         double padding_;
         double min_lon_ = 0;
         double max_lat_ = 0;
         double zoom_coeff_ = 0;
     };
+    // END OF %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
 
-
-    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::MapRenderer::RenderSettings& settings);
+    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
 
     template <typename DrawableIterator>
     void DrawPicture(DrawableIterator begin, DrawableIterator end, svg::ObjectContainer& target) {

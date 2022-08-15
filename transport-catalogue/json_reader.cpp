@@ -18,7 +18,9 @@ namespace json_reader {
                 if(node.AsString() == "Bus"s){
                     std::vector<std::string> stop_data;
                     for (const auto& stop : db_request.AsMap().at("stops"s).AsArray()){
-                        stop_data.push_back(stop.AsString());
+                        if (stop.IsString()){
+                            stop_data.push_back(stop.AsString());
+                        }
                     }
                     std::reverse(stop_data.begin(),stop_data.end());
                     catalogue.SetBus(db_request.AsMap().at("name"s).AsString()
@@ -93,8 +95,8 @@ namespace json_reader {
         return json_lib::Document{json_arr};
     }
 
-    renderer::MapRenderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc){
-        renderer::MapRenderer::RenderSettings rs;
+    renderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc){
+        renderer::RenderSettings rs;
         if (json_doc.GetRoot().AsMap().count("render_settings"s) > 0 ){
             auto json_rs = json_doc.GetRoot().AsMap().at("render_settings"s);
             rs.bus_label_font_size = json_rs.AsMap().at("bus_label_font_size").AsInt();
