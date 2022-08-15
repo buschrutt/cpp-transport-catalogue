@@ -80,7 +80,6 @@ namespace json_lib {
                     n_key = LoadString(input).AsString();
                 }
             }
-            //if (m.empty()){ throw ParsingError ("ParsingError E3: no stream after { --"); }
             return m;
         }
 

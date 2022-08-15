@@ -2,6 +2,14 @@
 
 namespace catalogue {
 
+    std::unordered_map<std::string, TransportCatalogue::Stop> TransportCatalogue::GetAllStops(){
+        return stops_;
+    }
+
+    std::unordered_map<std::string, TransportCatalogue::Bus> TransportCatalogue::GetAllBuses(){
+        return buses_;
+    }
+
     void TransportCatalogue::SetStop(const std::string& stop_name, geo::Coordinates coordinates){
         stops_[stop_name].coordinates = coordinates;
     }
@@ -52,7 +60,7 @@ namespace catalogue {
         std::pair<std::string, std::string> key;
         geo::Coordinates c_origin{};
         geo::Coordinates c_destination{};
-        for (int i = 1; i < buses_.at(bus_name).route.size(); i++){
+        for (size_t i = 1; i < buses_.at(bus_name).route.size(); i++){
             key.first = buses_.at(bus_name).route[i];
             key.second = buses_.at(bus_name).route[i - 1];
             if (stops_.at(key.first).distances.count(key.second) < 1){

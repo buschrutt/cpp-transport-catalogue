@@ -1,7 +1,6 @@
 #include <algorithm>
 //#include <mmcobj.h>
 #include <string>
-#include <iomanip>
 #include "json_reader.h"
 
 using namespace std::literals;
@@ -92,6 +91,69 @@ namespace json_reader {
 
         }
         return json_lib::Document{json_arr};
+    }
+
+    renderer::MapRenderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc){
+        renderer::MapRenderer::RenderSettings rs;
+        if (json_doc.GetRoot().AsMap().count("render_settings"s) > 0 ){
+            auto json_rs = json_doc.GetRoot().AsMap().at("render_settings"s);
+            rs.bus_label_font_size = json_rs.AsMap().at("bus_label_font_size").AsInt();
+            rs.stop_label_font_size = json_rs.AsMap().at("stop_label_font_size").AsInt();
+            rs.width = json_rs.AsMap().at("width").AsDouble();
+            rs.height = json_rs.AsMap().at("height").AsDouble();
+            rs.padding = json_rs.AsMap().at("padding").AsDouble();
+            rs.stop_radius = json_rs.AsMap().at("stop_radius").AsDouble();
+            rs.line_width = json_rs.AsMap().at("line_width").AsDouble();
+            rs.underlayer_width = json_rs.AsMap().at("underlayer_width").AsDouble();
+            rs.bus_label_offset.first = json_rs.AsMap().at("bus_label_offset").AsArray()[0].AsDouble();
+            rs.bus_label_offset.second = json_rs.AsMap().at("bus_label_offset").AsArray()[1].AsDouble();
+            rs.stop_label_offset.second = json_rs.AsMap().at("stop_label_offset").AsArray()[0].AsDouble();
+            rs.stop_label_offset.second = json_rs.AsMap().at("stop_label_offset").AsArray()[1].AsDouble();
+            // %%%%%%%%%% %%%%%%%%%% Color underlayer_color %%%%%%%%%% %%%%%%%%%%
+            if (json_rs.AsMap().at("underlayer_color").IsArray()){
+                std::string color_code;
+                std::string capacity;
+                if (json_rs.AsMap().at("underlayer_color").AsArray().size() == 4){
+                    capacity = "," + std::to_string(json_rs.AsMap().at("underlayer_color").AsArray()[3].AsDouble()) + ")";
+                    color_code = "rgba(";
+                } else {
+                    color_code = "rgb(";
+                    capacity = ")";
+                }
+                for (int i = 0; i < 3; i++){
+                    if (i != 0){color_code += ",";}
+                    color_code += std::to_string(json_rs.AsMap().at("underlayer_color").AsArray()[i].AsInt());
+                }
+                color_code += capacity;
+                rs.underlayer_color = color_code;
+            } else {
+                rs.underlayer_color = json_rs.AsMap().at("underlayer_color").AsString();
+            }
+            // %%%%%%%%%% %%%%%%%%%% std::vector<Color> color_palette %%%%%%%%%% %%%%%%%%%%
+            for (const auto& color : json_rs.AsMap().at("color_palette").AsArray()){
+                if (color.IsArray()){
+                    std::string color_code;
+                    std::string capacity;
+                    if (color.AsArray().size() == 4){
+                        capacity = "," + std::to_string(color.AsArray()[3].AsDouble()) + ")";
+                        color_code = "rgba(";
+                    } else {
+                        color_code = "rgb(";
+                        capacity = ")";
+                    }
+                    for (int i = 0; i < 3; i++){
+                        if (i != 0){color_code += ",";}
+                        color_code += std::to_string(color.AsArray()[i].AsInt());
+                    }
+                    color_code += capacity;
+                    rs.color_palette.emplace_back(color_code);
+                } else {
+                    rs.color_palette.emplace_back(color.AsString());
+                }
+            }
+            // END OF %%%%%%%%%% %%%%%%%%%% std::vector<Color> color_palette %%%%%%%%%% %%%%%%%%%%
+        }
+        return rs;
     }
 
 }

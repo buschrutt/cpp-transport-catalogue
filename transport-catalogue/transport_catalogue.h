@@ -24,6 +24,10 @@ namespace catalogue {
 
     public:
 
+        std::unordered_map<std::string, Stop> GetAllStops();
+
+        std::unordered_map<std::string, Bus> GetAllBuses();
+
         void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 
         void SetStopDistance(const std::string& origin_name, const std::string& destination_name, double length);
