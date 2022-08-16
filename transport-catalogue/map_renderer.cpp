@@ -24,6 +24,7 @@ namespace renderer {
 
     void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
         std::vector<geo::Coordinates> geo_coords;
+        geo_coords.reserve(catalogue.GetAllStops().size());
         std::set <std::string> result_order;
         std::map <std::string, svg::Polyline> MapPolyLines;
         std::vector<std::unique_ptr<svg::Drawable>> picture;
@@ -31,36 +32,38 @@ namespace renderer {
         // %%%%%%%%%% %%%%%%%%%% result order & scale finding %%%%%%%%%% %%%%%%%%%%
         for (const auto& bus : catalogue.GetAllBuses()){
             result_order.insert(bus.first);
-            for (auto & stop_name : bus.second.route){
-                geo_coords.emplace_back(catalogue.GetAllStops().at(stop_name).coordinates);
+        }
+        for (const auto& stop : catalogue.GetAllStops()){
+            if (!stop.second.buses.empty()){
+                geo_coords.emplace_back(stop.second.coordinates);
             }
         }
         const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
-        // %%%%%%%%%% %%%%%%%%%% poly lines & formation %%%%%%%%%% %%%%%%%%%%
+        // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         for (const auto& route : result_order){
-            std::vector<std::string> bus = catalogue.GetAllBuses().at(route).route;
-            if (bus.empty()){ continue;}
-            std::vector<std::string> f_dir = bus; // f_dir forward direction order
+            std::vector<std::string> b_dir = catalogue.GetAllBuses().at(route).route;
+            if (b_dir.empty()){ continue;}
+            std::vector<std::string> f_dir = b_dir; // f_dir forward direction order
             reverse(f_dir.begin(),f_dir.end());
             svg::Polyline polyline;
-            for (const auto& stop : f_dir){ // round or forward-direction f_dir chain points adding
+            for (const auto& stop : f_dir){ // round-route or forward-direction f_dir chain point adding
                 polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
                         .SetFillColor(svg::NoneColor)
                         .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
                         .SetStrokeWidth(settings.line_width)
-                        .SetStrokeLineCap(static_cast<svg::StrokeLineCap>(1))
-                        .SetStrokeLineJoin(static_cast<svg::StrokeLineJoin>(5));
+                        .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
+                        .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
             }
-            if (catalogue.GetAllBuses().at(route).is_chain) { // if chain back-direction points adding
-                for (const auto& stop : bus){
-                    if (bus[0] == stop){ continue;}
+            if (catalogue.GetAllBuses().at(route).is_chain) { // if is chain back-direction point adding
+                for (const auto& stop : b_dir){
+                    if (b_dir[0] == stop){ continue;}
                     polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
                             .SetFillColor(svg::NoneColor)
                             .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
                             .SetStrokeWidth(settings.line_width)
-                            .SetStrokeLineCap(static_cast<svg::StrokeLineCap>(1))
-                            .SetStrokeLineJoin(static_cast<svg::StrokeLineJoin>(5));
+                            .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
+                            .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
                 }
             }
             picture.emplace_back(std::make_unique<Poly>(polyline)); // poly-lines unique_ptr

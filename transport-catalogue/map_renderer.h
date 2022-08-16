@@ -15,7 +15,6 @@
 namespace renderer {
 
     inline const double EPSILON = 1e-6;
-    using RgbaArray = std::pair<std::vector<int>, double>;
 
     class RenderSettings {
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
