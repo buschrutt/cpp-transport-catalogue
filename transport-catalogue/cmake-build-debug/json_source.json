@@ -13,24 +13,12 @@
     },
     {
       "type": "Bus",
-      "name": "33",
-      "stops": [],
-      "is_roundtrip": true
-    },
-    {
-      "type": "Bus",
       "name": "114",
       "stops": [
         "Morskoy vokzal",
         "Rivierskiy most"
       ],
       "is_roundtrip": false
-    },
-    {
-      "type": "Stop",
-      "name": "What a stop",
-      "latitude": 50.587711,
-      "longitude": 70.716922
     },
     {
       "type": "Stop",
@@ -106,7 +94,7 @@
     "underlayer_width": 3,
     "color_palette": [
       "green",
-      [255, 160, 0, 0.85],
+      [255, 160, 0],
       "red"
     ]
   },

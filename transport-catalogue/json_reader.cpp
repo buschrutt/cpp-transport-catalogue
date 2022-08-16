@@ -46,7 +46,7 @@ namespace json_reader {
         }
     }
 
-    json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
+    [[maybe_unused]] json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
         json_lib::Array json_arr;
         json_lib::Dict json_pair;
         if (json_doc.GetRoot().AsMap().count("stat_requests"s) > 0 ){
@@ -113,42 +113,32 @@ namespace json_reader {
             rs.stop_label_offset.second = json_rs.AsMap().at("stop_label_offset").AsArray()[1].AsDouble();
             // %%%%%%%%%% %%%%%%%%%% Color underlayer_color %%%%%%%%%% %%%%%%%%%%
             if (json_rs.AsMap().at("underlayer_color").IsArray()){
-                std::string color_code;
-                std::string capacity;
-                if (json_rs.AsMap().at("underlayer_color").AsArray().size() == 4){
-                    capacity = "," + std::to_string(json_rs.AsMap().at("underlayer_color").AsArray()[3].AsDouble()) + ")";
-                    color_code = "rgba(";
+                if (json_rs.AsMap().at("underlayer_color").AsArray().size() == 3){
+                    rs.underlayer_color = svg::Rgb(json_rs.AsMap().at("underlayer_color").AsArray()[0].AsInt()
+                            ,json_rs.AsMap().at("underlayer_color").AsArray()[1].AsInt()
+                            ,json_rs.AsMap().at("underlayer_color").AsArray()[2].AsInt());
                 } else {
-                    color_code = "rgb(";
-                    capacity = ")";
+                    rs.underlayer_color = svg::Rgba(json_rs.AsMap().at("underlayer_color").AsArray()[0].AsInt()
+                            ,json_rs.AsMap().at("underlayer_color").AsArray()[1].AsInt()
+                            ,json_rs.AsMap().at("underlayer_color").AsArray()[2].AsInt()
+                            ,json_rs.AsMap().at("underlayer_color").AsArray()[3].AsDouble());
                 }
-                for (int i = 0; i < 3; i++){
-                    if (i != 0){color_code += ",";}
-                    color_code += std::to_string(json_rs.AsMap().at("underlayer_color").AsArray()[i].AsInt());
-                }
-                color_code += capacity;
-                rs.underlayer_color = color_code;
             } else {
                 rs.underlayer_color = json_rs.AsMap().at("underlayer_color").AsString();
             }
             // %%%%%%%%%% %%%%%%%%%% std::vector<Color> color_palette %%%%%%%%%% %%%%%%%%%%
             for (const auto& color : json_rs.AsMap().at("color_palette").AsArray()){
                 if (color.IsArray()){
-                    std::string color_code;
-                    std::string capacity;
-                    if (color.AsArray().size() == 4){
-                        capacity = "," + std::to_string(color.AsArray()[3].AsDouble()) + ")";
-                        color_code = "rgba(";
+                    if (color.AsArray().size() == 3){
+                        rs.color_palette.emplace_back(svg::Rgb(color.AsArray()[0].AsInt()
+                                ,color.AsArray()[1].AsInt()
+                                ,color.AsArray()[2].AsInt()));
                     } else {
-                        color_code = "rgb(";
-                        capacity = ")";
+                        rs.color_palette.emplace_back(svg::Rgba(color.AsArray()[0].AsInt()
+                                ,color.AsArray()[1].AsInt()
+                                ,color.AsArray()[2].AsInt()
+                                ,color.AsArray()[3].AsDouble()));
                     }
-                    for (int i = 0; i < 3; i++){
-                        if (i != 0){color_code += ",";}
-                        color_code += std::to_string(color.AsArray()[i].AsInt());
-                    }
-                    color_code += capacity;
-                    rs.color_palette.emplace_back(color_code);
                 } else {
                     rs.color_palette.emplace_back(color.AsString());
                 }

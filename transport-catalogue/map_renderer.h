@@ -2,6 +2,7 @@
 #include "geo.h"
 #include "svg.h"
 #include "transport_catalogue.h"
+#include "json.h"
 #include <utility>
 #include <vector>
 #include <string>
@@ -18,8 +19,8 @@ namespace renderer {
 
     class RenderSettings {
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-        //using Color = std::variant<RgbaArray, std::string>;
-        using Color = std::variant<std::string>;
+        //using Color = std::variant<json_lib::Array, std::string>;
+        using Color = std::variant<std::monostate, std::string, svg::Rgb, svg::Rgba>;
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     public:
         RenderSettings();
@@ -33,8 +34,8 @@ namespace renderer {
         double underlayer_width{};
         std::pair<double, double> bus_label_offset;
         std::pair<double, double> stop_label_offset;
-        std::string underlayer_color;
-        std::vector<std::string> color_palette;
+        Color underlayer_color;
+        std::vector<Color> color_palette;
     };
 
     // %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
