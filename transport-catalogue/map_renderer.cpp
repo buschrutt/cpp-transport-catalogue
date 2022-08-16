@@ -24,15 +24,9 @@ namespace renderer {
 
     void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
         std::vector<geo::Coordinates> geo_coords;
-        geo_coords.reserve(catalogue.GetAllStops().size());
-        std::set <std::string> result_order;
-        std::map <std::string, svg::Polyline> MapPolyLines;
         std::vector<std::unique_ptr<svg::Drawable>> picture;
         svg::Document doc;
         // %%%%%%%%%% %%%%%%%%%% result order & scale finding %%%%%%%%%% %%%%%%%%%%
-        for (const auto& bus : catalogue.GetAllBuses()){
-            result_order.insert(bus.first);
-        }
         for (const auto& stop : catalogue.GetAllStops()){
             if (!stop.second.buses.empty()){
                 geo_coords.emplace_back(stop.second.coordinates);
@@ -41,8 +35,8 @@ namespace renderer {
         const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
-        for (const auto& route : result_order){
-            std::vector<std::string> b_dir = catalogue.GetAllBuses().at(route).route;
+        for (const auto& [key, value] : catalogue.GetAllBuses()){
+            std::vector<std::string> b_dir = value.route;
             if (b_dir.empty()){ continue;}
             std::vector<std::string> f_dir = b_dir; // f_dir forward direction order
             reverse(f_dir.begin(),f_dir.end());
@@ -55,7 +49,7 @@ namespace renderer {
                         .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
                         .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
             }
-            if (catalogue.GetAllBuses().at(route).is_chain) { // if is chain back-direction point adding
+            if (value.is_chain) { // if is chain back-direction point adding
                 for (const auto& stop : b_dir){
                     if (b_dir[0] == stop){ continue;}
                     polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))

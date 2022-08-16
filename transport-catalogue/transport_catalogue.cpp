@@ -6,7 +6,7 @@ namespace catalogue {
         return stops_;
     }
 
-    std::unordered_map<std::string, TransportCatalogue::Bus> TransportCatalogue::GetAllBuses(){
+    std::map<std::string, TransportCatalogue::Bus> TransportCatalogue::GetAllBuses(){
         return buses_;
     }
 

@@ -26,7 +26,7 @@ namespace catalogue {
 
         std::unordered_map<std::string, Stop> GetAllStops();
 
-        std::unordered_map<std::string, Bus> GetAllBuses();
+        std::map<std::string, Bus> GetAllBuses();
 
         void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 
@@ -43,7 +43,7 @@ namespace catalogue {
         std::pair<double, double> BusRouteLength(const std::string &bus_name);
 
     private:
-        std::unordered_map<std::string, Bus> buses_;
+        std::map<std::string, Bus> buses_;
         std::unordered_map<std::string, Stop> stops_;
     };
 
