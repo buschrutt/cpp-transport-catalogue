@@ -36,13 +36,11 @@ namespace renderer {
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         for (const auto& [key, value] : catalogue.GetAllBuses()){
-            std::vector<std::string> b_dir = value.route;
-            if (b_dir.empty()){ continue;}
-            std::vector<std::string> f_dir = b_dir; // f_dir forward direction order
-            reverse(f_dir.begin(),f_dir.end());
+            if (value.route.empty()){ continue;}
             svg::Polyline polyline;
-            for (const auto& stop : f_dir){ // round-route or forward-direction f_dir chain point adding
-                polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
+            for (auto itr_stop = value.route.end(); itr_stop != value.route.begin();){
+                itr_stop--;
+                polyline.AddPoint(proj(catalogue.GetAllStops().at(*itr_stop).coordinates))
                         .SetFillColor(svg::NoneColor)
                         .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
                         .SetStrokeWidth(settings.line_width)
@@ -50,9 +48,9 @@ namespace renderer {
                         .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
             }
             if (value.is_chain) { // if is chain back-direction point adding
-                for (const auto& stop : b_dir){
-                    if (b_dir[0] == stop){ continue;}
-                    polyline.AddPoint(proj(catalogue.GetAllStops().at(stop).coordinates))
+                for (auto itr_stop = value.route.begin(); itr_stop != value.route.end(); itr_stop++){
+                    if (value.route[0] == *itr_stop){ continue;}
+                    polyline.AddPoint(proj(catalogue.GetAllStops().at(*itr_stop).coordinates))
                             .SetFillColor(svg::NoneColor)
                             .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
                             .SetStrokeWidth(settings.line_width)
