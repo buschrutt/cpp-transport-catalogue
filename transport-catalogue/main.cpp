@@ -16,9 +16,9 @@ int main() {
     json_reader::DBBuilder(json_doc, catalogue);
     renderer::RenderSettings render_settings = json_reader::RenderSettingsBuilder (json_doc);
     json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue);
-    json_lib::JsonFileWrite(json_result, "json_result.json"s);
+    //json_lib::JsonFileWrite(json_result, "json_result.json"s);
     //json_lib::JsonConsoleOutput(json_result);
-    //renderer::DrawSvgMap(catalogue, render_settings);
+    renderer::DrawSvgMap(catalogue, render_settings);
 
     return 0;
 }

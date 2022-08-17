@@ -56,7 +56,7 @@ namespace json_reader {
                     auto node = db_request.AsMap().at("type"s);
                     if(node.AsString() == "Bus"s){
                         std::string bus_name = db_request.AsMap().at("name"s).AsString();
-                        if (catalogue.BusStopCount(bus_name) == 0){
+                        if ((int) catalogue.BusStopCount(bus_name) == -1){
                             json_arr.emplace_back(json_lib::Dict{
                                     {"request_id"s, (int) db_request.AsMap().at("id"s).AsInt(),},
                                     {"error_message"s, "not found"s}
@@ -72,7 +72,7 @@ namespace json_reader {
                         }
                     } else {
                         std::string stop_name = db_request.AsMap().at("name"s).AsString();
-                        if (catalogue.GetStopBuses(stop_name).empty()){ // %%%%%% ??????
+                        if (catalogue.GetStopBuses(stop_name).count(nullptr)){
                             json_arr.emplace_back(json_lib::Dict{
                                     {"request_id"s, db_request.AsMap().at("id"s).AsInt(),},
                                     {"error_message"s, "not found"s}

@@ -29,11 +29,10 @@ namespace catalogue {
     }
 
     void TransportCatalogue::SetStop(const std::string& stop_name, geo::Coordinates coordinates){
-            ReturnStop(stop_name)->coordinates = coordinates;
+        ReturnStop(stop_name)->coordinates = coordinates;
     }
 
-    void TransportCatalogue::SetStopDistance(const std::string& origin_name, const std::string& destination_name,
-                                             double length){
+    void TransportCatalogue::SetStopDistance(const std::string& origin_name, const std::string& destination_name, double length){
         distances_[{ReturnStop(origin_name), ReturnStop(destination_name)}] = length;
     }
 
@@ -47,8 +46,8 @@ namespace catalogue {
 
     std::set<TransportCatalogue::Bus*> TransportCatalogue::GetStopBuses(const std::string& stop_name){
         std::set<TransportCatalogue::Bus*> dummy;
-        Bus dummy_bus;
         if (stops_.count(stop_name) == 0){
+            dummy.insert(nullptr);
             return dummy;
         }
         return stops_.at(stop_name)->buses;
@@ -56,6 +55,9 @@ namespace catalogue {
 
     size_t TransportCatalogue::BusStopCount(const std::string &bus_name){
         if (buses_.count(bus_name) < 1){
+            return -1;
+        }
+        if (buses_.at(bus_name)->route.empty()){
             return 0;
         }
         if (buses_.at(bus_name)->is_chain){
