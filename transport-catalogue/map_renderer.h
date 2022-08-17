@@ -101,8 +101,6 @@ namespace renderer {
     };
     // END OF %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
 
-    void DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
-
     void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
 
     template <typename DrawableIterator>

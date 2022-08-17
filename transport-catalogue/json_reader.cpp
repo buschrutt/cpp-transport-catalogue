@@ -72,14 +72,18 @@ namespace json_reader {
                         }
                     } else {
                         std::string stop_name = db_request.AsMap().at("name"s).AsString();
-                        if (catalogue.GetStopBuses(stop_name).count(":") > 0){
+                        if (catalogue.GetStopBuses(stop_name).empty()){ // %%%%%% ??????
                             json_arr.emplace_back(json_lib::Dict{
                                     {"request_id"s, db_request.AsMap().at("id"s).AsInt(),},
                                     {"error_message"s, "not found"s}
                             });
                         } else {
                             json_lib::Array buffer_arr;
-                            for (const std::string& value : catalogue.GetStopBuses(stop_name)){
+                            std::set<std::string> sort_buses;
+                            for (const auto value : catalogue.GetStopBuses(stop_name)){
+                                sort_buses.insert(value->name);// %%%%%% ??????
+                            }
+                            for (const auto& value : sort_buses){
                                 buffer_arr.emplace_back(value);
                             }
                             json_arr.emplace_back(json_lib::Dict{

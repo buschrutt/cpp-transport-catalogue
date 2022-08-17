@@ -1,103 +1,99 @@
 {
   "base_requests": [
     {
+      "type": "Stop",
+      "name": "Tolstopaltsevo",
+      "latitude": 55.611087,
+      "longitude": 37.20829,
+      "road_distances": {"Marushkino": 3900}
+    },
+    {
+      "type": "Stop",
+      "name": "Marushkino",
+      "latitude": 55.595884,
+      "longitude": 37.209755,
+      "road_distances": {"Rasskazovka": 9900, "Marushkino": 100}
+    },
+    {
       "type": "Bus",
-      "name": "14",
-      "stops": [
-        "Ulitsa Lizy Chaikinoi",
-        "Elektroseti",
-        "Ulitsa Dokuchaeva",
-        "Ulitsa Lizy Chaikinoi"
-      ],
+      "name": "256",
+      "stops": ["Biryulyovo Zapadnoye", "Biryusinka", "Universam", "Biryulyovo Tovarnaya", "Biryulyovo Passazhirskaya", "Biryulyovo Zapadnoye"],
       "is_roundtrip": true
     },
     {
       "type": "Bus",
-      "name": "114",
-      "stops": [
-        "Morskoy vokzal",
-        "Rivierskiy most"
-      ],
+      "name": "750",
+      "stops": ["Tolstopaltsevo", "Marushkino", "Marushkino", "Rasskazovka"],
       "is_roundtrip": false
     },
     {
       "type": "Stop",
-      "name": "Rivierskiy most",
-      "latitude": 43.587795,
-      "longitude": 39.716901,
-      "road_distances": {
-        "Morskoy vokzal": 850
-      }
+      "name": "Rasskazovka",
+      "latitude": 55.632761,
+      "longitude": 37.333324,
+      "road_distances": {"Marushkino": 9500}
     },
     {
       "type": "Stop",
-      "name": "Morskoy vokzal",
-      "latitude": 43.581969,
-      "longitude": 39.719848,
-      "road_distances": {
-        "Rivierskiy most": 850
-      }
+      "name": "Biryulyovo Zapadnoye",
+      "latitude": 55.574371,
+      "longitude": 37.6517,
+      "road_distances": {"Rossoshanskaya ulitsa": 7500, "Biryusinka": 1800, "Universam": 2400}
     },
     {
       "type": "Stop",
-      "name": "Elektroseti",
-      "latitude": 43.598701,
-      "longitude": 39.730623,
-      "road_distances": {
-        "Ulitsa Dokuchaeva": 3000,
-        "Ulitsa Lizy Chaikinoi": 4300
-      }
+      "name": "Biryusinka",
+      "latitude": 55.581065,
+      "longitude": 37.64839,
+      "road_distances": {"Universam": 750}
     },
     {
       "type": "Stop",
-      "name": "Ulitsa Dokuchaeva",
-      "latitude": 43.585586,
-      "longitude": 39.733879,
-      "road_distances": {
-        "Ulitsa Lizy Chaikinoi": 2000,
-        "Elektroseti": 3000
-      }
+      "name": "Universam",
+      "latitude": 55.587655,
+      "longitude": 37.645687,
+      "road_distances": {"Rossoshanskaya ulitsa": 5600, "Biryulyovo Tovarnaya": 900}
     },
     {
       "type": "Stop",
-      "name": "Ulitsa Lizy Chaikinoi",
-      "latitude": 43.590317,
-      "longitude": 39.746833,
-      "road_distances": {
-        "Elektroseti": 4300,
-        "Ulitsa Dokuchaeva": 2000
-      }
+      "name": "Biryulyovo Tovarnaya",
+      "latitude": 55.592028,
+      "longitude": 37.653656,
+      "road_distances": {"Biryulyovo Passazhirskaya": 1300}
+    },
+    {
+      "type": "Stop",
+      "name": "Biryulyovo Passazhirskaya",
+      "latitude": 55.580999,
+      "longitude": 37.659164,
+      "road_distances": {"Biryulyovo Zapadnoye": 1200}
+    },
+    {
+      "type": "Bus",
+      "name": "828",
+      "stops": ["Biryulyovo Zapadnoye", "Universam", "Rossoshanskaya ulitsa", "Biryulyovo Zapadnoye"],
+      "is_roundtrip": false
+    },
+    {
+      "type": "Stop",
+      "name": "Rossoshanskaya ulitsa",
+      "latitude": 55.595579,
+      "longitude": 37.605757
+    },
+    {
+      "type": "Stop",
+      "name": "Prazhskaya",
+      "latitude": 55.611678,
+      "longitude": 37.603831
     }
   ],
-  "render_settings": {
-    "width": 600,
-    "height": 400,
-    "padding": 50,
-    "stop_radius": 5,
-    "line_width": 14,
-    "bus_label_font_size": 20,
-    "bus_label_offset": [
-      7,
-      15
-    ],
-    "stop_label_font_size": 20,
-    "stop_label_offset": [
-      7,
-      -3
-    ],
-    "underlayer_color": [
-      255,
-      255,
-      255,
-      0.85
-    ],
-    "underlayer_width": 3,
-    "color_palette": [
-      "green",
-      [255, 160, 0],
-      "red"
-    ]
-  },
+
   "stat_requests": [
+    { "id": 11, "type": "Bus", "name": "256" },
+    { "id": 12, "type": "Bus", "name": "750" },
+    { "id": 13, "type": "Bus", "name": "751" },
+    { "id": 17, "type": "Stop", "name": "Samara" },
+    { "id": 18, "type": "Stop", "name": "Prazhskaya" },
+    { "id": 19, "type": "Stop", "name": "Biryulyovo Zapadnoye" }
   ]
 }

@@ -20,8 +20,8 @@ namespace stat_reader {
             std::cout << std::endl;
         } else {
             std::string stop_name = input_string.substr(5);
-            std::set<std::string> value = catalogue.GetStopBuses(stop_name);
-            if (value.count(":") > 0){
+            std::set<catalogue::TransportCatalogue::Bus*> value = catalogue.GetStopBuses(stop_name);
+            if (value.empty()){
                 std::cout << input_string << ": not found";
                 std::cout << std::endl;
                 return;
@@ -32,8 +32,8 @@ namespace stat_reader {
                 return;
             }
             std::cout << input_string << ": buses";
-            for (const std::string& bus_name : catalogue.GetStopBuses(stop_name)){
-                std::cout << " " << bus_name;
+            for (const auto bus : catalogue.GetStopBuses(stop_name)){
+                std::cout << " " << bus->name;
             }
             std::cout << std::endl;
         }

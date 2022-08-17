@@ -1,1 +1,1 @@
-[]
+[{"curvature": 1.36124, "request_id": 11, "route_length": 5950, "stop_count": 6, "unique_stop_count": 5},{"curvature": 1.30853, "request_id": 12, "route_length": 27400, "stop_count": 7, "unique_stop_count": 3},{"error_message": "not found", "request_id": 13},{"error_message": "not found", "request_id": 17},{"error_message": "not found", "request_id": 18},{"buses": ["256","828"], "request_id": 19}]

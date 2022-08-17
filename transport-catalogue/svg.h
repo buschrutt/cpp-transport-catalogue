@@ -60,7 +60,7 @@ namespace svg {
         void operator()(std::monostate) const {
             std::cout << "none";
         }
-        void operator()(std::string color) const {
+        void operator()(const std::string& color) const {
             std::cout << color;
         }
         void operator()(Rgb rgb) const {
