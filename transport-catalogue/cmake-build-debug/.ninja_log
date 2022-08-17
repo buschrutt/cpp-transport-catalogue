@@ -70,3 +70,11 @@
 1295	2466	6824225633778151	testing.exe	e6dfec5ffc636601
 6	1768	6824231472811903	CMakeFiles/testing.dir/json_reader.cpp.obj	3f451732119e22d4
 1769	3005	6824231485191633	testing.exe	e6dfec5ffc636601
+12	1008	6824602889429802	CMakeFiles/testing.dir/old_/stat_reader.cpp.obj	6323a3aeb22580ed
+7	1026	6824602889618709	CMakeFiles/testing.dir/old_/input_reader.cpp.obj	8dd52e50be200d0c
+3	1641	6824602895650124	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+9	2068	6824602899981041	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
+1008	2339	6824602902660008	CMakeFiles/testing.dir/transport_catalogue.cpp.obj	42e4c99528ca51d2
+18	2370	6824602902968145	CMakeFiles/testing.dir/map_renderer.cpp.obj	fb6ae42be42cccfb
+15	2454	6824602903825291	CMakeFiles/testing.dir/json_reader.cpp.obj	3f451732119e22d4
+2454	3445	6824602913643290	testing.exe	e6dfec5ffc636601
