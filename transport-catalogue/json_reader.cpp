@@ -109,7 +109,7 @@ namespace json_reader {
             rs.underlayer_width = json_rs.AsMap().at("underlayer_width").AsDouble();
             rs.bus_label_offset.first = json_rs.AsMap().at("bus_label_offset").AsArray()[0].AsDouble();
             rs.bus_label_offset.second = json_rs.AsMap().at("bus_label_offset").AsArray()[1].AsDouble();
-            rs.stop_label_offset.second = json_rs.AsMap().at("stop_label_offset").AsArray()[0].AsDouble();
+            rs.stop_label_offset.first = json_rs.AsMap().at("stop_label_offset").AsArray()[0].AsDouble();
             rs.stop_label_offset.second = json_rs.AsMap().at("stop_label_offset").AsArray()[1].AsDouble();
             // %%%%%%%%%% %%%%%%%%%% Color underlayer_color %%%%%%%%%% %%%%%%%%%%
             if (json_rs.AsMap().at("underlayer_color").IsArray()){

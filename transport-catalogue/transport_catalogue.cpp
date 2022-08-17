@@ -2,11 +2,11 @@
 
 namespace catalogue {
 
-    std::unordered_map<std::string, TransportCatalogue::Stop> TransportCatalogue::GetAllStops(){
+    const std::map<std::string, TransportCatalogue::Stop>& TransportCatalogue::GetAllStops(){
         return stops_;
     }
 
-    std::map<std::string, TransportCatalogue::Bus> TransportCatalogue::GetAllBuses(){
+    const std::map<std::string, TransportCatalogue::Bus>& TransportCatalogue::GetAllBuses(){
         return buses_;
     }
 

@@ -11,6 +11,8 @@ namespace catalogue {
 
     class TransportCatalogue{
 
+    public:
+
         struct Bus{
             bool is_chain;
             std::vector<std::string> route;
@@ -22,11 +24,9 @@ namespace catalogue {
             std::set<std::string> buses;
         };
 
-    public:
+        const std::map<std::string, Stop>& GetAllStops();
 
-        std::unordered_map<std::string, Stop> GetAllStops();
-
-        std::map<std::string, Bus> GetAllBuses();
+        const std::map<std::string, Bus>& GetAllBuses();
 
         void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 
@@ -44,7 +44,7 @@ namespace catalogue {
 
     private:
         std::map<std::string, Bus> buses_;
-        std::unordered_map<std::string, Stop> stops_;
+        std::map<std::string, Stop> stops_;
     };
 
 }

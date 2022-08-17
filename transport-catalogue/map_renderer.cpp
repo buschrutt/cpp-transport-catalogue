@@ -12,9 +12,9 @@ namespace renderer {
         return std::abs(value) < EPSILON;
     }
 
-    class Poly : public svg::Drawable {
+    class PolyClass : public svg::Drawable {
     public:
-        explicit Poly(svg::Polyline poly): poly_(std::move(poly)) {}
+        explicit PolyClass(svg::Polyline poly): poly_(std::move(poly)) {}
         void Draw(svg::ObjectContainer &container) const override {
             container.Add(poly_);
         }
@@ -22,17 +22,28 @@ namespace renderer {
         svg::Polyline poly_;
     };
 
-    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
-        std::vector<geo::Coordinates> geo_coords;
-        std::vector<std::unique_ptr<svg::Drawable>> picture;
-        svg::Document doc;
-        // %%%%%%%%%% %%%%%%%%%% result order & scale finding %%%%%%%%%% %%%%%%%%%%
-        for (const auto& stop : catalogue.GetAllStops()){
-            if (!stop.second.buses.empty()){
-                geo_coords.emplace_back(stop.second.coordinates);
-            }
+    class TextClass : public svg::Drawable {
+    public:
+        explicit TextClass(svg::Text text): text_(std::move(text)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(text_);
         }
-        const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
+    private:
+        svg::Text text_;
+    };
+
+    class CircleClass : public svg::Drawable {
+    public:
+        explicit CircleClass(svg::Circle circle): circle_(std::move(circle)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(circle_);
+        }
+    private:
+        svg::Circle circle_;
+    };
+
+    void DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                    , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         for (const auto& [key, value] : catalogue.GetAllBuses()){
@@ -49,7 +60,7 @@ namespace renderer {
             }
             if (value.is_chain) { // if is chain back-direction point adding
                 for (auto itr_stop = value.route.begin(); itr_stop != value.route.end(); itr_stop++){
-                    if (value.route[0] == *itr_stop){ continue;}
+                    if (value.route.begin() == itr_stop){ continue;}
                     polyline.AddPoint(proj(catalogue.GetAllStops().at(*itr_stop).coordinates))
                             .SetFillColor(svg::NoneColor)
                             .SetStrokeColor(settings.color_palette[color_count % settings.color_palette.size()])
@@ -58,23 +69,107 @@ namespace renderer {
                             .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
                 }
             }
-            picture.emplace_back(std::make_unique<Poly>(polyline)); // poly-lines unique_ptr
+            picture.emplace_back(std::make_unique<PolyClass>(polyline)); // poly-lines unique_ptr
             color_count++;
         }
+    }
+
+    void DrawRouteNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                        , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+        // %%%%%%%%%% %%%%%%%%%% text & picture formation %%%%%%%%%% %%%%%%%%%%
+        int color_count = 0;
+        size_t k, index;
+        for (const auto& [key, value] : catalogue.GetAllBuses()) {
+            if (value.route.empty()) { continue; }
+            value.is_chain ? k = 4 : k = 2;
+            for (size_t i = 0; i < k; i++){
+                svg::Text text;
+                if (i % 2 == 0){
+                    text.SetFillColor(settings.underlayer_color);
+                    text.SetStrokeColor(settings.underlayer_color);
+                    text.SetStrokeWidth(settings.underlayer_width);
+                    text.SetStrokeLineCap(svg::StrokeLineCap::ROUND);
+                    text.SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
+                } else {
+                    text.SetFillColor(settings.color_palette[color_count]);
+                }
+                i > 1 ? index = 0 : index = value.route.size() - 1;
+                text.SetPosition(proj(catalogue.GetAllStops().at(value.route[index]).coordinates));
+                text.SetOffset({settings.bus_label_offset.first, settings.bus_label_offset.second});
+                text.SetFontSize(settings.bus_label_font_size);
+                text.SetFontFamily("Verdana").SetFontWeight("bold").SetData(key);
+                picture.emplace_back(std::make_unique<TextClass>(text)); // text unique_ptr
+            }
+            color_count++;
+        }
+    }
+
+    void DrawStopPoints(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+    , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+        for (const auto& stop : catalogue.GetAllStops()){
+            if (!stop.second.buses.empty()){
+                svg::Circle circle;
+                circle.SetCenter(proj(catalogue.GetAllStops().at(stop.first).coordinates))
+                        .SetRadius((settings.stop_radius))
+                        .SetFillColor("white");
+                picture.emplace_back(std::make_unique<CircleClass>(circle)); // stop unique_ptr
+            }
+        }
+    }
+
+    void DrawStopNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+            , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+        for (const auto& stop : catalogue.GetAllStops()){
+            if (!stop.second.buses.empty()){
+                svg::Text text;
+                for (size_t i = 0; i < 2; i++){
+                    if (i == 0){
+                        text.SetFillColor(settings.underlayer_color)
+                        .SetStrokeColor(settings.underlayer_color)
+                        .SetStrokeWidth(settings.underlayer_width)
+                        .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
+                        .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
+                    } else {
+                        text.SetFillColor("black");
+                    }
+                    text.SetPosition(proj(catalogue.GetAllStops().at(stop.first).coordinates))
+                            .SetOffset({settings.stop_label_offset.first, settings.stop_label_offset.second})
+                            .SetFontSize(settings.stop_label_font_size)
+                            .SetFontFamily("Verdana")
+                            .SetData(stop.first);
+                    picture.emplace_back(std::make_unique<TextClass>(text)); // stop unique_ptr
+                }
+            }
+        }
+    }
+
+    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
+        std::vector<geo::Coordinates> geo_coords;
+        std::vector<std::unique_ptr<svg::Drawable>> picture;
+        svg::Document doc;
+
+        // %%%%%%%%%% %%%%%%%%%% scale finding %%%%%%%%%% %%%%%%%%%%
+        for (const auto& stop : catalogue.GetAllStops()){
+            if (!stop.second.buses.empty()){
+                geo_coords.emplace_back(stop.second.coordinates);
+            }
+        }
+        const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
+        // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
+
+
+        DrawRoutes(catalogue, settings, proj, picture);
+
+        DrawRouteNames(catalogue, settings, proj, picture);
+
+        DrawStopPoints(catalogue, settings, proj, picture);
+
+        DrawStopNames(catalogue, settings, proj, picture);
+
         // %%%%%%%%%% %%%%%%%%%% draw & render %%%%%%%%%% %%%%%%%%%%
         DrawPicture(picture, doc);
         doc.Render(std::cout);
+
     }
 
 }
-
-/*
- *
-<?xml version="1.0" encoding="UTF-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <polyline points="99.2283,329.5 50,232.18 99.2283,329.5" fill="none" stroke="green" stroke-width="14"
-  stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="550,190.051 279.22,50 333.61,269.08 550,190.051" fill="none" stroke="rgb(255,160,0)"
-  stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
- */
