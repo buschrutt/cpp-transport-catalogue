@@ -70,7 +70,7 @@ namespace json_reader {
                                     {"curvature"s, (double) catalogue.BusRouteLength(bus_name).second}
                             });
                         }
-                    } else {
+                    } else if(node.AsString() == "Stop"s){
                         std::string stop_name = db_request.AsMap().at("name"s).AsString();
                         if (catalogue.GetStopBuses(stop_name).count(nullptr)){
                             json_arr.emplace_back(json_lib::Dict{

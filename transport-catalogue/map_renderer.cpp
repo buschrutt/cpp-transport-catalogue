@@ -81,6 +81,7 @@ namespace renderer {
         for (const auto& [key, value] : catalogue.GetAllBuses()) {
             if (value->route.empty()) { continue; }
             value->is_chain ? k = 4 : k = 2;
+            if (value->is_chain && value->route[0] == value->route[value->route.size() - 1]){k = 2;}
             for (size_t i = 0; i < k; i++){
                 svg::Text text;
                 if (i % 2 == 0){
@@ -90,7 +91,7 @@ namespace renderer {
                     text.SetStrokeLineCap(svg::StrokeLineCap::ROUND);
                     text.SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
                 } else {
-                    text.SetFillColor(settings.color_palette[color_count]);
+                    text.SetFillColor(settings.color_palette[color_count % settings.color_palette.size()]);
                 }
                 i > 1 ? index = 0 : index = value->route.size() - 1;
                 text.SetPosition(proj(value->route[index]->coordinates));
@@ -172,9 +173,3 @@ namespace renderer {
     }
 
 }
-
-
-/*
-
-
- */
