@@ -1,13 +1,1 @@
 #pragma once
-
-/*
- *
- */
-
-namespace domain {
-
-
-
-
-
-}

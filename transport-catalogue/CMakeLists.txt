@@ -16,4 +16,5 @@ add_executable(testing main.cpp
         map_renderer.cpp
         request_handler.cpp
         svg.cpp
+        request_handler.cpp
         transport_catalogue.cpp)

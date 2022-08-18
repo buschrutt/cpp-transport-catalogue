@@ -157,16 +157,10 @@ namespace renderer {
         }
         const SphereProjector proj(geo_coords.begin(), geo_coords.end(), settings.width, settings.height, settings.padding);
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
-
-
         DrawRoutes(catalogue, settings, proj, picture);
-
         DrawRouteNames(catalogue, settings, proj, picture);
-
         DrawStopPoints(catalogue, settings, proj, picture);
-
         DrawStopNames(catalogue, settings, proj, picture);
-
         // %%%%%%%%%% %%%%%%%%%% draw & render %%%%%%%%%% %%%%%%%%%%
         DrawPicture(picture, doc);
         //doc.Render(std::cout);
