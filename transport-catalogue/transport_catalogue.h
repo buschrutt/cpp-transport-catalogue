@@ -7,6 +7,7 @@
 #include <string>
 #include <deque>
 #include "geo.h"
+#include "domain.h"
 
 namespace catalogue {
 
@@ -14,27 +15,13 @@ namespace catalogue {
 
     public:
 
-        struct Stop;
+        domain::Stop* ReturnStop(const std::string& stop_name);
 
-        struct Bus{
-            std::string name;
-            bool is_chain;
-            std::vector<Stop*> route;
-        };
+        domain::Bus* ReturnBus(const std::string& stop_name);
 
-        struct Stop{
-            std::string name;
-            geo::Coordinates coordinates;
-            std::set<Bus*> buses;
-        };
+        const std::map<std::string, domain::Stop*> & GetAllStops();
 
-        TransportCatalogue::Stop* ReturnStop(const std::string& stop_name);
-
-        TransportCatalogue::Bus* ReturnBus(const std::string& stop_name);
-
-        const std::map<std::string, TransportCatalogue::Stop*> & GetAllStops();
-
-        const std::map<std::string, Bus*>& GetAllBuses();
+        const std::map<std::string, domain::Bus*>& GetAllBuses();
 
         void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 
@@ -42,7 +29,7 @@ namespace catalogue {
 
         void SetBus(const std::string& bus_name, const std::vector<std::string>& bus, bool if_chain);
 
-        std::set<TransportCatalogue::Bus*> GetStopBuses(const std::string& stop_name);
+        std::set<domain::Bus*> GetStopBuses(const std::string& stop_name);
 
         size_t BusStopCount(const std::string &bus_name);
 
@@ -51,11 +38,11 @@ namespace catalogue {
         std::pair<double, double> BusRouteLength(const std::string &bus_name);
 
     private:
-        std::map<std::string, Bus*> buses_;
-        std::map<std::string, Stop*> stops_;
-        std::deque<Stop> source_stops_;
-        std::deque<Bus> source_buses_;
-        std::map<std::pair<Stop*, Stop*>, double> distances_;
+        std::map<std::string, domain::Bus*> buses_;
+        std::map<std::string, domain::Stop*> stops_;
+        std::deque<domain::Stop> source_stops_;
+        std::deque<domain::Bus> source_buses_;
+        std::map<std::pair<domain::Stop*, domain::Stop*>, double> distances_;
     };
 
 }

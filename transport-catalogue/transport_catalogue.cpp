@@ -2,26 +2,26 @@
 
 namespace catalogue {
 
-    const std::map<std::string, TransportCatalogue::Stop*>& TransportCatalogue::GetAllStops(){
+    const std::map<std::string, domain::Stop*>& TransportCatalogue::GetAllStops(){
         return stops_;
     }
 
-    const std::map<std::string, TransportCatalogue::Bus*>& TransportCatalogue::GetAllBuses(){
+    const std::map<std::string, domain::Bus*>& TransportCatalogue::GetAllBuses(){
         return buses_;
     }
 
-    TransportCatalogue::Stop* TransportCatalogue::ReturnStop(const std::string& stop_name){
+    domain::Stop* TransportCatalogue::ReturnStop(const std::string& stop_name){
         if (stops_.count(stop_name) == 0){
-            Stop stop;
+            domain::Stop stop;
             stop.name = stop_name;
             stops_[stop_name] = &source_stops_.emplace_back(stop);
         }
         return stops_[stop_name];
     }
 
-    TransportCatalogue::Bus* TransportCatalogue::ReturnBus(const std::string& bus_name){
+    domain::Bus* TransportCatalogue::ReturnBus(const std::string& bus_name){
         if (buses_.count(bus_name) == 0){
-            Bus bus;
+            domain::Bus bus;
             bus.name = bus_name;
             buses_[bus_name] = &source_buses_.emplace_back(bus);
         }
@@ -44,8 +44,8 @@ namespace catalogue {
         }
     }
 
-    std::set<TransportCatalogue::Bus*> TransportCatalogue::GetStopBuses(const std::string& stop_name){
-        std::set<TransportCatalogue::Bus*> dummy;
+    std::set<domain::Bus*> TransportCatalogue::GetStopBuses(const std::string& stop_name){
+        std::set<domain::Bus*> dummy;
         if (stops_.count(stop_name) == 0){
             dummy.insert(nullptr);
             return dummy;
@@ -68,7 +68,7 @@ namespace catalogue {
     }
 
     size_t TransportCatalogue::BusUniqStopCount(const std::string &bus_name){
-        std::set<Stop*> uniq_stops;
+        std::set<domain::Stop*> uniq_stops;
         for (const auto stop : buses_.at(bus_name)->route){
             uniq_stops.insert(stop);
         }
@@ -78,7 +78,7 @@ namespace catalogue {
     std::pair<double, double> TransportCatalogue::BusRouteLength(const std::string &bus_name){
         double route_length = 0.0;
         double chord_route_length = 0.0;
-        std::pair<Stop*, Stop*> key;
+        std::pair<domain::Stop*, domain::Stop*> key;
         geo::Coordinates c_origin{};
         geo::Coordinates c_destination{};
         for (size_t i = 1; i < buses_.at(bus_name)->route.size(); i++){

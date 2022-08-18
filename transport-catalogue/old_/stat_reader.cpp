@@ -20,7 +20,7 @@ namespace stat_reader {
             std::cout << std::endl;
         } else {
             std::string stop_name = input_string.substr(5);
-            std::set<catalogue::TransportCatalogue::Bus*> value = catalogue.GetStopBuses(stop_name);
+            std::set<domain::Bus*> value = catalogue.GetStopBuses(stop_name);
             if (value.empty()){
                 std::cout << input_string << ": not found";
                 std::cout << std::endl;
