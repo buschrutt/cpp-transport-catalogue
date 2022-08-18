@@ -101,7 +101,7 @@ namespace renderer {
     };
     // END OF %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
 
-    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
+    std::string DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
 
     template <typename DrawableIterator>
     void DrawPicture(DrawableIterator begin, DrawableIterator end, svg::ObjectContainer& target) {

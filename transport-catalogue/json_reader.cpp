@@ -24,14 +24,14 @@ namespace json_reader {
                     }
                     std::reverse(stop_data.begin(),stop_data.end());
                     catalogue.SetBus(db_request.AsMap().at("name"s).AsString()
-                                     , stop_data
-                                     , (bool)!db_request.AsMap().at("is_roundtrip"s).AsBool());
+                            , stop_data
+                            , (bool)!db_request.AsMap().at("is_roundtrip"s).AsBool());
                 } else if (node.AsString() == "Stop"s){
                     geo::Coordinates coordinates{};
                     coordinates.lat = (double)db_request.AsMap().at("latitude"s).AsDouble();
                     coordinates.lng = (double)db_request.AsMap().at("longitude"s).AsDouble();
                     catalogue.SetStop(db_request.AsMap().at("name"s).AsString()
-                                      , coordinates);
+                            , coordinates);
                     if(db_request.AsMap().count("road_distances"s) > 0){
                         for (auto [key, length] : db_request.AsMap().at("road_distances"s).AsMap()){
                             catalogue.SetStopDistance(db_request.AsMap().at("name"s).AsString()
@@ -46,7 +46,7 @@ namespace json_reader {
         }
     }
 
-    [[maybe_unused]] json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
+    [[maybe_unused]] json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& render_settings){
         json_lib::Array json_arr;
         json_lib::Dict json_pair;
         if (json_doc.GetRoot().AsMap().count("stat_requests"s) > 0 ){
@@ -91,6 +91,13 @@ namespace json_reader {
                                     {"buses"s, buffer_arr}
                             });
                         }
+                    } else if (node.AsString() == "Map"s){
+                        json_lib::Node svg_map;
+                        svg_map = DrawSvgMap(catalogue, render_settings);
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
+                                {"map"s, svg_map.AsString()}
+                        });
                     }
                 }
             }

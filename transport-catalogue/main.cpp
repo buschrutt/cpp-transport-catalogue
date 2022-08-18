@@ -1,5 +1,3 @@
-//#include "old_/input_reader.h"
-//#include "old_/stat_reader.h"
 #include "transport_catalogue.h"
 #include "json_reader.h"
 #include "json.h"
@@ -15,10 +13,10 @@ int main() {
     //json_lib::Document json_doc = json_lib::JsonConsoleLoad(std::cin);
     json_reader::DBBuilder(json_doc, catalogue);
     renderer::RenderSettings render_settings = json_reader::RenderSettingsBuilder (json_doc);
-    json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue);
-    //json_lib::JsonFileWrite(json_result, "json_result.json"s);
+    json_lib::Document json_result = json_reader::JsonResponseBuilder(json_doc, catalogue, render_settings); //, render_settings
+    json_lib::JsonFileWrite(json_result, "json_result.json"s);
     //json_lib::JsonConsoleOutput(json_result);
-    renderer::DrawSvgMap(catalogue, render_settings);
+    //renderer::DrawSvgMap(catalogue, render_settings);
 
     return 0;
 }

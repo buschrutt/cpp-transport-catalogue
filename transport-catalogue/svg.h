@@ -8,6 +8,7 @@
 #include <optional>
 #include <variant>
 #include <sstream>
+#include <ostream>
 
 
 namespace svg {
@@ -57,17 +58,18 @@ namespace svg {
     };
 
     struct SolutionPrinter {
+        std::ostream& out;
         void operator()(std::monostate) const {
-            std::cout << "none";
+            out << "none";
         }
         void operator()(const std::string& color) const {
-            std::cout << color;
+            out << color;
         }
         void operator()(Rgb rgb) const {
-            std::cout << "rgb(" << unsigned(rgb.red) << "," << unsigned(rgb.green) << "," << unsigned(rgb.blue) << ")";
+            out << "rgb(" << unsigned(rgb.red) << "," << unsigned(rgb.green) << "," << unsigned(rgb.blue) << ")";
         }
         void operator()(Rgba rgba) const {
-            std::cout << "rgba(" << unsigned(rgba.red) << "," << unsigned(rgba.green) << "," << unsigned(rgba.blue) << "," << rgba.opacity << ")";
+            out << "rgba(" << unsigned(rgba.red) << "," << unsigned(rgba.green) << "," << unsigned(rgba.blue) << "," << rgba.opacity << ")";
         }
     };
 

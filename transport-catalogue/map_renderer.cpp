@@ -43,7 +43,7 @@ namespace renderer {
     };
 
     void DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
-                    , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+            , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         for (const auto& [key, value] : catalogue.GetAllBuses()){
@@ -74,7 +74,7 @@ namespace renderer {
     }
 
     void DrawRouteNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
-                        , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+            , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         // %%%%%%%%%% %%%%%%%%%% text & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
         size_t k, index;
@@ -105,7 +105,7 @@ namespace renderer {
     }
 
     void DrawStopPoints(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
-    , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
+            , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         for (const auto& stop : catalogue.GetAllStops()){
             if (!stop.second->buses.empty()){
                 svg::Circle circle;
@@ -125,10 +125,10 @@ namespace renderer {
                     svg::Text text;
                     if (i == 0){
                         text.SetFillColor(settings.underlayer_color)
-                        .SetStrokeColor(settings.underlayer_color)
-                        .SetStrokeWidth(settings.underlayer_width)
-                        .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
-                        .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
+                                .SetStrokeColor(settings.underlayer_color)
+                                .SetStrokeWidth(settings.underlayer_width)
+                                .SetStrokeLineCap(svg::StrokeLineCap::ROUND)
+                                .SetStrokeLineJoin(svg::StrokeLineJoin::ROUND);
                     } else {
                         text.SetFillColor("black");
                     }
@@ -143,7 +143,8 @@ namespace renderer {
         }
     }
 
-    void DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
+    std::string DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
+        std::ostringstream ss;
         std::vector<geo::Coordinates> geo_coords;
         std::vector<std::unique_ptr<svg::Drawable>> picture;
         svg::Document doc;
@@ -168,7 +169,10 @@ namespace renderer {
 
         // %%%%%%%%%% %%%%%%%%%% draw & render %%%%%%%%%% %%%%%%%%%%
         DrawPicture(picture, doc);
-        doc.Render(std::cout);
+        //doc.Render(std::cout);
+
+        doc.Render(ss);
+        return ss.str();
 
     }
 

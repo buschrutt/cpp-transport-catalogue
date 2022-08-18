@@ -16,7 +16,7 @@ namespace svg {
     }
 
     std::ostream& operator<< (std::ostream & out, const Color & color) {
-        visit(SolutionPrinter{}, color);
+        visit(SolutionPrinter{out}, color);
         return out;
     }
 
@@ -143,13 +143,13 @@ namespace svg {
     }
 
     void Document::Render(std::ostream& out) const {
-        std::cout << R"(<?xml version="1.0" encoding="UTF-8" ?>)" << std::endl;
-        std::cout << R"(<svg xmlns="http://www.w3.org/2000/svg" version="1.1">)" << std::endl;
+        out << R"(<?xml version="1.0" encoding="UTF-8" ?>)" << std::endl;
+        out << R"(<svg xmlns="http://www.w3.org/2000/svg" version="1.1">)" << std::endl;
         for (const auto & object : objects_){
             RenderContext context(out);
             object->Render(context);
         }
-        std::cout << "</svg>"sv;
+        out<< "</svg>"sv;
     }
 
 }  // namespace svg
