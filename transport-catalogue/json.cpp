@@ -8,116 +8,184 @@ using namespace std;
 
 namespace json_lib {
 
-    namespace {
+    Node LoadNode(istream& input);
 
-        //Node LoadNode(istream& input);
-        Node LoadNode(istream& input);
-        Node LoadArray(istream& input);
+    Node LoadArray(istream& input);
 
-        Node LoadString(istream& input) {
-            bool flag_quotes_err = true;
-            char c;
-            string s;
-            while (input.get(c)) {
-                if (c == '"'){flag_quotes_err = false; break;}
-                if (c == '\\'){
-                    input.get(c);
-                    if (c == 'r'){s.push_back('\r'); continue;} else
-                    if (c == 'n'){s.push_back('\n'); continue;} else
-                    if (c == 't'){s.push_back('\t'); continue;} else
-                    if (c == '\"'){s += R"(")"s; continue;} else
-                    if (c == '\\'){s += R"(\)"s; continue;}
-                }
-                if ((c != '\t' && c != '\r' && c != '\n' && c != '\"' && c != '\\')){
-                    s.push_back(c);
-                }
-            }
-            if (flag_quotes_err){
-                throw ParsingError ("ParsingError E0: flag_quotes_err");
-            }
-            return {move(s)};
+    // %%%%%%%%%%  Node class Type Check  %%%%%%%%%%
+
+    bool Node::IsInt() const {if(std::holds_alternative<int>(value_)){return true;} else {return false;}}
+
+    bool Node::IsDouble() const {if(std::holds_alternative<double>(value_) || std::holds_alternative<int>(value_)){return true;} else {return false;}}
+
+    bool Node::IsPureDouble() const {if(std::holds_alternative<double>(value_)){return true;} else {return false;}}
+
+    bool Node::IsBool() const {if(std::holds_alternative<bool>(value_)){return true;} else {return false;}}
+
+    bool Node::IsString() const {if(std::holds_alternative<std::string>(value_)){return true;} else {return false;}}
+
+    bool Node::IsNull() const {if(std::holds_alternative<std::nullptr_t>(value_)){return true;} else {return false;}}
+
+    bool Node::IsArray() const {if(std::holds_alternative<Array>(value_)){return true;} else {return false;}}
+
+    bool Node::IsMap() const {if(std::holds_alternative<Dict>(value_)){return true;} else {return false;}}
+
+    // %%%%%%%%%%  Node class Get Value  %%%%%%%%%%
+
+    int Node::AsInt() const {
+        if (IsInt()){
+            return std::get<int>(value_);
+        } else {
+            throw std::logic_error ("Invalid type");
         }
+    }
 
-        Node LoadNumber(istream& input){
-            char c;
-            string s;
-            while (input >> c && c != ',' && c != ']' && c != '}'){
+    bool Node::AsBool() const{
+        if (IsBool()){
+            return std::get<bool>(value_);
+        } else {
+            throw std::logic_error ("Invalid type");
+        }
+    }
+
+    double Node::AsDouble() const {
+        if (IsDouble()){
+            if (IsPureDouble()){
+                return std::get<double>(value_);
+            } else {
+                return (double) std::get<int>(value_);
+            }
+        } else {
+            throw std::logic_error ("Invalid type");
+        }
+    }
+
+    const std::string& Node::AsString() const{
+        if (IsString()){
+            return std::get<std::string>(value_);
+        } else {
+            throw std::logic_error ("Invalid type");
+        }
+    }
+
+    const Array& Node::AsArray() const{
+        if (IsArray()){
+            return std::get<Array>(value_);
+        } else {
+            throw std::logic_error ("Invalid type");
+        }
+    }
+
+    const Dict& Node::AsMap() const {
+        if (IsMap()){
+            return std::get<Dict>(value_);
+        } else {
+            throw std::logic_error ("Invalid type");
+        }
+    }
+
+    Node LoadString(istream& input) {
+        bool flag_quotes_err = true;
+        char c;
+        string s;
+        while (input.get(c)) {
+            if (c == '"'){flag_quotes_err = false; break;}
+            if (c == '\\'){
+                input.get(c);
+                if (c == 'r'){s.push_back('\r'); continue;} else
+                if (c == 'n'){s.push_back('\n'); continue;} else
+                if (c == 't'){s.push_back('\t'); continue;} else
+                if (c == '\"'){s += R"(")"s; continue;} else
+                if (c == '\\'){s += R"(\)"s; continue;}
+            }
+            if ((c != '\t' && c != '\r' && c != '\n' && c != '\"' && c != '\\')){
                 s.push_back(c);
             }
-            if (c == ']' || c == '}') {input.putback(c);}
-            if (s == "nul" || s == "tru" || s == "fals"){
-                throw ParsingError ("ParsingError E1: nul, tru, fals");
+        }
+        if (flag_quotes_err){
+            throw ParsingError ("ParsingError E0: flag_quotes_err");
+        }
+        return {move(s)};
+    }
+
+    Node LoadNumber(istream& input){
+        char c;
+        string s;
+        while (input >> c && c != ',' && c != ']' && c != '}'){
+            s.push_back(c);
+        }
+        if (c == ']' || c == '}') {input.putback(c);}
+        if (s == "nul" || s == "tru" || s == "fals"){
+            throw ParsingError ("ParsingError E1: nul, tru, fals");
+        }
+        if (s == "null"){
+            return Node{};
+        } else  if (s == "true"s){
+            return Node{true};
+        } else if (s == "false"s){
+            return Node{false};
+        }
+        if (!(s[0] == '-' || isdigit(s[0]))){
+            throw ParsingError ("ParsingError4");
+        }
+        if (s.find('.') == string::npos && s.find('+') == string::npos && s.find('e') == string::npos && s.find('E') == string::npos) {
+            return {stoi(s)};
+        } else {
+            double r = stod(s);
+            return r;
+        }
+    }
+
+    Dict LoadDict(istream& input){
+        char c;
+        Dict m;
+        std::string n_key;
+        Node value;
+        while (input.get(c) && c != '}') {
+            if (c == ':') {
+                m.insert({move(n_key), LoadNode(input)});
+                continue;
             }
-            if (s == "null"){
-                return Node{};
-            } else  if (s == "true"s){
-                return Node{true};
-            } else if (s == "false"s){
-                return Node{false};
-            }
-            if (!(s[0] == '-' || isdigit(s[0]))){
-                throw ParsingError ("ParsingError4");
-            }
-            if (s.find('.') == string::npos && s.find('+') == string::npos && s.find('e') == string::npos && s.find('E') == string::npos) {
-                return {stoi(s)};
-            } else {
-                double r = stod(s);
-                return r;
+            if (c == '\"'){
+                n_key = LoadString(input).AsString();
             }
         }
+        return m;
+    }
 
-        Dict LoadDict(istream& input){
-            char c;
-            Dict m;
-            std::string n_key;
-            Node value;
-            while (input.get(c) && c != '}') {
-                if (c == ':') {
-                    m.insert({move(n_key), LoadNode(input)});
-                    continue;
-                }
-                if (c == '\"'){
-                    n_key = LoadString(input).AsString();
-                }
-            }
-            return m;
-        }
-
-        Node LoadArray(istream& input){
-            char c;
-            Array a;
-            while (input >> c && c != ']'){
-                if (c != ','){
-                    input.putback(c);
-                }
-                a.push_back(move(LoadNode(input)));
-            }
-            if (c != ']'){ throw ParsingError ("ParsingError E8:"); }
-            if (a.empty()){
-                a.push_back({nullptr});
-            }
-            return a;
-        }
-
-        Node LoadNode(istream& input) {
-            char c;
-            input >> c;
-            if (c == '['){
-                return LoadArray(input);
-            } else if (c == '{'){
-                return LoadDict(input);
-            } else if (c == '"') {
-                return LoadString(input);
-            } else {
-                if (c == ']' || c == '}'){
-                    throw ParsingError ("ParsingError E2: ] } --");
-                }
+    Node LoadArray(istream& input){
+        char c;
+        Array a;
+        while (input >> c && c != ']'){
+            if (c != ','){
                 input.putback(c);
-                return LoadNumber(input);
             }
+            a.push_back(move(LoadNode(input)));
         }
+        if (c != ']'){ throw ParsingError ("ParsingError E8:"); }
+        if (a.empty()){
+            a.push_back({nullptr});
+        }
+        return a;
+    }
 
-    }  // namespace
+    Node LoadNode(istream& input) {
+        char c;
+        input >> c;
+        if (c == '['){
+            return LoadArray(input);
+        } else if (c == '{'){
+            return LoadDict(input);
+        } else if (c == '"') {
+            return LoadString(input);
+        } else {
+            if (c == ']' || c == '}'){
+                throw ParsingError ("ParsingError E2: ] } --");
+            }
+            input.putback(c);
+            return LoadNumber(input);
+        }
+    }
 
     void JsonOutput (const Document& doc, std::ostream& output) {
         if (doc.GetRoot().IsNull()){

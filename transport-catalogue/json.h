@@ -44,75 +44,35 @@ namespace json_lib {
 
         // %%%%%%%%%%  Type Check  %%%%%%%%%%
 
-        bool IsInt() const {if(std::holds_alternative<int>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsInt() const;
 
-        bool IsDouble() const {if(std::holds_alternative<double>(value_) || std::holds_alternative<int>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsDouble() const;
 
-        bool IsPureDouble() const {if(std::holds_alternative<double>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsPureDouble() const;
 
-        bool IsBool() const {if(std::holds_alternative<bool>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsBool() const;
 
-        bool IsString() const {if(std::holds_alternative<std::string>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsString() const;
 
-        bool IsNull() const {if(std::holds_alternative<std::nullptr_t>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsNull() const;
 
-        bool IsArray() const {if(std::holds_alternative<Array>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsArray() const;
 
-        bool IsMap() const {if(std::holds_alternative<Dict>(value_)){return true;} else {return false;}}
+        [[nodiscard]] bool IsMap() const;
 
         // %%%%%%%%%%  Get Value  %%%%%%%%%%
 
-        int AsInt() const {
-            if (IsInt()){
-                return std::get<int>(value_);
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] int AsInt() const;
 
-        bool AsBool() const{
-            if (IsBool()){
-                return std::get<bool>(value_);
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] bool AsBool() const;
 
-        double AsDouble() const {
-            if (IsDouble()){
-                if (IsPureDouble()){
-                    return std::get<double>(value_);
-                } else {
-                    return (double) std::get<int>(value_);
-                }
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] double AsDouble() const;
 
-        const std::string& AsString() const{
-            if (IsString()){
-                return std::get<std::string>(value_);
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] const std::string& AsString() const;
 
-        const Array& AsArray() const{
-            if (IsArray()){
-                return std::get<Array>(value_);
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] const Array& AsArray() const;
 
-        const Dict& AsMap() const {
-            if (IsMap()){
-                return std::get<Dict>(value_);
-            } else {
-                throw std::logic_error ("Invalid type");
-            }
-        }
+        [[nodiscard]] const Dict& AsMap() const;
 
     private:
         Value value_;
@@ -128,6 +88,8 @@ namespace json_lib {
         Node root_;
     };
 
+    // %%%%%%%%%%  json_lib methods  %%%%%%%%%%
+
     Node LoadString(std::istream& input);
 
     Node LoadNumber(std::istream& input);
@@ -138,13 +100,13 @@ namespace json_lib {
 
     Document JsonFileLoad(const std::string& f_path);
 
-    Document Load(std::istream& input);
+    //Document Load(std::istream& input);
 
     void JsonOutput (const Document& doc, std::ostream& output);
 
     Document JsonBuilder(std::istream& input);
 
-    Document JsonFileLoad(const std::string& f_path);
+    //Document JsonFileLoad(const std::string& f_path);
 
     Document JsonConsoleLoad(std::istream& input);
 

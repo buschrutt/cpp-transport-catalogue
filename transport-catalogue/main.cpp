@@ -1,6 +1,7 @@
 #include "transport_catalogue.h"
 #include "json_reader.h"
 #include "json.h"
+#include "domain.h"
 
 using namespace std::literals;
 
