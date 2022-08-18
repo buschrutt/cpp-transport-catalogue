@@ -7,107 +7,7 @@ using namespace std::literals;
 
 namespace json_reader {
 
-    void DBBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue){
-        if (json_doc.GetRoot().AsMap().count("base_requests"s) > 0){
-            auto db_request_arr = json_doc.GetRoot().AsMap().at("base_requests"s);
-            if (std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
-                return;
-            }
-            for (const auto& db_request : db_request_arr.AsArray()){
-                auto node = db_request.AsMap().at("type"s);
-                if(node.AsString() == "Bus"s){
-                    std::vector<std::string> stop_data;
-                    for (const auto& stop : db_request.AsMap().at("stops"s).AsArray()){
-                        if (stop.IsString()){
-                            stop_data.push_back(stop.AsString());
-                        }
-                    }
-                    std::reverse(stop_data.begin(),stop_data.end());
-                    catalogue.SetBus(db_request.AsMap().at("name"s).AsString()
-                            , stop_data
-                            , (bool)!db_request.AsMap().at("is_roundtrip"s).AsBool());
-                } else if (node.AsString() == "Stop"s){
-                    geo::Coordinates coordinates{};
-                    coordinates.lat = (double)db_request.AsMap().at("latitude"s).AsDouble();
-                    coordinates.lng = (double)db_request.AsMap().at("longitude"s).AsDouble();
-                    catalogue.SetStop(db_request.AsMap().at("name"s).AsString()
-                            , coordinates);
-                    if(db_request.AsMap().count("road_distances"s) > 0){
-                        for (auto [key, length] : db_request.AsMap().at("road_distances"s).AsMap()){
-                            catalogue.SetStopDistance(db_request.AsMap().at("name"s).AsString()
-                                    , key
-                                    , (double)length.AsDouble());
-                        }
-                    }
-                } else {
-                    continue;
-                }
-            }
-        }
-    }
-
-    [[maybe_unused]] json_lib::Document JsonResponseBuilder(const json_lib::Document& json_doc, catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& render_settings){
-        json_lib::Array json_arr;
-        json_lib::Dict json_pair;
-        if (json_doc.GetRoot().AsMap().count("stat_requests"s) > 0 ){
-            auto db_request_arr = json_doc.GetRoot().AsMap().at("stat_requests"s);
-            if (!std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
-                for (const auto& db_request : db_request_arr.AsArray()){
-                    auto node = db_request.AsMap().at("type"s);
-                    if(node.AsString() == "Bus"s){
-                        std::string bus_name = db_request.AsMap().at("name"s).AsString();
-                        if ((int) catalogue.BusStopCount(bus_name) == -1){
-                            json_arr.emplace_back(json_lib::Dict{
-                                    {"request_id"s, (int) db_request.AsMap().at("id"s).AsInt(),},
-                                    {"error_message"s, "not found"s}
-                            });
-                        } else {
-                            json_arr.emplace_back(json_lib::Dict{
-                                    {"request_id"s, (int) db_request.AsMap().at("id"s).AsInt()},
-                                    {"stop_count"s, (int) catalogue.BusStopCount(bus_name)},
-                                    {"unique_stop_count"s, (int)catalogue.BusUniqStopCount(bus_name)},
-                                    {"route_length"s, (double) catalogue.BusRouteLength(bus_name).first},
-                                    {"curvature"s, (double) catalogue.BusRouteLength(bus_name).second}
-                            });
-                        }
-                    } else if(node.AsString() == "Stop"s){
-                        std::string stop_name = db_request.AsMap().at("name"s).AsString();
-                        if (catalogue.GetStopBuses(stop_name).count(nullptr)){
-                            json_arr.emplace_back(json_lib::Dict{
-                                    {"request_id"s, db_request.AsMap().at("id"s).AsInt(),},
-                                    {"error_message"s, "not found"s}
-                            });
-                        } else {
-                            json_lib::Array buffer_arr;
-                            std::set<std::string> sort_buses;
-                            for (const auto value : catalogue.GetStopBuses(stop_name)){
-                                sort_buses.insert(value->name);// %%%%%% ??????
-                            }
-                            for (const auto& value : sort_buses){
-                                buffer_arr.emplace_back(value);
-                            }
-                            json_arr.emplace_back(json_lib::Dict{
-                                    {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
-                                    {"buses"s, buffer_arr}
-                            });
-                        }
-                    } else if (node.AsString() == "Map"s){
-                        renderer::MapRenderer map_renderer;
-                        json_lib::Node svg_map;
-                        svg_map = map_renderer.DrawSvgMap(catalogue, render_settings);
-                        json_arr.emplace_back(json_lib::Dict{
-                                {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
-                                {"map"s, svg_map.AsString()}
-                        });
-                    }
-                }
-            }
-
-        }
-        return json_lib::Document{json_arr};
-    }
-
-    renderer::RenderSettings RenderSettingsBuilder(const json_lib::Document& json_doc){
+    renderer::RenderSettings JSONReader::RenderSettingsBuilder(const json_lib::Document& json_doc){
         renderer::RenderSettings rs;
         if (json_doc.GetRoot().AsMap().count("render_settings"s) > 0 ){
             auto json_rs = json_doc.GetRoot().AsMap().at("render_settings"s);
@@ -158,6 +58,107 @@ namespace json_reader {
             // END OF %%%%%%%%%% %%%%%%%%%% std::vector<Color> color_palette %%%%%%%%%% %%%%%%%%%%
         }
         return rs;
+    }
+
+    void JSONReader::DBBuilder(){
+        if (json_doc_.GetRoot().AsMap().count("base_requests"s) > 0){
+            auto db_request_arr = json_doc_.GetRoot().AsMap().at("base_requests"s);
+            if (std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
+                return;
+            }
+            for (const auto& db_request : db_request_arr.AsArray()){
+                auto node = db_request.AsMap().at("type"s);
+                if(node.AsString() == "Bus"s){
+                    std::vector<std::string> stop_data;
+                    for (const auto& stop : db_request.AsMap().at("stops"s).AsArray()){
+                        if (stop.IsString()){
+                            stop_data.push_back(stop.AsString());
+                        }
+                    }
+                    std::reverse(stop_data.begin(),stop_data.end());
+                    catalogue_.SetBus(db_request.AsMap().at("name"s).AsString()
+                            , stop_data
+                            , (bool)!db_request.AsMap().at("is_roundtrip"s).AsBool());
+                } else if (node.AsString() == "Stop"s){
+                    geo::Coordinates coordinates{};
+                    coordinates.lat = (double)db_request.AsMap().at("latitude"s).AsDouble();
+                    coordinates.lng = (double)db_request.AsMap().at("longitude"s).AsDouble();
+                    catalogue_.SetStop(db_request.AsMap().at("name"s).AsString()
+                            , coordinates);
+                    if(db_request.AsMap().count("road_distances"s) > 0){
+                        for (auto [key, length] : db_request.AsMap().at("road_distances"s).AsMap()){
+                            catalogue_.SetStopDistance(db_request.AsMap().at("name"s).AsString()
+                                    , key
+                                    , (double)length.AsDouble());
+                        }
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+    }
+
+    json_lib::Document JSONReader::JsonResponseBuilder(){
+        json_lib::Array json_arr;
+        json_lib::Dict json_pair;
+        if (json_doc_.GetRoot().AsMap().count("stat_requests"s) > 0 ){
+            auto db_request_arr = json_doc_.GetRoot().AsMap().at("stat_requests"s);
+            if (!std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
+                for (const auto& db_request : db_request_arr.AsArray()){
+                    auto node = db_request.AsMap().at("type"s);
+                    if(node.AsString() == "Bus"s){
+                        std::string bus_name = db_request.AsMap().at("name"s).AsString();
+                        if ((int) catalogue_.BusStopCount(bus_name) == -1){
+                            json_arr.emplace_back(json_lib::Dict{
+                                    {"request_id"s, (int) db_request.AsMap().at("id"s).AsInt(),},
+                                    {"error_message"s, "not found"s}
+                            });
+                        } else {
+                            json_arr.emplace_back(json_lib::Dict{
+                                    {"request_id"s, (int) db_request.AsMap().at("id"s).AsInt()},
+                                    {"stop_count"s, (int) catalogue_.BusStopCount(bus_name)},
+                                    {"unique_stop_count"s, (int)catalogue_.BusUniqStopCount(bus_name)},
+                                    {"route_length"s, (double) catalogue_.BusRouteLength(bus_name).first},
+                                    {"curvature"s, (double) catalogue_.BusRouteLength(bus_name).second}
+                            });
+                        }
+                    } else if(node.AsString() == "Stop"s){
+                        std::string stop_name = db_request.AsMap().at("name"s).AsString();
+                        if (catalogue_.GetStopBuses(stop_name).count(nullptr)){
+                            json_arr.emplace_back(json_lib::Dict{
+                                    {"request_id"s, db_request.AsMap().at("id"s).AsInt(),},
+                                    {"error_message"s, "not found"s}
+                            });
+                        } else {
+                            json_lib::Array buffer_arr;
+                            std::set<std::string> sort_buses;
+                            for (const auto value : catalogue_.GetStopBuses(stop_name)){
+                                sort_buses.insert(value->name);// %%%%%% ??????
+                            }
+                            for (const auto& value : sort_buses){
+                                buffer_arr.emplace_back(value);
+                            }
+                            json_arr.emplace_back(json_lib::Dict{
+                                    {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
+                                    {"buses"s, buffer_arr}
+                            });
+                        }
+                    } else if (node.AsString() == "Map"s){
+                        renderer::MapRenderer map_renderer;
+                        json_lib::Node svg_map;
+                        svg_map = map_renderer.DrawSvgMap(catalogue_, RenderSettingsBuilder(json_doc_));
+                        json_arr.emplace_back(json_lib::Dict{
+                                {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
+                                {"map"s, svg_map.AsString()}
+                        });
+                    }
+                }
+            }
+
+        }
+        result_json_doc_ = json_lib::Document{json_arr};
+        return result_json_doc_;
     }
 
 }
