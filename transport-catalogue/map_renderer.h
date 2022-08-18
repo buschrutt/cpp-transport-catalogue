@@ -18,7 +18,6 @@ namespace renderer {
 
     class RenderSettings {
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-        //using Color = std::variant<json_lib::Array, std::string>;
         using Color = std::variant<std::monostate, std::string, svg::Rgb, svg::Rgba>;
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     public:
@@ -101,19 +100,72 @@ namespace renderer {
     };
     // END OF %%%%%%%%%% %%%%%%%%%% SphereProjector %%%%%%%%%% %%%%%%%%%%
 
-    std::string DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
-
-    template <typename DrawableIterator>
-    void DrawPicture(DrawableIterator begin, DrawableIterator end, svg::ObjectContainer& target) {
-        for (auto it = begin; it != end; ++it) {
-            (*it)->Draw(target);
+    class PolyClass : public svg::Drawable {
+    public:
+        explicit PolyClass(svg::Polyline poly): poly_(std::move(poly)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(poly_);
         }
-    }
+    private:
+        svg::Polyline poly_;
+    };
 
-    template <typename Container>
-    void DrawPicture(const Container& container, svg::ObjectContainer& target) {
-        using namespace std;
-        DrawPicture(begin(container), end(container), target);
-    }
+    class TextClass : public svg::Drawable {
+    public:
+        explicit TextClass(svg::Text text): text_(std::move(text)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(text_);
+        }
+    private:
+        svg::Text text_;
+    };
 
-}
+    class CircleClass : public svg::Drawable {
+    public:
+        explicit CircleClass(svg::Circle circle): circle_(std::move(circle)) {}
+        void Draw(svg::ObjectContainer &container) const override {
+            container.Add(circle_);
+        }
+    private:
+        svg::Circle circle_;
+    };
+
+    class MapRenderer{
+    public:
+        // %%%%%%%%%% %%%%%%%%%% draw route layer %%%%%%%%%% %%%%%%%%%%
+        static void DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture);
+
+        // %%%%%%%%%% %%%%%%%%%% draw route names layer %%%%%%%%%% %%%%%%%%%%
+        static void DrawRouteNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture);
+
+        // %%%%%%%%%% %%%%%%%%%% draw stop points layer %%%%%%%%%% %%%%%%%%%%
+        static void DrawStopPoints(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture);
+
+        // %%%%%%%%%% %%%%%%%%%% draw stop names layer %%%%%%%%%% %%%%%%%%%%
+        static void DrawStopNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+                , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture);
+
+        // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+        template <typename DrawableIterator>
+        void DrawPicture(DrawableIterator begin, DrawableIterator end, svg::ObjectContainer& target) {
+            for (auto it = begin; it != end; ++it) {
+                (*it)->Draw(target);
+            }
+        }
+        // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+        template <typename Container>
+        void DrawPicture(const Container& container, svg::ObjectContainer& target) {
+            using namespace std;
+            DrawPicture(begin(container), end(container), target);
+        }
+
+        std::string DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings);
+
+    private:
+        std::string render_;
+    };
+
+} //namespace renderer

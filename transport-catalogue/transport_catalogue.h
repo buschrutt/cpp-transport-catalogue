@@ -50,13 +50,6 @@ namespace catalogue {
 
         std::pair<double, double> BusRouteLength(const std::string &bus_name);
 
-        /*class PairHasher {
-        public:
-            double operator()(std::pair<Stop*, Stop*> hash_pair) const {
-                return hash_pair.first->coordinates.lng * hash_pair.second->coordinates.lat;
-            }
-        };*/
-
     private:
         std::map<std::string, Bus*> buses_;
         std::map<std::string, Stop*> stops_;

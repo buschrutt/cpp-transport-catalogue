@@ -1,5 +1,4 @@
 #include "map_renderer.h"
-#include <utility>
 #include <cmath>
 
 using namespace std::literals;
@@ -12,37 +11,9 @@ namespace renderer {
         return std::abs(value) < EPSILON;
     }
 
-    class PolyClass : public svg::Drawable {
-    public:
-        explicit PolyClass(svg::Polyline poly): poly_(std::move(poly)) {}
-        void Draw(svg::ObjectContainer &container) const override {
-            container.Add(poly_);
-        }
-    private:
-        svg::Polyline poly_;
-    };
+    // %%%%%%%%%% %%%%%%%%%% Class MapRenderer %%%%%%%%%% %%%%%%%%%%
 
-    class TextClass : public svg::Drawable {
-    public:
-        explicit TextClass(svg::Text text): text_(std::move(text)) {}
-        void Draw(svg::ObjectContainer &container) const override {
-            container.Add(text_);
-        }
-    private:
-        svg::Text text_;
-    };
-
-    class CircleClass : public svg::Drawable {
-    public:
-        explicit CircleClass(svg::Circle circle): circle_(std::move(circle)) {}
-        void Draw(svg::ObjectContainer &container) const override {
-            container.Add(circle_);
-        }
-    private:
-        svg::Circle circle_;
-    };
-
-    void DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+    void MapRenderer::DrawRoutes(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
             , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         // %%%%%%%%%% %%%%%%%%%% poly lines & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
@@ -73,7 +44,7 @@ namespace renderer {
         }
     }
 
-    void DrawRouteNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+    void MapRenderer::DrawRouteNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
             , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         // %%%%%%%%%% %%%%%%%%%% text & picture formation %%%%%%%%%% %%%%%%%%%%
         int color_count = 0;
@@ -104,7 +75,7 @@ namespace renderer {
         }
     }
 
-    void DrawStopPoints(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+    void MapRenderer::DrawStopPoints(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
             , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         for (const auto& stop : catalogue.GetAllStops()){
             if (!stop.second->buses.empty()){
@@ -117,7 +88,7 @@ namespace renderer {
         }
     }
 
-    void DrawStopNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
+    void MapRenderer::DrawStopNames(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings
             , const SphereProjector& proj, std::vector<std::unique_ptr<svg::Drawable>>& picture){
         for (const auto& stop : catalogue.GetAllStops()){
             if (!stop.second->buses.empty()){
@@ -143,12 +114,11 @@ namespace renderer {
         }
     }
 
-    std::string DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
+    std::string MapRenderer::DrawSvgMap(catalogue::TransportCatalogue& catalogue, const renderer::RenderSettings& settings){
         std::ostringstream ss;
         std::vector<geo::Coordinates> geo_coords;
         std::vector<std::unique_ptr<svg::Drawable>> picture;
         svg::Document doc;
-
         // %%%%%%%%%% %%%%%%%%%% scale finding %%%%%%%%%% %%%%%%%%%%
         for (const auto& stop : catalogue.GetAllStops()){
             if (!stop.second->buses.empty()){
@@ -163,11 +133,9 @@ namespace renderer {
         DrawStopNames(catalogue, settings, proj, picture);
         // %%%%%%%%%% %%%%%%%%%% draw & render %%%%%%%%%% %%%%%%%%%%
         DrawPicture(picture, doc);
-        //doc.Render(std::cout);
-
         doc.Render(ss);
-        return ss.str();
-
+        render_ = ss.str();
+        return render_;
     }
 
 }

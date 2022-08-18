@@ -92,8 +92,9 @@ namespace json_reader {
                             });
                         }
                     } else if (node.AsString() == "Map"s){
+                        renderer::MapRenderer map_renderer;
                         json_lib::Node svg_map;
-                        svg_map = DrawSvgMap(catalogue, render_settings);
+                        svg_map = map_renderer.DrawSvgMap(catalogue, render_settings);
                         json_arr.emplace_back(json_lib::Dict{
                                 {"request_id"s, db_request.AsMap().at("id"s).AsInt()},
                                 {"map"s, svg_map.AsString()}
