@@ -28,3 +28,9 @@
 2719	4754	6834045593552469	testing.exe	810dddc952387e06
 4	2522	6834056367894155	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
 2522	4146	6834056386370911	testing.exe	810dddc952387e06
+6	1582	6834069988175941	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
+3	1919	6834069991420487	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+12	2101	6834069993285302	CMakeFiles/testing.dir/json_builder.cpp.obj	133a9919b94c8467
+9	2258	6834069994933065	CMakeFiles/testing.dir/map_renderer.cpp.obj	fb6ae42be42cccfb
+15	2627	6834069998595691	CMakeFiles/testing.dir/json_reader.cpp.obj	3f451732119e22d4
+2627	3808	6834070010299785	testing.exe	810dddc952387e06

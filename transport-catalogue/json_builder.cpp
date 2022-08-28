@@ -4,7 +4,7 @@ namespace json {
 
     Builder& Builder::BuildKey(const std::string &node_key) {
         if (!node_stack_.empty()){
-            if (!node_stack_.back()->IsMap() || is_previous_key_){
+            if (!node_stack_.back()->IsDict() || is_previous_key_){
                 throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
             }
         } else {
@@ -21,7 +21,7 @@ namespace json {
 
     KeyContext& ValueFullContext::Key(const std::string &node_key) {
         if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsMap() || builder_->GetIsKey()){
+            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
                 throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
             }
         } else {
@@ -37,7 +37,7 @@ namespace json {
 
     KeyContext& ValueKeyContext::Key(const std::string &node_key) {
         if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsMap() || builder_->GetIsKey()){
+            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
                 throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
             }
         } else {
@@ -54,7 +54,7 @@ namespace json {
 
     KeyContext& DictContext::Key(const std::string &node_key) {
         if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsMap() || builder_->GetIsKey()){
+            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
                 throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
             }
         } else {
@@ -90,7 +90,7 @@ namespace json {
             if (node_stack_.back()->IsArray()){
                 auto& array = std::get<Array>(node_stack_.back()->SetValue());
                 array.emplace_back(*node);
-            } else if (node_stack_.back()->IsMap()){
+            } else if (node_stack_.back()->IsDict()){
                 auto& dict = std::get<Dict>(node_stack_.back()->SetValue());
                 dict[key_] = *node;
             }
@@ -118,7 +118,7 @@ namespace json {
             if (builder_->GetNodeStack().back()->IsArray()){
                 auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
                 array.emplace_back(*node);
-            } else if (builder_->GetNodeStack().back()->IsMap()){
+            } else if (builder_->GetNodeStack().back()->IsDict()){
                 auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
                 dict[builder_->GetKey()] = *node;
             }
@@ -147,7 +147,7 @@ namespace json {
             if (builder_->GetNodeStack().back()->IsArray()){
                 auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
                 array.emplace_back(*node);
-            } else if (builder_->GetNodeStack().back()->IsMap()){
+            } else if (builder_->GetNodeStack().back()->IsDict()){
                 auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
                 dict[builder_->GetKey()] = *node;
             }
@@ -176,7 +176,7 @@ namespace json {
             if (builder_->GetNodeStack().back()->IsArray()){
                 auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
                 array.emplace_back(*node);
-            } else if (builder_->GetNodeStack().back()->IsMap()){
+            } else if (builder_->GetNodeStack().back()->IsDict()){
                 auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
                 dict[builder_->GetKey()] = *node;
             }
@@ -207,7 +207,7 @@ namespace json {
             auto& array = std::get<Array>(node_stack_.back()->SetValue());
             array.emplace_back(*node);
             node_stack_.emplace_back(&array.back());
-        } else if (node_stack_.back()->IsMap()){
+        } else if (node_stack_.back()->IsDict()){
             auto& dict = std::get<Dict>(node_stack_.back()->SetValue());
             dict[key_] = *node;
             node_stack_.emplace_back(&dict.at(key_));
@@ -238,7 +238,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -270,7 +270,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -302,7 +302,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -336,7 +336,7 @@ namespace json {
             auto& array = std::get<Array>(node_stack_.back()->SetValue());
             array.emplace_back(*node);
             node_stack_.emplace_back(&array.back());
-        } else if (node_stack_.back()->IsMap()){
+        } else if (node_stack_.back()->IsDict()){
             auto& dict = std::get<Dict>(node_stack_.back()->SetValue());
             dict[key_] = *node;
             node_stack_.emplace_back(&dict.at(key_));
@@ -367,7 +367,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -399,7 +399,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -431,7 +431,7 @@ namespace json {
             auto& array = std::get<Array>(builder_->GetNodeStack().back()->SetValue());
             array.emplace_back(*node);
             builder_->EmplaceNode(&array.back());
-        } else if (builder_->GetNodeStack().back()->IsMap()){
+        } else if (builder_->GetNodeStack().back()->IsDict()){
             auto& dict = std::get<Dict>(builder_->GetNodeStack().back()->SetValue());
             dict[builder_->GetKey()] = *node;
             builder_->EmplaceNode(&dict.at(builder_->GetKey()));
@@ -448,7 +448,7 @@ namespace json {
     Builder &Builder::EndDict() {
         if (node_stack_.empty()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!node_stack_.back()->IsMap()){
+        } else if (!node_stack_.back()->IsDict()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
         }
         node_stack_.pop_back();
@@ -461,7 +461,7 @@ namespace json {
     Builder &ValueKeyContext::EndDict() {
         if (builder_->GetNodeStack().empty()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsMap()){
+        } else if (!builder_->GetNodeStack().back()->IsDict()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
         }
         builder_->PopNode();
@@ -474,7 +474,7 @@ namespace json {
     Builder &ValueFullContext::EndDict() {
         if (builder_->GetNodeStack().empty()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsMap()){
+        } else if (!builder_->GetNodeStack().back()->IsDict()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
         }
         builder_->PopNode();
@@ -487,7 +487,7 @@ namespace json {
     Builder &DictContext::EndDict() {
         if (builder_->GetNodeStack().empty()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsMap()){
+        } else if (!builder_->GetNodeStack().back()->IsDict()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
         }
         builder_->PopNode();
