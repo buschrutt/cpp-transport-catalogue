@@ -1,149 +1,131 @@
-#pragma once
+// %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+//json_lib
+//json_lib::Document json_lib::JsonFileLoad(std::string f_path);
+//void json_lib::JsonFileWrite(std::string f_path);
+//json_lib::Document json_lib::JsonBuilder(std::string f_clear_data);
+//std::string json_lib::JsonTrashDelete(std::string s_source);
+//void JsonPrintRare (const Document& d1, std::ostream& output);
 
+// ?? bool json_lib::JsonEquals(json_lib::Document d1, json_lib::Document d1,);
+
+#pragma once
 #include <iostream>
 #include <map>
 #include <string>
 #include <utility>
-#include <variant>
 #include <vector>
+#include <variant>
 
 namespace json {
 
     class Node;
+// Сохраните объявления Dict и Array без изменения
     using Dict = std::map<std::string, Node>;
     using Array = std::vector<Node>;
 
+// Эта ошибка должна выбрасываться при ошибках парсинга JSON
     class ParsingError : public std::runtime_error {
     public:
         using runtime_error::runtime_error;
     };
 
-    class Node final
-            : private std::variant<std::nullptr_t, Array, Dict, bool, int, double, std::string> {
-
+    class Node {
     public:
-        using variant::variant;
-        using Value = variant;
+        using Value = std::variant<std::nullptr_t, Array, Dict, bool, int, double, std::string>;
+
+        Node() : value_(nullptr) {}
+        Node(std::nullptr_t) : value_(nullptr) {}
+        Node(int value) : value_(value) {}
+        Node(double value) : value_(value) {}
+        Node(std::string value) : value_(value) {}
+        Node(bool value) : value_(value) {}
+        Node(Array value) : value_(std::move(value)) {};
+        Node(Dict value) : value_(std::move(value)) {};
+
+        // %%%%%%%%%%  Type Check  %%%%%%%%%%
+
+        [[nodiscard]] bool IsInt() const;
+
+        [[nodiscard]] bool IsDouble() const;
+
+        [[nodiscard]] bool IsPureDouble() const;
+
+        [[nodiscard]] bool IsBool() const;
+
+        [[nodiscard]] bool IsString() const;
+
+        [[nodiscard]] bool IsNull() const;
+
+        [[nodiscard]] bool IsArray() const;
+
+        [[nodiscard]] bool IsDict() const;
+
+        // %%%%%%%%%%  Get Value  %%%%%%%%%%
+
+        [[nodiscard]] int AsInt() const;
+
+        [[nodiscard]] bool AsBool() const;
+
+        [[nodiscard]] double AsDouble() const;
+
+        [[nodiscard]] const std::string& AsString() const;
+
+        [[nodiscard]] const Array& AsArray() const;
+
+        [[nodiscard]] const Dict& AsDict() const;
 
         Value& SetValue() {
-            return *this;
+            return value_;
         }
 
-        bool IsInt() const {
-            return std::holds_alternative<int>(*this);
-        }
-        int AsInt() const {
-            using namespace std::literals;
-            if (!IsInt()) {
-                throw std::logic_error("Not an int"s);
-            }
-            return std::get<int>(*this);
-        }
-
-        bool IsPureDouble() const {
-            return std::holds_alternative<double>(*this);
-        }
-        bool IsDouble() const {
-            return IsInt() || IsPureDouble();
-        }
-        double AsDouble() const {
-            using namespace std::literals;
-            if (!IsDouble()) {
-                throw std::logic_error("Not a double"s);
-            }
-            return IsPureDouble() ? std::get<double>(*this) : AsInt();
-        }
-
-        bool IsBool() const {
-            return std::holds_alternative<bool>(*this);
-        }
-        bool AsBool() const {
-            using namespace std::literals;
-            if (!IsBool()) {
-                throw std::logic_error("Not a bool"s);
-            }
-
-            return std::get<bool>(*this);
-        }
-
-        bool IsNull() const {
-            return std::holds_alternative<std::nullptr_t>(*this);
-        }
-
-        bool IsArray() const {
-            return std::holds_alternative<Array>(*this);
-        }
-        const Array& AsArray() const {
-            using namespace std::literals;
-            if (!IsArray()) {
-                throw std::logic_error("Not an array"s);
-            }
-
-            return std::get<Array>(*this);
-        }
-
-        bool IsString() const {
-            return std::holds_alternative<std::string>(*this);
-        }
-        const std::string& AsString() const {
-            using namespace std::literals;
-            if (!IsString()) {
-                throw std::logic_error("Not a string"s);
-            }
-
-            return std::get<std::string>(*this);
-        }
-
-        bool IsDict() const {
-            return std::holds_alternative<Dict>(*this);
-        }
-        const Dict& AsDict() const {
-            using namespace std::literals;
-            if (!IsDict()) {
-                throw std::logic_error("Not a dict"s);
-            }
-
-            return std::get<Dict>(*this);
-        }
-
-        bool operator==(const Node& rhs) const {
-            return GetValue() == rhs.GetValue();
-        }
-
-        const Value& GetValue() const {
-            return *this;
-        }
-
+    private:
+        Value value_;
     };
-
-    inline bool operator!=(const Node& lhs, const Node& rhs) {
-        return !(lhs == rhs);
-    }
 
     class Document {
     public:
-        explicit Document(Node root)
-                : root_(std::move(root)) {
-        }
+        explicit Document(Node root);
 
-        const Node& GetRoot() const {
-            return root_;
-        }
+        [[nodiscard]] const Node& GetRoot() const;
 
     private:
         Node root_;
     };
 
-    inline bool operator==(const Document& lhs, const Document& rhs) {
-        return lhs.GetRoot() == rhs.GetRoot();
-    }
+    // %%%%%%%%%%  json_lib methods  %%%%%%%%%%
 
-    inline bool operator!=(const Document& lhs, const Document& rhs) {
-        return !(lhs == rhs);
-    }
+    Node LoadString(std::istream& input);
 
-    Document Load(std::istream& input);
+    Node LoadNumber(std::istream& input);
+
+    Dict LoadDict(std::istream& input);
+
+    Node LoadArray(std::istream& input);
+
+    Document JsonFileLoad(const std::string& f_path);
+
+    //Document Load(std::istream& input);
+
+    void JsonOutput (const Document& doc, std::ostream& output);
+
+    Document JsonBuilder(std::istream& input);
+
+    //Document JsonFileLoad(const std::string& f_path);
+
+    Document JsonConsoleLoad(std::istream& input);
 
     void Print(const Document& doc, std::ostream& output);
 
-}  // namespace json
+    void JsonConsoleOutput(const Document& doc);
+
+    void JsonFileWrite(const Document& doc, const std::string& f_path);
+
+    bool operator== (const Node & l, const Node & r);
+
+    bool operator!= (const Node & l, const Node & r);
+
+    bool operator== (const Document & l, const Document & r);
+
+    bool operator!= (const Document & l, const Document & r);
+
+}  // namespace json_lib
