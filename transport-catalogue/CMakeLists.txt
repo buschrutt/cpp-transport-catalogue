@@ -15,6 +15,7 @@ add_executable(testing main.cpp
         json_reader.cpp
         map_renderer.cpp
         request_handler.cpp
+        json_builder.cpp
         svg.cpp
         request_handler.cpp
         transport_catalogue.cpp)

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace json_lib {
+namespace json {
 
     Node LoadNode(istream& input);
 
@@ -280,8 +280,14 @@ namespace json_lib {
 
     void JsonConsoleOutput(const Document& doc){
         std::ostringstream out;
-        json_lib::JsonOutput(Document{doc.GetRoot()}, out);
+        json::JsonOutput(Document{doc.GetRoot()}, out);
         cout << out.str();
+    }
+
+    void Print(const Document& doc, std::ostream& output) {
+        if(output){
+            JsonConsoleOutput(doc);
+        }
     }
 
     void JsonFileWrite(const Document& doc, const std::string& f_path){

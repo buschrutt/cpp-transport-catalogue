@@ -16,7 +16,7 @@
 #include <vector>
 #include <variant>
 
-namespace json_lib {
+namespace json {
 
     class Node;
 // Сохраните объявления Dict и Array без изменения
@@ -74,6 +74,10 @@ namespace json_lib {
 
         [[nodiscard]] const Dict& AsMap() const;
 
+        Value& SetValue() {
+            return value_;
+        }
+
     private:
         Value value_;
     };
@@ -109,6 +113,8 @@ namespace json_lib {
     //Document JsonFileLoad(const std::string& f_path);
 
     Document JsonConsoleLoad(std::istream& input);
+
+    void Print(const Document& doc, std::ostream& output);
 
     void JsonConsoleOutput(const Document& doc);
 
