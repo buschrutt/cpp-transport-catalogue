@@ -102,11 +102,9 @@ namespace json_reader {
 
     json::Document JSONReader::JsonResponseBuilder(){
         json::Builder j_builder{};
-        //json::Array json_arr;
-        //json::Dict json;
         if (json_doc_.GetRoot().AsDict().count("stat_requests"s) > 0 ){
             auto db_request_arr = json_doc_.GetRoot().AsDict().at("stat_requests"s);
-            j_builder.StartArray(); // %%%%% START ROOT ARR
+            j_builder.StartArray(); // %%%%% start root array
             if (!std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
                 for (const auto& db_request : db_request_arr.AsArray()){
                     auto node = db_request.AsDict().at("type"s);
@@ -117,10 +115,6 @@ namespace json_reader {
                             j_builder
                             .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
                             .Key("error_message"s).Value("not found"s);
-                            /*json_arr.emplace_back(json::Dict{
-                                    {"request_id"s, (int) db_request.AsDict().at("id"s).AsInt(),},
-                                    {"error_message"s, "not found"s}
-                            });*/
                         } else {
                             j_builder
                             .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
@@ -128,13 +122,6 @@ namespace json_reader {
                             .Key("unique_stop_count"s).Value((int)catalogue_.BusUniqStopCount(bus_name))
                             .Key("route_length"s).Value((double) catalogue_.BusRouteLength(bus_name).first)
                             .Key("curvature"s).Value((double) catalogue_.BusRouteLength(bus_name).second);
-                            /*json_arr.emplace_back(json::Dict{
-                                    {"request_id"s, (int) db_request.AsDict().at("id"s).AsInt()},
-                                    {"stop_count"s, (int) catalogue_.BusStopCount(bus_name)},
-                                    {"unique_stop_count"s, (int)catalogue_.BusUniqStopCount(bus_name)},
-                                    {"route_length"s, (double) catalogue_.BusRouteLength(bus_name).first},
-                                    {"curvature"s, (double) catalogue_.BusRouteLength(bus_name).second}
-                            });*/
                         }
                         j_builder.EndDict();
                     } else if(node.AsString() == "Stop"s){
@@ -144,10 +131,6 @@ namespace json_reader {
                             j_builder
                                 .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
                                 .Key("error_message"s).Value("not found"s);
-                            /*json_arr.emplace_back(json::Dict{
-                                    {"request_id"s, db_request.AsDict().at("id"s).AsInt(),},
-                                    {"error_message"s, "not found"s}
-                            });*/
                         } else {
                             json::Array buffer_arr;
                             std::set<std::string> sort_buses;
@@ -162,10 +145,6 @@ namespace json_reader {
                                 buffer_arr.emplace_back(value);
                             }
                             j_builder.EndArray();
-                            /*json_arr.emplace_back(json::Dict{
-                                    {"request_id"s, db_request.AsDict().at("id"s).AsInt()},
-                                    {"buses"s, buffer_arr}
-                            });*/
                         }
                         j_builder.EndDict();
                     } else if (node.AsString() == "Map"s){
@@ -176,19 +155,14 @@ namespace json_reader {
                         j_builder
                             .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
                             .Key("map"s).Value(svg_map.AsString());
-                        /*json_arr.emplace_back(json::Dict{ // ****** ******
-                                {"request_id"s, db_request.AsDict().at("id"s).AsInt()}, // ****** ******
-                                {"map"s, svg_map.AsString()} // ****** ******
-                        });*/
                         j_builder.EndDict();
                     }
                 }
             }
-            j_builder.EndArray(); // %%%%% END ROOT ARR
+            j_builder.EndArray(); // %%%%% end root array
         }
 
         result_json_doc_ = json::Document{j_builder.Build()};
-        //result_json_doc_ = json::Document{json_arr};
         return result_json_doc_;
     }
 
