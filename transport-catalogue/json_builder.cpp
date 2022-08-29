@@ -24,7 +24,7 @@ namespace json {
         return *this;
     }
 
-    KeyContext& ValueFullContext::Key(const std::string &node_key) {
+    Builder::KeyContext& Builder::ValueFullContext::Key(const std::string &node_key) {
         KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
@@ -34,7 +34,7 @@ namespace json {
         return *key_context;
     }
 
-    KeyContext& ValueKeyContext::Key(const std::string &node_key) {
+    Builder::KeyContext& Builder::ValueKeyContext::Key(const std::string &node_key) {
         KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
@@ -45,7 +45,7 @@ namespace json {
         return *key_context;
     }
 
-    KeyContext& DictContext::Key(const std::string &node_key) {
+    Builder::KeyContext& Builder::DictContext::Key(const std::string &node_key) {
         KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
@@ -91,7 +91,7 @@ namespace json {
         return *this;
     }
 
-    ValueKeyContext &KeyContext::Value(const Node::Value &node_value) {
+    Builder::ValueKeyContext &Builder::KeyContext::Value(const Node::Value &node_value) {
         ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
@@ -112,7 +112,7 @@ namespace json {
         return *value_context;
     }
 
-    ValueArrayContext &ValueArrayContext::Value(const Node::Value &node_value) {
+    Builder::ValueArrayContext &Builder::ValueArrayContext::Value(const Node::Value &node_value) {
         ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
@@ -133,7 +133,7 @@ namespace json {
         return *value_context;
     }
 
-    ValueArrayContext &ArrayContext::Value(const Node::Value &node_value) {
+    Builder::ValueArrayContext &Builder::ArrayContext::Value(const Node::Value &node_value) {
         ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
@@ -191,7 +191,7 @@ namespace json {
         return *this;
     }
 
-    DictContext &KeyContext::StartDict() {
+    Builder::DictContext &Builder::KeyContext::StartDict() {
         StartDictLogic(*builder_);
         builder_->SetIsKey(false);
         Dict node_dict;
@@ -215,7 +215,7 @@ namespace json {
         return *dict_context;
     }
 
-    DictContext &ValueArrayContext::StartDict() {
+    Builder::DictContext &Builder::ValueArrayContext::StartDict() {
         StartDictLogic(*builder_);
         builder_->SetIsKey(false);
         Dict node_dict;
@@ -239,7 +239,7 @@ namespace json {
         return *dict_context;
     }
 
-    DictContext &ArrayContext::StartDict() {
+    Builder::DictContext &Builder::ArrayContext::StartDict() {
         StartDictLogic(*builder_);
         builder_->SetIsKey(false);
         Dict node_dict;
@@ -300,7 +300,7 @@ namespace json {
         return *this;
     }
 
-    ArrayContext &KeyContext::StartArray() {
+    Builder::ArrayContext &Builder::KeyContext::StartArray() {
         StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
         Array node_array;
@@ -324,7 +324,7 @@ namespace json {
         return *array_context;
     }
 
-    ArrayContext &ValueArrayContext::StartArray() {
+    Builder::ArrayContext &Builder::ValueArrayContext::StartArray() {
         StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
         Array node_array;
@@ -348,7 +348,7 @@ namespace json {
         return *array_context;
     }
 
-    ArrayContext& ArrayContext::StartArray() {
+    Builder::ArrayContext& Builder::ArrayContext::StartArray() {
         StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
         Array node_array;
@@ -391,7 +391,7 @@ namespace json {
         return *this;
     }
 
-    Builder &ValueKeyContext::EndDict() {
+    Builder &Builder::ValueKeyContext::EndDict() {
         EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
@@ -400,7 +400,7 @@ namespace json {
         return *this->builder_;
     }
 
-    Builder &ValueFullContext::EndDict() {
+    Builder &Builder::ValueFullContext::EndDict() {
         EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
@@ -409,7 +409,7 @@ namespace json {
         return *this->builder_;
     }
 
-    Builder &DictContext::EndDict() {
+    Builder &Builder::DictContext::EndDict() {
         EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
@@ -437,7 +437,7 @@ namespace json {
         return *this;
     }
 
-    Builder &ValueArrayContext::EndArray() {
+    Builder &Builder::ValueArrayContext::EndArray() {
         EndArrayLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
@@ -446,7 +446,7 @@ namespace json {
         return *this->builder_;
     }
 
-    Builder &ArrayContext::EndArray() {
+    Builder &Builder::ArrayContext::EndArray() {
         EndArrayLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
@@ -464,7 +464,7 @@ namespace json {
         return root_;
     }
 
-    json::Node ValueFullContext::Build() {
+    json::Node Builder::ValueFullContext::Build() {
         if (!builder_->GetNodeStack().empty() || builder_->GetRootPtr() == nullptr){
             throw std::logic_error ("logic_error: Build called after constructor or with Array or Dict that wasn't complited");
         }
