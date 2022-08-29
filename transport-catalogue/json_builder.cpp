@@ -2,15 +2,20 @@
 
 namespace json {
 
-    Builder& Builder::BuildKey(const std::string &node_key) {
-        if (!node_stack_.empty()){
-            if (!node_stack_.back()->IsDict() || is_previous_key_){
+    void KeyLogic(Builder& builder){
+        if (!builder.GetNodeStack().empty()){
+            if (!builder.GetNodeStack().back()->IsDict() || builder.GetIsKey()){
                 throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
             }
         } else {
             throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
         }
+    }
 
+    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+
+    Builder& Builder::BuildKey(const std::string &node_key) {
+        KeyLogic(*this);
         is_previous_key_ = true;
         key_ = node_key;
         Node * pair_node = new Node();
@@ -20,13 +25,7 @@ namespace json {
     }
 
     KeyContext& ValueFullContext::Key(const std::string &node_key) {
-        if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-            }
-        } else {
-            throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-        }
+        KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
         //Node * pair_node = new Node();
@@ -36,13 +35,7 @@ namespace json {
     }
 
     KeyContext& ValueKeyContext::Key(const std::string &node_key) {
-        if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-            }
-        } else {
-            throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-        }
+        KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
         Node * pair_node = new Node();
@@ -53,13 +46,7 @@ namespace json {
     }
 
     KeyContext& DictContext::Key(const std::string &node_key) {
-        if (!builder_->GetNodeStack().empty()){
-            if (!builder_->GetNodeStack().back()->IsDict() || builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-            }
-        } else {
-            throw std::logic_error ("logic_error: Key called out of Dict or right after key entered");
-        }
+        KeyLogic(*builder_);
         builder_->SetIsKey(true);
         builder_->SetKey(node_key);
         Node * pair_node = new Node();
@@ -69,17 +56,23 @@ namespace json {
         return *key_context;
     }
 
-// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildValue(const Node::Value& node_value) {
-        if (!node_stack_.empty()){
-            if ((!node_stack_.back()->IsArray()) && !is_previous_key_){
+    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+
+    void ValueLogic(Builder& builder){
+        if (!builder.GetNodeStack().empty()){
+            if ((!builder.GetNodeStack().back()->IsArray()) && !builder.GetIsKey()){
                 throw std::logic_error ("logic_error: Value called(1) not after constructor, not within Array or after key entered");
             }
         } else {
-            if (root_ptr_ != nullptr){
+            if (builder.GetRootPtr() != nullptr){
                 throw std::logic_error ("logic_error: Value called(2) not after constructor, not within Array or after key entered");
             }
         }
+    }
+
+// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    Builder &Builder::BuildValue(const Node::Value& node_value) {
+        ValueLogic(*this);
         is_previous_key_ = false;
         Node * node = new Node();
         node->SetValue() = node_value;
@@ -99,15 +92,7 @@ namespace json {
     }
 
     ValueKeyContext &KeyContext::Value(const Node::Value &node_value) {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Value called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: Value called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
         node->SetValue() = node_value;
@@ -128,15 +113,7 @@ namespace json {
     }
 
     ValueArrayContext &ValueArrayContext::Value(const Node::Value &node_value) {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Value called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: Value called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
         node->SetValue() = node_value;
@@ -157,15 +134,7 @@ namespace json {
     }
 
     ValueArrayContext &ArrayContext::Value(const Node::Value &node_value) {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: Value called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: Value called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        ValueLogic(*builder_);
         builder_->SetIsKey(false);
         Node * node = new Node();
         node->SetValue() = node_value;
@@ -186,21 +155,25 @@ namespace json {
     }
 // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
-// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildStartDict() {
-        if (!node_stack_.empty()){
-            if ((!node_stack_.back()->IsArray()) && !is_previous_key_){
+    void StartDictLogic(Builder& builder){
+        if (!builder.GetNodeStack().empty()){
+            if ((!builder.GetNodeStack().back()->IsArray()) && !builder.GetIsKey()){
                 throw std::logic_error ("logic_error: StartDict called(1) not after constructor, not within Array or after key entered");
             }
         } else {
-            if (root_ptr_ != nullptr){
+            if (builder.GetRootPtr() != nullptr){
                 throw std::logic_error ("logic_error: StartDict called(2) not after constructor, not within Array or after key entered");
             }
         }
+    }
+
+// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    Builder &Builder::BuildStartDict() {
+        StartDictLogic(*this);
         is_previous_key_ = false;
-        Dict d;
+        Dict node_dict;
         Node * node = new Node();
-        node->SetValue() = d;
+        node->SetValue() = node_dict;
         if (node_stack_.empty()){
             node_stack_.emplace_back(node);
         } else if (node_stack_.back()->IsArray()){
@@ -219,19 +192,11 @@ namespace json {
     }
 
     DictContext &KeyContext::StartDict() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartDict called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartDict called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartDictLogic(*builder_);
         builder_->SetIsKey(false);
-        Dict d;
+        Dict node_dict;
         Node * node = new Node();
-        node->SetValue() = d;
+        node->SetValue() = node_dict;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -251,19 +216,11 @@ namespace json {
     }
 
     DictContext &ValueArrayContext::StartDict() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartDict called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartDict called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartDictLogic(*builder_);
         builder_->SetIsKey(false);
-        Dict d;
+        Dict node_dict;
         Node * node = new Node();
-        node->SetValue() = d;
+        node->SetValue() = node_dict;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -283,19 +240,11 @@ namespace json {
     }
 
     DictContext &ArrayContext::StartDict() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartDict called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartDict called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartDictLogic(*builder_);
         builder_->SetIsKey(false);
-        Dict d;
+        Dict node_dict;
         Node * node = new Node();
-        node->SetValue() = d;
+        node->SetValue() = node_dict;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -315,21 +264,25 @@ namespace json {
     }
 // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
-// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildStartArray() {
-        if (!node_stack_.empty()){
-            if ((!node_stack_.back()->IsArray()) && !is_previous_key_){
+    void StartArrayLogic(Builder& builder){
+        if (!builder.GetNodeStack().empty()){
+            if ((!builder.GetNodeStack().back()->IsArray()) && !builder.GetIsKey()){
                 throw std::logic_error ("logic_error: StartArray called(1) not after constructor, not within Array or after key entered");
             }
         } else {
-            if (root_ptr_ != nullptr){
+            if (builder.GetRootPtr() != nullptr){
                 throw std::logic_error ("logic_error: StartArray called(2) not after constructor, not within Array or after key entered");
             }
         }
+    }
+
+// Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    Builder &Builder::BuildStartArray() {
+        StartArrayLogic(*this);
         is_previous_key_ = false;
-        Array a;
+        Array node_array;
         Node * node = new Node();
-        node->SetValue() = a;
+        node->SetValue() = node_array;
         if (node_stack_.empty()){
             node_stack_.emplace_back(node);
         } else if (node_stack_.back()->IsArray()){
@@ -348,19 +301,11 @@ namespace json {
     }
 
     ArrayContext &KeyContext::StartArray() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartArray called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartArray called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
-        Array a;
+        Array node_array;
         Node * node = new Node();
-        node->SetValue() = a;
+        node->SetValue() = node_array;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -380,19 +325,11 @@ namespace json {
     }
 
     ArrayContext &ValueArrayContext::StartArray() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartArray called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartArray called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
-        Array a;
+        Array node_array;
         Node * node = new Node();
-        node->SetValue() = a;
+        node->SetValue() = node_array;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -412,19 +349,11 @@ namespace json {
     }
 
     ArrayContext& ArrayContext::StartArray() {
-        if (!builder_->GetNodeStack().empty()){
-            if ((!builder_->GetNodeStack().back()->IsArray()) && !builder_->GetIsKey()){
-                throw std::logic_error ("logic_error: StartArray called(1) not after constructor, not within Array or after key entered");
-            }
-        } else {
-            if (builder_->GetRootPtr() != nullptr){
-                throw std::logic_error ("logic_error: StartArray called(2) not after constructor, not within Array or after key entered");
-            }
-        }
+        StartArrayLogic(*builder_);
         builder_->SetIsKey(false);
-        Array a;
+        Array node_array;
         Node * node = new Node();
-        node->SetValue() = a;
+        node->SetValue() = node_array;
         if (builder_->GetNodeStack().empty()){
             builder_->EmplaceNode(node);
         } else if (builder_->GetNodeStack().back()->IsArray()){
@@ -444,13 +373,17 @@ namespace json {
     }
     // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
-    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::EndDict() {
-        if (node_stack_.empty()){
+    void EndDictLogic(Builder& builder){
+        if (builder.GetNodeStack().empty()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!node_stack_.back()->IsDict()){
+        } else if (!builder.GetNodeStack().back()->IsDict()){
             throw std::logic_error ("logic_error: EndDict called not within its context");
         }
+    }
+
+    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    Builder &Builder::EndDict() {
+        EndDictLogic(*this);
         node_stack_.pop_back();
         if (node_stack_.empty()){
             root_ = *root_ptr_;
@@ -459,11 +392,7 @@ namespace json {
     }
 
     Builder &ValueKeyContext::EndDict() {
-        if (builder_->GetNodeStack().empty()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsDict()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        }
+        EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
             builder_->SetRoot(*builder_->GetRootPtr());
@@ -472,11 +401,7 @@ namespace json {
     }
 
     Builder &ValueFullContext::EndDict() {
-        if (builder_->GetNodeStack().empty()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsDict()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        }
+        EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
             builder_->SetRoot(*builder_->GetRootPtr());
@@ -485,11 +410,7 @@ namespace json {
     }
 
     Builder &DictContext::EndDict() {
-        if (builder_->GetNodeStack().empty()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsDict()){
-            throw std::logic_error ("logic_error: EndDict called not within its context");
-        }
+        EndDictLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
             builder_->SetRoot(*builder_->GetRootPtr());
@@ -498,13 +419,17 @@ namespace json {
     }
     // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
-    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::EndArray() {
-        if (node_stack_.empty()){
+    void EndArrayLogic(Builder& builder){
+        if (builder.GetNodeStack().empty()){
             throw std::logic_error ("logic_error: EndArray called not within its context");
-        } else if (!node_stack_.back()->IsArray()){
+        } else if (!builder.GetNodeStack().back()->IsArray()){
             throw std::logic_error ("logic_error: EndArray called not within its context");
         }
+    }
+
+    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    Builder &Builder::EndArray() {
+        EndArrayLogic(*this);
         node_stack_.pop_back();
         if (node_stack_.empty()){
             root_ = *root_ptr_;
@@ -513,11 +438,7 @@ namespace json {
     }
 
     Builder &ValueArrayContext::EndArray() {
-        if (builder_->GetNodeStack().empty()){
-            throw std::logic_error ("logic_error: EndArray called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsArray()){
-            throw std::logic_error ("logic_error: EndArray called not within its context");
-        }
+        EndArrayLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
             builder_->SetRoot(*builder_->GetRootPtr());
@@ -526,11 +447,7 @@ namespace json {
     }
 
     Builder &ArrayContext::EndArray() {
-        if (builder_->GetNodeStack().empty()){
-            throw std::logic_error ("logic_error: EndArray called not within its context");
-        } else if (!builder_->GetNodeStack().back()->IsArray()){
-            throw std::logic_error ("logic_error: EndArray called not within its context");
-        }
+        EndArrayLogic(*builder_);
         builder_->PopNode();
         if (builder_->GetNodeStack().empty()){
             builder_->SetRoot(*builder_->GetRootPtr());
