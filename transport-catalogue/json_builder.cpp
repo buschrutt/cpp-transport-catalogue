@@ -86,9 +86,16 @@ namespace json {
     }
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder& Builder::BuildKey(const std::string &node_key) {
+    Builder::KeyContext Builder::Key(const std::string &node_key) {
         KeyLogic(*this, node_key);
-        return *this;
+        KeyContext key_context(this);
+        return {key_context.GetContext()};
+    }
+
+    Builder::KeyContext& Builder::BaseContext2::Key(const std::string &node_key) {
+        KeyLogic(*builder_, node_key);
+        auto * key_context = new KeyContext(builder_);
+        return *key_context;
     }
 
     Builder::KeyContext& Builder::ValueFullContext::Key(const std::string &node_key) {
@@ -97,22 +104,18 @@ namespace json {
         return *key_context;
     }
 
-    Builder::KeyContext& Builder::ValueKeyContext::Key(const std::string &node_key) {
-        KeyLogic(*builder_, node_key);
-        auto * key_context = new KeyContext(builder_);
-        return *key_context;
-    }
-
-    Builder::KeyContext& Builder::DictContext::Key(const std::string &node_key) {
-        KeyLogic(*builder_, node_key);
-        auto * key_context = new KeyContext(builder_);
-        return *key_context;
-    }
-
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildValue(const Node::Value& node_value) {
+
+    Builder Builder::Value(const Node::Value& node_value) {
         ValueLogic(*this, node_value);
-        return *this;
+        if (!node_stack_.empty()){
+            if (node_stack_.back()->IsArray()){
+                ValueArrayContext value_context(this);
+                return *value_context.GetBuilder();
+            }
+        }
+        ValueFullContext value_context(this);
+        return *value_context.GetBuilder();
     }
 
     Builder::ValueKeyContext &Builder::KeyContext::Value(const Node::Value &node_value) {
@@ -128,9 +131,10 @@ namespace json {
     }
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildStartDict() {
+    Builder::DictContext Builder::StartDict() {
         StartDictLogic(*this);
-        return *this;
+        DictContext dict_context(this);
+        return dict_context.GetContext();
     }
 
     Builder::DictContext &Builder::BaseContext1::StartDict() {
@@ -140,9 +144,10 @@ namespace json {
     }
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    Builder &Builder::BuildStartArray() {
+    Builder::ArrayContext Builder::StartArray() {
         StartArrayLogic(*this);
-        return *this;
+        ArrayContext array_context(this);
+        return array_context.GetArrayContext();
     }
 
     Builder::ArrayContext &Builder::BaseContext1::StartArray() {
@@ -157,17 +162,12 @@ namespace json {
         return *this;
     }
 
-    Builder &Builder::ValueKeyContext::EndDict() {
+    Builder &Builder::BaseContext2::EndDict() {
         EndDictLogic(*builder_);
         return *this->builder_;
     }
 
     Builder &Builder::ValueFullContext::EndDict() {
-        EndDictLogic(*builder_);
-        return *this->builder_;
-    }
-
-    Builder &Builder::DictContext::EndDict() {
         EndDictLogic(*builder_);
         return *this->builder_;
     }
