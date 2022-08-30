@@ -2,15 +2,90 @@
 
 namespace json {
 
-    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void KeyLogic(Builder& builder, const std::string &node_key){
-        builder.SetIsKey(true);
-        builder.SetKey(node_key);
+    // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% method logics %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+    void Builder::KeyLogic(Builder& builder, const std::string &node_key){
+        builder.is_previous_key_ = true;
+        builder.key_ = node_key;
         Node * pair_node = new Node();
-        auto& dict = std::get<Dict>(builder.GetNodeStack().back()->SetValue());
+        auto& dict = std::get<Dict>(builder.node_stack_.back()->SetValue());
         dict.insert({node_key, *pair_node});
     }
 
+    void Builder::ValueLogic(Builder& builder, const Node::Value& node_value){
+        builder.is_previous_key_ = false;
+        Node * node = new Node();
+        node->SetValue() = node_value;
+        if (builder.node_stack_.empty()){
+            builder.root_ptr_ = node;
+            builder.root_ = *node;
+        } else {
+            if (builder.node_stack_.back()->IsArray()){
+                auto& array = std::get<Array>(builder.node_stack_.back()->SetValue());
+                array.emplace_back(*node);
+            } else if (builder.node_stack_.back()->IsDict()){
+                auto& dict = std::get<Dict>(builder.node_stack_.back()->SetValue());
+                dict[builder.key_] = *node;
+            }
+        }
+    }
+
+    void Builder::StartDictLogic(Builder& builder){
+        builder.is_previous_key_ = false;
+        Dict node_dict;
+        Node * node = new Node();
+        node->SetValue() = node_dict;
+        if (builder.node_stack_.empty()){
+            builder.node_stack_.emplace_back(node);
+        } else if (builder.node_stack_.back()->IsArray()){
+            auto& array = std::get<Array>(builder.node_stack_.back()->SetValue());
+            array.emplace_back(*node);
+            builder.node_stack_.emplace_back(&array.back());
+        } else if (builder.node_stack_.back()->IsDict()){
+            auto& dict = std::get<Dict>(builder.node_stack_.back()->SetValue());
+            dict[builder.key_] = *node;
+            builder.node_stack_.emplace_back(&dict.at(builder.key_));
+        }
+        if (builder.node_stack_.size() == 1){
+            builder.root_ptr_ = builder.node_stack_.back();
+        }
+    }
+
+    void Builder::StartArrayLogic(Builder& builder){
+        builder.is_previous_key_ = false;
+        Array node_array;
+        Node * node = new Node();
+        node->SetValue() = node_array;
+        if (builder.node_stack_.empty()){
+            builder.node_stack_.emplace_back(node);
+        } else if (builder.node_stack_.back()->IsArray()){
+            auto& array = std::get<Array>(builder.node_stack_.back()->SetValue());
+            array.emplace_back(*node);
+            builder.node_stack_.emplace_back(&array.back());
+        } else if (builder.node_stack_.back()->IsDict()){
+            auto& dict = std::get<Dict>(builder.node_stack_.back()->SetValue());
+            dict[builder.key_] = *node;
+            builder.node_stack_.emplace_back(&dict.at(builder.key_));
+        }
+        if (builder.node_stack_.size() == 1){
+            builder.root_ptr_ = builder.node_stack_.back();
+        }
+    }
+
+    void Builder::EndArrayLogic(Builder& builder){
+        builder.node_stack_.pop_back();
+        if (builder.node_stack_.empty()){
+            builder.root_ = *builder.root_ptr_;
+        }
+    }
+
+    void Builder::EndDictLogic(Builder& builder){
+        builder.node_stack_.pop_back();
+        if (builder.node_stack_.empty()){
+            builder.root_ = *builder.root_ptr_;
+        }
+    }
+
+    // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     Builder& Builder::BuildKey(const std::string &node_key) {
         KeyLogic(*this, node_key);
         return *this;
@@ -34,27 +109,7 @@ namespace json {
         return *key_context;
     }
 
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Key %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void ValueLogic(Builder& builder, const Node::Value& node_value){
-        builder.SetIsKey(false);
-        Node * node = new Node();
-        node->SetValue() = node_value;
-        if (builder.GetNodeStack().empty()){
-            builder.SetRootPtr(node);
-            builder.SetRoot(*node);
-        } else {
-            if (builder.GetNodeStack().back()->IsArray()){
-                auto& array = std::get<Array>(builder.GetNodeStack().back()->SetValue());
-                array.emplace_back(*node);
-            } else if (builder.GetNodeStack().back()->IsDict()){
-                auto& dict = std::get<Dict>(builder.GetNodeStack().back()->SetValue());
-                dict[builder.GetKey()] = *node;
-            }
-        }
-    }
-
     Builder &Builder::BuildValue(const Node::Value& node_value) {
         ValueLogic(*this, node_value);
         return *this;
@@ -77,30 +132,8 @@ namespace json {
         auto * value_context = new ValueArrayContext(builder_);
         return *value_context;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Value %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void StartDictLogic(Builder& builder){
-        builder.SetIsKey(false);
-        Dict node_dict;
-        Node * node = new Node();
-        node->SetValue() = node_dict;
-        if (builder.GetNodeStack().empty()){
-            builder.EmplaceNode(node);
-        } else if (builder.GetNodeStack().back()->IsArray()){
-            auto& array = std::get<Array>(builder.GetNodeStack().back()->SetValue());
-            array.emplace_back(*node);
-            builder.EmplaceNode(&array.back());
-        } else if (builder.GetNodeStack().back()->IsDict()){
-            auto& dict = std::get<Dict>(builder.GetNodeStack().back()->SetValue());
-            dict[builder.GetKey()] = *node;
-            builder.EmplaceNode(&dict.at(builder.GetKey()));
-        }
-        if (builder.GetNodeStack().size() == 1){
-            builder.SetRootPtr(builder.GetNodeStack().back());
-        }
-    }
-
     Builder &Builder::BuildStartDict() {
         StartDictLogic(*this);
         return *this;
@@ -123,30 +156,8 @@ namespace json {
         auto * dict_context = new DictContext(builder_);
         return *dict_context;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void StartArrayLogic(Builder& builder){
-        builder.SetIsKey(false);
-        Array node_array;
-        Node * node = new Node();
-        node->SetValue() = node_array;
-        if (builder.GetNodeStack().empty()){
-            builder.EmplaceNode(node);
-        } else if (builder.GetNodeStack().back()->IsArray()){
-            auto& array = std::get<Array>(builder.GetNodeStack().back()->SetValue());
-            array.emplace_back(*node);
-            builder.EmplaceNode(&array.back());
-        } else if (builder.GetNodeStack().back()->IsDict()){
-            auto& dict = std::get<Dict>(builder.GetNodeStack().back()->SetValue());
-            dict[builder.GetKey()] = *node;
-            builder.EmplaceNode(&dict.at(builder.GetKey()));
-        }
-        if (builder.GetNodeStack().size() == 1){
-            builder.SetRootPtr(builder.GetNodeStack().back());
-        }
-    }
-
     Builder &Builder::BuildStartArray() {
         StartArrayLogic(*this);
         return *this;
@@ -169,16 +180,8 @@ namespace json {
         auto * array_context = new ArrayContext(builder_);
         return *array_context;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void EndDictLogic(Builder& builder){
-        builder.PopNode();
-        if (builder.GetNodeStack().empty()){
-            builder.SetRoot(*builder.GetRootPtr());
-        }
-    }
-
     Builder &Builder::EndDict() {
         EndDictLogic(*this);
         return *this;
@@ -198,16 +201,8 @@ namespace json {
         EndDictLogic(*builder_);
         return *this->builder_;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-    void EndArrayLogic(Builder& builder){
-        builder.PopNode();
-        if (builder.GetNodeStack().empty()){
-            builder.SetRoot(*builder.GetRootPtr());
-        }
-    }
-
     Builder &Builder::EndArray() {
         EndArrayLogic(*this);
         return *this;
@@ -222,16 +217,14 @@ namespace json {
         EndArrayLogic(*builder_);
         return *this->builder_;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% EndArray %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
 
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Build %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
-
     json::Node Builder::Build() {
         return root_;
     }
 
     json::Node Builder::ValueFullContext::Build() {
-        return builder_->GetRoot();
+        return builder_->root_;
     }
-    // End Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% Build %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
+
 }

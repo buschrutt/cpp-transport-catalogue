@@ -13,54 +13,53 @@ namespace json {
         class ArrayContext;
         class DictContext;
 
-        class KeyContext{
+        static void KeyLogic(Builder& builder, const std::string &node_key);
+        static void ValueLogic(Builder& builder, const Node::Value& node_value);
+        static void StartDictLogic(Builder& builder);
+        static void StartArrayLogic(Builder& builder);
+        static void EndArrayLogic(Builder& builder);
+        static void EndDictLogic(Builder& builder);
+
+        class ContextConstructor {
         public:
-            explicit KeyContext(Builder * builder): builder_(builder){};
+            explicit ContextConstructor(Builder * builder): builder_(builder){};
+            Builder * GetBuilder (){
+                return builder_;
+            }
+        protected:
+            Builder * builder_{};
+        };
+
+        class KeyContext : ContextConstructor{
+        public:
+            explicit KeyContext(Builder * builder): ContextConstructor(builder){};
             ValueKeyContext& Value(const Node::Value& node_value);
             ArrayContext& StartArray();
             DictContext& StartDict();
             KeyContext GetContext (){
                 return *this;
             }
-            Builder * GetBuilder (){
-                return builder_;
-            }
-        private:
-            Builder * builder_{};
         };
 
-        class BaseContext{
+        class ValueKeyContext : public ContextConstructor {
         public:
-            explicit BaseContext(Builder * builder): builder_(builder){};
-        protected:
-            Builder * builder_{};
-        };
-
-        class ValueKeyContext : public BaseContext {
-        public:
-            explicit ValueKeyContext(Builder *builder) : BaseContext(builder) {}
+            explicit ValueKeyContext(Builder * builder): ContextConstructor(builder){}
             KeyContext& Key(const std::string& node_key);
             Builder& EndDict();
             ValueKeyContext& GetContext (){
                 return *this;
             }
-            Builder * GetBuilder (){
-                return builder_;
-            }
         };
 
-        class ValueArrayContext : public BaseContext {
+        class ValueArrayContext : public ContextConstructor {
         public:
-            explicit ValueArrayContext(Builder *builder) : BaseContext(builder) {}
+            explicit ValueArrayContext(Builder * builder): ContextConstructor(builder){}
             ValueArrayContext& Value(const Node::Value& node_value);
             DictContext& StartDict();
             ArrayContext& StartArray();
             Builder& EndArray();
             ValueArrayContext& GetContext (){
                 return *this;
-            }
-            Builder * GetBuilder (){
-                return builder_;
             }
         };
 
@@ -78,24 +77,19 @@ namespace json {
             }
         };
 
-        class DictContext{
+        class DictContext : public ContextConstructor {
         public:
-            explicit DictContext(Builder * builder): builder_(builder){};
+            explicit DictContext(Builder * builder): ContextConstructor(builder){};
             KeyContext& Key(const std::string& node_key);
             Builder& EndDict();
             DictContext GetContext (){
                 return *this;
             }
-            Builder * GetBuilder (){
-                return builder_;
-            }
-        private:
-            Builder * builder_{};
         };
 
-        class ArrayContext{
+        class ArrayContext : public ContextConstructor {
         public:
-            explicit ArrayContext(Builder * builder): builder_(builder){};
+            explicit ArrayContext(Builder * builder): ContextConstructor(builder){};
             ValueArrayContext& Value(const Node::Value& node_value);
             DictContext& StartDict();
             ArrayContext& StartArray();
@@ -103,11 +97,6 @@ namespace json {
             ArrayContext GetContext (){
                 return *this;
             }
-            Builder * GetBuilder (){
-                return builder_;
-            }
-        private:
-            Builder * builder_{};
         };
 
         Builder& BuildKey(const std::string &node_key);
@@ -149,46 +138,12 @@ namespace json {
 
         json::Node Build();
 
-        json::Node GetRoot(){
-            return root_;
-        }
-        json::Node * GetRootPtr() {
-            return root_ptr_;
-        }
-        std::vector<json::Node*> GetNodeStack(){
-            return node_stack_;
-        }
-        std::string GetKey() {
-            return key_;
-        }
-        [[nodiscard]] bool GetIsKey() const {
-            return is_previous_key_;
-        }
-        void SetRoot(json::Node root){
-            root_ = std::move(root);
-        }
-        void SetRootPtr(json::Node * root_ptr) {
-            root_ptr_ = root_ptr;
-        }
-        void EmplaceNode(json::Node* node){
-            node_stack_.emplace_back(node);
-        }
-        void PopNode(){
-            node_stack_.pop_back();
-        }
-        void SetKey(std::string key){
-            key_ = std::move(key);
-        }
-        void SetIsKey(bool flag) {
-            is_previous_key_ = flag;
-        }
-
     private:
         json::Node root_;
         json::Node * root_ptr_;
-        std::vector<json::Node*> node_stack_; // pointers to Nodes that aren't built yet
-        std::string key_; // need key to complete pair
-        bool is_previous_key_ = false; // in few cases if the last call was to key has to be checked
+        std::vector<json::Node*> node_stack_;
+        std::string key_;
+        bool is_previous_key_ = false;
     };
 
 }
