@@ -26,16 +26,22 @@ namespace json {
             Builder * GetBuilder (){
                 return builder_;
             }
+
         protected:
             Builder * builder_{};
         };
 
-        class KeyContext : ContextConstructor{
+        class BaseContext1 : public ContextConstructor {
         public:
-            explicit KeyContext(Builder * builder): ContextConstructor(builder){};
-            ValueKeyContext& Value(const Node::Value& node_value);
+            explicit BaseContext1(Builder * builder): ContextConstructor(builder){};
             ArrayContext& StartArray();
             DictContext& StartDict();
+        };
+
+        class KeyContext : public BaseContext1 {
+        public:
+            explicit KeyContext(Builder * builder): BaseContext1(builder){};
+            ValueKeyContext& Value(const Node::Value& node_value);
             KeyContext GetContext (){
                 return *this;
             }
@@ -51,12 +57,10 @@ namespace json {
             }
         };
 
-        class ValueArrayContext : public ContextConstructor {
+        class ValueArrayContext : public BaseContext1 {
         public:
-            explicit ValueArrayContext(Builder * builder): ContextConstructor(builder){}
+            explicit ValueArrayContext(Builder * builder): BaseContext1(builder){}
             ValueArrayContext& Value(const Node::Value& node_value);
-            DictContext& StartDict();
-            ArrayContext& StartArray();
             Builder& EndArray();
             ValueArrayContext& GetContext (){
                 return *this;
@@ -72,9 +76,6 @@ namespace json {
             ValueFullContext& GetFullContext (){
                 return *this;
             }
-            Builder * GetFullBuilder (){
-                return builder_;
-            }
         };
 
         class DictContext : public ContextConstructor {
@@ -87,14 +88,10 @@ namespace json {
             }
         };
 
-        class ArrayContext : public ContextConstructor {
+        class ArrayContext : public ValueArrayContext {
         public:
-            explicit ArrayContext(Builder * builder): ContextConstructor(builder){};
-            ValueArrayContext& Value(const Node::Value& node_value);
-            DictContext& StartDict();
-            ArrayContext& StartArray();
-            Builder& EndArray();
-            ArrayContext GetContext (){
+            explicit ArrayContext(Builder * builder): ValueArrayContext (builder){};
+            ArrayContext GetArrayContext (){
                 return *this;
             }
         };
@@ -129,7 +126,7 @@ namespace json {
         Builder& BuildStartArray();
         ArrayContext StartArray() {
             ArrayContext array_context(&BuildStartArray());
-            return array_context.GetContext();
+            return array_context.GetArrayContext();
         }
 
         Builder& EndDict();

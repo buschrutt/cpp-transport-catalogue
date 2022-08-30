@@ -127,31 +127,13 @@ namespace json {
         return *value_context;
     }
 
-    Builder::ValueArrayContext &Builder::ArrayContext::Value(const Node::Value &node_value) {
-        ValueLogic(*builder_, node_value);
-        auto * value_context = new ValueArrayContext(builder_);
-        return *value_context;
-    }
-
     // Begin Of %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% StartDict %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     Builder &Builder::BuildStartDict() {
         StartDictLogic(*this);
         return *this;
     }
 
-    Builder::DictContext &Builder::KeyContext::StartDict() {
-        StartDictLogic(*builder_);
-        auto * dict_context = new DictContext(builder_);
-        return *dict_context;
-    }
-
-    Builder::DictContext &Builder::ValueArrayContext::StartDict() {
-        StartDictLogic(*builder_);
-        auto * dict_context = new DictContext(builder_);
-        return *dict_context;
-    }
-
-    Builder::DictContext &Builder::ArrayContext::StartDict() {
+    Builder::DictContext &Builder::BaseContext1::StartDict() {
         StartDictLogic(*builder_);
         auto * dict_context = new DictContext(builder_);
         return *dict_context;
@@ -163,19 +145,7 @@ namespace json {
         return *this;
     }
 
-    Builder::ArrayContext &Builder::KeyContext::StartArray() {
-        StartArrayLogic(*builder_);
-        auto * array_context = new ArrayContext(builder_);
-        return *array_context;
-    }
-
-    Builder::ArrayContext &Builder::ValueArrayContext::StartArray() {
-        StartArrayLogic(*builder_);
-        auto * array_context = new ArrayContext(builder_);
-        return *array_context;
-    }
-
-    Builder::ArrayContext& Builder::ArrayContext::StartArray() {
+    Builder::ArrayContext &Builder::BaseContext1::StartArray() {
         StartArrayLogic(*builder_);
         auto * array_context = new ArrayContext(builder_);
         return *array_context;
@@ -209,11 +179,6 @@ namespace json {
     }
 
     Builder &Builder::ValueArrayContext::EndArray() {
-        EndArrayLogic(*builder_);
-        return *this->builder_;
-    }
-
-    Builder &Builder::ArrayContext::EndArray() {
         EndArrayLogic(*builder_);
         return *this->builder_;
     }
