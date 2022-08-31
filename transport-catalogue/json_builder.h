@@ -8,7 +8,6 @@ namespace json {
     class Builder {
 
     public:
-
         class ValueKeyContext;
 
         class ArrayContext;
@@ -42,34 +41,29 @@ namespace json {
             Builder * builder_{};
         };
 
-        class BaseContext1 : public ContextConstructor {
+        class BaseContext : public ContextConstructor {
         public:
-            explicit BaseContext1(Builder * builder): ContextConstructor(builder){};
+            explicit BaseContext(Builder * builder): ContextConstructor(builder){};
             ArrayContext& StartArray();
             DictContext& StartDict();
         };
 
-        class BaseContext2 : public ContextConstructor {
+        class KeyContext : public BaseContext {
         public:
-            explicit BaseContext2(Builder * builder): ContextConstructor(builder){};
+            explicit KeyContext(Builder * builder): BaseContext(builder){};
+            ValueKeyContext& Value(const Node::Value& node_value);
+        };
+
+        class ValueKeyContext : public ContextConstructor {
+        public:
+            explicit ValueKeyContext(Builder * builder): ContextConstructor(builder){}
             KeyContext& Key(const std::string& node_key);
             Builder& EndDict();
         };
 
-        class KeyContext : public BaseContext1 {
+        class ValueArrayContext : public BaseContext {
         public:
-            explicit KeyContext(Builder * builder): BaseContext1(builder){};
-            ValueKeyContext& Value(const Node::Value& node_value);
-        };
-
-        class ValueKeyContext : public BaseContext2 {
-        public:
-            explicit ValueKeyContext(Builder * builder): BaseContext2(builder){}
-        };
-
-        class ValueArrayContext : public BaseContext1 {
-        public:
-            explicit ValueArrayContext(Builder * builder): BaseContext1(builder){}
+            explicit ValueArrayContext(Builder * builder): BaseContext(builder){}
             ValueArrayContext& Value(const Node::Value& node_value);
             Builder& EndArray();
         };
@@ -82,9 +76,9 @@ namespace json {
             json::Node Build();
         };
 
-        class DictContext : public BaseContext2 {
+        class DictContext : public ValueKeyContext {
         public:
-            explicit DictContext(Builder * builder): BaseContext2(builder){};
+            explicit DictContext(Builder * builder): ValueKeyContext(builder){};
         };
 
         class ArrayContext : public ValueArrayContext {
@@ -113,5 +107,4 @@ namespace json {
         std::string key_;
         bool is_previous_key_ = false;
     };
-
 }

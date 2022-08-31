@@ -92,7 +92,7 @@ namespace json {
         return key_context;
     }
 
-    Builder::KeyContext& Builder::BaseContext2::Key(const std::string &node_key) {
+    Builder::KeyContext& Builder::ValueKeyContext::Key(const std::string &node_key) {
         KeyLogic(*builder_, node_key);
         auto * key_context = new KeyContext(builder_);
         return *key_context;
@@ -137,7 +137,7 @@ namespace json {
         return dict_context;
     }
 
-    Builder::DictContext &Builder::BaseContext1::StartDict() {
+    Builder::DictContext &Builder::BaseContext::StartDict() {
         StartDictLogic(*builder_);
         auto * dict_context = new DictContext(builder_);
         return *dict_context;
@@ -150,7 +150,7 @@ namespace json {
         return array_context;
     }
 
-    Builder::ArrayContext &Builder::BaseContext1::StartArray() {
+    Builder::ArrayContext &Builder::BaseContext::StartArray() {
         StartArrayLogic(*builder_);
         auto * array_context = new ArrayContext(builder_);
         return *array_context;
@@ -162,7 +162,7 @@ namespace json {
         return *this;
     }
 
-    Builder &Builder::BaseContext2::EndDict() {
+    Builder &Builder::ValueKeyContext::EndDict() {
         EndDictLogic(*builder_);
         return *this->builder_;
     }
