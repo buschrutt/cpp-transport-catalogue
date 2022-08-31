@@ -35,6 +35,9 @@ namespace json {
             Builder * GetBuilder (){
                 return builder_;
             }
+            ContextConstructor GetContext (){
+                return *this;
+            }
         protected:
             Builder * builder_{};
         };
@@ -57,17 +60,11 @@ namespace json {
         public:
             explicit KeyContext(Builder * builder): BaseContext1(builder){};
             ValueKeyContext& Value(const Node::Value& node_value);
-            KeyContext GetContext (){
-                return *this;
-            }
         };
 
         class ValueKeyContext : public BaseContext2 {
         public:
             explicit ValueKeyContext(Builder * builder): BaseContext2(builder){}
-            ValueKeyContext& GetContext (){
-                return *this;
-            }
         };
 
         class ValueArrayContext : public BaseContext1 {
@@ -75,9 +72,6 @@ namespace json {
             explicit ValueArrayContext(Builder * builder): BaseContext1(builder){}
             ValueArrayContext& Value(const Node::Value& node_value);
             Builder& EndArray();
-            ValueArrayContext& GetContext (){
-                return *this;
-            }
         };
 
         class ValueFullContext : public ValueArrayContext {
@@ -86,25 +80,16 @@ namespace json {
             KeyContext& Key(const std::string& node_key);
             Builder& EndDict();
             json::Node Build();
-            ValueFullContext& GetFullContext (){
-                return *this;
-            }
         };
 
         class DictContext : public BaseContext2 {
         public:
             explicit DictContext(Builder * builder): BaseContext2(builder){};
-            DictContext GetContext (){
-                return *this;
-            }
         };
 
         class ArrayContext : public ValueArrayContext {
         public:
             explicit ArrayContext(Builder * builder): ValueArrayContext (builder){};
-            ArrayContext GetArrayContext (){
-                return *this;
-            }
         };
 
         KeyContext Key(const std::string& node_key);
