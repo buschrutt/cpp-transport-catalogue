@@ -173,7 +173,7 @@ namespace json_reader {
                         handler::CustomRouteFinder route_finder(this->routing_settings_);
                         std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> found_route = route_finder.RouteSearch(from_name, to_name, catalogue_);
                         j_builder.Key("request_id").Value(db_request.AsDict().at("id"s).AsInt());
-                        if (found_route.second.empty()){
+                        if (found_route.first == -1.0){
                             j_builder.Key("error_message"s).Value("not found"s);
                         } else {
                             j_builder.Key("total_time").Value(found_route.first);
