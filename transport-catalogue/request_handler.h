@@ -44,7 +44,7 @@ namespace handler {
             for (auto [stop, vertexes] : stop_vertexes_){
                 domain::VertexData* fake_vertex = &vertex_ids_.at(fake_bus_ids_.at(stop));
                 for (auto vertex : vertexes){
-                    stop_bus_id_[stop][vertex->bus] = vertex->id;
+                    stop_bus_id_[stop][vertex->bus][vertex->is_way_back] = vertex->id;
                     if (vertex != fake_vertex){
                         edges_.push_back({fake_vertex->id, vertex->id, wait_factor_});
                         edges_.push_back({vertex->id, fake_vertex->id, 0});
@@ -56,17 +56,22 @@ namespace handler {
             for (const auto& [bus_name, bus] : all_buses){
                 for (size_t i = 0; i < bus->route.size() - 1; i++){
                     if (bus->is_chain){
-                        size_t first_id = stop_bus_id_.at(bus->route[i]).at(bus);
-                        size_t second_id = stop_bus_id_.at(bus->route[i + 1]).at(bus);
+                        size_t first_id = stop_bus_id_.at(bus->route[i]).at(bus).at(false);
+                        size_t second_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(false);
+                        size_t first_back_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(true);
+                        size_t second_back_id = stop_bus_id_.at(bus->route[i]).at(bus).at(true);
                         auto id_weight = catalogue.GetDistance({bus->route[i], bus->route[i + 1]}) * speed_factor_;
                         edges_.push_back({first_id, second_id, id_weight});
                         auto id_back_weight = catalogue.GetDistance({bus->route[i + 1], bus->route[i]}) * speed_factor_;
-                        edges_.push_back({second_id, first_id, id_back_weight});
+                        edges_.push_back({first_back_id, second_back_id, id_back_weight});
+                        if (second_id == stop_bus_id_.at(bus->route[bus->route.size() - 1]).at(bus).at(false)){
+                            edges_.push_back({second_id, first_back_id, 0});
+                        }
                     } else {
-                        size_t first_id = stop_bus_id_.at(bus->route[i + 1]).at(bus);
-                        size_t second_id = stop_bus_id_.at(bus->route[i]).at(bus);
+                        size_t first_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(false);
+                        size_t second_id = stop_bus_id_.at(bus->route[i]).at(bus).at(false);
                         auto id_weight = catalogue.GetDistance({bus->route[i + 1], bus->route[i]}) * speed_factor_;
-                        if (second_id == stop_bus_id_.at(bus->route[0]).at(bus)) {
+                        if (second_id == stop_bus_id_.at(bus->route[0]).at(bus).at(false)) {
                             edges_.push_back({first_id, fake_bus_ids_.at(bus->route[0]), id_weight});
                         } else {
                             edges_.push_back({first_id, second_id, id_weight});
@@ -135,7 +140,7 @@ namespace handler {
         double wait_factor_;
         std::map<domain::Stop*, size_t> fake_bus_ids_;
         std::map<size_t, graph::Edge<double>*> graph_edges_;
-        std::map<domain::Stop*, std::map<domain::Bus*, size_t>> stop_bus_id_;
+        std::map<domain::Stop*, std::map<domain::Bus*, std::map<bool, size_t>>> stop_bus_id_;
         std::vector<graph::Edge<double>> edges_;
         std::map<size_t, domain::VertexData> vertex_ids_;
         std::map<domain::Stop*, std::vector<domain::VertexData*>> stop_vertexes_;
