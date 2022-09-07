@@ -8,6 +8,7 @@
 #include <deque>
 #include "geo.h"
 #include "domain.h"
+#include "router.h"
 
 namespace catalogue {
 
@@ -22,6 +23,8 @@ namespace catalogue {
         const std::map<std::string, domain::Stop*> & GetAllStops();
 
         const std::map<std::string, domain::Bus*>& GetAllBuses();
+
+        const double& GetDistance(std::pair<domain::Stop*, domain::Stop*>);
 
         void SetStop(const std::string& bus_stop, geo::Coordinates coordinates);
 

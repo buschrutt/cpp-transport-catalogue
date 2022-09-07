@@ -7,6 +7,7 @@
 #include "json.h"
 #include "map_renderer.h"
 #include "transport_catalogue.h"
+#include "request_handler.h"
 
 namespace json_reader {
 
@@ -16,9 +17,13 @@ namespace json_reader {
         JSONReader(json::Document  json_doc, catalogue::TransportCatalogue& catalogue)
         : json_doc_(std::move(json_doc))
         , catalogue_(catalogue)
-        , result_json_doc_({}){}
-        // %%%%%%%%%% %%%%%%%%%% static get settings method %%%%%%%%%% %%%%%%%%%%
+        , result_json_doc_({}){
+            routing_settings_ = json_reader::JSONReader::RoutingSettingsBuilder(json_doc_);
+        }
+        // %%%%%%%%%% %%%%%%%%%% static get render settings method %%%%%%%%%% %%%%%%%%%%
         static renderer::RenderSettings RenderSettingsBuilder(const json::Document& json_doc);
+        // %%%%%%%%%% %%%%%%%%%% static get routing settings method %%%%%%%%%% %%%%%%%%%%
+        static domain::RoutingSettings RoutingSettingsBuilder(const json::Document& json_doc);
         // %%%%%%%%%% %%%%%%%%%% get from json data method %%%%%%%%%% %%%%%%%%%%
         void DBBuilder();
         // %%%%%%%%%% %%%%%%%%%% response section reading and response formation %%%%%%%%%% %%%%%%%%%%
@@ -29,5 +34,6 @@ namespace json_reader {
         catalogue::TransportCatalogue catalogue_;
         json::Document result_json_doc_;
         renderer::RenderSettings render_settings_;
+        domain::RoutingSettings routing_settings_;
     };
 }

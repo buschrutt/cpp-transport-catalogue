@@ -10,6 +10,14 @@ namespace catalogue {
         return buses_;
     }
 
+    const double& TransportCatalogue::GetDistance(std::pair<domain::Stop*, domain::Stop*> key_pair) {
+        if (distances_.count(key_pair) > 0) {
+            return distances_.at(key_pair);
+        } else {
+            return distances_.at({key_pair.second, key_pair.first});
+        }
+    }
+
     domain::Stop* TransportCatalogue::ReturnStop(const std::string& stop_name){
         if (stops_.count(stop_name) == 0){
             domain::Stop stop;

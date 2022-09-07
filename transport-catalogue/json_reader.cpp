@@ -61,6 +61,16 @@ namespace json_reader {
         return rs;
     }
 
+    domain::RoutingSettings JSONReader::RoutingSettingsBuilder(const json::Document& json_doc) {
+        domain::RoutingSettings rs;
+        if (json_doc.GetRoot().AsDict().count("routing_settings"s) > 0) {
+            auto json_rs = json_doc.GetRoot().AsDict().at("routing_settings"s);
+            rs.bus_wait_time = json_rs.AsDict().at("bus_wait_time").AsInt();
+            rs.bus_velocity = json_rs.AsDict().at("bus_velocity").AsInt();
+        }
+        return rs;
+    }
+
     void JSONReader::DBBuilder(){
         if (json_doc_.GetRoot().AsDict().count("base_requests"s) > 0){
             auto db_request_arr = json_doc_.GetRoot().AsDict().at("base_requests"s);
@@ -156,14 +166,43 @@ namespace json_reader {
                             .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
                             .Key("map"s).Value(svg_map.AsString());
                         j_builder.EndDict();
+                    } else if (node.AsString() == "Route"s){
+                        j_builder.StartDict();
+                        std::string from_name = db_request.AsDict().at("from"s).AsString();
+                        std::string to_name = db_request.AsDict().at("to"s).AsString();
+                        handler::CustomRouteFinder route_finder(this->routing_settings_);
+                        std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> found_route = route_finder.RouteSearch(from_name, to_name, catalogue_);
+                        j_builder.Key("request_id").Value(db_request.AsDict().at("id"s).AsInt());
+                        if (found_route.second.empty()){
+                            j_builder.Key("error_message"s).Value("not found"s);
+                        } else {
+                            j_builder.Key("total_time").Value(found_route.first);
+                            j_builder.Key("items"s).StartArray();
+                            for (auto edge : found_route.second){
+                                if (std::holds_alternative<domain::Wait>(edge)){
+                                    j_builder.StartDict()
+                                            .Key("type"s).Value("Wait")
+                                            .Key("stop_name").Value(std::get<domain::Wait>(edge).stop->name)
+                                            .Key("time"s).Value(std::get<domain::Wait>(edge).time)
+                                            .EndDict();
+                                } else {
+                                    j_builder.StartDict()
+                                            .Key("type"s).Value("Bus")
+                                            .Key("bus").Value(std::get<domain::Ride>(edge).bus->name)
+                                            .Key("time"s).Value(std::get<domain::Ride>(edge).time)
+                                            .Key("span_count"s).Value(std::get<domain::Ride>(edge).span_count)
+                                            .EndDict();
+                                }
+                            }
+                            j_builder.EndArray();
+                        }
+                        j_builder.EndDict();
                     }
                 }
             }
             j_builder.EndArray(); // %%%%% end root array
         }
-
         result_json_doc_ = json::Document{j_builder.Build()};
         return result_json_doc_;
     }
-
 }
