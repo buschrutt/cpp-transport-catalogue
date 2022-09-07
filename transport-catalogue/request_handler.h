@@ -91,7 +91,10 @@ namespace handler {
             double time = 0;
             int span_count = 0;
             domain::Bus* bus{};
+            auto c = route_info->edges.size();
             for (auto section : route_info->edges){
+                auto a = section;
+                auto b = vertex_ids_.size();
                 if (edges_.at(section).weight != 0 ){
                     if (vertex_ids_.at(edges_.at(section).from).stop == vertex_ids_.at(edges_.at(section).to).stop){
                         if (!ride_data.empty()){
@@ -125,6 +128,10 @@ namespace handler {
             }
             graph::Router current_router(current_graph);
             std::optional<graph::Router<double>::RouteInfo> route_info = current_router.BuildRoute(from_to_id.first, from_to_id.second);
+            if (!route_info){
+                return{};
+            }
+
             return {route_info->weight, GetSearchResult(route_info)};
         }
 
