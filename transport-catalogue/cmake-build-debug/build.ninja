@@ -109,6 +109,12 @@ build CMakeFiles/testing.dir/transport_catalogue.cpp.obj: CXX_COMPILER__testing_
   OBJECT_DIR = CMakeFiles\testing.dir
   OBJECT_FILE_DIR = CMakeFiles\testing.dir
 
+build CMakeFiles/testing.dir/transport_router.cpp.obj: CXX_COMPILER__testing_Debug C$:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_router.cpp || cmake_object_order_depends_target_testing
+  DEP_FILE = CMakeFiles\testing.dir\transport_router.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\testing.dir
+  OBJECT_FILE_DIR = CMakeFiles\testing.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target testing
@@ -117,7 +123,7 @@ build CMakeFiles/testing.dir/transport_catalogue.cpp.obj: CXX_COMPILER__testing_
 #############################################
 # Link the executable testing.exe
 
-build testing.exe: CXX_EXECUTABLE_LINKER__testing_Debug CMakeFiles/testing.dir/main.cpp.obj CMakeFiles/testing.dir/geo.cpp.obj CMakeFiles/testing.dir/domain.cpp.obj CMakeFiles/testing.dir/json.cpp.obj CMakeFiles/testing.dir/json_reader.cpp.obj CMakeFiles/testing.dir/map_renderer.cpp.obj CMakeFiles/testing.dir/request_handler.cpp.obj CMakeFiles/testing.dir/json_builder.cpp.obj CMakeFiles/testing.dir/svg.cpp.obj CMakeFiles/testing.dir/transport_catalogue.cpp.obj
+build testing.exe: CXX_EXECUTABLE_LINKER__testing_Debug CMakeFiles/testing.dir/main.cpp.obj CMakeFiles/testing.dir/geo.cpp.obj CMakeFiles/testing.dir/domain.cpp.obj CMakeFiles/testing.dir/json.cpp.obj CMakeFiles/testing.dir/json_reader.cpp.obj CMakeFiles/testing.dir/map_renderer.cpp.obj CMakeFiles/testing.dir/request_handler.cpp.obj CMakeFiles/testing.dir/json_builder.cpp.obj CMakeFiles/testing.dir/svg.cpp.obj CMakeFiles/testing.dir/transport_catalogue.cpp.obj CMakeFiles/testing.dir/transport_router.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\testing.dir

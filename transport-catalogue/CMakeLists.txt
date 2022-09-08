@@ -14,4 +14,5 @@ add_executable(testing main.cpp
         json_builder.cpp
         svg.cpp
         request_handler.cpp
-        transport_catalogue.cpp)
+        transport_catalogue.cpp
+        transport_router.cpp)

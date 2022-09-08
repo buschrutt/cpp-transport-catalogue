@@ -3,6 +3,7 @@
 #include <string>
 #include "json_reader.h"
 #include "json_builder.h"
+#include "transport_router.h"
 
 using namespace std::literals;
 
@@ -170,7 +171,7 @@ namespace json_reader {
                         j_builder.StartDict();
                         std::string from_name = db_request.AsDict().at("from"s).AsString();
                         std::string to_name = db_request.AsDict().at("to"s).AsString();
-                        handler::CustomRouteFinder route_finder(this->routing_settings_);
+                        router::CustomRouteFinder route_finder(this->routing_settings_);
                         std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> found_route = route_finder.RouteSearch(from_name, to_name, catalogue_);
                         j_builder.Key("request_id").Value(db_request.AsDict().at("id"s).AsInt());
                         if (found_route.first == -1.0){
