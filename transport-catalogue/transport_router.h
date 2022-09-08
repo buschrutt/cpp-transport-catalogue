@@ -19,10 +19,10 @@ namespace router {
         void GetEdges(catalogue::TransportCatalogue & catalogue);
 
         std::pair<size_t, size_t> GetFromToId(catalogue::TransportCatalogue & catalogue,
-        const std::string & from_name, const std::string & to_name);
+                                              const std::string & from_name, const std::string & to_name);
 
         std::vector<std::variant<domain::Wait, domain::Ride>> GetSearchResult(const
-        std::optional<graph::Router<double>::RouteInfo>& route_info);
+                                                                              std::optional<graph::Router<double>::RouteInfo>& route_info);
 
         std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> RouteSearch(const std::string &
         from_name, const std::string & to_name, catalogue::TransportCatalogue & catalogue);

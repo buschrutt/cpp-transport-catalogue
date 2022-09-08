@@ -15,9 +15,9 @@ namespace json_reader {
     public:
         // %%%%%%%%%% %%%%%%%%%% constructor %%%%%%%%%% %%%%%%%%%%
         JSONReader(json::Document  json_doc, catalogue::TransportCatalogue& catalogue)
-        : json_doc_(std::move(json_doc))
-        , catalogue_(catalogue)
-        , result_json_doc_({}){
+                : json_doc_(std::move(json_doc))
+                , catalogue_(catalogue)
+                , result_json_doc_({}){
             routing_settings_ = json_reader::JSONReader::RoutingSettingsBuilder(json_doc_);
         }
         // %%%%%%%%%% %%%%%%%%%% static get render settings method %%%%%%%%%% %%%%%%%%%%

@@ -17,3 +17,13 @@
 12	254	6825550677095056	CMakeFiles/testing.dir/domain.cpp.obj	ef329e91190ea0f8
 12	2544	6843096173725914	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
 23	2566	6840981782224191	CMakeFiles/testing.dir/json_builder.cpp.obj	133a9919b94c8467
+6	1853	6843177644242905	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
+11	1915	6843177644830526	CMakeFiles/testing.dir/transport_router.cpp.obj	ad64f1f096a14ef
+8	2004	6843177645621938	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+3	2461	6843177650349980	CMakeFiles/testing.dir/json_reader.cpp.obj	3f451732119e22d4
+2461	4152	6843177667100304	testing.exe	6dd5a3b1510e3164
+20	2229	6843183253012500	CMakeFiles/testing.dir/transport_router.cpp.obj	ad64f1f096a14ef
+6	2242	6843183253234381	CMakeFiles/testing.dir/json.cpp.obj	a54a9a4c0a9b8a32
+15	2352	6843183254359287	CMakeFiles/testing.dir/main.cpp.obj	fc015695632a7926
+11	2837	6843183259112342	CMakeFiles/testing.dir/json_reader.cpp.obj	3f451732119e22d4
+2837	4511	6843183275886752	testing.exe	6dd5a3b1510e3164

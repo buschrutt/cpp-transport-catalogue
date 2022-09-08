@@ -124,15 +124,15 @@ namespace json_reader {
                         std::string bus_name = db_request.AsDict().at("name"s).AsString();
                         if ((int) catalogue_.BusStopCount(bus_name) == -1){
                             j_builder
-                            .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
-                            .Key("error_message"s).Value("not found"s);
+                                    .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
+                                    .Key("error_message"s).Value("not found"s);
                         } else {
                             j_builder
-                            .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
-                            .Key("stop_count"s).Value((int) catalogue_.BusStopCount(bus_name))
-                            .Key("unique_stop_count"s).Value((int)catalogue_.BusUniqStopCount(bus_name))
-                            .Key("route_length"s).Value((double) catalogue_.BusRouteLength(bus_name).first)
-                            .Key("curvature"s).Value((double) catalogue_.BusRouteLength(bus_name).second);
+                                    .Key("request_id"s).Value((int) db_request.AsDict().at("id"s).AsInt())
+                                    .Key("stop_count"s).Value((int) catalogue_.BusStopCount(bus_name))
+                                    .Key("unique_stop_count"s).Value((int)catalogue_.BusUniqStopCount(bus_name))
+                                    .Key("route_length"s).Value((double) catalogue_.BusRouteLength(bus_name).first)
+                                    .Key("curvature"s).Value((double) catalogue_.BusRouteLength(bus_name).second);
                         }
                         j_builder.EndDict();
                     } else if(node.AsString() == "Stop"s){
@@ -140,14 +140,14 @@ namespace json_reader {
                         std::string stop_name = db_request.AsDict().at("name"s).AsString();
                         if (catalogue_.GetStopBuses(stop_name).count(nullptr)){
                             j_builder
-                                .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
-                                .Key("error_message"s).Value("not found"s);
+                                    .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
+                                    .Key("error_message"s).Value("not found"s);
                         } else {
                             json::Array buffer_arr;
                             std::set<std::string> sort_buses;
                             j_builder
-                                .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
-                                .Key("buses"s).StartArray();
+                                    .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
+                                    .Key("buses"s).StartArray();
                             for (const auto value : catalogue_.GetStopBuses(stop_name)){
                                 sort_buses.insert(value->name);// %%%%%% ??????
                             }
@@ -164,8 +164,8 @@ namespace json_reader {
                         json::Node svg_map;
                         svg_map = map_renderer.DrawSvgMap(catalogue_, RenderSettingsBuilder(json_doc_));
                         j_builder
-                            .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
-                            .Key("map"s).Value(svg_map.AsString());
+                                .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
+                                .Key("map"s).Value(svg_map.AsString());
                         j_builder.EndDict();
                     } else if (node.AsString() == "Route"s){
                         j_builder.StartDict();
