@@ -1,10 +1,14 @@
 #include "transport_router.h"
+#include "log_duration.h"
 
 namespace router{
 
-    CustomRouteFinder::CustomRouteFinder(domain::RoutingSettings routing_settings){
+    CustomRouteFinder::CustomRouteFinder(domain::RoutingSettings routing_settings, catalogue::TransportCatalogue & catalogue){
         speed_factor_ = 1 / ((routing_settings.bus_velocity * 1000) / 60);
         wait_factor_ = routing_settings.bus_wait_time;
+        GetVertexes(catalogue);
+        GetEdges(catalogue);
+        BuildRouter();
     }
 
     void CustomRouteFinder::GetVertexes(catalogue::TransportCatalogue & catalogue){
@@ -57,6 +61,18 @@ namespace router{
         }
     }
 
+    void CustomRouteFinder::BuildRouter(){
+        //LOG_DURATION("BuildRouter"s);
+        auto * current_graph = new graph::DirectedWeightedGraph<double>(vertex_ids_.size() + 1);
+        for (auto edge : edges_){
+
+            size_t id = current_graph->AddEdge(edge);
+            graph_edges_[id] = &edge;
+        }
+        auto * current_router = new graph::Router<double>(*current_graph);
+        router_ = current_router;
+    }
+
     std::pair<size_t, size_t> CustomRouteFinder::GetFromToId(catalogue::TransportCatalogue & catalogue, const std::string & from_name, const std::string & to_name){
         return {start_ids_.at(catalogue.ReturnStop(from_name)), start_ids_.at(catalogue.ReturnStop(to_name))};
     }
@@ -95,16 +111,8 @@ namespace router{
         if (from_name == to_name){
             return {0.0, {}};
         }
-        GetVertexes(catalogue);
-        GetEdges(catalogue);
         std::pair<size_t, size_t> from_to_id = GetFromToId(catalogue, from_name, to_name);
-        graph::DirectedWeightedGraph<double> current_graph(vertex_ids_.size() + 1);
-        for (auto edge : edges_){
-            size_t id = current_graph.AddEdge(edge);
-            graph_edges_[id] = &edge;
-        }
-        graph::Router current_router(current_graph);
-        std::optional<graph::Router<double>::RouteInfo> route_info = current_router.BuildRoute(from_to_id.first, from_to_id.second);
+        std::optional<graph::Router<double>::RouteInfo> route_info = router_->BuildRoute(from_to_id.first, from_to_id.second);
         if (!route_info){
             return{-1.0, {}};
         }

@@ -8,7 +8,7 @@ namespace router {
 
     class CustomRouteFinder{
     public:
-        explicit CustomRouteFinder(domain::RoutingSettings routing_settings);
+        explicit CustomRouteFinder(domain::RoutingSettings routing_settings, catalogue::TransportCatalogue & catalogue);
 
         size_t GetLastId(){
             return vertex_ids_.size();
@@ -19,13 +19,15 @@ namespace router {
         void GetEdges(catalogue::TransportCatalogue & catalogue);
 
         std::pair<size_t, size_t> GetFromToId(catalogue::TransportCatalogue & catalogue,
-                                              const std::string & from_name, const std::string & to_name);
+            const std::string & from_name, const std::string & to_name);
+
+        void BuildRouter();
 
         std::vector<std::variant<domain::Wait, domain::Ride>> GetSearchResult(const
-                                                                              std::optional<graph::Router<double>::RouteInfo>& route_info);
+            std::optional<graph::Router<double>::RouteInfo>& route_info);
 
         std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> RouteSearch(const std::string &
-        from_name, const std::string & to_name, catalogue::TransportCatalogue & catalogue);
+            from_name, const std::string & to_name, catalogue::TransportCatalogue & catalogue);
 
     private:
         double speed_factor_;
@@ -36,6 +38,7 @@ namespace router {
         std::map<domain::Stop*, size_t> start_ids_;
         std::map<size_t, graph::Edge<double>*> graph_edges_;
         std::vector<graph::Edge<double>> edges_;
+        graph::Router<double>* router_{};
     };
 
 }

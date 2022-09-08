@@ -4,12 +4,14 @@
 #include "json_reader.h"
 #include "json_builder.h"
 #include "transport_router.h"
+#include "log_duration.h"
 
 using namespace std::literals;
 
 namespace json_reader {
 
     renderer::RenderSettings JSONReader::RenderSettingsBuilder(const json::Document& json_doc){
+        //LOG_DURATION("RenderSettingsBuilder"s);
         renderer::RenderSettings rs;
         if (json_doc.GetRoot().AsDict().count("render_settings"s) > 0 ){
             auto json_rs = json_doc.GetRoot().AsDict().at("render_settings"s);
@@ -63,6 +65,7 @@ namespace json_reader {
     }
 
     domain::RoutingSettings JSONReader::RoutingSettingsBuilder(const json::Document& json_doc) {
+        //LOG_DURATION("RoutingSettingsBuilder"s);
         domain::RoutingSettings rs;
         if (json_doc.GetRoot().AsDict().count("routing_settings"s) > 0) {
             auto json_rs = json_doc.GetRoot().AsDict().at("routing_settings"s);
@@ -73,6 +76,7 @@ namespace json_reader {
     }
 
     void JSONReader::DBBuilder(){
+        //LOG_DURATION("DBBuilder"s);
         if (json_doc_.GetRoot().AsDict().count("base_requests"s) > 0){
             auto db_request_arr = json_doc_.GetRoot().AsDict().at("base_requests"s);
             if (std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
@@ -112,6 +116,8 @@ namespace json_reader {
     }
 
     json::Document JSONReader::JsonResponseBuilder(){
+        //LOG_DURATION("JsonResponseBuilder"s);
+        router::CustomRouteFinder router(this->routing_settings_, catalogue_);
         json::Builder j_builder{};
         if (json_doc_.GetRoot().AsDict().count("stat_requests"s) > 0 ){
             auto db_request_arr = json_doc_.GetRoot().AsDict().at("stat_requests"s);
@@ -171,8 +177,7 @@ namespace json_reader {
                         j_builder.StartDict();
                         std::string from_name = db_request.AsDict().at("from"s).AsString();
                         std::string to_name = db_request.AsDict().at("to"s).AsString();
-                        router::CustomRouteFinder route_finder(this->routing_settings_);
-                        std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> found_route = route_finder.RouteSearch(from_name, to_name, catalogue_);
+                        std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> found_route = router.RouteSearch(from_name, to_name, catalogue_);
                         j_builder.Key("request_id").Value(db_request.AsDict().at("id"s).AsInt());
                         if (found_route.first == -1.0){
                             j_builder.Key("error_message"s).Value("not found"s);

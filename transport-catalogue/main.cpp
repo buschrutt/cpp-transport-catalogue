@@ -6,6 +6,7 @@
 #include "map_renderer.h"
 #include "transport_router.h"
 #include <iostream>
+#include "log_duration.h"
 
 using namespace std::literals;
 using namespace std;
