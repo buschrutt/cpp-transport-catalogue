@@ -30,7 +30,6 @@ namespace domain {
         size_t id{};
         domain::Bus* bus{};
         domain::Stop* stop{};
-        bool is_way_back = false;
     };
 
     struct Wait {

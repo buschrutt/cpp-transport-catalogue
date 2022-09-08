@@ -19,70 +19,56 @@ namespace handler {
 
         void GetVertexes(catalogue::TransportCatalogue & catalogue){
             std::map<std::string, domain::Stop*> all_stops = catalogue.GetAllStops();
-            for (const auto& [stop_name, stop] : all_stops){
-                std::vector<domain::VertexData*> vertexes;
-                for (auto bus_through_stop : stop->buses){
+            std::map<std::string, domain::Bus*> all_buses = catalogue.GetAllBuses();
+            for (const auto& stop : all_stops){
+                size_t id = GetLastId();
+                vertex_ids_[id + 1] = {id + 1, {}, stop.second};
+                start_ids_[stop.second] = id + 1;
+                stop_vertexes_[stop.second].push_back(&vertex_ids_.at(id + 1));
+            }
+            for (const auto& [bus_name, bus] : all_buses){
+                std::vector<domain::VertexData*> bus_vertexes;
+                for (size_t i = bus->route.size(); i > 0; i--){
                     size_t id = GetLastId();
-                    vertex_ids_[id + 1] = {id + 1, bus_through_stop, stop};
-                    vertexes.emplace_back(&vertex_ids_.at(id + 1));
-                    if (bus_through_stop->is_chain){
-                        vertex_ids_[id + 2] = {id + 2, bus_through_stop, stop, true};
-                        vertexes.emplace_back(&vertex_ids_.at(id + 2));
+                    vertex_ids_[id + 1] = {id + 1, bus, bus->route[i - 1]};
+                    bus_vertexes.push_back(&vertex_ids_.at(id + 1));
+                    stop_vertexes_[bus->route[i - 1]].push_back(&vertex_ids_.at(id + 1));
+                }
+                if (bus->is_chain){
+                    for (size_t i = 0; i < bus->route.size(); i++){
+                        size_t id = GetLastId();
+                        vertex_ids_[id + 1] = {id + 1, bus, bus->route[i]};
+                        bus_vertexes.push_back(&vertex_ids_.at(id + 1));
+                        stop_vertexes_[bus->route[i]].push_back(&vertex_ids_.at(id + 1));
                     }
                 }
-                auto* fake_bus = new domain::Bus {"fake bus"s, false, {}};
-                size_t id = GetLastId();
-                vertex_ids_[id + 1] = {id + 1, fake_bus, stop};
-                fake_bus_ids_[stop] = id + 1;
-                vertexes.emplace_back(&vertex_ids_.at(id + 1));
-                stop_vertexes_[stop] = vertexes;
+                bus_route_vertexes_[bus] = bus_vertexes;
             }
         }
 
-        void GetEdges(catalogue::TransportCatalogue & catalogue){
+        void GetEdges(catalogue::TransportCatalogue & catalogue) {
             // in stop edges making
-            for (auto [stop, vertexes] : stop_vertexes_){
-                domain::VertexData* fake_vertex = &vertex_ids_.at(fake_bus_ids_.at(stop));
-                for (auto vertex : vertexes){
-                    stop_bus_id_[stop][vertex->bus][vertex->is_way_back] = vertex->id;
-                    if (vertex != fake_vertex){
-                        edges_.push_back({fake_vertex->id, vertex->id, wait_factor_});
-                        edges_.push_back({vertex->id, fake_vertex->id, 0});
-                    }
+            for (auto [stop, vertexes]: stop_vertexes_) {
+                for (size_t i = 1; i < vertexes.size(); i++) {
+                    edges_.push_back({vertexes[0]->id, vertexes[i]->id, wait_factor_});
+                    edges_.push_back({vertexes[i]->id, vertexes[0]->id, 0});
                 }
             }
             // route edges making
-            std::map<std::string, domain::Bus*> all_buses = catalogue.GetAllBuses();
-            for (const auto& [bus_name, bus] : all_buses){
-                for (size_t i = 0; i < bus->route.size() - 1; i++){
-                    if (bus->is_chain){
-                        size_t first_id = stop_bus_id_.at(bus->route[i]).at(bus).at(false);
-                        size_t second_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(false);
-                        size_t first_back_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(true);
-                        size_t second_back_id = stop_bus_id_.at(bus->route[i]).at(bus).at(true);
-                        auto id_weight = catalogue.GetDistance({bus->route[i], bus->route[i + 1]}) * speed_factor_;
-                        edges_.push_back({first_id, second_id, id_weight});
-                        auto id_back_weight = catalogue.GetDistance({bus->route[i + 1], bus->route[i]}) * speed_factor_;
-                        edges_.push_back({first_back_id, second_back_id, id_back_weight});
-                        if (second_id == stop_bus_id_.at(bus->route[bus->route.size() - 1]).at(bus).at(false)){
-                            edges_.push_back({second_id, first_back_id, 0});
-                        }
+            for (auto [bus, vertexes]: bus_route_vertexes_) {
+                for (size_t i = 0; i < vertexes.size() - 1; i++) {
+                    if (bus->is_chain && vertexes[i]->stop == vertexes[i + 1]->stop){
+                        edges_.push_back({vertexes[i]->id, vertexes[i + 1]->id, 0});
                     } else {
-                        size_t first_id = stop_bus_id_.at(bus->route[i + 1]).at(bus).at(false);
-                        size_t second_id = stop_bus_id_.at(bus->route[i]).at(bus).at(false);
-                        auto id_weight = catalogue.GetDistance({bus->route[i + 1], bus->route[i]}) * speed_factor_;
-                        if (second_id == stop_bus_id_.at(bus->route[0]).at(bus).at(false)) {
-                            edges_.push_back({first_id, fake_bus_ids_.at(bus->route[0]), id_weight});
-                        } else {
-                            edges_.push_back({first_id, second_id, id_weight});
-                        }
+                        auto id_weight = catalogue.GetDistance({vertexes[i]->stop, vertexes[i + 1]->stop}) * speed_factor_;
+                        edges_.push_back({vertexes[i]->id, vertexes[i + 1]->id, id_weight});
                     }
                 }
             }
         }
 
         std::pair<size_t, size_t> GetFromToId(catalogue::TransportCatalogue & catalogue, const std::string & from_name, const std::string & to_name){
-            return {fake_bus_ids_.at(catalogue.ReturnStop(from_name)), fake_bus_ids_.at(catalogue.ReturnStop(to_name))};
+            return {start_ids_.at(catalogue.ReturnStop(from_name)), start_ids_.at(catalogue.ReturnStop(to_name))};
         }
 
         std::vector<std::variant<domain::Wait, domain::Ride>> GetSearchResult(const std::optional<graph::Router<double>::RouteInfo>& route_info) {
@@ -138,11 +124,11 @@ namespace handler {
     private:
         double speed_factor_;
         double wait_factor_;
-        std::map<domain::Stop*, size_t> fake_bus_ids_;
-        std::map<size_t, graph::Edge<double>*> graph_edges_;
-        std::map<domain::Stop*, std::map<domain::Bus*, std::map<bool, size_t>>> stop_bus_id_;
-        std::vector<graph::Edge<double>> edges_;
         std::map<size_t, domain::VertexData> vertex_ids_;
+        std::map<domain::Bus*, std::vector<domain::VertexData*>> bus_route_vertexes_;
         std::map<domain::Stop*, std::vector<domain::VertexData*>> stop_vertexes_;
+        std::map<domain::Stop*, size_t> start_ids_;
+        std::map<size_t, graph::Edge<double>*> graph_edges_;
+        std::vector<graph::Edge<double>> edges_;
     };
 }
