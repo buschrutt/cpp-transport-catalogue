@@ -26,10 +26,23 @@ namespace domain {
         double bus_velocity{};
     };
 
-    struct VertexData {
-        size_t id{};
-        domain::Bus* bus{};
+    struct StopData {
+        size_t vertex_in_id{};
+        size_t vertex_out_id{};
         domain::Stop* stop{};
+    };
+
+    struct EdgeData {
+        size_t origin_id{};
+        size_t destination_id{};
+        double weight{};
+        bool is_stop_edge = true;
+        domain::Stop* origin_stop{};
+        //domain::Stop* destination_stop{};
+        domain::Bus* bus{};
+        int span_count = 0;
+
+
     };
 
     struct Wait {
