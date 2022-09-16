@@ -10,14 +10,6 @@ namespace router {
     public:
         explicit CustomRouteFinder(domain::RoutingSettings routing_settings, catalogue::TransportCatalogue & catalogue);
 
-        size_t GetLastId(){
-            return vertex_ids_.size();
-        }
-
-        void RouteEdgeBuild(std::vector<domain::Stop*> route, catalogue::TransportCatalogue & catalogue, domain::Bus* bus);
-
-        void GetVertexes(catalogue::TransportCatalogue & catalogue);
-
         template<typename Itr>
         std::pair<double, size_t> GetEdgeWeight(Itr itr_begin, Itr itr_end, catalogue::TransportCatalogue & catalogue) {
             double weight = 0.0;
@@ -34,18 +26,21 @@ namespace router {
             return {weight * speed_factor_, span_count};
         }
 
-        void GetEdges(catalogue::TransportCatalogue & catalogue);
+        size_t GetLastId();
 
-        std::pair<size_t, size_t> GetFromToId(catalogue::TransportCatalogue & catalogue,
-                                              const std::string & from_name, const std::string & to_name);
+        void GetVertexes(catalogue::TransportCatalogue & catalogue);
+
+        void RouteEdgeBuild(std::vector<domain::Stop*> route, catalogue::TransportCatalogue & catalogue, domain::Bus* bus);
+
+        void GetEdges(catalogue::TransportCatalogue & catalogue);
 
         void BuildRouter();
 
-        std::vector<std::variant<domain::Wait, domain::Ride>> GetSearchResult(const
-                                                                              std::optional<graph::Router<double>::RouteInfo>& route_info);
+        std::pair<size_t, size_t> GetFromToId(catalogue::TransportCatalogue & catalogue, const std::string & from_name, const std::string & to_name);
 
-        std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> RouteSearch(const std::string &
-        from_name, const std::string & to_name, catalogue::TransportCatalogue & catalogue);
+        std::vector<std::variant<domain::Wait, domain::Ride>> GetSearchResult(const std::optional<graph::Router<double>::RouteInfo>& route_info);
+
+        std::pair<double, std::vector<std::variant<domain::Wait, domain::Ride>>> RouteSearch(const std::string & from_name, const std::string & to_name, catalogue::TransportCatalogue & catalogue);
 
     private:
         double speed_factor_;

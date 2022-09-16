@@ -38,11 +38,8 @@ namespace domain {
         double weight{};
         bool is_stop_edge = true;
         domain::Stop* origin_stop{};
-        //domain::Stop* destination_stop{};
         domain::Bus* bus{};
         int span_count = 0;
-
-
     };
 
     struct Wait {

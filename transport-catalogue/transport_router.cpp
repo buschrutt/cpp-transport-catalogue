@@ -11,6 +11,10 @@ namespace router{
         BuildRouter();
     }
 
+    size_t CustomRouteFinder::GetLastId(){
+        return vertex_ids_.size();
+    }
+
     void CustomRouteFinder::GetVertexes(catalogue::TransportCatalogue & catalogue){
         std::map<std::string, domain::Stop*> all_stops = catalogue.GetAllStops();
         for (const auto& stop : all_stops){
@@ -20,7 +24,6 @@ namespace router{
             vertex_ids_.push_back(id + 2);
         }
     }
-
 
     void CustomRouteFinder::RouteEdgeBuild(std::vector<domain::Stop*> route, catalogue::TransportCatalogue & catalogue, domain::Bus* bus){
         auto outer_runner = route.begin();
