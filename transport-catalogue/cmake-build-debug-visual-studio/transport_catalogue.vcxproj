@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{41F8DD56-2D02-33BD-B5E2-859526CDA200}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>transport_catalogue</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">transport_catalogue.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">transport_catalogue</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">transport_catalogue.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">transport_catalogue</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">transport_catalogue.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">transport_catalogue</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">transport_catalogue.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">transport_catalogue</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\protobuf-cxxpac-x86-64\lib\libprotobufd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/Debug/transport_catalogue.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/Debug/transport_catalogue.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>optimized.lib;..\protobuf-cxxpac-x86-64\lib\libprotobuf.lib;debug.lib;..\protobuf-cxxpac-x86-64\lib\libprotobufd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/Release/transport_catalogue.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/Release/transport_catalogue.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>optimized.lib;..\protobuf-cxxpac-x86-64\lib\libprotobuf.lib;debug.lib;..\protobuf-cxxpac-x86-64\lib\libprotobufd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/MinSizeRel/transport_catalogue.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/MinSizeRel/transport_catalogue.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\include;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>optimized.lib;..\protobuf-cxxpac-x86-64\lib\libprotobuf.lib;debug.lib;..\protobuf-cxxpac-x86-64\lib\libprotobufd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/RelWithDebInfo/transport_catalogue.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/RelWithDebInfo/transport_catalogue.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\transport_catalogue.pb.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running cpp protocol buffer compiler on transport_catalogue.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_catalogue.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running cpp protocol buffer compiler on transport_catalogue.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_catalogue.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Running cpp protocol buffer compiler on transport_catalogue.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_catalogue.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Running cpp protocol buffer compiler on transport_catalogue.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_catalogue.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindProtobuf.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\SelectLibraryConfigurations.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCXXCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeRCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindProtobuf.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\SelectLibraryConfigurations.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCXXCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeRCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindProtobuf.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\SelectLibraryConfigurations.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCXXCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeRCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindProtobuf.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\share\cmake-3.22\Modules\SelectLibraryConfigurations.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeCXXCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeRCCompiler.cmake;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\3.22.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\main.cpp" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.h" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\geo.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\domain.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json_reader.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\request_handler.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json_builder.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\ZERO_CHECK.vcxproj">
+      <Project>{F26FF200-65C9-355C-8331-0CE33036DF28}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

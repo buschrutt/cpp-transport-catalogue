@@ -1,0 +1,10 @@
+^C:\USERS\BUSCH\CLIONPROJECTS\CPP-TRANSPORT-CATALOGUE\TRANSPORT-CATALOGUE\CMAKE-BUILD-DEBUG-VISUAL-STUDIO\CMAKEFILES\954729F7D1FFFE09D85A2A77EABD2E20\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/TransportCatalogue.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\geo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\domain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\request_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\json_builder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0CBED95F-5D13-3147-94CD-D3A19C532C77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{81E884CA-6A9D-3E25-BB7C-B21FD896AA72}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

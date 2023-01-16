@@ -13,13 +13,16 @@ using namespace std;
 
 int main() {
     catalogue::TransportCatalogue catalogue;
-    //json::Document json_doc = json::JsonFileLoad("json_source.json"s);
-    json::Document json_doc = json::JsonConsoleLoad(std::cin);
+    json::Document json_doc = json::JsonFileLoad("json_files/json_source.json"s);
+    //json::Document json_doc = json::JsonConsoleLoad(std::cin);
     json_reader::JSONReader json_data(json_doc, catalogue);
     json_data.DBBuilder();
     json::Document json_result = json_data.JsonResponseBuilder();
-    //json::JsonFileWrite(json_result, "json_result.json"s);
-    json::JsonConsoleOutput(json_result);
+    json::JsonFileWrite(json_result, "json_files/json_result.json"s);
+    //json::JsonConsoleOutput(json_result);
+
+
+
 
     // %%%%%%%%%% %%%%%%%%%% custom route finder %%%%%%%%%% %%%%%%%%%%
 

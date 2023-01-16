@@ -1,3 +1,0 @@
-C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug/CMakeFiles/testing.dir
-C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+^C:\USERS\BUSCH\CLIONPROJECTS\CPP-TRANSPORT-CATALOGUE\TRANSPORT-CATALOGUE\CMAKE-BUILD-DEBUG-VISUAL-STUDIO\CMAKEFILES\372E2F2B8C355DB9F176E0CE45DB7FF2\TRANSPORT_CATALOGUE.PB.H.RULE
+setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_catalogue.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\BUSCH\CLIONPROJECTS\CPP-TRANSPORT-CATALOGUE\TRANSPORT-CATALOGUE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -SC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue -BC:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio --check-stamp-file C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

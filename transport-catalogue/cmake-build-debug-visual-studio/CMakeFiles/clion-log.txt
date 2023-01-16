@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -G "Visual Studio 17 2022" -S C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue -B C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio
