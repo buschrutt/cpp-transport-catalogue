@@ -44,28 +44,229 @@ struct TableStruct_transport_5fcatalogue_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_transport_5fcatalogue_2eproto;
-namespace serialization {
+namespace proto_serialization {
 class Bus;
 struct BusDefaultTypeInternal;
 extern BusDefaultTypeInternal _Bus_default_instance_;
-class RoadDistance;
-struct RoadDistanceDefaultTypeInternal;
-extern RoadDistanceDefaultTypeInternal _RoadDistance_default_instance_;
+class Distance;
+struct DistanceDefaultTypeInternal;
+extern DistanceDefaultTypeInternal _Distance_default_instance_;
 class Stop;
 struct StopDefaultTypeInternal;
 extern StopDefaultTypeInternal _Stop_default_instance_;
-}  // namespace serialization
+class TransportCatalogue;
+struct TransportCatalogueDefaultTypeInternal;
+extern TransportCatalogueDefaultTypeInternal _TransportCatalogue_default_instance_;
+}  // namespace proto_serialization
 PROTOBUF_NAMESPACE_OPEN
-template<> ::serialization::Bus* Arena::CreateMaybeMessage<::serialization::Bus>(Arena*);
-template<> ::serialization::RoadDistance* Arena::CreateMaybeMessage<::serialization::RoadDistance>(Arena*);
-template<> ::serialization::Stop* Arena::CreateMaybeMessage<::serialization::Stop>(Arena*);
+template<> ::proto_serialization::Bus* Arena::CreateMaybeMessage<::proto_serialization::Bus>(Arena*);
+template<> ::proto_serialization::Distance* Arena::CreateMaybeMessage<::proto_serialization::Distance>(Arena*);
+template<> ::proto_serialization::Stop* Arena::CreateMaybeMessage<::proto_serialization::Stop>(Arena*);
+template<> ::proto_serialization::TransportCatalogue* Arena::CreateMaybeMessage<::proto_serialization::TransportCatalogue>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace serialization {
+namespace proto_serialization {
 
 // ===================================================================
 
+class TransportCatalogue final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.TransportCatalogue) */ {
+ public:
+  inline TransportCatalogue() : TransportCatalogue(nullptr) {}
+  ~TransportCatalogue() override;
+  explicit PROTOBUF_CONSTEXPR TransportCatalogue(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TransportCatalogue(const TransportCatalogue& from);
+  TransportCatalogue(TransportCatalogue&& from) noexcept
+    : TransportCatalogue() {
+    *this = ::std::move(from);
+  }
+
+  inline TransportCatalogue& operator=(const TransportCatalogue& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TransportCatalogue& operator=(TransportCatalogue&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TransportCatalogue& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TransportCatalogue* internal_default_instance() {
+    return reinterpret_cast<const TransportCatalogue*>(
+               &_TransportCatalogue_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TransportCatalogue& a, TransportCatalogue& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TransportCatalogue* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TransportCatalogue* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TransportCatalogue* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TransportCatalogue>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TransportCatalogue& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TransportCatalogue& from) {
+    TransportCatalogue::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TransportCatalogue* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "proto_serialization.TransportCatalogue";
+  }
+  protected:
+  explicit TransportCatalogue(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBusesFieldNumber = 1,
+    kStopsFieldNumber = 2,
+    kDistancesFieldNumber = 3,
+  };
+  // repeated .proto_serialization.Bus buses = 1;
+  int buses_size() const;
+  private:
+  int _internal_buses_size() const;
+  public:
+  void clear_buses();
+  ::proto_serialization::Bus* mutable_buses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >*
+      mutable_buses();
+  private:
+  const ::proto_serialization::Bus& _internal_buses(int index) const;
+  ::proto_serialization::Bus* _internal_add_buses();
+  public:
+  const ::proto_serialization::Bus& buses(int index) const;
+  ::proto_serialization::Bus* add_buses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >&
+      buses() const;
+
+  // repeated .proto_serialization.Stop stops = 2;
+  int stops_size() const;
+  private:
+  int _internal_stops_size() const;
+  public:
+  void clear_stops();
+  ::proto_serialization::Stop* mutable_stops(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >*
+      mutable_stops();
+  private:
+  const ::proto_serialization::Stop& _internal_stops(int index) const;
+  ::proto_serialization::Stop* _internal_add_stops();
+  public:
+  const ::proto_serialization::Stop& stops(int index) const;
+  ::proto_serialization::Stop* add_stops();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >&
+      stops() const;
+
+  // repeated .proto_serialization.Distance distances = 3;
+  int distances_size() const;
+  private:
+  int _internal_distances_size() const;
+  public:
+  void clear_distances();
+  ::proto_serialization::Distance* mutable_distances(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >*
+      mutable_distances();
+  private:
+  const ::proto_serialization::Distance& _internal_distances(int index) const;
+  ::proto_serialization::Distance* _internal_add_distances();
+  public:
+  const ::proto_serialization::Distance& distances(int index) const;
+  ::proto_serialization::Distance* add_distances();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >&
+      distances() const;
+
+  // @@protoc_insertion_point(class_scope:proto_serialization.TransportCatalogue)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus > buses_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop > stops_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance > distances_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_transport_5fcatalogue_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Bus final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:serialization.Bus) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Bus) */ {
  public:
   inline Bus() : Bus(nullptr) {}
   ~Bus() override;
@@ -112,7 +313,7 @@ class Bus final :
                &_Bus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(Bus& a, Bus& b) {
     a.Swap(&b);
@@ -168,7 +369,7 @@ class Bus final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "serialization.Bus";
+    return "proto_serialization.Bus";
   }
   protected:
   explicit Bus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -234,7 +435,7 @@ class Bus final :
   void _internal_set_is_roundtrip(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:serialization.Bus)
+  // @@protoc_insertion_point(class_scope:proto_serialization.Bus)
  private:
   class _Internal;
 
@@ -254,7 +455,7 @@ class Bus final :
 // -------------------------------------------------------------------
 
 class Stop final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:serialization.Stop) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Stop) */ {
  public:
   inline Stop() : Stop(nullptr) {}
   ~Stop() override;
@@ -301,7 +502,7 @@ class Stop final :
                &_Stop_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(Stop& a, Stop& b) {
     a.Swap(&b);
@@ -357,7 +558,7 @@ class Stop final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "serialization.Stop";
+    return "proto_serialization.Stop";
   }
   protected:
   explicit Stop(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -375,7 +576,6 @@ class Stop final :
 
   enum : int {
     kNameFieldNumber = 2,
-    kRoadDistanceFieldNumber = 5,
     kLatitudeFieldNumber = 3,
     kLongitudeFieldNumber = 4,
     kIdFieldNumber = 1,
@@ -393,24 +593,6 @@ class Stop final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
   std::string* _internal_mutable_name();
   public:
-
-  // .serialization.RoadDistance road_distance = 5;
-  bool has_road_distance() const;
-  private:
-  bool _internal_has_road_distance() const;
-  public:
-  void clear_road_distance();
-  const ::serialization::RoadDistance& road_distance() const;
-  PROTOBUF_NODISCARD ::serialization::RoadDistance* release_road_distance();
-  ::serialization::RoadDistance* mutable_road_distance();
-  void set_allocated_road_distance(::serialization::RoadDistance* road_distance);
-  private:
-  const ::serialization::RoadDistance& _internal_road_distance() const;
-  ::serialization::RoadDistance* _internal_mutable_road_distance();
-  public:
-  void unsafe_arena_set_allocated_road_distance(
-      ::serialization::RoadDistance* road_distance);
-  ::serialization::RoadDistance* unsafe_arena_release_road_distance();
 
   // double latitude = 3;
   void clear_latitude();
@@ -439,7 +621,7 @@ class Stop final :
   void _internal_set_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:serialization.Stop)
+  // @@protoc_insertion_point(class_scope:proto_serialization.Stop)
  private:
   class _Internal;
 
@@ -448,7 +630,6 @@ class Stop final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-    ::serialization::RoadDistance* road_distance_;
     double latitude_;
     double longitude_;
     int32_t id_;
@@ -459,24 +640,24 @@ class Stop final :
 };
 // -------------------------------------------------------------------
 
-class RoadDistance final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:serialization.RoadDistance) */ {
+class Distance final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Distance) */ {
  public:
-  inline RoadDistance() : RoadDistance(nullptr) {}
-  ~RoadDistance() override;
-  explicit PROTOBUF_CONSTEXPR RoadDistance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Distance() : Distance(nullptr) {}
+  ~Distance() override;
+  explicit PROTOBUF_CONSTEXPR Distance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  RoadDistance(const RoadDistance& from);
-  RoadDistance(RoadDistance&& from) noexcept
-    : RoadDistance() {
+  Distance(const Distance& from);
+  Distance(Distance&& from) noexcept
+    : Distance() {
     *this = ::std::move(from);
   }
 
-  inline RoadDistance& operator=(const RoadDistance& from) {
+  inline Distance& operator=(const Distance& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RoadDistance& operator=(RoadDistance&& from) noexcept {
+  inline Distance& operator=(Distance&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -499,20 +680,20 @@ class RoadDistance final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const RoadDistance& default_instance() {
+  static const Distance& default_instance() {
     return *internal_default_instance();
   }
-  static inline const RoadDistance* internal_default_instance() {
-    return reinterpret_cast<const RoadDistance*>(
-               &_RoadDistance_default_instance_);
+  static inline const Distance* internal_default_instance() {
+    return reinterpret_cast<const Distance*>(
+               &_Distance_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
-  friend void swap(RoadDistance& a, RoadDistance& b) {
+  friend void swap(Distance& a, Distance& b) {
     a.Swap(&b);
   }
-  inline void Swap(RoadDistance* other) {
+  inline void Swap(Distance* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -525,7 +706,7 @@ class RoadDistance final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(RoadDistance* other) {
+  void UnsafeArenaSwap(Distance* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -533,14 +714,14 @@ class RoadDistance final :
 
   // implements Message ----------------------------------------------
 
-  RoadDistance* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<RoadDistance>(arena);
+  Distance* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Distance>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const RoadDistance& from);
+  void CopyFrom(const Distance& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const RoadDistance& from) {
-    RoadDistance::MergeImpl(*this, from);
+  void MergeFrom( const Distance& from) {
+    Distance::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -558,15 +739,15 @@ class RoadDistance final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(RoadDistance* other);
+  void InternalSwap(Distance* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "serialization.RoadDistance";
+    return "proto_serialization.Distance";
   }
   protected:
-  explicit RoadDistance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Distance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -580,48 +761,38 @@ class RoadDistance final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStopFromFieldNumber = 1,
-    kStopToFieldNumber = 2,
+    kStopFromIdFieldNumber = 1,
+    kStopToIdFieldNumber = 2,
     kDistanceFieldNumber = 3,
   };
-  // string stop_from = 1;
-  void clear_stop_from();
-  const std::string& stop_from() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_stop_from(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_stop_from();
-  PROTOBUF_NODISCARD std::string* release_stop_from();
-  void set_allocated_stop_from(std::string* stop_from);
+  // int32 stop_from_id = 1;
+  void clear_stop_from_id();
+  int32_t stop_from_id() const;
+  void set_stop_from_id(int32_t value);
   private:
-  const std::string& _internal_stop_from() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_stop_from(const std::string& value);
-  std::string* _internal_mutable_stop_from();
+  int32_t _internal_stop_from_id() const;
+  void _internal_set_stop_from_id(int32_t value);
   public:
 
-  // string stop_to = 2;
-  void clear_stop_to();
-  const std::string& stop_to() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_stop_to(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_stop_to();
-  PROTOBUF_NODISCARD std::string* release_stop_to();
-  void set_allocated_stop_to(std::string* stop_to);
+  // int32 stop_to_id = 2;
+  void clear_stop_to_id();
+  int32_t stop_to_id() const;
+  void set_stop_to_id(int32_t value);
   private:
-  const std::string& _internal_stop_to() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_stop_to(const std::string& value);
-  std::string* _internal_mutable_stop_to();
+  int32_t _internal_stop_to_id() const;
+  void _internal_set_stop_to_id(int32_t value);
   public:
 
-  // int32 distance = 3;
+  // double distance = 3;
   void clear_distance();
-  int32_t distance() const;
-  void set_distance(int32_t value);
+  double distance() const;
+  void set_distance(double value);
   private:
-  int32_t _internal_distance() const;
-  void _internal_set_distance(int32_t value);
+  double _internal_distance() const;
+  void _internal_set_distance(double value);
   public:
 
-  // @@protoc_insertion_point(class_scope:serialization.RoadDistance)
+  // @@protoc_insertion_point(class_scope:proto_serialization.Distance)
  private:
   class _Internal;
 
@@ -629,9 +800,9 @@ class RoadDistance final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stop_from_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stop_to_;
-    int32_t distance_;
+    int32_t stop_from_id_;
+    int32_t stop_to_id_;
+    double distance_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -646,6 +817,130 @@ class RoadDistance final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TransportCatalogue
+
+// repeated .proto_serialization.Bus buses = 1;
+inline int TransportCatalogue::_internal_buses_size() const {
+  return _impl_.buses_.size();
+}
+inline int TransportCatalogue::buses_size() const {
+  return _internal_buses_size();
+}
+inline void TransportCatalogue::clear_buses() {
+  _impl_.buses_.Clear();
+}
+inline ::proto_serialization::Bus* TransportCatalogue::mutable_buses(int index) {
+  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.buses)
+  return _impl_.buses_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >*
+TransportCatalogue::mutable_buses() {
+  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.buses)
+  return &_impl_.buses_;
+}
+inline const ::proto_serialization::Bus& TransportCatalogue::_internal_buses(int index) const {
+  return _impl_.buses_.Get(index);
+}
+inline const ::proto_serialization::Bus& TransportCatalogue::buses(int index) const {
+  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.buses)
+  return _internal_buses(index);
+}
+inline ::proto_serialization::Bus* TransportCatalogue::_internal_add_buses() {
+  return _impl_.buses_.Add();
+}
+inline ::proto_serialization::Bus* TransportCatalogue::add_buses() {
+  ::proto_serialization::Bus* _add = _internal_add_buses();
+  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.buses)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >&
+TransportCatalogue::buses() const {
+  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.buses)
+  return _impl_.buses_;
+}
+
+// repeated .proto_serialization.Stop stops = 2;
+inline int TransportCatalogue::_internal_stops_size() const {
+  return _impl_.stops_.size();
+}
+inline int TransportCatalogue::stops_size() const {
+  return _internal_stops_size();
+}
+inline void TransportCatalogue::clear_stops() {
+  _impl_.stops_.Clear();
+}
+inline ::proto_serialization::Stop* TransportCatalogue::mutable_stops(int index) {
+  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.stops)
+  return _impl_.stops_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >*
+TransportCatalogue::mutable_stops() {
+  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.stops)
+  return &_impl_.stops_;
+}
+inline const ::proto_serialization::Stop& TransportCatalogue::_internal_stops(int index) const {
+  return _impl_.stops_.Get(index);
+}
+inline const ::proto_serialization::Stop& TransportCatalogue::stops(int index) const {
+  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.stops)
+  return _internal_stops(index);
+}
+inline ::proto_serialization::Stop* TransportCatalogue::_internal_add_stops() {
+  return _impl_.stops_.Add();
+}
+inline ::proto_serialization::Stop* TransportCatalogue::add_stops() {
+  ::proto_serialization::Stop* _add = _internal_add_stops();
+  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.stops)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >&
+TransportCatalogue::stops() const {
+  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.stops)
+  return _impl_.stops_;
+}
+
+// repeated .proto_serialization.Distance distances = 3;
+inline int TransportCatalogue::_internal_distances_size() const {
+  return _impl_.distances_.size();
+}
+inline int TransportCatalogue::distances_size() const {
+  return _internal_distances_size();
+}
+inline void TransportCatalogue::clear_distances() {
+  _impl_.distances_.Clear();
+}
+inline ::proto_serialization::Distance* TransportCatalogue::mutable_distances(int index) {
+  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.distances)
+  return _impl_.distances_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >*
+TransportCatalogue::mutable_distances() {
+  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.distances)
+  return &_impl_.distances_;
+}
+inline const ::proto_serialization::Distance& TransportCatalogue::_internal_distances(int index) const {
+  return _impl_.distances_.Get(index);
+}
+inline const ::proto_serialization::Distance& TransportCatalogue::distances(int index) const {
+  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.distances)
+  return _internal_distances(index);
+}
+inline ::proto_serialization::Distance* TransportCatalogue::_internal_add_distances() {
+  return _impl_.distances_.Add();
+}
+inline ::proto_serialization::Distance* TransportCatalogue::add_distances() {
+  ::proto_serialization::Distance* _add = _internal_add_distances();
+  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.distances)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >&
+TransportCatalogue::distances() const {
+  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.distances)
+  return _impl_.distances_;
+}
+
+// -------------------------------------------------------------------
+
 // Bus
 
 // string name = 1;
@@ -653,7 +948,7 @@ inline void Bus::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
 inline const std::string& Bus::name() const {
-  // @@protoc_insertion_point(field_get:serialization.Bus.name)
+  // @@protoc_insertion_point(field_get:proto_serialization.Bus.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -661,11 +956,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Bus::set_name(ArgT0&& arg0, ArgT... args) {
  
  _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:serialization.Bus.name)
+  // @@protoc_insertion_point(field_set:proto_serialization.Bus.name)
 }
 inline std::string* Bus::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:serialization.Bus.name)
+  // @@protoc_insertion_point(field_mutable:proto_serialization.Bus.name)
   return _s;
 }
 inline const std::string& Bus::_internal_name() const {
@@ -680,7 +975,7 @@ inline std::string* Bus::_internal_mutable_name() {
   return _impl_.name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Bus::release_name() {
-  // @@protoc_insertion_point(field_release:serialization.Bus.name)
+  // @@protoc_insertion_point(field_release:proto_serialization.Bus.name)
   return _impl_.name_.Release();
 }
 inline void Bus::set_allocated_name(std::string* name) {
@@ -695,7 +990,7 @@ inline void Bus::set_allocated_name(std::string* name) {
     _impl_.name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:serialization.Bus.name)
+  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Bus.name)
 }
 
 // bool is_roundtrip = 2;
@@ -706,7 +1001,7 @@ inline bool Bus::_internal_is_roundtrip() const {
   return _impl_.is_roundtrip_;
 }
 inline bool Bus::is_roundtrip() const {
-  // @@protoc_insertion_point(field_get:serialization.Bus.is_roundtrip)
+  // @@protoc_insertion_point(field_get:proto_serialization.Bus.is_roundtrip)
   return _internal_is_roundtrip();
 }
 inline void Bus::_internal_set_is_roundtrip(bool value) {
@@ -715,7 +1010,7 @@ inline void Bus::_internal_set_is_roundtrip(bool value) {
 }
 inline void Bus::set_is_roundtrip(bool value) {
   _internal_set_is_roundtrip(value);
-  // @@protoc_insertion_point(field_set:serialization.Bus.is_roundtrip)
+  // @@protoc_insertion_point(field_set:proto_serialization.Bus.is_roundtrip)
 }
 
 // repeated int32 stop_ids = 3;
@@ -732,19 +1027,19 @@ inline int32_t Bus::_internal_stop_ids(int index) const {
   return _impl_.stop_ids_.Get(index);
 }
 inline int32_t Bus::stop_ids(int index) const {
-  // @@protoc_insertion_point(field_get:serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_get:proto_serialization.Bus.stop_ids)
   return _internal_stop_ids(index);
 }
 inline void Bus::set_stop_ids(int index, int32_t value) {
   _impl_.stop_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_set:proto_serialization.Bus.stop_ids)
 }
 inline void Bus::_internal_add_stop_ids(int32_t value) {
   _impl_.stop_ids_.Add(value);
 }
 inline void Bus::add_stop_ids(int32_t value) {
   _internal_add_stop_ids(value);
-  // @@protoc_insertion_point(field_add:serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_add:proto_serialization.Bus.stop_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 Bus::_internal_stop_ids() const {
@@ -752,7 +1047,7 @@ Bus::_internal_stop_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 Bus::stop_ids() const {
-  // @@protoc_insertion_point(field_list:serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_list:proto_serialization.Bus.stop_ids)
   return _internal_stop_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -761,7 +1056,7 @@ Bus::_internal_mutable_stop_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 Bus::mutable_stop_ids() {
-  // @@protoc_insertion_point(field_mutable_list:serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_mutable_list:proto_serialization.Bus.stop_ids)
   return _internal_mutable_stop_ids();
 }
 
@@ -777,7 +1072,7 @@ inline int32_t Stop::_internal_id() const {
   return _impl_.id_;
 }
 inline int32_t Stop::id() const {
-  // @@protoc_insertion_point(field_get:serialization.Stop.id)
+  // @@protoc_insertion_point(field_get:proto_serialization.Stop.id)
   return _internal_id();
 }
 inline void Stop::_internal_set_id(int32_t value) {
@@ -786,7 +1081,7 @@ inline void Stop::_internal_set_id(int32_t value) {
 }
 inline void Stop::set_id(int32_t value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:serialization.Stop.id)
+  // @@protoc_insertion_point(field_set:proto_serialization.Stop.id)
 }
 
 // string name = 2;
@@ -794,7 +1089,7 @@ inline void Stop::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
 inline const std::string& Stop::name() const {
-  // @@protoc_insertion_point(field_get:serialization.Stop.name)
+  // @@protoc_insertion_point(field_get:proto_serialization.Stop.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -802,11 +1097,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Stop::set_name(ArgT0&& arg0, ArgT... args) {
  
  _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:serialization.Stop.name)
+  // @@protoc_insertion_point(field_set:proto_serialization.Stop.name)
 }
 inline std::string* Stop::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:serialization.Stop.name)
+  // @@protoc_insertion_point(field_mutable:proto_serialization.Stop.name)
   return _s;
 }
 inline const std::string& Stop::_internal_name() const {
@@ -821,7 +1116,7 @@ inline std::string* Stop::_internal_mutable_name() {
   return _impl_.name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Stop::release_name() {
-  // @@protoc_insertion_point(field_release:serialization.Stop.name)
+  // @@protoc_insertion_point(field_release:proto_serialization.Stop.name)
   return _impl_.name_.Release();
 }
 inline void Stop::set_allocated_name(std::string* name) {
@@ -836,7 +1131,7 @@ inline void Stop::set_allocated_name(std::string* name) {
     _impl_.name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:serialization.Stop.name)
+  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Stop.name)
 }
 
 // double latitude = 3;
@@ -847,7 +1142,7 @@ inline double Stop::_internal_latitude() const {
   return _impl_.latitude_;
 }
 inline double Stop::latitude() const {
-  // @@protoc_insertion_point(field_get:serialization.Stop.latitude)
+  // @@protoc_insertion_point(field_get:proto_serialization.Stop.latitude)
   return _internal_latitude();
 }
 inline void Stop::_internal_set_latitude(double value) {
@@ -856,7 +1151,7 @@ inline void Stop::_internal_set_latitude(double value) {
 }
 inline void Stop::set_latitude(double value) {
   _internal_set_latitude(value);
-  // @@protoc_insertion_point(field_set:serialization.Stop.latitude)
+  // @@protoc_insertion_point(field_set:proto_serialization.Stop.latitude)
 }
 
 // double longitude = 4;
@@ -867,7 +1162,7 @@ inline double Stop::_internal_longitude() const {
   return _impl_.longitude_;
 }
 inline double Stop::longitude() const {
-  // @@protoc_insertion_point(field_get:serialization.Stop.longitude)
+  // @@protoc_insertion_point(field_get:proto_serialization.Stop.longitude)
   return _internal_longitude();
 }
 inline void Stop::_internal_set_longitude(double value) {
@@ -876,221 +1171,71 @@ inline void Stop::_internal_set_longitude(double value) {
 }
 inline void Stop::set_longitude(double value) {
   _internal_set_longitude(value);
-  // @@protoc_insertion_point(field_set:serialization.Stop.longitude)
-}
-
-// .serialization.RoadDistance road_distance = 5;
-inline bool Stop::_internal_has_road_distance() const {
-  return this != internal_default_instance() && _impl_.road_distance_ != nullptr;
-}
-inline bool Stop::has_road_distance() const {
-  return _internal_has_road_distance();
-}
-inline void Stop::clear_road_distance() {
-  if (GetArenaForAllocation() == nullptr && _impl_.road_distance_ != nullptr) {
-    delete _impl_.road_distance_;
-  }
-  _impl_.road_distance_ = nullptr;
-}
-inline const ::serialization::RoadDistance& Stop::_internal_road_distance() const {
-  const ::serialization::RoadDistance* p = _impl_.road_distance_;
-  return p != nullptr ? *p : reinterpret_cast<const ::serialization::RoadDistance&>(
-      ::serialization::_RoadDistance_default_instance_);
-}
-inline const ::serialization::RoadDistance& Stop::road_distance() const {
-  // @@protoc_insertion_point(field_get:serialization.Stop.road_distance)
-  return _internal_road_distance();
-}
-inline void Stop::unsafe_arena_set_allocated_road_distance(
-    ::serialization::RoadDistance* road_distance) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.road_distance_);
-  }
-  _impl_.road_distance_ = road_distance;
-  if (road_distance) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:serialization.Stop.road_distance)
-}
-inline ::serialization::RoadDistance* Stop::release_road_distance() {
-  
-  ::serialization::RoadDistance* temp = _impl_.road_distance_;
-  _impl_.road_distance_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::serialization::RoadDistance* Stop::unsafe_arena_release_road_distance() {
-  // @@protoc_insertion_point(field_release:serialization.Stop.road_distance)
-  
-  ::serialization::RoadDistance* temp = _impl_.road_distance_;
-  _impl_.road_distance_ = nullptr;
-  return temp;
-}
-inline ::serialization::RoadDistance* Stop::_internal_mutable_road_distance() {
-  
-  if (_impl_.road_distance_ == nullptr) {
-    auto* p = CreateMaybeMessage<::serialization::RoadDistance>(GetArenaForAllocation());
-    _impl_.road_distance_ = p;
-  }
-  return _impl_.road_distance_;
-}
-inline ::serialization::RoadDistance* Stop::mutable_road_distance() {
-  ::serialization::RoadDistance* _msg = _internal_mutable_road_distance();
-  // @@protoc_insertion_point(field_mutable:serialization.Stop.road_distance)
-  return _msg;
-}
-inline void Stop::set_allocated_road_distance(::serialization::RoadDistance* road_distance) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete _impl_.road_distance_;
-  }
-  if (road_distance) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(road_distance);
-    if (message_arena != submessage_arena) {
-      road_distance = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, road_distance, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  _impl_.road_distance_ = road_distance;
-  // @@protoc_insertion_point(field_set_allocated:serialization.Stop.road_distance)
+  // @@protoc_insertion_point(field_set:proto_serialization.Stop.longitude)
 }
 
 // -------------------------------------------------------------------
 
-// RoadDistance
+// Distance
 
-// string stop_from = 1;
-inline void RoadDistance::clear_stop_from() {
-  _impl_.stop_from_.ClearToEmpty();
+// int32 stop_from_id = 1;
+inline void Distance::clear_stop_from_id() {
+  _impl_.stop_from_id_ = 0;
 }
-inline const std::string& RoadDistance::stop_from() const {
-  // @@protoc_insertion_point(field_get:serialization.RoadDistance.stop_from)
-  return _internal_stop_from();
+inline int32_t Distance::_internal_stop_from_id() const {
+  return _impl_.stop_from_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RoadDistance::set_stop_from(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.stop_from_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:serialization.RoadDistance.stop_from)
+inline int32_t Distance::stop_from_id() const {
+  // @@protoc_insertion_point(field_get:proto_serialization.Distance.stop_from_id)
+  return _internal_stop_from_id();
 }
-inline std::string* RoadDistance::mutable_stop_from() {
-  std::string* _s = _internal_mutable_stop_from();
-  // @@protoc_insertion_point(field_mutable:serialization.RoadDistance.stop_from)
-  return _s;
-}
-inline const std::string& RoadDistance::_internal_stop_from() const {
-  return _impl_.stop_from_.Get();
-}
-inline void RoadDistance::_internal_set_stop_from(const std::string& value) {
+inline void Distance::_internal_set_stop_from_id(int32_t value) {
   
-  _impl_.stop_from_.Set(value, GetArenaForAllocation());
+  _impl_.stop_from_id_ = value;
 }
-inline std::string* RoadDistance::_internal_mutable_stop_from() {
-  
-  return _impl_.stop_from_.Mutable(GetArenaForAllocation());
-}
-inline std::string* RoadDistance::release_stop_from() {
-  // @@protoc_insertion_point(field_release:serialization.RoadDistance.stop_from)
-  return _impl_.stop_from_.Release();
-}
-inline void RoadDistance::set_allocated_stop_from(std::string* stop_from) {
-  if (stop_from != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.stop_from_.SetAllocated(stop_from, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.stop_from_.IsDefault()) {
-    _impl_.stop_from_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:serialization.RoadDistance.stop_from)
+inline void Distance::set_stop_from_id(int32_t value) {
+  _internal_set_stop_from_id(value);
+  // @@protoc_insertion_point(field_set:proto_serialization.Distance.stop_from_id)
 }
 
-// string stop_to = 2;
-inline void RoadDistance::clear_stop_to() {
-  _impl_.stop_to_.ClearToEmpty();
+// int32 stop_to_id = 2;
+inline void Distance::clear_stop_to_id() {
+  _impl_.stop_to_id_ = 0;
 }
-inline const std::string& RoadDistance::stop_to() const {
-  // @@protoc_insertion_point(field_get:serialization.RoadDistance.stop_to)
-  return _internal_stop_to();
+inline int32_t Distance::_internal_stop_to_id() const {
+  return _impl_.stop_to_id_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RoadDistance::set_stop_to(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.stop_to_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:serialization.RoadDistance.stop_to)
+inline int32_t Distance::stop_to_id() const {
+  // @@protoc_insertion_point(field_get:proto_serialization.Distance.stop_to_id)
+  return _internal_stop_to_id();
 }
-inline std::string* RoadDistance::mutable_stop_to() {
-  std::string* _s = _internal_mutable_stop_to();
-  // @@protoc_insertion_point(field_mutable:serialization.RoadDistance.stop_to)
-  return _s;
-}
-inline const std::string& RoadDistance::_internal_stop_to() const {
-  return _impl_.stop_to_.Get();
-}
-inline void RoadDistance::_internal_set_stop_to(const std::string& value) {
+inline void Distance::_internal_set_stop_to_id(int32_t value) {
   
-  _impl_.stop_to_.Set(value, GetArenaForAllocation());
+  _impl_.stop_to_id_ = value;
 }
-inline std::string* RoadDistance::_internal_mutable_stop_to() {
-  
-  return _impl_.stop_to_.Mutable(GetArenaForAllocation());
-}
-inline std::string* RoadDistance::release_stop_to() {
-  // @@protoc_insertion_point(field_release:serialization.RoadDistance.stop_to)
-  return _impl_.stop_to_.Release();
-}
-inline void RoadDistance::set_allocated_stop_to(std::string* stop_to) {
-  if (stop_to != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.stop_to_.SetAllocated(stop_to, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.stop_to_.IsDefault()) {
-    _impl_.stop_to_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:serialization.RoadDistance.stop_to)
+inline void Distance::set_stop_to_id(int32_t value) {
+  _internal_set_stop_to_id(value);
+  // @@protoc_insertion_point(field_set:proto_serialization.Distance.stop_to_id)
 }
 
-// int32 distance = 3;
-inline void RoadDistance::clear_distance() {
+// double distance = 3;
+inline void Distance::clear_distance() {
   _impl_.distance_ = 0;
 }
-inline int32_t RoadDistance::_internal_distance() const {
+inline double Distance::_internal_distance() const {
   return _impl_.distance_;
 }
-inline int32_t RoadDistance::distance() const {
-  // @@protoc_insertion_point(field_get:serialization.RoadDistance.distance)
+inline double Distance::distance() const {
+  // @@protoc_insertion_point(field_get:proto_serialization.Distance.distance)
   return _internal_distance();
 }
-inline void RoadDistance::_internal_set_distance(int32_t value) {
+inline void Distance::_internal_set_distance(double value) {
   
   _impl_.distance_ = value;
 }
-inline void RoadDistance::set_distance(int32_t value) {
+inline void Distance::set_distance(double value) {
   _internal_set_distance(value);
-  // @@protoc_insertion_point(field_set:serialization.RoadDistance.distance)
+  // @@protoc_insertion_point(field_set:proto_serialization.Distance.distance)
 }
 
 #ifdef __GNUC__
@@ -1100,10 +1245,12 @@ inline void RoadDistance::set_distance(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace serialization
+}  // namespace proto_serialization
 
 // @@protoc_insertion_point(global_scope)
 

@@ -379,6 +379,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.cpp" />
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.cpp" />
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.cpp" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\serialization.cpp" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\serialization.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\ZERO_CHECK.vcxproj">

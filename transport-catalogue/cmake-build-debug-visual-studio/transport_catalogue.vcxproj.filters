@@ -37,12 +37,18 @@
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\serialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\serialization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
