@@ -7,8 +7,6 @@
 
 #include <transport_catalogue.pb.h>
 
-
-
 namespace data_serialization {
 
     class Serializer {
@@ -41,6 +39,8 @@ namespace data_serialization {
         std::map<std::string, int> stop_ids_{};
         std::map<int, std::string> id_stops_{};
         int CURRENT_ID_ = 0;
+        renderer::RenderSettings render_settings_{};
+        domain::RoutingSettings routing_settings_{};
     };
 
 }

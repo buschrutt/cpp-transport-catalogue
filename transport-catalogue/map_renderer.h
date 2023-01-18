@@ -22,10 +22,10 @@ namespace renderer {
         // %%%%%%%%%% %%%%%%%%%% %%%%%%%%%% %%%%%%%%%%
     public:
         RenderSettings();
-        int bus_label_font_size{};
-        int stop_label_font_size{};
         double width{};
         double height{};
+        int bus_label_font_size{};
+        int stop_label_font_size{};
         double padding{};
         double stop_radius{};
         double line_width{};

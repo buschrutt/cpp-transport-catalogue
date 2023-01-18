@@ -4,7 +4,7 @@
 #include "json_reader.h"
 #include "json_builder.h"
 #include "transport_router.h"
-#include "log_duration.h"
+//#include "log_duration.h"
 
 using namespace std::literals;
 
@@ -168,7 +168,7 @@ namespace json_reader {
                         j_builder.StartDict();
                         renderer::MapRenderer map_renderer;
                         json::Node svg_map;
-                        svg_map = map_renderer.DrawSvgMap(catalogue_, RenderSettingsBuilder(json_doc_));
+                        svg_map = map_renderer.DrawSvgMap(catalogue_, this->render_settings_);
                         j_builder
                                 .Key("request_id"s).Value(db_request.AsDict().at("id"s).AsInt())
                                 .Key("map"s).Value(svg_map.AsString());

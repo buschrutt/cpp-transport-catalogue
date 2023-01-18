@@ -20,6 +20,17 @@ namespace json_reader {
                     , result_json_doc_({}){
             routing_settings_ = json_reader::JSONReader::RoutingSettingsBuilder(json_doc_);
         }
+
+        JSONReader(json::Document  json_doc, catalogue::TransportCatalogue& catalogue,
+                   renderer::RenderSettings render_settings, domain::RoutingSettings routing_settings)
+                : json_doc_(std::move(json_doc))
+                , catalogue_(catalogue)
+                , result_json_doc_({})
+                , render_settings_(std::move(render_settings))
+                , routing_settings_(routing_settings) {
+            routing_settings_ = json_reader::JSONReader::RoutingSettingsBuilder(json_doc_);
+        }
+
         // %%%%%%%%%% %%%%%%%%%% static get render settings method %%%%%%%%%% %%%%%%%%%%
         static renderer::RenderSettings RenderSettingsBuilder(const json::Document& json_doc);
         // %%%%%%%%%% %%%%%%%%%% static get routing settings method %%%%%%%%%% %%%%%%%%%%
