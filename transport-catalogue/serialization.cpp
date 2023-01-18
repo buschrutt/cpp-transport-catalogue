@@ -20,8 +20,6 @@ namespace data_serialization {
             // Start of %%%%% %%%%% Getting Render Settings %%%%% %%%%%
             if (json_doc_.GetRoot().AsDict().count("render_settings"s) > 0 ){
                 auto json_rs = json_doc_.GetRoot().AsDict().at("render_settings"s);
-
-
                 proto_catalogue.mutable_render_set()->set_weight(json_rs.AsDict().at("width").AsDouble());
                 proto_catalogue.mutable_render_set()->set_height(json_rs.AsDict().at("height").AsDouble());
                 proto_catalogue.mutable_render_set()->set_bus_label_font_size(json_rs.AsDict().at("bus_label_font_size").AsInt());
@@ -53,14 +51,17 @@ namespace data_serialization {
                 for (const auto& color : json_rs.AsDict().at("color_palette").AsArray()){
                     if (color.IsArray()){
                         if (color.AsArray().size() == 3){
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgb()->set_red(color.AsArray()[0].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgb()->set_green(color.AsArray()[1].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgb()->set_blue(color.AsArray()[2].AsInt());
+                            proto_serialization::Color clr;
+                            clr.mutable_rgb()->set_red(color.AsArray()[0].AsInt());
+                            clr.mutable_rgb()->set_green(color.AsArray()[1].AsInt());
+                            clr.mutable_rgb()->set_blue(color.AsArray()[2].AsInt());
+                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add(std::move(clr));
                         } else {
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgba()->set_red(color.AsArray()[0].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgba()->set_green(color.AsArray()[1].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgba()->set_blue(color.AsArray()[2].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->mutable_rgba()->set_opacity(color.AsArray()[3].AsDouble());
+                            proto_serialization::Color clr;
+                            clr.mutable_rgba()->set_red(color.AsArray()[0].AsInt());
+                            clr.mutable_rgba()->set_green(color.AsArray()[1].AsInt());
+                            clr.mutable_rgba()->set_blue(color.AsArray()[2].AsInt());
+                            clr.mutable_rgba()->set_opacity(color.AsArray()[3].AsDouble());
                         }
                     } else {
                         proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->set_str(color.AsString());
