@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package map_proto;
+
+message RenderSettings {
+    double weight = 1;
+    double height = 2;
+    int32 bus_label_font_size = 3;
+    int32 stop_label_font_size = 4;
+    double padding = 5;
+    double stop_radius = 6;
+    double line_width = 7;
+    double underlayer_width = 8;
+    Offset bus_label_offset = 9;
+    Offset stop_label_offset = 10;
+    Color underlayer_color = 11;
+    repeated Color color_palette = 12;
+}
+
+message Offset {
+    double x = 1;
+    double y = 2;
+}
+
+message Color {
+    oneof variant{
+        string str = 1;
+        Rgb rgb = 2;
+        Rgba rgba = 3;
+    }
+}
+
+message Rgb {
+    uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+}
+
+message Rgba{
+    uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+    double opacity = 4;
+}

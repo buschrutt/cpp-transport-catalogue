@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto_serialization;
+package catalog_proto;
 
 message TransportCatalogue {
     repeated Bus buses = 1;

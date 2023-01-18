@@ -10,8 +10,8 @@ namespace data_serialization {
 
         // Start of %%%%% %%%%% Processing .json %%%%% %%%%%
         if (json_doc_.GetRoot().AsDict().count("serialization_settings"s) > 0){
-            proto_serialization::TransportCatalogue proto_catalogue;
-            proto_serialization::RenderSettings render_setting;
+            catalog_proto::TransportCatalogue proto_catalogue;
+            catalog_proto::RenderSettings render_setting;
             auto db_settings_dict = json_doc_.GetRoot().AsDict().at("serialization_settings"s);
             auto file_name = db_settings_dict.AsDict().at("file"s);
             const std::string& file_path = "db_files/" + file_name.AsString();
@@ -51,17 +51,18 @@ namespace data_serialization {
                 for (const auto& color : json_rs.AsDict().at("color_palette").AsArray()){
                     if (color.IsArray()){
                         if (color.AsArray().size() == 3){
-                            proto_serialization::Color clr;
+                            catalog_proto::Color clr;
                             clr.mutable_rgb()->set_red(color.AsArray()[0].AsInt());
                             clr.mutable_rgb()->set_green(color.AsArray()[1].AsInt());
                             clr.mutable_rgb()->set_blue(color.AsArray()[2].AsInt());
                             proto_catalogue.mutable_render_set()->mutable_color_palette()->Add(std::move(clr));
                         } else {
-                            proto_serialization::Color clr;
+                            catalog_proto::Color clr;
                             clr.mutable_rgba()->set_red(color.AsArray()[0].AsInt());
                             clr.mutable_rgba()->set_green(color.AsArray()[1].AsInt());
                             clr.mutable_rgba()->set_blue(color.AsArray()[2].AsInt());
                             clr.mutable_rgba()->set_opacity(color.AsArray()[3].AsDouble());
+                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add(std::move(clr));
                         }
                     } else {
                         proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->set_str(color.AsString());
@@ -87,7 +88,7 @@ namespace data_serialization {
                 for (const auto& db_request : db_request_arr.AsArray()){
                     auto node = db_request.AsDict().at("type"s);
                     if(node.AsString() == "Bus"s){
-                        proto_serialization::Bus bus;
+                        catalog_proto::Bus bus;
                         for (const auto& stop : db_request.AsDict().at("stops"s).AsArray()){
                             if (stop.IsString()){
                                 bus.mutable_stop_ids()->Add(SetStopByName(stop.AsString()));
@@ -99,8 +100,8 @@ namespace data_serialization {
                     } else if (node.AsString() == "Stop"s){
                         std::string stop_name = db_request.AsDict().at("name"s).AsString();
                         int stop_id = SetStopByName(stop_name);
-                        proto_serialization::Stop stop;
-                        proto_serialization::Distance distance{};
+                        catalog_proto::Stop stop;
+                        catalog_proto::Distance distance{};
                         stop.set_name(stop_name);
                         stop.set_id(stop_id);
                         stop.set_latitude((double)db_request.AsDict().at("latitude"s).AsDouble());
@@ -138,7 +139,7 @@ namespace data_serialization {
 
     json::Document Serializer::FromFileDeserializer() {
         if (json_doc_.GetRoot().AsDict().count("serialization_settings"s) > 0) {
-            proto_serialization::TransportCatalogue proto_catalogue;
+            catalog_proto::TransportCatalogue proto_catalogue;
             auto db_settings_dict = json_doc_.GetRoot().AsDict().at("serialization_settings"s);
             auto file_name = db_settings_dict.AsDict().at("file"s);
             const std::string& file_path = "db_files/" + file_name.AsString();

@@ -44,7 +44,7 @@ struct TableStruct_transport_5fcatalogue_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_transport_5fcatalogue_2eproto;
-namespace proto_serialization {
+namespace catalog_proto {
 class Bus;
 struct BusDefaultTypeInternal;
 extern BusDefaultTypeInternal _Bus_default_instance_;
@@ -75,25 +75,25 @@ extern StopDefaultTypeInternal _Stop_default_instance_;
 class TransportCatalogue;
 struct TransportCatalogueDefaultTypeInternal;
 extern TransportCatalogueDefaultTypeInternal _TransportCatalogue_default_instance_;
-}  // namespace proto_serialization
+}  // namespace catalog_proto
 PROTOBUF_NAMESPACE_OPEN
-template<> ::proto_serialization::Bus* Arena::CreateMaybeMessage<::proto_serialization::Bus>(Arena*);
-template<> ::proto_serialization::Color* Arena::CreateMaybeMessage<::proto_serialization::Color>(Arena*);
-template<> ::proto_serialization::Distance* Arena::CreateMaybeMessage<::proto_serialization::Distance>(Arena*);
-template<> ::proto_serialization::Offset* Arena::CreateMaybeMessage<::proto_serialization::Offset>(Arena*);
-template<> ::proto_serialization::RenderSettings* Arena::CreateMaybeMessage<::proto_serialization::RenderSettings>(Arena*);
-template<> ::proto_serialization::Rgb* Arena::CreateMaybeMessage<::proto_serialization::Rgb>(Arena*);
-template<> ::proto_serialization::Rgba* Arena::CreateMaybeMessage<::proto_serialization::Rgba>(Arena*);
-template<> ::proto_serialization::RoutingSettings* Arena::CreateMaybeMessage<::proto_serialization::RoutingSettings>(Arena*);
-template<> ::proto_serialization::Stop* Arena::CreateMaybeMessage<::proto_serialization::Stop>(Arena*);
-template<> ::proto_serialization::TransportCatalogue* Arena::CreateMaybeMessage<::proto_serialization::TransportCatalogue>(Arena*);
+template<> ::catalog_proto::Bus* Arena::CreateMaybeMessage<::catalog_proto::Bus>(Arena*);
+template<> ::catalog_proto::Color* Arena::CreateMaybeMessage<::catalog_proto::Color>(Arena*);
+template<> ::catalog_proto::Distance* Arena::CreateMaybeMessage<::catalog_proto::Distance>(Arena*);
+template<> ::catalog_proto::Offset* Arena::CreateMaybeMessage<::catalog_proto::Offset>(Arena*);
+template<> ::catalog_proto::RenderSettings* Arena::CreateMaybeMessage<::catalog_proto::RenderSettings>(Arena*);
+template<> ::catalog_proto::Rgb* Arena::CreateMaybeMessage<::catalog_proto::Rgb>(Arena*);
+template<> ::catalog_proto::Rgba* Arena::CreateMaybeMessage<::catalog_proto::Rgba>(Arena*);
+template<> ::catalog_proto::RoutingSettings* Arena::CreateMaybeMessage<::catalog_proto::RoutingSettings>(Arena*);
+template<> ::catalog_proto::Stop* Arena::CreateMaybeMessage<::catalog_proto::Stop>(Arena*);
+template<> ::catalog_proto::TransportCatalogue* Arena::CreateMaybeMessage<::catalog_proto::TransportCatalogue>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace proto_serialization {
+namespace catalog_proto {
 
 // ===================================================================
 
 class TransportCatalogue final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.TransportCatalogue) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.TransportCatalogue) */ {
  public:
   inline TransportCatalogue() : TransportCatalogue(nullptr) {}
   ~TransportCatalogue() override;
@@ -196,7 +196,7 @@ class TransportCatalogue final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.TransportCatalogue";
+    return "catalog_proto.TransportCatalogue";
   }
   protected:
   explicit TransportCatalogue(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -219,97 +219,97 @@ class TransportCatalogue final :
     kRenderSetFieldNumber = 4,
     kRoutingSetFieldNumber = 5,
   };
-  // repeated .proto_serialization.Bus buses = 1;
+  // repeated .catalog_proto.Bus buses = 1;
   int buses_size() const;
   private:
   int _internal_buses_size() const;
   public:
   void clear_buses();
-  ::proto_serialization::Bus* mutable_buses(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >*
+  ::catalog_proto::Bus* mutable_buses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Bus >*
       mutable_buses();
   private:
-  const ::proto_serialization::Bus& _internal_buses(int index) const;
-  ::proto_serialization::Bus* _internal_add_buses();
+  const ::catalog_proto::Bus& _internal_buses(int index) const;
+  ::catalog_proto::Bus* _internal_add_buses();
   public:
-  const ::proto_serialization::Bus& buses(int index) const;
-  ::proto_serialization::Bus* add_buses();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >&
+  const ::catalog_proto::Bus& buses(int index) const;
+  ::catalog_proto::Bus* add_buses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Bus >&
       buses() const;
 
-  // repeated .proto_serialization.Stop stops = 2;
+  // repeated .catalog_proto.Stop stops = 2;
   int stops_size() const;
   private:
   int _internal_stops_size() const;
   public:
   void clear_stops();
-  ::proto_serialization::Stop* mutable_stops(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >*
+  ::catalog_proto::Stop* mutable_stops(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Stop >*
       mutable_stops();
   private:
-  const ::proto_serialization::Stop& _internal_stops(int index) const;
-  ::proto_serialization::Stop* _internal_add_stops();
+  const ::catalog_proto::Stop& _internal_stops(int index) const;
+  ::catalog_proto::Stop* _internal_add_stops();
   public:
-  const ::proto_serialization::Stop& stops(int index) const;
-  ::proto_serialization::Stop* add_stops();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >&
+  const ::catalog_proto::Stop& stops(int index) const;
+  ::catalog_proto::Stop* add_stops();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Stop >&
       stops() const;
 
-  // repeated .proto_serialization.Distance distances = 3;
+  // repeated .catalog_proto.Distance distances = 3;
   int distances_size() const;
   private:
   int _internal_distances_size() const;
   public:
   void clear_distances();
-  ::proto_serialization::Distance* mutable_distances(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >*
+  ::catalog_proto::Distance* mutable_distances(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Distance >*
       mutable_distances();
   private:
-  const ::proto_serialization::Distance& _internal_distances(int index) const;
-  ::proto_serialization::Distance* _internal_add_distances();
+  const ::catalog_proto::Distance& _internal_distances(int index) const;
+  ::catalog_proto::Distance* _internal_add_distances();
   public:
-  const ::proto_serialization::Distance& distances(int index) const;
-  ::proto_serialization::Distance* add_distances();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >&
+  const ::catalog_proto::Distance& distances(int index) const;
+  ::catalog_proto::Distance* add_distances();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Distance >&
       distances() const;
 
-  // .proto_serialization.RenderSettings render_set = 4;
+  // .catalog_proto.RenderSettings render_set = 4;
   bool has_render_set() const;
   private:
   bool _internal_has_render_set() const;
   public:
   void clear_render_set();
-  const ::proto_serialization::RenderSettings& render_set() const;
-  PROTOBUF_NODISCARD ::proto_serialization::RenderSettings* release_render_set();
-  ::proto_serialization::RenderSettings* mutable_render_set();
-  void set_allocated_render_set(::proto_serialization::RenderSettings* render_set);
+  const ::catalog_proto::RenderSettings& render_set() const;
+  PROTOBUF_NODISCARD ::catalog_proto::RenderSettings* release_render_set();
+  ::catalog_proto::RenderSettings* mutable_render_set();
+  void set_allocated_render_set(::catalog_proto::RenderSettings* render_set);
   private:
-  const ::proto_serialization::RenderSettings& _internal_render_set() const;
-  ::proto_serialization::RenderSettings* _internal_mutable_render_set();
+  const ::catalog_proto::RenderSettings& _internal_render_set() const;
+  ::catalog_proto::RenderSettings* _internal_mutable_render_set();
   public:
   void unsafe_arena_set_allocated_render_set(
-      ::proto_serialization::RenderSettings* render_set);
-  ::proto_serialization::RenderSettings* unsafe_arena_release_render_set();
+      ::catalog_proto::RenderSettings* render_set);
+  ::catalog_proto::RenderSettings* unsafe_arena_release_render_set();
 
-  // .proto_serialization.RoutingSettings routing_set = 5;
+  // .catalog_proto.RoutingSettings routing_set = 5;
   bool has_routing_set() const;
   private:
   bool _internal_has_routing_set() const;
   public:
   void clear_routing_set();
-  const ::proto_serialization::RoutingSettings& routing_set() const;
-  PROTOBUF_NODISCARD ::proto_serialization::RoutingSettings* release_routing_set();
-  ::proto_serialization::RoutingSettings* mutable_routing_set();
-  void set_allocated_routing_set(::proto_serialization::RoutingSettings* routing_set);
+  const ::catalog_proto::RoutingSettings& routing_set() const;
+  PROTOBUF_NODISCARD ::catalog_proto::RoutingSettings* release_routing_set();
+  ::catalog_proto::RoutingSettings* mutable_routing_set();
+  void set_allocated_routing_set(::catalog_proto::RoutingSettings* routing_set);
   private:
-  const ::proto_serialization::RoutingSettings& _internal_routing_set() const;
-  ::proto_serialization::RoutingSettings* _internal_mutable_routing_set();
+  const ::catalog_proto::RoutingSettings& _internal_routing_set() const;
+  ::catalog_proto::RoutingSettings* _internal_mutable_routing_set();
   public:
   void unsafe_arena_set_allocated_routing_set(
-      ::proto_serialization::RoutingSettings* routing_set);
-  ::proto_serialization::RoutingSettings* unsafe_arena_release_routing_set();
+      ::catalog_proto::RoutingSettings* routing_set);
+  ::catalog_proto::RoutingSettings* unsafe_arena_release_routing_set();
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(class_scope:catalog_proto.TransportCatalogue)
  private:
   class _Internal;
 
@@ -317,11 +317,11 @@ class TransportCatalogue final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus > buses_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop > stops_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance > distances_;
-    ::proto_serialization::RenderSettings* render_set_;
-    ::proto_serialization::RoutingSettings* routing_set_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Bus > buses_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Stop > stops_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Distance > distances_;
+    ::catalog_proto::RenderSettings* render_set_;
+    ::catalog_proto::RoutingSettings* routing_set_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -330,7 +330,7 @@ class TransportCatalogue final :
 // -------------------------------------------------------------------
 
 class Bus final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Bus) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Bus) */ {
  public:
   inline Bus() : Bus(nullptr) {}
   ~Bus() override;
@@ -433,7 +433,7 @@ class Bus final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Bus";
+    return "catalog_proto.Bus";
   }
   protected:
   explicit Bus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -499,7 +499,7 @@ class Bus final :
   void _internal_set_is_roundtrip(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Bus)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Bus)
  private:
   class _Internal;
 
@@ -519,7 +519,7 @@ class Bus final :
 // -------------------------------------------------------------------
 
 class Stop final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Stop) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Stop) */ {
  public:
   inline Stop() : Stop(nullptr) {}
   ~Stop() override;
@@ -622,7 +622,7 @@ class Stop final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Stop";
+    return "catalog_proto.Stop";
   }
   protected:
   explicit Stop(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -685,7 +685,7 @@ class Stop final :
   void _internal_set_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Stop)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Stop)
  private:
   class _Internal;
 
@@ -705,7 +705,7 @@ class Stop final :
 // -------------------------------------------------------------------
 
 class Distance final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Distance) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Distance) */ {
  public:
   inline Distance() : Distance(nullptr) {}
   ~Distance() override;
@@ -808,7 +808,7 @@ class Distance final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Distance";
+    return "catalog_proto.Distance";
   }
   protected:
   explicit Distance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -856,7 +856,7 @@ class Distance final :
   void _internal_set_distance(double value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Distance)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Distance)
  private:
   class _Internal;
 
@@ -875,7 +875,7 @@ class Distance final :
 // -------------------------------------------------------------------
 
 class RoutingSettings final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.RoutingSettings) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.RoutingSettings) */ {
  public:
   inline RoutingSettings() : RoutingSettings(nullptr) {}
   ~RoutingSettings() override;
@@ -978,7 +978,7 @@ class RoutingSettings final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.RoutingSettings";
+    return "catalog_proto.RoutingSettings";
   }
   protected:
   explicit RoutingSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1016,7 +1016,7 @@ class RoutingSettings final :
   void _internal_set_bus_wait_time(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(class_scope:catalog_proto.RoutingSettings)
  private:
   class _Internal;
 
@@ -1034,7 +1034,7 @@ class RoutingSettings final :
 // -------------------------------------------------------------------
 
 class RenderSettings final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.RenderSettings) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.RenderSettings) */ {
  public:
   inline RenderSettings() : RenderSettings(nullptr) {}
   ~RenderSettings() override;
@@ -1137,7 +1137,7 @@ class RenderSettings final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.RenderSettings";
+    return "catalog_proto.RenderSettings";
   }
   protected:
   explicit RenderSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1167,77 +1167,77 @@ class RenderSettings final :
     kLineWidthFieldNumber = 7,
     kUnderlayerWidthFieldNumber = 8,
   };
-  // repeated .proto_serialization.Color color_palette = 12;
+  // repeated .catalog_proto.Color color_palette = 12;
   int color_palette_size() const;
   private:
   int _internal_color_palette_size() const;
   public:
   void clear_color_palette();
-  ::proto_serialization::Color* mutable_color_palette(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Color >*
+  ::catalog_proto::Color* mutable_color_palette(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Color >*
       mutable_color_palette();
   private:
-  const ::proto_serialization::Color& _internal_color_palette(int index) const;
-  ::proto_serialization::Color* _internal_add_color_palette();
+  const ::catalog_proto::Color& _internal_color_palette(int index) const;
+  ::catalog_proto::Color* _internal_add_color_palette();
   public:
-  const ::proto_serialization::Color& color_palette(int index) const;
-  ::proto_serialization::Color* add_color_palette();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Color >&
+  const ::catalog_proto::Color& color_palette(int index) const;
+  ::catalog_proto::Color* add_color_palette();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Color >&
       color_palette() const;
 
-  // .proto_serialization.Offset bus_label_offset = 9;
+  // .catalog_proto.Offset bus_label_offset = 9;
   bool has_bus_label_offset() const;
   private:
   bool _internal_has_bus_label_offset() const;
   public:
   void clear_bus_label_offset();
-  const ::proto_serialization::Offset& bus_label_offset() const;
-  PROTOBUF_NODISCARD ::proto_serialization::Offset* release_bus_label_offset();
-  ::proto_serialization::Offset* mutable_bus_label_offset();
-  void set_allocated_bus_label_offset(::proto_serialization::Offset* bus_label_offset);
+  const ::catalog_proto::Offset& bus_label_offset() const;
+  PROTOBUF_NODISCARD ::catalog_proto::Offset* release_bus_label_offset();
+  ::catalog_proto::Offset* mutable_bus_label_offset();
+  void set_allocated_bus_label_offset(::catalog_proto::Offset* bus_label_offset);
   private:
-  const ::proto_serialization::Offset& _internal_bus_label_offset() const;
-  ::proto_serialization::Offset* _internal_mutable_bus_label_offset();
+  const ::catalog_proto::Offset& _internal_bus_label_offset() const;
+  ::catalog_proto::Offset* _internal_mutable_bus_label_offset();
   public:
   void unsafe_arena_set_allocated_bus_label_offset(
-      ::proto_serialization::Offset* bus_label_offset);
-  ::proto_serialization::Offset* unsafe_arena_release_bus_label_offset();
+      ::catalog_proto::Offset* bus_label_offset);
+  ::catalog_proto::Offset* unsafe_arena_release_bus_label_offset();
 
-  // .proto_serialization.Offset stop_label_offset = 10;
+  // .catalog_proto.Offset stop_label_offset = 10;
   bool has_stop_label_offset() const;
   private:
   bool _internal_has_stop_label_offset() const;
   public:
   void clear_stop_label_offset();
-  const ::proto_serialization::Offset& stop_label_offset() const;
-  PROTOBUF_NODISCARD ::proto_serialization::Offset* release_stop_label_offset();
-  ::proto_serialization::Offset* mutable_stop_label_offset();
-  void set_allocated_stop_label_offset(::proto_serialization::Offset* stop_label_offset);
+  const ::catalog_proto::Offset& stop_label_offset() const;
+  PROTOBUF_NODISCARD ::catalog_proto::Offset* release_stop_label_offset();
+  ::catalog_proto::Offset* mutable_stop_label_offset();
+  void set_allocated_stop_label_offset(::catalog_proto::Offset* stop_label_offset);
   private:
-  const ::proto_serialization::Offset& _internal_stop_label_offset() const;
-  ::proto_serialization::Offset* _internal_mutable_stop_label_offset();
+  const ::catalog_proto::Offset& _internal_stop_label_offset() const;
+  ::catalog_proto::Offset* _internal_mutable_stop_label_offset();
   public:
   void unsafe_arena_set_allocated_stop_label_offset(
-      ::proto_serialization::Offset* stop_label_offset);
-  ::proto_serialization::Offset* unsafe_arena_release_stop_label_offset();
+      ::catalog_proto::Offset* stop_label_offset);
+  ::catalog_proto::Offset* unsafe_arena_release_stop_label_offset();
 
-  // .proto_serialization.Color underlayer_color = 11;
+  // .catalog_proto.Color underlayer_color = 11;
   bool has_underlayer_color() const;
   private:
   bool _internal_has_underlayer_color() const;
   public:
   void clear_underlayer_color();
-  const ::proto_serialization::Color& underlayer_color() const;
-  PROTOBUF_NODISCARD ::proto_serialization::Color* release_underlayer_color();
-  ::proto_serialization::Color* mutable_underlayer_color();
-  void set_allocated_underlayer_color(::proto_serialization::Color* underlayer_color);
+  const ::catalog_proto::Color& underlayer_color() const;
+  PROTOBUF_NODISCARD ::catalog_proto::Color* release_underlayer_color();
+  ::catalog_proto::Color* mutable_underlayer_color();
+  void set_allocated_underlayer_color(::catalog_proto::Color* underlayer_color);
   private:
-  const ::proto_serialization::Color& _internal_underlayer_color() const;
-  ::proto_serialization::Color* _internal_mutable_underlayer_color();
+  const ::catalog_proto::Color& _internal_underlayer_color() const;
+  ::catalog_proto::Color* _internal_mutable_underlayer_color();
   public:
   void unsafe_arena_set_allocated_underlayer_color(
-      ::proto_serialization::Color* underlayer_color);
-  ::proto_serialization::Color* unsafe_arena_release_underlayer_color();
+      ::catalog_proto::Color* underlayer_color);
+  ::catalog_proto::Color* unsafe_arena_release_underlayer_color();
 
   // double weight = 1;
   void clear_weight();
@@ -1311,7 +1311,7 @@ class RenderSettings final :
   void _internal_set_underlayer_width(double value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(class_scope:catalog_proto.RenderSettings)
  private:
   class _Internal;
 
@@ -1319,10 +1319,10 @@ class RenderSettings final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Color > color_palette_;
-    ::proto_serialization::Offset* bus_label_offset_;
-    ::proto_serialization::Offset* stop_label_offset_;
-    ::proto_serialization::Color* underlayer_color_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Color > color_palette_;
+    ::catalog_proto::Offset* bus_label_offset_;
+    ::catalog_proto::Offset* stop_label_offset_;
+    ::catalog_proto::Color* underlayer_color_;
     double weight_;
     double height_;
     int32_t bus_label_font_size_;
@@ -1339,7 +1339,7 @@ class RenderSettings final :
 // -------------------------------------------------------------------
 
 class Offset final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Offset) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Offset) */ {
  public:
   inline Offset() : Offset(nullptr) {}
   ~Offset() override;
@@ -1442,7 +1442,7 @@ class Offset final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Offset";
+    return "catalog_proto.Offset";
   }
   protected:
   explicit Offset(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1480,7 +1480,7 @@ class Offset final :
   void _internal_set_y(double value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Offset)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Offset)
  private:
   class _Internal;
 
@@ -1498,7 +1498,7 @@ class Offset final :
 // -------------------------------------------------------------------
 
 class Color final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Color) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Color) */ {
  public:
   inline Color() : Color(nullptr) {}
   ~Color() override;
@@ -1608,7 +1608,7 @@ class Color final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Color";
+    return "catalog_proto.Color";
   }
   protected:
   explicit Color(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1647,45 +1647,45 @@ class Color final :
   std::string* _internal_mutable_str();
   public:
 
-  // .proto_serialization.Rgb rgb = 2;
+  // .catalog_proto.Rgb rgb = 2;
   bool has_rgb() const;
   private:
   bool _internal_has_rgb() const;
   public:
   void clear_rgb();
-  const ::proto_serialization::Rgb& rgb() const;
-  PROTOBUF_NODISCARD ::proto_serialization::Rgb* release_rgb();
-  ::proto_serialization::Rgb* mutable_rgb();
-  void set_allocated_rgb(::proto_serialization::Rgb* rgb);
+  const ::catalog_proto::Rgb& rgb() const;
+  PROTOBUF_NODISCARD ::catalog_proto::Rgb* release_rgb();
+  ::catalog_proto::Rgb* mutable_rgb();
+  void set_allocated_rgb(::catalog_proto::Rgb* rgb);
   private:
-  const ::proto_serialization::Rgb& _internal_rgb() const;
-  ::proto_serialization::Rgb* _internal_mutable_rgb();
+  const ::catalog_proto::Rgb& _internal_rgb() const;
+  ::catalog_proto::Rgb* _internal_mutable_rgb();
   public:
   void unsafe_arena_set_allocated_rgb(
-      ::proto_serialization::Rgb* rgb);
-  ::proto_serialization::Rgb* unsafe_arena_release_rgb();
+      ::catalog_proto::Rgb* rgb);
+  ::catalog_proto::Rgb* unsafe_arena_release_rgb();
 
-  // .proto_serialization.Rgba rgba = 3;
+  // .catalog_proto.Rgba rgba = 3;
   bool has_rgba() const;
   private:
   bool _internal_has_rgba() const;
   public:
   void clear_rgba();
-  const ::proto_serialization::Rgba& rgba() const;
-  PROTOBUF_NODISCARD ::proto_serialization::Rgba* release_rgba();
-  ::proto_serialization::Rgba* mutable_rgba();
-  void set_allocated_rgba(::proto_serialization::Rgba* rgba);
+  const ::catalog_proto::Rgba& rgba() const;
+  PROTOBUF_NODISCARD ::catalog_proto::Rgba* release_rgba();
+  ::catalog_proto::Rgba* mutable_rgba();
+  void set_allocated_rgba(::catalog_proto::Rgba* rgba);
   private:
-  const ::proto_serialization::Rgba& _internal_rgba() const;
-  ::proto_serialization::Rgba* _internal_mutable_rgba();
+  const ::catalog_proto::Rgba& _internal_rgba() const;
+  ::catalog_proto::Rgba* _internal_mutable_rgba();
   public:
   void unsafe_arena_set_allocated_rgba(
-      ::proto_serialization::Rgba* rgba);
-  ::proto_serialization::Rgba* unsafe_arena_release_rgba();
+      ::catalog_proto::Rgba* rgba);
+  ::catalog_proto::Rgba* unsafe_arena_release_rgba();
 
   void clear_variant();
   VariantCase variant_case() const;
-  // @@protoc_insertion_point(class_scope:proto_serialization.Color)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Color)
  private:
   class _Internal;
   void set_has_str();
@@ -1703,8 +1703,8 @@ class Color final :
       constexpr VariantUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr str_;
-      ::proto_serialization::Rgb* rgb_;
-      ::proto_serialization::Rgba* rgba_;
+      ::catalog_proto::Rgb* rgb_;
+      ::catalog_proto::Rgba* rgba_;
     } variant_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -1716,7 +1716,7 @@ class Color final :
 // -------------------------------------------------------------------
 
 class Rgb final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Rgb) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Rgb) */ {
  public:
   inline Rgb() : Rgb(nullptr) {}
   ~Rgb() override;
@@ -1819,7 +1819,7 @@ class Rgb final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Rgb";
+    return "catalog_proto.Rgb";
   }
   protected:
   explicit Rgb(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1867,7 +1867,7 @@ class Rgb final :
   void _internal_set_blue(uint32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Rgb)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Rgb)
  private:
   class _Internal;
 
@@ -1886,7 +1886,7 @@ class Rgb final :
 // -------------------------------------------------------------------
 
 class Rgba final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:proto_serialization.Rgba) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:catalog_proto.Rgba) */ {
  public:
   inline Rgba() : Rgba(nullptr) {}
   ~Rgba() override;
@@ -1989,7 +1989,7 @@ class Rgba final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "proto_serialization.Rgba";
+    return "catalog_proto.Rgba";
   }
   protected:
   explicit Rgba(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -2047,7 +2047,7 @@ class Rgba final :
   void _internal_set_blue(uint32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:proto_serialization.Rgba)
+  // @@protoc_insertion_point(class_scope:catalog_proto.Rgba)
  private:
   class _Internal;
 
@@ -2075,7 +2075,7 @@ class Rgba final :
 #endif  // __GNUC__
 // TransportCatalogue
 
-// repeated .proto_serialization.Bus buses = 1;
+// repeated .catalog_proto.Bus buses = 1;
 inline int TransportCatalogue::_internal_buses_size() const {
   return _impl_.buses_.size();
 }
@@ -2085,37 +2085,37 @@ inline int TransportCatalogue::buses_size() const {
 inline void TransportCatalogue::clear_buses() {
   _impl_.buses_.Clear();
 }
-inline ::proto_serialization::Bus* TransportCatalogue::mutable_buses(int index) {
-  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.buses)
+inline ::catalog_proto::Bus* TransportCatalogue::mutable_buses(int index) {
+  // @@protoc_insertion_point(field_mutable:catalog_proto.TransportCatalogue.buses)
   return _impl_.buses_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Bus >*
 TransportCatalogue::mutable_buses() {
-  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.buses)
+  // @@protoc_insertion_point(field_mutable_list:catalog_proto.TransportCatalogue.buses)
   return &_impl_.buses_;
 }
-inline const ::proto_serialization::Bus& TransportCatalogue::_internal_buses(int index) const {
+inline const ::catalog_proto::Bus& TransportCatalogue::_internal_buses(int index) const {
   return _impl_.buses_.Get(index);
 }
-inline const ::proto_serialization::Bus& TransportCatalogue::buses(int index) const {
-  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.buses)
+inline const ::catalog_proto::Bus& TransportCatalogue::buses(int index) const {
+  // @@protoc_insertion_point(field_get:catalog_proto.TransportCatalogue.buses)
   return _internal_buses(index);
 }
-inline ::proto_serialization::Bus* TransportCatalogue::_internal_add_buses() {
+inline ::catalog_proto::Bus* TransportCatalogue::_internal_add_buses() {
   return _impl_.buses_.Add();
 }
-inline ::proto_serialization::Bus* TransportCatalogue::add_buses() {
-  ::proto_serialization::Bus* _add = _internal_add_buses();
-  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.buses)
+inline ::catalog_proto::Bus* TransportCatalogue::add_buses() {
+  ::catalog_proto::Bus* _add = _internal_add_buses();
+  // @@protoc_insertion_point(field_add:catalog_proto.TransportCatalogue.buses)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Bus >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Bus >&
 TransportCatalogue::buses() const {
-  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.buses)
+  // @@protoc_insertion_point(field_list:catalog_proto.TransportCatalogue.buses)
   return _impl_.buses_;
 }
 
-// repeated .proto_serialization.Stop stops = 2;
+// repeated .catalog_proto.Stop stops = 2;
 inline int TransportCatalogue::_internal_stops_size() const {
   return _impl_.stops_.size();
 }
@@ -2125,37 +2125,37 @@ inline int TransportCatalogue::stops_size() const {
 inline void TransportCatalogue::clear_stops() {
   _impl_.stops_.Clear();
 }
-inline ::proto_serialization::Stop* TransportCatalogue::mutable_stops(int index) {
-  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.stops)
+inline ::catalog_proto::Stop* TransportCatalogue::mutable_stops(int index) {
+  // @@protoc_insertion_point(field_mutable:catalog_proto.TransportCatalogue.stops)
   return _impl_.stops_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Stop >*
 TransportCatalogue::mutable_stops() {
-  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.stops)
+  // @@protoc_insertion_point(field_mutable_list:catalog_proto.TransportCatalogue.stops)
   return &_impl_.stops_;
 }
-inline const ::proto_serialization::Stop& TransportCatalogue::_internal_stops(int index) const {
+inline const ::catalog_proto::Stop& TransportCatalogue::_internal_stops(int index) const {
   return _impl_.stops_.Get(index);
 }
-inline const ::proto_serialization::Stop& TransportCatalogue::stops(int index) const {
-  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.stops)
+inline const ::catalog_proto::Stop& TransportCatalogue::stops(int index) const {
+  // @@protoc_insertion_point(field_get:catalog_proto.TransportCatalogue.stops)
   return _internal_stops(index);
 }
-inline ::proto_serialization::Stop* TransportCatalogue::_internal_add_stops() {
+inline ::catalog_proto::Stop* TransportCatalogue::_internal_add_stops() {
   return _impl_.stops_.Add();
 }
-inline ::proto_serialization::Stop* TransportCatalogue::add_stops() {
-  ::proto_serialization::Stop* _add = _internal_add_stops();
-  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.stops)
+inline ::catalog_proto::Stop* TransportCatalogue::add_stops() {
+  ::catalog_proto::Stop* _add = _internal_add_stops();
+  // @@protoc_insertion_point(field_add:catalog_proto.TransportCatalogue.stops)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Stop >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Stop >&
 TransportCatalogue::stops() const {
-  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.stops)
+  // @@protoc_insertion_point(field_list:catalog_proto.TransportCatalogue.stops)
   return _impl_.stops_;
 }
 
-// repeated .proto_serialization.Distance distances = 3;
+// repeated .catalog_proto.Distance distances = 3;
 inline int TransportCatalogue::_internal_distances_size() const {
   return _impl_.distances_.size();
 }
@@ -2165,37 +2165,37 @@ inline int TransportCatalogue::distances_size() const {
 inline void TransportCatalogue::clear_distances() {
   _impl_.distances_.Clear();
 }
-inline ::proto_serialization::Distance* TransportCatalogue::mutable_distances(int index) {
-  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.distances)
+inline ::catalog_proto::Distance* TransportCatalogue::mutable_distances(int index) {
+  // @@protoc_insertion_point(field_mutable:catalog_proto.TransportCatalogue.distances)
   return _impl_.distances_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Distance >*
 TransportCatalogue::mutable_distances() {
-  // @@protoc_insertion_point(field_mutable_list:proto_serialization.TransportCatalogue.distances)
+  // @@protoc_insertion_point(field_mutable_list:catalog_proto.TransportCatalogue.distances)
   return &_impl_.distances_;
 }
-inline const ::proto_serialization::Distance& TransportCatalogue::_internal_distances(int index) const {
+inline const ::catalog_proto::Distance& TransportCatalogue::_internal_distances(int index) const {
   return _impl_.distances_.Get(index);
 }
-inline const ::proto_serialization::Distance& TransportCatalogue::distances(int index) const {
-  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.distances)
+inline const ::catalog_proto::Distance& TransportCatalogue::distances(int index) const {
+  // @@protoc_insertion_point(field_get:catalog_proto.TransportCatalogue.distances)
   return _internal_distances(index);
 }
-inline ::proto_serialization::Distance* TransportCatalogue::_internal_add_distances() {
+inline ::catalog_proto::Distance* TransportCatalogue::_internal_add_distances() {
   return _impl_.distances_.Add();
 }
-inline ::proto_serialization::Distance* TransportCatalogue::add_distances() {
-  ::proto_serialization::Distance* _add = _internal_add_distances();
-  // @@protoc_insertion_point(field_add:proto_serialization.TransportCatalogue.distances)
+inline ::catalog_proto::Distance* TransportCatalogue::add_distances() {
+  ::catalog_proto::Distance* _add = _internal_add_distances();
+  // @@protoc_insertion_point(field_add:catalog_proto.TransportCatalogue.distances)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Distance >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Distance >&
 TransportCatalogue::distances() const {
-  // @@protoc_insertion_point(field_list:proto_serialization.TransportCatalogue.distances)
+  // @@protoc_insertion_point(field_list:catalog_proto.TransportCatalogue.distances)
   return _impl_.distances_;
 }
 
-// .proto_serialization.RenderSettings render_set = 4;
+// .catalog_proto.RenderSettings render_set = 4;
 inline bool TransportCatalogue::_internal_has_render_set() const {
   return this != internal_default_instance() && _impl_.render_set_ != nullptr;
 }
@@ -2208,17 +2208,17 @@ inline void TransportCatalogue::clear_render_set() {
   }
   _impl_.render_set_ = nullptr;
 }
-inline const ::proto_serialization::RenderSettings& TransportCatalogue::_internal_render_set() const {
-  const ::proto_serialization::RenderSettings* p = _impl_.render_set_;
-  return p != nullptr ? *p : reinterpret_cast<const ::proto_serialization::RenderSettings&>(
-      ::proto_serialization::_RenderSettings_default_instance_);
+inline const ::catalog_proto::RenderSettings& TransportCatalogue::_internal_render_set() const {
+  const ::catalog_proto::RenderSettings* p = _impl_.render_set_;
+  return p != nullptr ? *p : reinterpret_cast<const ::catalog_proto::RenderSettings&>(
+      ::catalog_proto::_RenderSettings_default_instance_);
 }
-inline const ::proto_serialization::RenderSettings& TransportCatalogue::render_set() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.render_set)
+inline const ::catalog_proto::RenderSettings& TransportCatalogue::render_set() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.TransportCatalogue.render_set)
   return _internal_render_set();
 }
 inline void TransportCatalogue::unsafe_arena_set_allocated_render_set(
-    ::proto_serialization::RenderSettings* render_set) {
+    ::catalog_proto::RenderSettings* render_set) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.render_set_);
   }
@@ -2228,11 +2228,11 @@ inline void TransportCatalogue::unsafe_arena_set_allocated_render_set(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.TransportCatalogue.render_set)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.TransportCatalogue.render_set)
 }
-inline ::proto_serialization::RenderSettings* TransportCatalogue::release_render_set() {
+inline ::catalog_proto::RenderSettings* TransportCatalogue::release_render_set() {
   
-  ::proto_serialization::RenderSettings* temp = _impl_.render_set_;
+  ::catalog_proto::RenderSettings* temp = _impl_.render_set_;
   _impl_.render_set_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2245,27 +2245,27 @@ inline ::proto_serialization::RenderSettings* TransportCatalogue::release_render
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::proto_serialization::RenderSettings* TransportCatalogue::unsafe_arena_release_render_set() {
-  // @@protoc_insertion_point(field_release:proto_serialization.TransportCatalogue.render_set)
+inline ::catalog_proto::RenderSettings* TransportCatalogue::unsafe_arena_release_render_set() {
+  // @@protoc_insertion_point(field_release:catalog_proto.TransportCatalogue.render_set)
   
-  ::proto_serialization::RenderSettings* temp = _impl_.render_set_;
+  ::catalog_proto::RenderSettings* temp = _impl_.render_set_;
   _impl_.render_set_ = nullptr;
   return temp;
 }
-inline ::proto_serialization::RenderSettings* TransportCatalogue::_internal_mutable_render_set() {
+inline ::catalog_proto::RenderSettings* TransportCatalogue::_internal_mutable_render_set() {
   
   if (_impl_.render_set_ == nullptr) {
-    auto* p = CreateMaybeMessage<::proto_serialization::RenderSettings>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::catalog_proto::RenderSettings>(GetArenaForAllocation());
     _impl_.render_set_ = p;
   }
   return _impl_.render_set_;
 }
-inline ::proto_serialization::RenderSettings* TransportCatalogue::mutable_render_set() {
-  ::proto_serialization::RenderSettings* _msg = _internal_mutable_render_set();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.render_set)
+inline ::catalog_proto::RenderSettings* TransportCatalogue::mutable_render_set() {
+  ::catalog_proto::RenderSettings* _msg = _internal_mutable_render_set();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.TransportCatalogue.render_set)
   return _msg;
 }
-inline void TransportCatalogue::set_allocated_render_set(::proto_serialization::RenderSettings* render_set) {
+inline void TransportCatalogue::set_allocated_render_set(::catalog_proto::RenderSettings* render_set) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.render_set_;
@@ -2282,10 +2282,10 @@ inline void TransportCatalogue::set_allocated_render_set(::proto_serialization::
     
   }
   _impl_.render_set_ = render_set;
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.TransportCatalogue.render_set)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.TransportCatalogue.render_set)
 }
 
-// .proto_serialization.RoutingSettings routing_set = 5;
+// .catalog_proto.RoutingSettings routing_set = 5;
 inline bool TransportCatalogue::_internal_has_routing_set() const {
   return this != internal_default_instance() && _impl_.routing_set_ != nullptr;
 }
@@ -2298,17 +2298,17 @@ inline void TransportCatalogue::clear_routing_set() {
   }
   _impl_.routing_set_ = nullptr;
 }
-inline const ::proto_serialization::RoutingSettings& TransportCatalogue::_internal_routing_set() const {
-  const ::proto_serialization::RoutingSettings* p = _impl_.routing_set_;
-  return p != nullptr ? *p : reinterpret_cast<const ::proto_serialization::RoutingSettings&>(
-      ::proto_serialization::_RoutingSettings_default_instance_);
+inline const ::catalog_proto::RoutingSettings& TransportCatalogue::_internal_routing_set() const {
+  const ::catalog_proto::RoutingSettings* p = _impl_.routing_set_;
+  return p != nullptr ? *p : reinterpret_cast<const ::catalog_proto::RoutingSettings&>(
+      ::catalog_proto::_RoutingSettings_default_instance_);
 }
-inline const ::proto_serialization::RoutingSettings& TransportCatalogue::routing_set() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.TransportCatalogue.routing_set)
+inline const ::catalog_proto::RoutingSettings& TransportCatalogue::routing_set() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.TransportCatalogue.routing_set)
   return _internal_routing_set();
 }
 inline void TransportCatalogue::unsafe_arena_set_allocated_routing_set(
-    ::proto_serialization::RoutingSettings* routing_set) {
+    ::catalog_proto::RoutingSettings* routing_set) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.routing_set_);
   }
@@ -2318,11 +2318,11 @@ inline void TransportCatalogue::unsafe_arena_set_allocated_routing_set(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.TransportCatalogue.routing_set)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.TransportCatalogue.routing_set)
 }
-inline ::proto_serialization::RoutingSettings* TransportCatalogue::release_routing_set() {
+inline ::catalog_proto::RoutingSettings* TransportCatalogue::release_routing_set() {
   
-  ::proto_serialization::RoutingSettings* temp = _impl_.routing_set_;
+  ::catalog_proto::RoutingSettings* temp = _impl_.routing_set_;
   _impl_.routing_set_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2335,27 +2335,27 @@ inline ::proto_serialization::RoutingSettings* TransportCatalogue::release_routi
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::proto_serialization::RoutingSettings* TransportCatalogue::unsafe_arena_release_routing_set() {
-  // @@protoc_insertion_point(field_release:proto_serialization.TransportCatalogue.routing_set)
+inline ::catalog_proto::RoutingSettings* TransportCatalogue::unsafe_arena_release_routing_set() {
+  // @@protoc_insertion_point(field_release:catalog_proto.TransportCatalogue.routing_set)
   
-  ::proto_serialization::RoutingSettings* temp = _impl_.routing_set_;
+  ::catalog_proto::RoutingSettings* temp = _impl_.routing_set_;
   _impl_.routing_set_ = nullptr;
   return temp;
 }
-inline ::proto_serialization::RoutingSettings* TransportCatalogue::_internal_mutable_routing_set() {
+inline ::catalog_proto::RoutingSettings* TransportCatalogue::_internal_mutable_routing_set() {
   
   if (_impl_.routing_set_ == nullptr) {
-    auto* p = CreateMaybeMessage<::proto_serialization::RoutingSettings>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::catalog_proto::RoutingSettings>(GetArenaForAllocation());
     _impl_.routing_set_ = p;
   }
   return _impl_.routing_set_;
 }
-inline ::proto_serialization::RoutingSettings* TransportCatalogue::mutable_routing_set() {
-  ::proto_serialization::RoutingSettings* _msg = _internal_mutable_routing_set();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.TransportCatalogue.routing_set)
+inline ::catalog_proto::RoutingSettings* TransportCatalogue::mutable_routing_set() {
+  ::catalog_proto::RoutingSettings* _msg = _internal_mutable_routing_set();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.TransportCatalogue.routing_set)
   return _msg;
 }
-inline void TransportCatalogue::set_allocated_routing_set(::proto_serialization::RoutingSettings* routing_set) {
+inline void TransportCatalogue::set_allocated_routing_set(::catalog_proto::RoutingSettings* routing_set) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.routing_set_;
@@ -2372,7 +2372,7 @@ inline void TransportCatalogue::set_allocated_routing_set(::proto_serialization:
     
   }
   _impl_.routing_set_ = routing_set;
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.TransportCatalogue.routing_set)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.TransportCatalogue.routing_set)
 }
 
 // -------------------------------------------------------------------
@@ -2384,7 +2384,7 @@ inline void Bus::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
 inline const std::string& Bus::name() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Bus.name)
+  // @@protoc_insertion_point(field_get:catalog_proto.Bus.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -2392,11 +2392,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Bus::set_name(ArgT0&& arg0, ArgT... args) {
  
  _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:proto_serialization.Bus.name)
+  // @@protoc_insertion_point(field_set:catalog_proto.Bus.name)
 }
 inline std::string* Bus::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.Bus.name)
+  // @@protoc_insertion_point(field_mutable:catalog_proto.Bus.name)
   return _s;
 }
 inline const std::string& Bus::_internal_name() const {
@@ -2411,7 +2411,7 @@ inline std::string* Bus::_internal_mutable_name() {
   return _impl_.name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Bus::release_name() {
-  // @@protoc_insertion_point(field_release:proto_serialization.Bus.name)
+  // @@protoc_insertion_point(field_release:catalog_proto.Bus.name)
   return _impl_.name_.Release();
 }
 inline void Bus::set_allocated_name(std::string* name) {
@@ -2426,7 +2426,7 @@ inline void Bus::set_allocated_name(std::string* name) {
     _impl_.name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Bus.name)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.Bus.name)
 }
 
 // bool is_roundtrip = 2;
@@ -2437,7 +2437,7 @@ inline bool Bus::_internal_is_roundtrip() const {
   return _impl_.is_roundtrip_;
 }
 inline bool Bus::is_roundtrip() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Bus.is_roundtrip)
+  // @@protoc_insertion_point(field_get:catalog_proto.Bus.is_roundtrip)
   return _internal_is_roundtrip();
 }
 inline void Bus::_internal_set_is_roundtrip(bool value) {
@@ -2446,7 +2446,7 @@ inline void Bus::_internal_set_is_roundtrip(bool value) {
 }
 inline void Bus::set_is_roundtrip(bool value) {
   _internal_set_is_roundtrip(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Bus.is_roundtrip)
+  // @@protoc_insertion_point(field_set:catalog_proto.Bus.is_roundtrip)
 }
 
 // repeated int32 stop_ids = 3;
@@ -2463,19 +2463,19 @@ inline int32_t Bus::_internal_stop_ids(int index) const {
   return _impl_.stop_ids_.Get(index);
 }
 inline int32_t Bus::stop_ids(int index) const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_get:catalog_proto.Bus.stop_ids)
   return _internal_stop_ids(index);
 }
 inline void Bus::set_stop_ids(int index, int32_t value) {
   _impl_.stop_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_set:catalog_proto.Bus.stop_ids)
 }
 inline void Bus::_internal_add_stop_ids(int32_t value) {
   _impl_.stop_ids_.Add(value);
 }
 inline void Bus::add_stop_ids(int32_t value) {
   _internal_add_stop_ids(value);
-  // @@protoc_insertion_point(field_add:proto_serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_add:catalog_proto.Bus.stop_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 Bus::_internal_stop_ids() const {
@@ -2483,7 +2483,7 @@ Bus::_internal_stop_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 Bus::stop_ids() const {
-  // @@protoc_insertion_point(field_list:proto_serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_list:catalog_proto.Bus.stop_ids)
   return _internal_stop_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -2492,7 +2492,7 @@ Bus::_internal_mutable_stop_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 Bus::mutable_stop_ids() {
-  // @@protoc_insertion_point(field_mutable_list:proto_serialization.Bus.stop_ids)
+  // @@protoc_insertion_point(field_mutable_list:catalog_proto.Bus.stop_ids)
   return _internal_mutable_stop_ids();
 }
 
@@ -2508,7 +2508,7 @@ inline int32_t Stop::_internal_id() const {
   return _impl_.id_;
 }
 inline int32_t Stop::id() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Stop.id)
+  // @@protoc_insertion_point(field_get:catalog_proto.Stop.id)
   return _internal_id();
 }
 inline void Stop::_internal_set_id(int32_t value) {
@@ -2517,7 +2517,7 @@ inline void Stop::_internal_set_id(int32_t value) {
 }
 inline void Stop::set_id(int32_t value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Stop.id)
+  // @@protoc_insertion_point(field_set:catalog_proto.Stop.id)
 }
 
 // string name = 2;
@@ -2525,7 +2525,7 @@ inline void Stop::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
 inline const std::string& Stop::name() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Stop.name)
+  // @@protoc_insertion_point(field_get:catalog_proto.Stop.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -2533,11 +2533,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Stop::set_name(ArgT0&& arg0, ArgT... args) {
  
  _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:proto_serialization.Stop.name)
+  // @@protoc_insertion_point(field_set:catalog_proto.Stop.name)
 }
 inline std::string* Stop::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.Stop.name)
+  // @@protoc_insertion_point(field_mutable:catalog_proto.Stop.name)
   return _s;
 }
 inline const std::string& Stop::_internal_name() const {
@@ -2552,7 +2552,7 @@ inline std::string* Stop::_internal_mutable_name() {
   return _impl_.name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Stop::release_name() {
-  // @@protoc_insertion_point(field_release:proto_serialization.Stop.name)
+  // @@protoc_insertion_point(field_release:catalog_proto.Stop.name)
   return _impl_.name_.Release();
 }
 inline void Stop::set_allocated_name(std::string* name) {
@@ -2567,7 +2567,7 @@ inline void Stop::set_allocated_name(std::string* name) {
     _impl_.name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Stop.name)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.Stop.name)
 }
 
 // double latitude = 3;
@@ -2578,7 +2578,7 @@ inline double Stop::_internal_latitude() const {
   return _impl_.latitude_;
 }
 inline double Stop::latitude() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Stop.latitude)
+  // @@protoc_insertion_point(field_get:catalog_proto.Stop.latitude)
   return _internal_latitude();
 }
 inline void Stop::_internal_set_latitude(double value) {
@@ -2587,7 +2587,7 @@ inline void Stop::_internal_set_latitude(double value) {
 }
 inline void Stop::set_latitude(double value) {
   _internal_set_latitude(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Stop.latitude)
+  // @@protoc_insertion_point(field_set:catalog_proto.Stop.latitude)
 }
 
 // double longitude = 4;
@@ -2598,7 +2598,7 @@ inline double Stop::_internal_longitude() const {
   return _impl_.longitude_;
 }
 inline double Stop::longitude() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Stop.longitude)
+  // @@protoc_insertion_point(field_get:catalog_proto.Stop.longitude)
   return _internal_longitude();
 }
 inline void Stop::_internal_set_longitude(double value) {
@@ -2607,7 +2607,7 @@ inline void Stop::_internal_set_longitude(double value) {
 }
 inline void Stop::set_longitude(double value) {
   _internal_set_longitude(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Stop.longitude)
+  // @@protoc_insertion_point(field_set:catalog_proto.Stop.longitude)
 }
 
 // -------------------------------------------------------------------
@@ -2622,7 +2622,7 @@ inline int32_t Distance::_internal_stop_from_id() const {
   return _impl_.stop_from_id_;
 }
 inline int32_t Distance::stop_from_id() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Distance.stop_from_id)
+  // @@protoc_insertion_point(field_get:catalog_proto.Distance.stop_from_id)
   return _internal_stop_from_id();
 }
 inline void Distance::_internal_set_stop_from_id(int32_t value) {
@@ -2631,7 +2631,7 @@ inline void Distance::_internal_set_stop_from_id(int32_t value) {
 }
 inline void Distance::set_stop_from_id(int32_t value) {
   _internal_set_stop_from_id(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Distance.stop_from_id)
+  // @@protoc_insertion_point(field_set:catalog_proto.Distance.stop_from_id)
 }
 
 // int32 stop_to_id = 2;
@@ -2642,7 +2642,7 @@ inline int32_t Distance::_internal_stop_to_id() const {
   return _impl_.stop_to_id_;
 }
 inline int32_t Distance::stop_to_id() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Distance.stop_to_id)
+  // @@protoc_insertion_point(field_get:catalog_proto.Distance.stop_to_id)
   return _internal_stop_to_id();
 }
 inline void Distance::_internal_set_stop_to_id(int32_t value) {
@@ -2651,7 +2651,7 @@ inline void Distance::_internal_set_stop_to_id(int32_t value) {
 }
 inline void Distance::set_stop_to_id(int32_t value) {
   _internal_set_stop_to_id(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Distance.stop_to_id)
+  // @@protoc_insertion_point(field_set:catalog_proto.Distance.stop_to_id)
 }
 
 // double distance = 3;
@@ -2662,7 +2662,7 @@ inline double Distance::_internal_distance() const {
   return _impl_.distance_;
 }
 inline double Distance::distance() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Distance.distance)
+  // @@protoc_insertion_point(field_get:catalog_proto.Distance.distance)
   return _internal_distance();
 }
 inline void Distance::_internal_set_distance(double value) {
@@ -2671,7 +2671,7 @@ inline void Distance::_internal_set_distance(double value) {
 }
 inline void Distance::set_distance(double value) {
   _internal_set_distance(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Distance.distance)
+  // @@protoc_insertion_point(field_set:catalog_proto.Distance.distance)
 }
 
 // -------------------------------------------------------------------
@@ -2686,7 +2686,7 @@ inline int32_t RoutingSettings::_internal_bus_wait_time() const {
   return _impl_.bus_wait_time_;
 }
 inline int32_t RoutingSettings::bus_wait_time() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RoutingSettings.bus_wait_time)
+  // @@protoc_insertion_point(field_get:catalog_proto.RoutingSettings.bus_wait_time)
   return _internal_bus_wait_time();
 }
 inline void RoutingSettings::_internal_set_bus_wait_time(int32_t value) {
@@ -2695,7 +2695,7 @@ inline void RoutingSettings::_internal_set_bus_wait_time(int32_t value) {
 }
 inline void RoutingSettings::set_bus_wait_time(int32_t value) {
   _internal_set_bus_wait_time(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RoutingSettings.bus_wait_time)
+  // @@protoc_insertion_point(field_set:catalog_proto.RoutingSettings.bus_wait_time)
 }
 
 // double bus_velocity = 2;
@@ -2706,7 +2706,7 @@ inline double RoutingSettings::_internal_bus_velocity() const {
   return _impl_.bus_velocity_;
 }
 inline double RoutingSettings::bus_velocity() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RoutingSettings.bus_velocity)
+  // @@protoc_insertion_point(field_get:catalog_proto.RoutingSettings.bus_velocity)
   return _internal_bus_velocity();
 }
 inline void RoutingSettings::_internal_set_bus_velocity(double value) {
@@ -2715,7 +2715,7 @@ inline void RoutingSettings::_internal_set_bus_velocity(double value) {
 }
 inline void RoutingSettings::set_bus_velocity(double value) {
   _internal_set_bus_velocity(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RoutingSettings.bus_velocity)
+  // @@protoc_insertion_point(field_set:catalog_proto.RoutingSettings.bus_velocity)
 }
 
 // -------------------------------------------------------------------
@@ -2730,7 +2730,7 @@ inline double RenderSettings::_internal_weight() const {
   return _impl_.weight_;
 }
 inline double RenderSettings::weight() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.weight)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.weight)
   return _internal_weight();
 }
 inline void RenderSettings::_internal_set_weight(double value) {
@@ -2739,7 +2739,7 @@ inline void RenderSettings::_internal_set_weight(double value) {
 }
 inline void RenderSettings::set_weight(double value) {
   _internal_set_weight(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.weight)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.weight)
 }
 
 // double height = 2;
@@ -2750,7 +2750,7 @@ inline double RenderSettings::_internal_height() const {
   return _impl_.height_;
 }
 inline double RenderSettings::height() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.height)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.height)
   return _internal_height();
 }
 inline void RenderSettings::_internal_set_height(double value) {
@@ -2759,7 +2759,7 @@ inline void RenderSettings::_internal_set_height(double value) {
 }
 inline void RenderSettings::set_height(double value) {
   _internal_set_height(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.height)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.height)
 }
 
 // int32 bus_label_font_size = 3;
@@ -2770,7 +2770,7 @@ inline int32_t RenderSettings::_internal_bus_label_font_size() const {
   return _impl_.bus_label_font_size_;
 }
 inline int32_t RenderSettings::bus_label_font_size() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.bus_label_font_size)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.bus_label_font_size)
   return _internal_bus_label_font_size();
 }
 inline void RenderSettings::_internal_set_bus_label_font_size(int32_t value) {
@@ -2779,7 +2779,7 @@ inline void RenderSettings::_internal_set_bus_label_font_size(int32_t value) {
 }
 inline void RenderSettings::set_bus_label_font_size(int32_t value) {
   _internal_set_bus_label_font_size(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.bus_label_font_size)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.bus_label_font_size)
 }
 
 // int32 stop_label_font_size = 4;
@@ -2790,7 +2790,7 @@ inline int32_t RenderSettings::_internal_stop_label_font_size() const {
   return _impl_.stop_label_font_size_;
 }
 inline int32_t RenderSettings::stop_label_font_size() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.stop_label_font_size)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.stop_label_font_size)
   return _internal_stop_label_font_size();
 }
 inline void RenderSettings::_internal_set_stop_label_font_size(int32_t value) {
@@ -2799,7 +2799,7 @@ inline void RenderSettings::_internal_set_stop_label_font_size(int32_t value) {
 }
 inline void RenderSettings::set_stop_label_font_size(int32_t value) {
   _internal_set_stop_label_font_size(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.stop_label_font_size)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.stop_label_font_size)
 }
 
 // double padding = 5;
@@ -2810,7 +2810,7 @@ inline double RenderSettings::_internal_padding() const {
   return _impl_.padding_;
 }
 inline double RenderSettings::padding() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.padding)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.padding)
   return _internal_padding();
 }
 inline void RenderSettings::_internal_set_padding(double value) {
@@ -2819,7 +2819,7 @@ inline void RenderSettings::_internal_set_padding(double value) {
 }
 inline void RenderSettings::set_padding(double value) {
   _internal_set_padding(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.padding)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.padding)
 }
 
 // double stop_radius = 6;
@@ -2830,7 +2830,7 @@ inline double RenderSettings::_internal_stop_radius() const {
   return _impl_.stop_radius_;
 }
 inline double RenderSettings::stop_radius() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.stop_radius)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.stop_radius)
   return _internal_stop_radius();
 }
 inline void RenderSettings::_internal_set_stop_radius(double value) {
@@ -2839,7 +2839,7 @@ inline void RenderSettings::_internal_set_stop_radius(double value) {
 }
 inline void RenderSettings::set_stop_radius(double value) {
   _internal_set_stop_radius(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.stop_radius)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.stop_radius)
 }
 
 // double line_width = 7;
@@ -2850,7 +2850,7 @@ inline double RenderSettings::_internal_line_width() const {
   return _impl_.line_width_;
 }
 inline double RenderSettings::line_width() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.line_width)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.line_width)
   return _internal_line_width();
 }
 inline void RenderSettings::_internal_set_line_width(double value) {
@@ -2859,7 +2859,7 @@ inline void RenderSettings::_internal_set_line_width(double value) {
 }
 inline void RenderSettings::set_line_width(double value) {
   _internal_set_line_width(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.line_width)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.line_width)
 }
 
 // double underlayer_width = 8;
@@ -2870,7 +2870,7 @@ inline double RenderSettings::_internal_underlayer_width() const {
   return _impl_.underlayer_width_;
 }
 inline double RenderSettings::underlayer_width() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.underlayer_width)
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.underlayer_width)
   return _internal_underlayer_width();
 }
 inline void RenderSettings::_internal_set_underlayer_width(double value) {
@@ -2879,10 +2879,10 @@ inline void RenderSettings::_internal_set_underlayer_width(double value) {
 }
 inline void RenderSettings::set_underlayer_width(double value) {
   _internal_set_underlayer_width(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.RenderSettings.underlayer_width)
+  // @@protoc_insertion_point(field_set:catalog_proto.RenderSettings.underlayer_width)
 }
 
-// .proto_serialization.Offset bus_label_offset = 9;
+// .catalog_proto.Offset bus_label_offset = 9;
 inline bool RenderSettings::_internal_has_bus_label_offset() const {
   return this != internal_default_instance() && _impl_.bus_label_offset_ != nullptr;
 }
@@ -2895,17 +2895,17 @@ inline void RenderSettings::clear_bus_label_offset() {
   }
   _impl_.bus_label_offset_ = nullptr;
 }
-inline const ::proto_serialization::Offset& RenderSettings::_internal_bus_label_offset() const {
-  const ::proto_serialization::Offset* p = _impl_.bus_label_offset_;
-  return p != nullptr ? *p : reinterpret_cast<const ::proto_serialization::Offset&>(
-      ::proto_serialization::_Offset_default_instance_);
+inline const ::catalog_proto::Offset& RenderSettings::_internal_bus_label_offset() const {
+  const ::catalog_proto::Offset* p = _impl_.bus_label_offset_;
+  return p != nullptr ? *p : reinterpret_cast<const ::catalog_proto::Offset&>(
+      ::catalog_proto::_Offset_default_instance_);
 }
-inline const ::proto_serialization::Offset& RenderSettings::bus_label_offset() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.bus_label_offset)
+inline const ::catalog_proto::Offset& RenderSettings::bus_label_offset() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.bus_label_offset)
   return _internal_bus_label_offset();
 }
 inline void RenderSettings::unsafe_arena_set_allocated_bus_label_offset(
-    ::proto_serialization::Offset* bus_label_offset) {
+    ::catalog_proto::Offset* bus_label_offset) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.bus_label_offset_);
   }
@@ -2915,11 +2915,11 @@ inline void RenderSettings::unsafe_arena_set_allocated_bus_label_offset(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.RenderSettings.bus_label_offset)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.RenderSettings.bus_label_offset)
 }
-inline ::proto_serialization::Offset* RenderSettings::release_bus_label_offset() {
+inline ::catalog_proto::Offset* RenderSettings::release_bus_label_offset() {
   
-  ::proto_serialization::Offset* temp = _impl_.bus_label_offset_;
+  ::catalog_proto::Offset* temp = _impl_.bus_label_offset_;
   _impl_.bus_label_offset_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2932,27 +2932,27 @@ inline ::proto_serialization::Offset* RenderSettings::release_bus_label_offset()
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::proto_serialization::Offset* RenderSettings::unsafe_arena_release_bus_label_offset() {
-  // @@protoc_insertion_point(field_release:proto_serialization.RenderSettings.bus_label_offset)
+inline ::catalog_proto::Offset* RenderSettings::unsafe_arena_release_bus_label_offset() {
+  // @@protoc_insertion_point(field_release:catalog_proto.RenderSettings.bus_label_offset)
   
-  ::proto_serialization::Offset* temp = _impl_.bus_label_offset_;
+  ::catalog_proto::Offset* temp = _impl_.bus_label_offset_;
   _impl_.bus_label_offset_ = nullptr;
   return temp;
 }
-inline ::proto_serialization::Offset* RenderSettings::_internal_mutable_bus_label_offset() {
+inline ::catalog_proto::Offset* RenderSettings::_internal_mutable_bus_label_offset() {
   
   if (_impl_.bus_label_offset_ == nullptr) {
-    auto* p = CreateMaybeMessage<::proto_serialization::Offset>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::catalog_proto::Offset>(GetArenaForAllocation());
     _impl_.bus_label_offset_ = p;
   }
   return _impl_.bus_label_offset_;
 }
-inline ::proto_serialization::Offset* RenderSettings::mutable_bus_label_offset() {
-  ::proto_serialization::Offset* _msg = _internal_mutable_bus_label_offset();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.RenderSettings.bus_label_offset)
+inline ::catalog_proto::Offset* RenderSettings::mutable_bus_label_offset() {
+  ::catalog_proto::Offset* _msg = _internal_mutable_bus_label_offset();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.RenderSettings.bus_label_offset)
   return _msg;
 }
-inline void RenderSettings::set_allocated_bus_label_offset(::proto_serialization::Offset* bus_label_offset) {
+inline void RenderSettings::set_allocated_bus_label_offset(::catalog_proto::Offset* bus_label_offset) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.bus_label_offset_;
@@ -2969,10 +2969,10 @@ inline void RenderSettings::set_allocated_bus_label_offset(::proto_serialization
     
   }
   _impl_.bus_label_offset_ = bus_label_offset;
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.RenderSettings.bus_label_offset)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.RenderSettings.bus_label_offset)
 }
 
-// .proto_serialization.Offset stop_label_offset = 10;
+// .catalog_proto.Offset stop_label_offset = 10;
 inline bool RenderSettings::_internal_has_stop_label_offset() const {
   return this != internal_default_instance() && _impl_.stop_label_offset_ != nullptr;
 }
@@ -2985,17 +2985,17 @@ inline void RenderSettings::clear_stop_label_offset() {
   }
   _impl_.stop_label_offset_ = nullptr;
 }
-inline const ::proto_serialization::Offset& RenderSettings::_internal_stop_label_offset() const {
-  const ::proto_serialization::Offset* p = _impl_.stop_label_offset_;
-  return p != nullptr ? *p : reinterpret_cast<const ::proto_serialization::Offset&>(
-      ::proto_serialization::_Offset_default_instance_);
+inline const ::catalog_proto::Offset& RenderSettings::_internal_stop_label_offset() const {
+  const ::catalog_proto::Offset* p = _impl_.stop_label_offset_;
+  return p != nullptr ? *p : reinterpret_cast<const ::catalog_proto::Offset&>(
+      ::catalog_proto::_Offset_default_instance_);
 }
-inline const ::proto_serialization::Offset& RenderSettings::stop_label_offset() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.stop_label_offset)
+inline const ::catalog_proto::Offset& RenderSettings::stop_label_offset() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.stop_label_offset)
   return _internal_stop_label_offset();
 }
 inline void RenderSettings::unsafe_arena_set_allocated_stop_label_offset(
-    ::proto_serialization::Offset* stop_label_offset) {
+    ::catalog_proto::Offset* stop_label_offset) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.stop_label_offset_);
   }
@@ -3005,11 +3005,11 @@ inline void RenderSettings::unsafe_arena_set_allocated_stop_label_offset(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.RenderSettings.stop_label_offset)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.RenderSettings.stop_label_offset)
 }
-inline ::proto_serialization::Offset* RenderSettings::release_stop_label_offset() {
+inline ::catalog_proto::Offset* RenderSettings::release_stop_label_offset() {
   
-  ::proto_serialization::Offset* temp = _impl_.stop_label_offset_;
+  ::catalog_proto::Offset* temp = _impl_.stop_label_offset_;
   _impl_.stop_label_offset_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -3022,27 +3022,27 @@ inline ::proto_serialization::Offset* RenderSettings::release_stop_label_offset(
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::proto_serialization::Offset* RenderSettings::unsafe_arena_release_stop_label_offset() {
-  // @@protoc_insertion_point(field_release:proto_serialization.RenderSettings.stop_label_offset)
+inline ::catalog_proto::Offset* RenderSettings::unsafe_arena_release_stop_label_offset() {
+  // @@protoc_insertion_point(field_release:catalog_proto.RenderSettings.stop_label_offset)
   
-  ::proto_serialization::Offset* temp = _impl_.stop_label_offset_;
+  ::catalog_proto::Offset* temp = _impl_.stop_label_offset_;
   _impl_.stop_label_offset_ = nullptr;
   return temp;
 }
-inline ::proto_serialization::Offset* RenderSettings::_internal_mutable_stop_label_offset() {
+inline ::catalog_proto::Offset* RenderSettings::_internal_mutable_stop_label_offset() {
   
   if (_impl_.stop_label_offset_ == nullptr) {
-    auto* p = CreateMaybeMessage<::proto_serialization::Offset>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::catalog_proto::Offset>(GetArenaForAllocation());
     _impl_.stop_label_offset_ = p;
   }
   return _impl_.stop_label_offset_;
 }
-inline ::proto_serialization::Offset* RenderSettings::mutable_stop_label_offset() {
-  ::proto_serialization::Offset* _msg = _internal_mutable_stop_label_offset();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.RenderSettings.stop_label_offset)
+inline ::catalog_proto::Offset* RenderSettings::mutable_stop_label_offset() {
+  ::catalog_proto::Offset* _msg = _internal_mutable_stop_label_offset();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.RenderSettings.stop_label_offset)
   return _msg;
 }
-inline void RenderSettings::set_allocated_stop_label_offset(::proto_serialization::Offset* stop_label_offset) {
+inline void RenderSettings::set_allocated_stop_label_offset(::catalog_proto::Offset* stop_label_offset) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.stop_label_offset_;
@@ -3059,10 +3059,10 @@ inline void RenderSettings::set_allocated_stop_label_offset(::proto_serializatio
     
   }
   _impl_.stop_label_offset_ = stop_label_offset;
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.RenderSettings.stop_label_offset)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.RenderSettings.stop_label_offset)
 }
 
-// .proto_serialization.Color underlayer_color = 11;
+// .catalog_proto.Color underlayer_color = 11;
 inline bool RenderSettings::_internal_has_underlayer_color() const {
   return this != internal_default_instance() && _impl_.underlayer_color_ != nullptr;
 }
@@ -3075,17 +3075,17 @@ inline void RenderSettings::clear_underlayer_color() {
   }
   _impl_.underlayer_color_ = nullptr;
 }
-inline const ::proto_serialization::Color& RenderSettings::_internal_underlayer_color() const {
-  const ::proto_serialization::Color* p = _impl_.underlayer_color_;
-  return p != nullptr ? *p : reinterpret_cast<const ::proto_serialization::Color&>(
-      ::proto_serialization::_Color_default_instance_);
+inline const ::catalog_proto::Color& RenderSettings::_internal_underlayer_color() const {
+  const ::catalog_proto::Color* p = _impl_.underlayer_color_;
+  return p != nullptr ? *p : reinterpret_cast<const ::catalog_proto::Color&>(
+      ::catalog_proto::_Color_default_instance_);
 }
-inline const ::proto_serialization::Color& RenderSettings::underlayer_color() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.underlayer_color)
+inline const ::catalog_proto::Color& RenderSettings::underlayer_color() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.underlayer_color)
   return _internal_underlayer_color();
 }
 inline void RenderSettings::unsafe_arena_set_allocated_underlayer_color(
-    ::proto_serialization::Color* underlayer_color) {
+    ::catalog_proto::Color* underlayer_color) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.underlayer_color_);
   }
@@ -3095,11 +3095,11 @@ inline void RenderSettings::unsafe_arena_set_allocated_underlayer_color(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.RenderSettings.underlayer_color)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.RenderSettings.underlayer_color)
 }
-inline ::proto_serialization::Color* RenderSettings::release_underlayer_color() {
+inline ::catalog_proto::Color* RenderSettings::release_underlayer_color() {
   
-  ::proto_serialization::Color* temp = _impl_.underlayer_color_;
+  ::catalog_proto::Color* temp = _impl_.underlayer_color_;
   _impl_.underlayer_color_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -3112,27 +3112,27 @@ inline ::proto_serialization::Color* RenderSettings::release_underlayer_color() 
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::proto_serialization::Color* RenderSettings::unsafe_arena_release_underlayer_color() {
-  // @@protoc_insertion_point(field_release:proto_serialization.RenderSettings.underlayer_color)
+inline ::catalog_proto::Color* RenderSettings::unsafe_arena_release_underlayer_color() {
+  // @@protoc_insertion_point(field_release:catalog_proto.RenderSettings.underlayer_color)
   
-  ::proto_serialization::Color* temp = _impl_.underlayer_color_;
+  ::catalog_proto::Color* temp = _impl_.underlayer_color_;
   _impl_.underlayer_color_ = nullptr;
   return temp;
 }
-inline ::proto_serialization::Color* RenderSettings::_internal_mutable_underlayer_color() {
+inline ::catalog_proto::Color* RenderSettings::_internal_mutable_underlayer_color() {
   
   if (_impl_.underlayer_color_ == nullptr) {
-    auto* p = CreateMaybeMessage<::proto_serialization::Color>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::catalog_proto::Color>(GetArenaForAllocation());
     _impl_.underlayer_color_ = p;
   }
   return _impl_.underlayer_color_;
 }
-inline ::proto_serialization::Color* RenderSettings::mutable_underlayer_color() {
-  ::proto_serialization::Color* _msg = _internal_mutable_underlayer_color();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.RenderSettings.underlayer_color)
+inline ::catalog_proto::Color* RenderSettings::mutable_underlayer_color() {
+  ::catalog_proto::Color* _msg = _internal_mutable_underlayer_color();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.RenderSettings.underlayer_color)
   return _msg;
 }
-inline void RenderSettings::set_allocated_underlayer_color(::proto_serialization::Color* underlayer_color) {
+inline void RenderSettings::set_allocated_underlayer_color(::catalog_proto::Color* underlayer_color) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.underlayer_color_;
@@ -3149,10 +3149,10 @@ inline void RenderSettings::set_allocated_underlayer_color(::proto_serialization
     
   }
   _impl_.underlayer_color_ = underlayer_color;
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.RenderSettings.underlayer_color)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.RenderSettings.underlayer_color)
 }
 
-// repeated .proto_serialization.Color color_palette = 12;
+// repeated .catalog_proto.Color color_palette = 12;
 inline int RenderSettings::_internal_color_palette_size() const {
   return _impl_.color_palette_.size();
 }
@@ -3162,33 +3162,33 @@ inline int RenderSettings::color_palette_size() const {
 inline void RenderSettings::clear_color_palette() {
   _impl_.color_palette_.Clear();
 }
-inline ::proto_serialization::Color* RenderSettings::mutable_color_palette(int index) {
-  // @@protoc_insertion_point(field_mutable:proto_serialization.RenderSettings.color_palette)
+inline ::catalog_proto::Color* RenderSettings::mutable_color_palette(int index) {
+  // @@protoc_insertion_point(field_mutable:catalog_proto.RenderSettings.color_palette)
   return _impl_.color_palette_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Color >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Color >*
 RenderSettings::mutable_color_palette() {
-  // @@protoc_insertion_point(field_mutable_list:proto_serialization.RenderSettings.color_palette)
+  // @@protoc_insertion_point(field_mutable_list:catalog_proto.RenderSettings.color_palette)
   return &_impl_.color_palette_;
 }
-inline const ::proto_serialization::Color& RenderSettings::_internal_color_palette(int index) const {
+inline const ::catalog_proto::Color& RenderSettings::_internal_color_palette(int index) const {
   return _impl_.color_palette_.Get(index);
 }
-inline const ::proto_serialization::Color& RenderSettings::color_palette(int index) const {
-  // @@protoc_insertion_point(field_get:proto_serialization.RenderSettings.color_palette)
+inline const ::catalog_proto::Color& RenderSettings::color_palette(int index) const {
+  // @@protoc_insertion_point(field_get:catalog_proto.RenderSettings.color_palette)
   return _internal_color_palette(index);
 }
-inline ::proto_serialization::Color* RenderSettings::_internal_add_color_palette() {
+inline ::catalog_proto::Color* RenderSettings::_internal_add_color_palette() {
   return _impl_.color_palette_.Add();
 }
-inline ::proto_serialization::Color* RenderSettings::add_color_palette() {
-  ::proto_serialization::Color* _add = _internal_add_color_palette();
-  // @@protoc_insertion_point(field_add:proto_serialization.RenderSettings.color_palette)
+inline ::catalog_proto::Color* RenderSettings::add_color_palette() {
+  ::catalog_proto::Color* _add = _internal_add_color_palette();
+  // @@protoc_insertion_point(field_add:catalog_proto.RenderSettings.color_palette)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::proto_serialization::Color >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::catalog_proto::Color >&
 RenderSettings::color_palette() const {
-  // @@protoc_insertion_point(field_list:proto_serialization.RenderSettings.color_palette)
+  // @@protoc_insertion_point(field_list:catalog_proto.RenderSettings.color_palette)
   return _impl_.color_palette_;
 }
 
@@ -3204,7 +3204,7 @@ inline double Offset::_internal_x() const {
   return _impl_.x_;
 }
 inline double Offset::x() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Offset.x)
+  // @@protoc_insertion_point(field_get:catalog_proto.Offset.x)
   return _internal_x();
 }
 inline void Offset::_internal_set_x(double value) {
@@ -3213,7 +3213,7 @@ inline void Offset::_internal_set_x(double value) {
 }
 inline void Offset::set_x(double value) {
   _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Offset.x)
+  // @@protoc_insertion_point(field_set:catalog_proto.Offset.x)
 }
 
 // double y = 2;
@@ -3224,7 +3224,7 @@ inline double Offset::_internal_y() const {
   return _impl_.y_;
 }
 inline double Offset::y() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Offset.y)
+  // @@protoc_insertion_point(field_get:catalog_proto.Offset.y)
   return _internal_y();
 }
 inline void Offset::_internal_set_y(double value) {
@@ -3233,7 +3233,7 @@ inline void Offset::_internal_set_y(double value) {
 }
 inline void Offset::set_y(double value) {
   _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Offset.y)
+  // @@protoc_insertion_point(field_set:catalog_proto.Offset.y)
 }
 
 // -------------------------------------------------------------------
@@ -3257,7 +3257,7 @@ inline void Color::clear_str() {
   }
 }
 inline const std::string& Color::str() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Color.str)
+  // @@protoc_insertion_point(field_get:catalog_proto.Color.str)
   return _internal_str();
 }
 template <typename ArgT0, typename... ArgT>
@@ -3268,11 +3268,11 @@ inline void Color::set_str(ArgT0&& arg0, ArgT... args) {
     _impl_.variant_.str_.InitDefault();
   }
   _impl_.variant_.str_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:proto_serialization.Color.str)
+  // @@protoc_insertion_point(field_set:catalog_proto.Color.str)
 }
 inline std::string* Color::mutable_str() {
   std::string* _s = _internal_mutable_str();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.Color.str)
+  // @@protoc_insertion_point(field_mutable:catalog_proto.Color.str)
   return _s;
 }
 inline const std::string& Color::_internal_str() const {
@@ -3298,7 +3298,7 @@ inline std::string* Color::_internal_mutable_str() {
   return _impl_.variant_.str_.Mutable(      GetArenaForAllocation());
 }
 inline std::string* Color::release_str() {
-  // @@protoc_insertion_point(field_release:proto_serialization.Color.str)
+  // @@protoc_insertion_point(field_release:catalog_proto.Color.str)
   if (_internal_has_str()) {
     clear_has_variant();
     return _impl_.variant_.str_.Release();
@@ -3314,10 +3314,10 @@ inline void Color::set_allocated_str(std::string* str) {
     set_has_str();
     _impl_.variant_.str_.InitAllocated(str, GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Color.str)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.Color.str)
 }
 
-// .proto_serialization.Rgb rgb = 2;
+// .catalog_proto.Rgb rgb = 2;
 inline bool Color::_internal_has_rgb() const {
   return variant_case() == kRgb;
 }
@@ -3335,11 +3335,11 @@ inline void Color::clear_rgb() {
     clear_has_variant();
   }
 }
-inline ::proto_serialization::Rgb* Color::release_rgb() {
-  // @@protoc_insertion_point(field_release:proto_serialization.Color.rgb)
+inline ::catalog_proto::Rgb* Color::release_rgb() {
+  // @@protoc_insertion_point(field_release:catalog_proto.Color.rgb)
   if (_internal_has_rgb()) {
     clear_has_variant();
-    ::proto_serialization::Rgb* temp = _impl_.variant_.rgb_;
+    ::catalog_proto::Rgb* temp = _impl_.variant_.rgb_;
     if (GetArenaForAllocation() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -3349,49 +3349,49 @@ inline ::proto_serialization::Rgb* Color::release_rgb() {
     return nullptr;
   }
 }
-inline const ::proto_serialization::Rgb& Color::_internal_rgb() const {
+inline const ::catalog_proto::Rgb& Color::_internal_rgb() const {
   return _internal_has_rgb()
       ? *_impl_.variant_.rgb_
-      : reinterpret_cast< ::proto_serialization::Rgb&>(::proto_serialization::_Rgb_default_instance_);
+      : reinterpret_cast< ::catalog_proto::Rgb&>(::catalog_proto::_Rgb_default_instance_);
 }
-inline const ::proto_serialization::Rgb& Color::rgb() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Color.rgb)
+inline const ::catalog_proto::Rgb& Color::rgb() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.Color.rgb)
   return _internal_rgb();
 }
-inline ::proto_serialization::Rgb* Color::unsafe_arena_release_rgb() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:proto_serialization.Color.rgb)
+inline ::catalog_proto::Rgb* Color::unsafe_arena_release_rgb() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:catalog_proto.Color.rgb)
   if (_internal_has_rgb()) {
     clear_has_variant();
-    ::proto_serialization::Rgb* temp = _impl_.variant_.rgb_;
+    ::catalog_proto::Rgb* temp = _impl_.variant_.rgb_;
     _impl_.variant_.rgb_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Color::unsafe_arena_set_allocated_rgb(::proto_serialization::Rgb* rgb) {
+inline void Color::unsafe_arena_set_allocated_rgb(::catalog_proto::Rgb* rgb) {
   clear_variant();
   if (rgb) {
     set_has_rgb();
     _impl_.variant_.rgb_ = rgb;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.Color.rgb)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.Color.rgb)
 }
-inline ::proto_serialization::Rgb* Color::_internal_mutable_rgb() {
+inline ::catalog_proto::Rgb* Color::_internal_mutable_rgb() {
   if (!_internal_has_rgb()) {
     clear_variant();
     set_has_rgb();
-    _impl_.variant_.rgb_ = CreateMaybeMessage< ::proto_serialization::Rgb >(GetArenaForAllocation());
+    _impl_.variant_.rgb_ = CreateMaybeMessage< ::catalog_proto::Rgb >(GetArenaForAllocation());
   }
   return _impl_.variant_.rgb_;
 }
-inline ::proto_serialization::Rgb* Color::mutable_rgb() {
-  ::proto_serialization::Rgb* _msg = _internal_mutable_rgb();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.Color.rgb)
+inline ::catalog_proto::Rgb* Color::mutable_rgb() {
+  ::catalog_proto::Rgb* _msg = _internal_mutable_rgb();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.Color.rgb)
   return _msg;
 }
 
-// .proto_serialization.Rgba rgba = 3;
+// .catalog_proto.Rgba rgba = 3;
 inline bool Color::_internal_has_rgba() const {
   return variant_case() == kRgba;
 }
@@ -3409,11 +3409,11 @@ inline void Color::clear_rgba() {
     clear_has_variant();
   }
 }
-inline ::proto_serialization::Rgba* Color::release_rgba() {
-  // @@protoc_insertion_point(field_release:proto_serialization.Color.rgba)
+inline ::catalog_proto::Rgba* Color::release_rgba() {
+  // @@protoc_insertion_point(field_release:catalog_proto.Color.rgba)
   if (_internal_has_rgba()) {
     clear_has_variant();
-    ::proto_serialization::Rgba* temp = _impl_.variant_.rgba_;
+    ::catalog_proto::Rgba* temp = _impl_.variant_.rgba_;
     if (GetArenaForAllocation() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -3423,45 +3423,45 @@ inline ::proto_serialization::Rgba* Color::release_rgba() {
     return nullptr;
   }
 }
-inline const ::proto_serialization::Rgba& Color::_internal_rgba() const {
+inline const ::catalog_proto::Rgba& Color::_internal_rgba() const {
   return _internal_has_rgba()
       ? *_impl_.variant_.rgba_
-      : reinterpret_cast< ::proto_serialization::Rgba&>(::proto_serialization::_Rgba_default_instance_);
+      : reinterpret_cast< ::catalog_proto::Rgba&>(::catalog_proto::_Rgba_default_instance_);
 }
-inline const ::proto_serialization::Rgba& Color::rgba() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Color.rgba)
+inline const ::catalog_proto::Rgba& Color::rgba() const {
+  // @@protoc_insertion_point(field_get:catalog_proto.Color.rgba)
   return _internal_rgba();
 }
-inline ::proto_serialization::Rgba* Color::unsafe_arena_release_rgba() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:proto_serialization.Color.rgba)
+inline ::catalog_proto::Rgba* Color::unsafe_arena_release_rgba() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:catalog_proto.Color.rgba)
   if (_internal_has_rgba()) {
     clear_has_variant();
-    ::proto_serialization::Rgba* temp = _impl_.variant_.rgba_;
+    ::catalog_proto::Rgba* temp = _impl_.variant_.rgba_;
     _impl_.variant_.rgba_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Color::unsafe_arena_set_allocated_rgba(::proto_serialization::Rgba* rgba) {
+inline void Color::unsafe_arena_set_allocated_rgba(::catalog_proto::Rgba* rgba) {
   clear_variant();
   if (rgba) {
     set_has_rgba();
     _impl_.variant_.rgba_ = rgba;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto_serialization.Color.rgba)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:catalog_proto.Color.rgba)
 }
-inline ::proto_serialization::Rgba* Color::_internal_mutable_rgba() {
+inline ::catalog_proto::Rgba* Color::_internal_mutable_rgba() {
   if (!_internal_has_rgba()) {
     clear_variant();
     set_has_rgba();
-    _impl_.variant_.rgba_ = CreateMaybeMessage< ::proto_serialization::Rgba >(GetArenaForAllocation());
+    _impl_.variant_.rgba_ = CreateMaybeMessage< ::catalog_proto::Rgba >(GetArenaForAllocation());
   }
   return _impl_.variant_.rgba_;
 }
-inline ::proto_serialization::Rgba* Color::mutable_rgba() {
-  ::proto_serialization::Rgba* _msg = _internal_mutable_rgba();
-  // @@protoc_insertion_point(field_mutable:proto_serialization.Color.rgba)
+inline ::catalog_proto::Rgba* Color::mutable_rgba() {
+  ::catalog_proto::Rgba* _msg = _internal_mutable_rgba();
+  // @@protoc_insertion_point(field_mutable:catalog_proto.Color.rgba)
   return _msg;
 }
 
@@ -3486,7 +3486,7 @@ inline uint32_t Rgb::_internal_red() const {
   return _impl_.red_;
 }
 inline uint32_t Rgb::red() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgb.red)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgb.red)
   return _internal_red();
 }
 inline void Rgb::_internal_set_red(uint32_t value) {
@@ -3495,7 +3495,7 @@ inline void Rgb::_internal_set_red(uint32_t value) {
 }
 inline void Rgb::set_red(uint32_t value) {
   _internal_set_red(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgb.red)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgb.red)
 }
 
 // uint32 green = 2;
@@ -3506,7 +3506,7 @@ inline uint32_t Rgb::_internal_green() const {
   return _impl_.green_;
 }
 inline uint32_t Rgb::green() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgb.green)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgb.green)
   return _internal_green();
 }
 inline void Rgb::_internal_set_green(uint32_t value) {
@@ -3515,7 +3515,7 @@ inline void Rgb::_internal_set_green(uint32_t value) {
 }
 inline void Rgb::set_green(uint32_t value) {
   _internal_set_green(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgb.green)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgb.green)
 }
 
 // uint32 blue = 3;
@@ -3526,7 +3526,7 @@ inline uint32_t Rgb::_internal_blue() const {
   return _impl_.blue_;
 }
 inline uint32_t Rgb::blue() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgb.blue)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgb.blue)
   return _internal_blue();
 }
 inline void Rgb::_internal_set_blue(uint32_t value) {
@@ -3535,7 +3535,7 @@ inline void Rgb::_internal_set_blue(uint32_t value) {
 }
 inline void Rgb::set_blue(uint32_t value) {
   _internal_set_blue(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgb.blue)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgb.blue)
 }
 
 // -------------------------------------------------------------------
@@ -3550,7 +3550,7 @@ inline uint32_t Rgba::_internal_red() const {
   return _impl_.red_;
 }
 inline uint32_t Rgba::red() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgba.red)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgba.red)
   return _internal_red();
 }
 inline void Rgba::_internal_set_red(uint32_t value) {
@@ -3559,7 +3559,7 @@ inline void Rgba::_internal_set_red(uint32_t value) {
 }
 inline void Rgba::set_red(uint32_t value) {
   _internal_set_red(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgba.red)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgba.red)
 }
 
 // uint32 green = 2;
@@ -3570,7 +3570,7 @@ inline uint32_t Rgba::_internal_green() const {
   return _impl_.green_;
 }
 inline uint32_t Rgba::green() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgba.green)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgba.green)
   return _internal_green();
 }
 inline void Rgba::_internal_set_green(uint32_t value) {
@@ -3579,7 +3579,7 @@ inline void Rgba::_internal_set_green(uint32_t value) {
 }
 inline void Rgba::set_green(uint32_t value) {
   _internal_set_green(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgba.green)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgba.green)
 }
 
 // uint32 blue = 3;
@@ -3590,7 +3590,7 @@ inline uint32_t Rgba::_internal_blue() const {
   return _impl_.blue_;
 }
 inline uint32_t Rgba::blue() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgba.blue)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgba.blue)
   return _internal_blue();
 }
 inline void Rgba::_internal_set_blue(uint32_t value) {
@@ -3599,7 +3599,7 @@ inline void Rgba::_internal_set_blue(uint32_t value) {
 }
 inline void Rgba::set_blue(uint32_t value) {
   _internal_set_blue(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgba.blue)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgba.blue)
 }
 
 // double opacity = 4;
@@ -3610,7 +3610,7 @@ inline double Rgba::_internal_opacity() const {
   return _impl_.opacity_;
 }
 inline double Rgba::opacity() const {
-  // @@protoc_insertion_point(field_get:proto_serialization.Rgba.opacity)
+  // @@protoc_insertion_point(field_get:catalog_proto.Rgba.opacity)
   return _internal_opacity();
 }
 inline void Rgba::_internal_set_opacity(double value) {
@@ -3619,7 +3619,7 @@ inline void Rgba::_internal_set_opacity(double value) {
 }
 inline void Rgba::set_opacity(double value) {
   _internal_set_opacity(value);
-  // @@protoc_insertion_point(field_set:proto_serialization.Rgba.opacity)
+  // @@protoc_insertion_point(field_set:catalog_proto.Rgba.opacity)
 }
 
 #ifdef __GNUC__
@@ -3646,7 +3646,7 @@ inline void Rgba::set_opacity(double value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto_serialization
+}  // namespace catalog_proto
 
 // @@protoc_insertion_point(global_scope)
 

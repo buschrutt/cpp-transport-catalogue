@@ -20,7 +20,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
-namespace proto_serialization {
+namespace catalog_proto {
 PROTOBUF_CONSTEXPR TransportCatalogue::TransportCatalogue(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.buses_)*/{}
@@ -182,178 +182,177 @@ struct RgbaDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RgbaDefaultTypeInternal _Rgba_default_instance_;
-}  // namespace proto_serialization
+}  // namespace catalog_proto
 static ::_pb::Metadata file_level_metadata_transport_5fcatalogue_2eproto[10];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_transport_5fcatalogue_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_transport_5fcatalogue_2eproto = nullptr;
 
 const uint32_t TableStruct_transport_5fcatalogue_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _impl_.buses_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _impl_.stops_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _impl_.distances_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _impl_.render_set_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::TransportCatalogue, _impl_.routing_set_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _impl_.buses_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _impl_.stops_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _impl_.distances_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _impl_.render_set_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::TransportCatalogue, _impl_.routing_set_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Bus, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Bus, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Bus, _impl_.name_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Bus, _impl_.is_roundtrip_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Bus, _impl_.stop_ids_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Bus, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Bus, _impl_.is_roundtrip_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Bus, _impl_.stop_ids_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Stop, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Stop, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Stop, _impl_.id_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Stop, _impl_.name_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Stop, _impl_.latitude_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Stop, _impl_.longitude_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Stop, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Stop, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Stop, _impl_.latitude_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Stop, _impl_.longitude_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Distance, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Distance, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Distance, _impl_.stop_from_id_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Distance, _impl_.stop_to_id_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Distance, _impl_.distance_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Distance, _impl_.stop_from_id_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Distance, _impl_.stop_to_id_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Distance, _impl_.distance_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RoutingSettings, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RoutingSettings, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RoutingSettings, _impl_.bus_wait_time_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RoutingSettings, _impl_.bus_velocity_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RoutingSettings, _impl_.bus_wait_time_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RoutingSettings, _impl_.bus_velocity_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.weight_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.height_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.bus_label_font_size_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.stop_label_font_size_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.padding_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.stop_radius_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.line_width_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.underlayer_width_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.bus_label_offset_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.stop_label_offset_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.underlayer_color_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::RenderSettings, _impl_.color_palette_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.weight_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.height_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.bus_label_font_size_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.stop_label_font_size_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.padding_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.stop_radius_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.line_width_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.underlayer_width_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.bus_label_offset_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.stop_label_offset_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.underlayer_color_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::RenderSettings, _impl_.color_palette_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Offset, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Offset, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Offset, _impl_.x_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Offset, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Offset, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Offset, _impl_.y_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Color, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Color, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Color, _impl_._oneof_case_[0]),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Color, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Color, _impl_.variant_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Color, _impl_.variant_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgb, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgb, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgb, _impl_.red_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgb, _impl_.green_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgb, _impl_.blue_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgb, _impl_.red_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgb, _impl_.green_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgb, _impl_.blue_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgba, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgba, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgba, _impl_.red_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgba, _impl_.green_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgba, _impl_.blue_),
-  PROTOBUF_FIELD_OFFSET(::proto_serialization::Rgba, _impl_.opacity_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgba, _impl_.red_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgba, _impl_.green_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgba, _impl_.blue_),
+  PROTOBUF_FIELD_OFFSET(::catalog_proto::Rgba, _impl_.opacity_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::proto_serialization::TransportCatalogue)},
-  { 11, -1, -1, sizeof(::proto_serialization::Bus)},
-  { 20, -1, -1, sizeof(::proto_serialization::Stop)},
-  { 30, -1, -1, sizeof(::proto_serialization::Distance)},
-  { 39, -1, -1, sizeof(::proto_serialization::RoutingSettings)},
-  { 47, -1, -1, sizeof(::proto_serialization::RenderSettings)},
-  { 65, -1, -1, sizeof(::proto_serialization::Offset)},
-  { 73, -1, -1, sizeof(::proto_serialization::Color)},
-  { 83, -1, -1, sizeof(::proto_serialization::Rgb)},
-  { 92, -1, -1, sizeof(::proto_serialization::Rgba)},
+  { 0, -1, -1, sizeof(::catalog_proto::TransportCatalogue)},
+  { 11, -1, -1, sizeof(::catalog_proto::Bus)},
+  { 20, -1, -1, sizeof(::catalog_proto::Stop)},
+  { 30, -1, -1, sizeof(::catalog_proto::Distance)},
+  { 39, -1, -1, sizeof(::catalog_proto::RoutingSettings)},
+  { 47, -1, -1, sizeof(::catalog_proto::RenderSettings)},
+  { 65, -1, -1, sizeof(::catalog_proto::Offset)},
+  { 73, -1, -1, sizeof(::catalog_proto::Color)},
+  { 83, -1, -1, sizeof(::catalog_proto::Rgb)},
+  { 92, -1, -1, sizeof(::catalog_proto::Rgba)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::proto_serialization::_TransportCatalogue_default_instance_._instance,
-  &::proto_serialization::_Bus_default_instance_._instance,
-  &::proto_serialization::_Stop_default_instance_._instance,
-  &::proto_serialization::_Distance_default_instance_._instance,
-  &::proto_serialization::_RoutingSettings_default_instance_._instance,
-  &::proto_serialization::_RenderSettings_default_instance_._instance,
-  &::proto_serialization::_Offset_default_instance_._instance,
-  &::proto_serialization::_Color_default_instance_._instance,
-  &::proto_serialization::_Rgb_default_instance_._instance,
-  &::proto_serialization::_Rgba_default_instance_._instance,
+  &::catalog_proto::_TransportCatalogue_default_instance_._instance,
+  &::catalog_proto::_Bus_default_instance_._instance,
+  &::catalog_proto::_Stop_default_instance_._instance,
+  &::catalog_proto::_Distance_default_instance_._instance,
+  &::catalog_proto::_RoutingSettings_default_instance_._instance,
+  &::catalog_proto::_RenderSettings_default_instance_._instance,
+  &::catalog_proto::_Offset_default_instance_._instance,
+  &::catalog_proto::_Color_default_instance_._instance,
+  &::catalog_proto::_Rgb_default_instance_._instance,
+  &::catalog_proto::_Rgba_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_transport_5fcatalogue_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\031transport_catalogue.proto\022\023proto_seria"
-  "lization\"\215\002\n\022TransportCatalogue\022\'\n\005buses"
-  "\030\001 \003(\0132\030.proto_serialization.Bus\022(\n\005stop"
-  "s\030\002 \003(\0132\031.proto_serialization.Stop\0220\n\tdi"
-  "stances\030\003 \003(\0132\035.proto_serialization.Dist"
-  "ance\0227\n\nrender_set\030\004 \001(\0132#.proto_seriali"
-  "zation.RenderSettings\0229\n\013routing_set\030\005 \001"
-  "(\0132$.proto_serialization.RoutingSettings"
-  "\";\n\003Bus\022\014\n\004name\030\001 \001(\t\022\024\n\014is_roundtrip\030\002 "
-  "\001(\010\022\020\n\010stop_ids\030\003 \003(\005\"E\n\004Stop\022\n\n\002id\030\001 \001("
-  "\005\022\014\n\004name\030\002 \001(\t\022\020\n\010latitude\030\003 \001(\001\022\021\n\tlon"
-  "gitude\030\004 \001(\001\"F\n\010Distance\022\024\n\014stop_from_id"
-  "\030\001 \001(\005\022\022\n\nstop_to_id\030\002 \001(\005\022\020\n\010distance\030\003"
-  " \001(\001\">\n\017RoutingSettings\022\025\n\rbus_wait_time"
-  "\030\001 \001(\005\022\024\n\014bus_velocity\030\002 \001(\001\"\227\003\n\016RenderS"
-  "ettings\022\016\n\006weight\030\001 \001(\001\022\016\n\006height\030\002 \001(\001\022"
-  "\033\n\023bus_label_font_size\030\003 \001(\005\022\034\n\024stop_lab"
-  "el_font_size\030\004 \001(\005\022\017\n\007padding\030\005 \001(\001\022\023\n\013s"
-  "top_radius\030\006 \001(\001\022\022\n\nline_width\030\007 \001(\001\022\030\n\020"
-  "underlayer_width\030\010 \001(\001\0225\n\020bus_label_offs"
-  "et\030\t \001(\0132\033.proto_serialization.Offset\0226\n"
-  "\021stop_label_offset\030\n \001(\0132\033.proto_seriali"
-  "zation.Offset\0224\n\020underlayer_color\030\013 \001(\0132"
-  "\032.proto_serialization.Color\0221\n\rcolor_pal"
-  "ette\030\014 \003(\0132\032.proto_serialization.Color\"\036"
-  "\n\006Offset\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\"u\n\005Color\022"
-  "\r\n\003str\030\001 \001(\tH\000\022\'\n\003rgb\030\002 \001(\0132\030.proto_seri"
-  "alization.RgbH\000\022)\n\004rgba\030\003 \001(\0132\031.proto_se"
-  "rialization.RgbaH\000B\t\n\007variant\"/\n\003Rgb\022\013\n\003"
-  "red\030\001 \001(\r\022\r\n\005green\030\002 \001(\r\022\014\n\004blue\030\003 \001(\r\"A"
-  "\n\004Rgba\022\013\n\003red\030\001 \001(\r\022\r\n\005green\030\002 \001(\r\022\014\n\004bl"
-  "ue\030\003 \001(\r\022\017\n\007opacity\030\004 \001(\001b\006proto3"
+  "\n\031transport_catalogue.proto\022\rcatalog_pro"
+  "to\"\357\001\n\022TransportCatalogue\022!\n\005buses\030\001 \003(\013"
+  "2\022.catalog_proto.Bus\022\"\n\005stops\030\002 \003(\0132\023.ca"
+  "talog_proto.Stop\022*\n\tdistances\030\003 \003(\0132\027.ca"
+  "talog_proto.Distance\0221\n\nrender_set\030\004 \001(\013"
+  "2\035.catalog_proto.RenderSettings\0223\n\013routi"
+  "ng_set\030\005 \001(\0132\036.catalog_proto.RoutingSett"
+  "ings\";\n\003Bus\022\014\n\004name\030\001 \001(\t\022\024\n\014is_roundtri"
+  "p\030\002 \001(\010\022\020\n\010stop_ids\030\003 \003(\005\"E\n\004Stop\022\n\n\002id\030"
+  "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010latitude\030\003 \001(\001\022\021\n"
+  "\tlongitude\030\004 \001(\001\"F\n\010Distance\022\024\n\014stop_fro"
+  "m_id\030\001 \001(\005\022\022\n\nstop_to_id\030\002 \001(\005\022\020\n\010distan"
+  "ce\030\003 \001(\001\">\n\017RoutingSettings\022\025\n\rbus_wait_"
+  "time\030\001 \001(\005\022\024\n\014bus_velocity\030\002 \001(\001\"\377\002\n\016Ren"
+  "derSettings\022\016\n\006weight\030\001 \001(\001\022\016\n\006height\030\002 "
+  "\001(\001\022\033\n\023bus_label_font_size\030\003 \001(\005\022\034\n\024stop"
+  "_label_font_size\030\004 \001(\005\022\017\n\007padding\030\005 \001(\001\022"
+  "\023\n\013stop_radius\030\006 \001(\001\022\022\n\nline_width\030\007 \001(\001"
+  "\022\030\n\020underlayer_width\030\010 \001(\001\022/\n\020bus_label_"
+  "offset\030\t \001(\0132\025.catalog_proto.Offset\0220\n\021s"
+  "top_label_offset\030\n \001(\0132\025.catalog_proto.O"
+  "ffset\022.\n\020underlayer_color\030\013 \001(\0132\024.catalo"
+  "g_proto.Color\022+\n\rcolor_palette\030\014 \003(\0132\024.c"
+  "atalog_proto.Color\"\036\n\006Offset\022\t\n\001x\030\001 \001(\001\022"
+  "\t\n\001y\030\002 \001(\001\"i\n\005Color\022\r\n\003str\030\001 \001(\tH\000\022!\n\003rg"
+  "b\030\002 \001(\0132\022.catalog_proto.RgbH\000\022#\n\004rgba\030\003 "
+  "\001(\0132\023.catalog_proto.RgbaH\000B\t\n\007variant\"/\n"
+  "\003Rgb\022\013\n\003red\030\001 \001(\r\022\r\n\005green\030\002 \001(\r\022\014\n\004blue"
+  "\030\003 \001(\r\"A\n\004Rgba\022\013\n\003red\030\001 \001(\r\022\r\n\005green\030\002 \001"
+  "(\r\022\014\n\004blue\030\003 \001(\r\022\017\n\007opacity\030\004 \001(\001b\006proto"
+  "3"
   ;
 static ::_pbi::once_flag descriptor_table_transport_5fcatalogue_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_transport_5fcatalogue_2eproto = {
-    false, false, 1273, descriptor_table_protodef_transport_5fcatalogue_2eproto,
+    false, false, 1201, descriptor_table_protodef_transport_5fcatalogue_2eproto,
     "transport_catalogue.proto",
     &descriptor_table_transport_5fcatalogue_2eproto_once, nullptr, 0, 10,
     schemas, file_default_instances, TableStruct_transport_5fcatalogue_2eproto::offsets,
@@ -366,21 +365,21 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_transpor
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_transport_5fcatalogue_2eproto(&descriptor_table_transport_5fcatalogue_2eproto);
-namespace proto_serialization {
+namespace catalog_proto {
 
 // ===================================================================
 
 class TransportCatalogue::_Internal {
  public:
-  static const ::proto_serialization::RenderSettings& render_set(const TransportCatalogue* msg);
-  static const ::proto_serialization::RoutingSettings& routing_set(const TransportCatalogue* msg);
+  static const ::catalog_proto::RenderSettings& render_set(const TransportCatalogue* msg);
+  static const ::catalog_proto::RoutingSettings& routing_set(const TransportCatalogue* msg);
 };
 
-const ::proto_serialization::RenderSettings&
+const ::catalog_proto::RenderSettings&
 TransportCatalogue::_Internal::render_set(const TransportCatalogue* msg) {
   return *msg->_impl_.render_set_;
 }
-const ::proto_serialization::RoutingSettings&
+const ::catalog_proto::RoutingSettings&
 TransportCatalogue::_Internal::routing_set(const TransportCatalogue* msg) {
   return *msg->_impl_.routing_set_;
 }
@@ -388,7 +387,7 @@ TransportCatalogue::TransportCatalogue(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.TransportCatalogue)
 }
 TransportCatalogue::TransportCatalogue(const TransportCatalogue& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -403,12 +402,12 @@ TransportCatalogue::TransportCatalogue(const TransportCatalogue& from)
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_render_set()) {
-    _this->_impl_.render_set_ = new ::proto_serialization::RenderSettings(*from._impl_.render_set_);
+    _this->_impl_.render_set_ = new ::catalog_proto::RenderSettings(*from._impl_.render_set_);
   }
   if (from._internal_has_routing_set()) {
-    _this->_impl_.routing_set_ = new ::proto_serialization::RoutingSettings(*from._impl_.routing_set_);
+    _this->_impl_.routing_set_ = new ::catalog_proto::RoutingSettings(*from._impl_.routing_set_);
   }
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.TransportCatalogue)
 }
 
 inline void TransportCatalogue::SharedCtor(
@@ -426,7 +425,7 @@ inline void TransportCatalogue::SharedCtor(
 }
 
 TransportCatalogue::~TransportCatalogue() {
-  // @@protoc_insertion_point(destructor:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(destructor:catalog_proto.TransportCatalogue)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -448,7 +447,7 @@ void TransportCatalogue::SetCachedSize(int size) const {
 }
 
 void TransportCatalogue::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.TransportCatalogue)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.TransportCatalogue)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -473,7 +472,7 @@ const char* TransportCatalogue::_InternalParse(const char* ptr, ::_pbi::ParseCon
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .proto_serialization.Bus buses = 1;
+      // repeated .catalog_proto.Bus buses = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -486,7 +485,7 @@ const char* TransportCatalogue::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // repeated .proto_serialization.Stop stops = 2;
+      // repeated .catalog_proto.Stop stops = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
@@ -499,7 +498,7 @@ const char* TransportCatalogue::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // repeated .proto_serialization.Distance distances = 3;
+      // repeated .catalog_proto.Distance distances = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
@@ -512,7 +511,7 @@ const char* TransportCatalogue::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.RenderSettings render_set = 4;
+      // .catalog_proto.RenderSettings render_set = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_render_set(), ptr);
@@ -520,7 +519,7 @@ const char* TransportCatalogue::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.RoutingSettings routing_set = 5;
+      // .catalog_proto.RoutingSettings routing_set = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr = ctx->ParseMessage(_internal_mutable_routing_set(), ptr);
@@ -553,11 +552,11 @@ failure:
 
 uint8_t* TransportCatalogue::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.TransportCatalogue)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .proto_serialization.Bus buses = 1;
+  // repeated .catalog_proto.Bus buses = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_buses_size()); i < n; i++) {
     const auto& repfield = this->_internal_buses(i);
@@ -565,7 +564,7 @@ uint8_t* TransportCatalogue::_InternalSerialize(
         InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  // repeated .proto_serialization.Stop stops = 2;
+  // repeated .catalog_proto.Stop stops = 2;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_stops_size()); i < n; i++) {
     const auto& repfield = this->_internal_stops(i);
@@ -573,7 +572,7 @@ uint8_t* TransportCatalogue::_InternalSerialize(
         InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  // repeated .proto_serialization.Distance distances = 3;
+  // repeated .catalog_proto.Distance distances = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_distances_size()); i < n; i++) {
     const auto& repfield = this->_internal_distances(i);
@@ -581,14 +580,14 @@ uint8_t* TransportCatalogue::_InternalSerialize(
         InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  // .proto_serialization.RenderSettings render_set = 4;
+  // .catalog_proto.RenderSettings render_set = 4;
   if (this->_internal_has_render_set()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(4, _Internal::render_set(this),
         _Internal::render_set(this).GetCachedSize(), target, stream);
   }
 
-  // .proto_serialization.RoutingSettings routing_set = 5;
+  // .catalog_proto.RoutingSettings routing_set = 5;
   if (this->_internal_has_routing_set()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(5, _Internal::routing_set(this),
@@ -599,47 +598,47 @@ uint8_t* TransportCatalogue::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.TransportCatalogue)
   return target;
 }
 
 size_t TransportCatalogue::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.TransportCatalogue)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.TransportCatalogue)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .proto_serialization.Bus buses = 1;
+  // repeated .catalog_proto.Bus buses = 1;
   total_size += 1UL * this->_internal_buses_size();
   for (const auto& msg : this->_impl_.buses_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .proto_serialization.Stop stops = 2;
+  // repeated .catalog_proto.Stop stops = 2;
   total_size += 1UL * this->_internal_stops_size();
   for (const auto& msg : this->_impl_.stops_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .proto_serialization.Distance distances = 3;
+  // repeated .catalog_proto.Distance distances = 3;
   total_size += 1UL * this->_internal_distances_size();
   for (const auto& msg : this->_impl_.distances_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .proto_serialization.RenderSettings render_set = 4;
+  // .catalog_proto.RenderSettings render_set = 4;
   if (this->_internal_has_render_set()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.render_set_);
   }
 
-  // .proto_serialization.RoutingSettings routing_set = 5;
+  // .catalog_proto.RoutingSettings routing_set = 5;
   if (this->_internal_has_routing_set()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -659,7 +658,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TransportCatalogue::GetClassDa
 void TransportCatalogue::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<TransportCatalogue*>(&to_msg);
   auto& from = static_cast<const TransportCatalogue&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.TransportCatalogue)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.TransportCatalogue)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -668,18 +667,18 @@ void TransportCatalogue::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, con
   _this->_impl_.stops_.MergeFrom(from._impl_.stops_);
   _this->_impl_.distances_.MergeFrom(from._impl_.distances_);
   if (from._internal_has_render_set()) {
-    _this->_internal_mutable_render_set()->::proto_serialization::RenderSettings::MergeFrom(
+    _this->_internal_mutable_render_set()->::catalog_proto::RenderSettings::MergeFrom(
         from._internal_render_set());
   }
   if (from._internal_has_routing_set()) {
-    _this->_internal_mutable_routing_set()->::proto_serialization::RoutingSettings::MergeFrom(
+    _this->_internal_mutable_routing_set()->::catalog_proto::RoutingSettings::MergeFrom(
         from._internal_routing_set());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TransportCatalogue::CopyFrom(const TransportCatalogue& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.TransportCatalogue)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.TransportCatalogue)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -719,7 +718,7 @@ Bus::Bus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Bus)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Bus)
 }
 Bus::Bus(const Bus& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -741,7 +740,7 @@ Bus::Bus(const Bus& from)
       _this->GetArenaForAllocation());
   }
   _this->_impl_.is_roundtrip_ = from._impl_.is_roundtrip_;
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Bus)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Bus)
 }
 
 inline void Bus::SharedCtor(
@@ -762,7 +761,7 @@ inline void Bus::SharedCtor(
 }
 
 Bus::~Bus() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Bus)
+  // @@protoc_insertion_point(destructor:catalog_proto.Bus)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -781,7 +780,7 @@ void Bus::SetCachedSize(int size) const {
 }
 
 void Bus::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Bus)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Bus)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -804,7 +803,7 @@ const char* Bus::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "proto_serialization.Bus.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "catalog_proto.Bus.name"));
         } else
           goto handle_unusual;
         continue;
@@ -852,7 +851,7 @@ failure:
 
 uint8_t* Bus::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Bus)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Bus)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -861,7 +860,7 @@ uint8_t* Bus::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "proto_serialization.Bus.name");
+      "catalog_proto.Bus.name");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_name(), target);
   }
@@ -885,12 +884,12 @@ uint8_t* Bus::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Bus)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Bus)
   return target;
 }
 
 size_t Bus::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Bus)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Bus)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -936,7 +935,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Bus::GetClassData() const { re
 void Bus::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Bus*>(&to_msg);
   auto& from = static_cast<const Bus&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Bus)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Bus)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -952,7 +951,7 @@ void Bus::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_N
 }
 
 void Bus::CopyFrom(const Bus& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Bus)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Bus)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -991,7 +990,7 @@ Stop::Stop(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Stop)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Stop)
 }
 Stop::Stop(const Stop& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -1015,7 +1014,7 @@ Stop::Stop(const Stop& from)
   ::memcpy(&_impl_.latitude_, &from._impl_.latitude_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.id_) -
     reinterpret_cast<char*>(&_impl_.latitude_)) + sizeof(_impl_.id_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Stop)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Stop)
 }
 
 inline void Stop::SharedCtor(
@@ -1036,7 +1035,7 @@ inline void Stop::SharedCtor(
 }
 
 Stop::~Stop() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Stop)
+  // @@protoc_insertion_point(destructor:catalog_proto.Stop)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1054,7 +1053,7 @@ void Stop::SetCachedSize(int size) const {
 }
 
 void Stop::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Stop)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Stop)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1086,7 +1085,7 @@ const char* Stop::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "proto_serialization.Stop.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "catalog_proto.Stop.name"));
         } else
           goto handle_unusual;
         continue;
@@ -1131,7 +1130,7 @@ failure:
 
 uint8_t* Stop::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Stop)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Stop)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1146,7 +1145,7 @@ uint8_t* Stop::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "proto_serialization.Stop.name");
+      "catalog_proto.Stop.name");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_name(), target);
   }
@@ -1175,12 +1174,12 @@ uint8_t* Stop::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Stop)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Stop)
   return target;
 }
 
 size_t Stop::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Stop)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Stop)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1230,7 +1229,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Stop::GetClassData() const { r
 void Stop::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Stop*>(&to_msg);
   auto& from = static_cast<const Stop&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Stop)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Stop)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1259,7 +1258,7 @@ void Stop::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_
 }
 
 void Stop::CopyFrom(const Stop& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Stop)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Stop)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1302,7 +1301,7 @@ Distance::Distance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Distance)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Distance)
 }
 Distance::Distance(const Distance& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -1317,7 +1316,7 @@ Distance::Distance(const Distance& from)
   ::memcpy(&_impl_.stop_from_id_, &from._impl_.stop_from_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.distance_) -
     reinterpret_cast<char*>(&_impl_.stop_from_id_)) + sizeof(_impl_.distance_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Distance)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Distance)
 }
 
 inline void Distance::SharedCtor(
@@ -1333,7 +1332,7 @@ inline void Distance::SharedCtor(
 }
 
 Distance::~Distance() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Distance)
+  // @@protoc_insertion_point(destructor:catalog_proto.Distance)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1350,7 +1349,7 @@ void Distance::SetCachedSize(int size) const {
 }
 
 void Distance::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Distance)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Distance)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1416,7 +1415,7 @@ failure:
 
 uint8_t* Distance::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Distance)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Distance)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1446,12 +1445,12 @@ uint8_t* Distance::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Distance)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Distance)
   return target;
 }
 
 size_t Distance::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Distance)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Distance)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1490,7 +1489,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Distance::GetClassData() const
 void Distance::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Distance*>(&to_msg);
   auto& from = static_cast<const Distance&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Distance)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Distance)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1512,7 +1511,7 @@ void Distance::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
 }
 
 void Distance::CopyFrom(const Distance& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Distance)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Distance)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1549,7 +1548,7 @@ RoutingSettings::RoutingSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.RoutingSettings)
 }
 RoutingSettings::RoutingSettings(const RoutingSettings& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -1563,7 +1562,7 @@ RoutingSettings::RoutingSettings(const RoutingSettings& from)
   ::memcpy(&_impl_.bus_velocity_, &from._impl_.bus_velocity_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.bus_wait_time_) -
     reinterpret_cast<char*>(&_impl_.bus_velocity_)) + sizeof(_impl_.bus_wait_time_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.RoutingSettings)
 }
 
 inline void RoutingSettings::SharedCtor(
@@ -1578,7 +1577,7 @@ inline void RoutingSettings::SharedCtor(
 }
 
 RoutingSettings::~RoutingSettings() {
-  // @@protoc_insertion_point(destructor:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(destructor:catalog_proto.RoutingSettings)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1595,7 +1594,7 @@ void RoutingSettings::SetCachedSize(int size) const {
 }
 
 void RoutingSettings::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.RoutingSettings)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.RoutingSettings)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1653,7 +1652,7 @@ failure:
 
 uint8_t* RoutingSettings::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.RoutingSettings)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1677,12 +1676,12 @@ uint8_t* RoutingSettings::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.RoutingSettings)
   return target;
 }
 
 size_t RoutingSettings::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.RoutingSettings)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.RoutingSettings)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1716,7 +1715,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RoutingSettings::GetClassData(
 void RoutingSettings::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RoutingSettings*>(&to_msg);
   auto& from = static_cast<const RoutingSettings&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.RoutingSettings)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.RoutingSettings)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1735,7 +1734,7 @@ void RoutingSettings::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
 }
 
 void RoutingSettings::CopyFrom(const RoutingSettings& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.RoutingSettings)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.RoutingSettings)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1766,20 +1765,20 @@ void RoutingSettings::InternalSwap(RoutingSettings* other) {
 
 class RenderSettings::_Internal {
  public:
-  static const ::proto_serialization::Offset& bus_label_offset(const RenderSettings* msg);
-  static const ::proto_serialization::Offset& stop_label_offset(const RenderSettings* msg);
-  static const ::proto_serialization::Color& underlayer_color(const RenderSettings* msg);
+  static const ::catalog_proto::Offset& bus_label_offset(const RenderSettings* msg);
+  static const ::catalog_proto::Offset& stop_label_offset(const RenderSettings* msg);
+  static const ::catalog_proto::Color& underlayer_color(const RenderSettings* msg);
 };
 
-const ::proto_serialization::Offset&
+const ::catalog_proto::Offset&
 RenderSettings::_Internal::bus_label_offset(const RenderSettings* msg) {
   return *msg->_impl_.bus_label_offset_;
 }
-const ::proto_serialization::Offset&
+const ::catalog_proto::Offset&
 RenderSettings::_Internal::stop_label_offset(const RenderSettings* msg) {
   return *msg->_impl_.stop_label_offset_;
 }
-const ::proto_serialization::Color&
+const ::catalog_proto::Color&
 RenderSettings::_Internal::underlayer_color(const RenderSettings* msg) {
   return *msg->_impl_.underlayer_color_;
 }
@@ -1787,7 +1786,7 @@ RenderSettings::RenderSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.RenderSettings)
 }
 RenderSettings::RenderSettings(const RenderSettings& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -1809,18 +1808,18 @@ RenderSettings::RenderSettings(const RenderSettings& from)
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_bus_label_offset()) {
-    _this->_impl_.bus_label_offset_ = new ::proto_serialization::Offset(*from._impl_.bus_label_offset_);
+    _this->_impl_.bus_label_offset_ = new ::catalog_proto::Offset(*from._impl_.bus_label_offset_);
   }
   if (from._internal_has_stop_label_offset()) {
-    _this->_impl_.stop_label_offset_ = new ::proto_serialization::Offset(*from._impl_.stop_label_offset_);
+    _this->_impl_.stop_label_offset_ = new ::catalog_proto::Offset(*from._impl_.stop_label_offset_);
   }
   if (from._internal_has_underlayer_color()) {
-    _this->_impl_.underlayer_color_ = new ::proto_serialization::Color(*from._impl_.underlayer_color_);
+    _this->_impl_.underlayer_color_ = new ::catalog_proto::Color(*from._impl_.underlayer_color_);
   }
   ::memcpy(&_impl_.weight_, &from._impl_.weight_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.underlayer_width_) -
     reinterpret_cast<char*>(&_impl_.weight_)) + sizeof(_impl_.underlayer_width_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.RenderSettings)
 }
 
 inline void RenderSettings::SharedCtor(
@@ -1845,7 +1844,7 @@ inline void RenderSettings::SharedCtor(
 }
 
 RenderSettings::~RenderSettings() {
-  // @@protoc_insertion_point(destructor:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(destructor:catalog_proto.RenderSettings)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1866,7 +1865,7 @@ void RenderSettings::SetCachedSize(int size) const {
 }
 
 void RenderSettings::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.RenderSettings)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.RenderSettings)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1960,7 +1959,7 @@ const char* RenderSettings::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.Offset bus_label_offset = 9;
+      // .catalog_proto.Offset bus_label_offset = 9;
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
           ptr = ctx->ParseMessage(_internal_mutable_bus_label_offset(), ptr);
@@ -1968,7 +1967,7 @@ const char* RenderSettings::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.Offset stop_label_offset = 10;
+      // .catalog_proto.Offset stop_label_offset = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
           ptr = ctx->ParseMessage(_internal_mutable_stop_label_offset(), ptr);
@@ -1976,7 +1975,7 @@ const char* RenderSettings::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.Color underlayer_color = 11;
+      // .catalog_proto.Color underlayer_color = 11;
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
           ptr = ctx->ParseMessage(_internal_mutable_underlayer_color(), ptr);
@@ -1984,7 +1983,7 @@ const char* RenderSettings::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // repeated .proto_serialization.Color color_palette = 12;
+      // repeated .catalog_proto.Color color_palette = 12;
       case 12:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
           ptr -= 1;
@@ -2022,7 +2021,7 @@ failure:
 
 uint8_t* RenderSettings::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.RenderSettings)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2098,28 +2097,28 @@ uint8_t* RenderSettings::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(8, this->_internal_underlayer_width(), target);
   }
 
-  // .proto_serialization.Offset bus_label_offset = 9;
+  // .catalog_proto.Offset bus_label_offset = 9;
   if (this->_internal_has_bus_label_offset()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::bus_label_offset(this),
         _Internal::bus_label_offset(this).GetCachedSize(), target, stream);
   }
 
-  // .proto_serialization.Offset stop_label_offset = 10;
+  // .catalog_proto.Offset stop_label_offset = 10;
   if (this->_internal_has_stop_label_offset()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(10, _Internal::stop_label_offset(this),
         _Internal::stop_label_offset(this).GetCachedSize(), target, stream);
   }
 
-  // .proto_serialization.Color underlayer_color = 11;
+  // .catalog_proto.Color underlayer_color = 11;
   if (this->_internal_has_underlayer_color()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(11, _Internal::underlayer_color(this),
         _Internal::underlayer_color(this).GetCachedSize(), target, stream);
   }
 
-  // repeated .proto_serialization.Color color_palette = 12;
+  // repeated .catalog_proto.Color color_palette = 12;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_color_palette_size()); i < n; i++) {
     const auto& repfield = this->_internal_color_palette(i);
@@ -2131,40 +2130,40 @@ uint8_t* RenderSettings::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.RenderSettings)
   return target;
 }
 
 size_t RenderSettings::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.RenderSettings)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.RenderSettings)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .proto_serialization.Color color_palette = 12;
+  // repeated .catalog_proto.Color color_palette = 12;
   total_size += 1UL * this->_internal_color_palette_size();
   for (const auto& msg : this->_impl_.color_palette_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .proto_serialization.Offset bus_label_offset = 9;
+  // .catalog_proto.Offset bus_label_offset = 9;
   if (this->_internal_has_bus_label_offset()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.bus_label_offset_);
   }
 
-  // .proto_serialization.Offset stop_label_offset = 10;
+  // .catalog_proto.Offset stop_label_offset = 10;
   if (this->_internal_has_stop_label_offset()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.stop_label_offset_);
   }
 
-  // .proto_serialization.Color underlayer_color = 11;
+  // .catalog_proto.Color underlayer_color = 11;
   if (this->_internal_has_underlayer_color()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2248,22 +2247,22 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RenderSettings::GetClassData()
 void RenderSettings::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RenderSettings*>(&to_msg);
   auto& from = static_cast<const RenderSettings&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.RenderSettings)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.RenderSettings)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   _this->_impl_.color_palette_.MergeFrom(from._impl_.color_palette_);
   if (from._internal_has_bus_label_offset()) {
-    _this->_internal_mutable_bus_label_offset()->::proto_serialization::Offset::MergeFrom(
+    _this->_internal_mutable_bus_label_offset()->::catalog_proto::Offset::MergeFrom(
         from._internal_bus_label_offset());
   }
   if (from._internal_has_stop_label_offset()) {
-    _this->_internal_mutable_stop_label_offset()->::proto_serialization::Offset::MergeFrom(
+    _this->_internal_mutable_stop_label_offset()->::catalog_proto::Offset::MergeFrom(
         from._internal_stop_label_offset());
   }
   if (from._internal_has_underlayer_color()) {
-    _this->_internal_mutable_underlayer_color()->::proto_serialization::Color::MergeFrom(
+    _this->_internal_mutable_underlayer_color()->::catalog_proto::Color::MergeFrom(
         from._internal_underlayer_color());
   }
   static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
@@ -2318,7 +2317,7 @@ void RenderSettings::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
 }
 
 void RenderSettings::CopyFrom(const RenderSettings& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.RenderSettings)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.RenderSettings)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2356,7 +2355,7 @@ Offset::Offset(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Offset)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Offset)
 }
 Offset::Offset(const Offset& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -2370,7 +2369,7 @@ Offset::Offset(const Offset& from)
   ::memcpy(&_impl_.x_, &from._impl_.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.y_) -
     reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Offset)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Offset)
 }
 
 inline void Offset::SharedCtor(
@@ -2385,7 +2384,7 @@ inline void Offset::SharedCtor(
 }
 
 Offset::~Offset() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Offset)
+  // @@protoc_insertion_point(destructor:catalog_proto.Offset)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2402,7 +2401,7 @@ void Offset::SetCachedSize(int size) const {
 }
 
 void Offset::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Offset)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Offset)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2460,7 +2459,7 @@ failure:
 
 uint8_t* Offset::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Offset)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Offset)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2488,12 +2487,12 @@ uint8_t* Offset::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Offset)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Offset)
   return target;
 }
 
 size_t Offset::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Offset)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Offset)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2531,7 +2530,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Offset::GetClassData() const {
 void Offset::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Offset*>(&to_msg);
   auto& from = static_cast<const Offset&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Offset)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Offset)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2554,7 +2553,7 @@ void Offset::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBU
 }
 
 void Offset::CopyFrom(const Offset& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Offset)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Offset)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2585,19 +2584,19 @@ void Offset::InternalSwap(Offset* other) {
 
 class Color::_Internal {
  public:
-  static const ::proto_serialization::Rgb& rgb(const Color* msg);
-  static const ::proto_serialization::Rgba& rgba(const Color* msg);
+  static const ::catalog_proto::Rgb& rgb(const Color* msg);
+  static const ::catalog_proto::Rgba& rgba(const Color* msg);
 };
 
-const ::proto_serialization::Rgb&
+const ::catalog_proto::Rgb&
 Color::_Internal::rgb(const Color* msg) {
   return *msg->_impl_.variant_.rgb_;
 }
-const ::proto_serialization::Rgba&
+const ::catalog_proto::Rgba&
 Color::_Internal::rgba(const Color* msg) {
   return *msg->_impl_.variant_.rgba_;
 }
-void Color::set_allocated_rgb(::proto_serialization::Rgb* rgb) {
+void Color::set_allocated_rgb(::catalog_proto::Rgb* rgb) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_variant();
   if (rgb) {
@@ -2610,9 +2609,9 @@ void Color::set_allocated_rgb(::proto_serialization::Rgb* rgb) {
     set_has_rgb();
     _impl_.variant_.rgb_ = rgb;
   }
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Color.rgb)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.Color.rgb)
 }
-void Color::set_allocated_rgba(::proto_serialization::Rgba* rgba) {
+void Color::set_allocated_rgba(::catalog_proto::Rgba* rgba) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_variant();
   if (rgba) {
@@ -2625,13 +2624,13 @@ void Color::set_allocated_rgba(::proto_serialization::Rgba* rgba) {
     set_has_rgba();
     _impl_.variant_.rgba_ = rgba;
   }
-  // @@protoc_insertion_point(field_set_allocated:proto_serialization.Color.rgba)
+  // @@protoc_insertion_point(field_set_allocated:catalog_proto.Color.rgba)
 }
 Color::Color(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Color)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Color)
 }
 Color::Color(const Color& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -2649,12 +2648,12 @@ Color::Color(const Color& from)
       break;
     }
     case kRgb: {
-      _this->_internal_mutable_rgb()->::proto_serialization::Rgb::MergeFrom(
+      _this->_internal_mutable_rgb()->::catalog_proto::Rgb::MergeFrom(
           from._internal_rgb());
       break;
     }
     case kRgba: {
-      _this->_internal_mutable_rgba()->::proto_serialization::Rgba::MergeFrom(
+      _this->_internal_mutable_rgba()->::catalog_proto::Rgba::MergeFrom(
           from._internal_rgba());
       break;
     }
@@ -2662,7 +2661,7 @@ Color::Color(const Color& from)
       break;
     }
   }
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Color)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Color)
 }
 
 inline void Color::SharedCtor(
@@ -2678,7 +2677,7 @@ inline void Color::SharedCtor(
 }
 
 Color::~Color() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Color)
+  // @@protoc_insertion_point(destructor:catalog_proto.Color)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2698,7 +2697,7 @@ void Color::SetCachedSize(int size) const {
 }
 
 void Color::clear_variant() {
-// @@protoc_insertion_point(one_of_clear_start:proto_serialization.Color)
+// @@protoc_insertion_point(one_of_clear_start:catalog_proto.Color)
   switch (variant_case()) {
     case kStr: {
       _impl_.variant_.str_.Destroy();
@@ -2725,7 +2724,7 @@ void Color::clear_variant() {
 
 
 void Color::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Color)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Color)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2746,11 +2745,11 @@ const char* Color::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_str();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "proto_serialization.Color.str"));
+          CHK_(::_pbi::VerifyUTF8(str, "catalog_proto.Color.str"));
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.Rgb rgb = 2;
+      // .catalog_proto.Rgb rgb = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_rgb(), ptr);
@@ -2758,7 +2757,7 @@ const char* Color::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
         } else
           goto handle_unusual;
         continue;
-      // .proto_serialization.Rgba rgba = 3;
+      // .catalog_proto.Rgba rgba = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_rgba(), ptr);
@@ -2791,7 +2790,7 @@ failure:
 
 uint8_t* Color::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Color)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Color)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2800,19 +2799,19 @@ uint8_t* Color::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_str().data(), static_cast<int>(this->_internal_str().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "proto_serialization.Color.str");
+      "catalog_proto.Color.str");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_str(), target);
   }
 
-  // .proto_serialization.Rgb rgb = 2;
+  // .catalog_proto.Rgb rgb = 2;
   if (_internal_has_rgb()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::rgb(this),
         _Internal::rgb(this).GetCachedSize(), target, stream);
   }
 
-  // .proto_serialization.Rgba rgba = 3;
+  // .catalog_proto.Rgba rgba = 3;
   if (_internal_has_rgba()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(3, _Internal::rgba(this),
@@ -2823,12 +2822,12 @@ uint8_t* Color::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Color)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Color)
   return target;
 }
 
 size_t Color::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Color)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Color)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2843,14 +2842,14 @@ size_t Color::ByteSizeLong() const {
           this->_internal_str());
       break;
     }
-    // .proto_serialization.Rgb rgb = 2;
+    // .catalog_proto.Rgb rgb = 2;
     case kRgb: {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.variant_.rgb_);
       break;
     }
-    // .proto_serialization.Rgba rgba = 3;
+    // .catalog_proto.Rgba rgba = 3;
     case kRgba: {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2874,7 +2873,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Color::GetClassData() const { 
 void Color::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Color*>(&to_msg);
   auto& from = static_cast<const Color&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Color)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Color)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2885,12 +2884,12 @@ void Color::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF
       break;
     }
     case kRgb: {
-      _this->_internal_mutable_rgb()->::proto_serialization::Rgb::MergeFrom(
+      _this->_internal_mutable_rgb()->::catalog_proto::Rgb::MergeFrom(
           from._internal_rgb());
       break;
     }
     case kRgba: {
-      _this->_internal_mutable_rgba()->::proto_serialization::Rgba::MergeFrom(
+      _this->_internal_mutable_rgba()->::catalog_proto::Rgba::MergeFrom(
           from._internal_rgba());
       break;
     }
@@ -2902,7 +2901,7 @@ void Color::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF
 }
 
 void Color::CopyFrom(const Color& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Color)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Color)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2935,7 +2934,7 @@ Rgb::Rgb(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Rgb)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Rgb)
 }
 Rgb::Rgb(const Rgb& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -2950,7 +2949,7 @@ Rgb::Rgb(const Rgb& from)
   ::memcpy(&_impl_.red_, &from._impl_.red_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.blue_) -
     reinterpret_cast<char*>(&_impl_.red_)) + sizeof(_impl_.blue_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Rgb)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Rgb)
 }
 
 inline void Rgb::SharedCtor(
@@ -2966,7 +2965,7 @@ inline void Rgb::SharedCtor(
 }
 
 Rgb::~Rgb() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Rgb)
+  // @@protoc_insertion_point(destructor:catalog_proto.Rgb)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2983,7 +2982,7 @@ void Rgb::SetCachedSize(int size) const {
 }
 
 void Rgb::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Rgb)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Rgb)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3049,7 +3048,7 @@ failure:
 
 uint8_t* Rgb::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Rgb)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Rgb)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3075,12 +3074,12 @@ uint8_t* Rgb::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Rgb)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Rgb)
   return target;
 }
 
 size_t Rgb::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Rgb)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Rgb)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3115,7 +3114,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rgb::GetClassData() const { re
 void Rgb::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rgb*>(&to_msg);
   auto& from = static_cast<const Rgb&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Rgb)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Rgb)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3133,7 +3132,7 @@ void Rgb::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_N
 }
 
 void Rgb::CopyFrom(const Rgb& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Rgb)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Rgb)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3170,7 +3169,7 @@ Rgba::Rgba(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:proto_serialization.Rgba)
+  // @@protoc_insertion_point(arena_constructor:catalog_proto.Rgba)
 }
 Rgba::Rgba(const Rgba& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -3186,7 +3185,7 @@ Rgba::Rgba(const Rgba& from)
   ::memcpy(&_impl_.red_, &from._impl_.red_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.blue_) -
     reinterpret_cast<char*>(&_impl_.red_)) + sizeof(_impl_.blue_));
-  // @@protoc_insertion_point(copy_constructor:proto_serialization.Rgba)
+  // @@protoc_insertion_point(copy_constructor:catalog_proto.Rgba)
 }
 
 inline void Rgba::SharedCtor(
@@ -3203,7 +3202,7 @@ inline void Rgba::SharedCtor(
 }
 
 Rgba::~Rgba() {
-  // @@protoc_insertion_point(destructor:proto_serialization.Rgba)
+  // @@protoc_insertion_point(destructor:catalog_proto.Rgba)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3220,7 +3219,7 @@ void Rgba::SetCachedSize(int size) const {
 }
 
 void Rgba::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto_serialization.Rgba)
+// @@protoc_insertion_point(message_clear_start:catalog_proto.Rgba)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3294,7 +3293,7 @@ failure:
 
 uint8_t* Rgba::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto_serialization.Rgba)
+  // @@protoc_insertion_point(serialize_to_array_start:catalog_proto.Rgba)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3330,12 +3329,12 @@ uint8_t* Rgba::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto_serialization.Rgba)
+  // @@protoc_insertion_point(serialize_to_array_end:catalog_proto.Rgba)
   return target;
 }
 
 size_t Rgba::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto_serialization.Rgba)
+// @@protoc_insertion_point(message_byte_size_start:catalog_proto.Rgba)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3379,7 +3378,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rgba::GetClassData() const { r
 void Rgba::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rgba*>(&to_msg);
   auto& from = static_cast<const Rgba&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto_serialization.Rgba)
+  // @@protoc_insertion_point(class_specific_merge_from_start:catalog_proto.Rgba)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3404,7 +3403,7 @@ void Rgba::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_
 }
 
 void Rgba::CopyFrom(const Rgba& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto_serialization.Rgba)
+// @@protoc_insertion_point(class_specific_copy_from_start:catalog_proto.Rgba)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3432,47 +3431,47 @@ void Rgba::InternalSwap(Rgba* other) {
 }
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace proto_serialization
+}  // namespace catalog_proto
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::proto_serialization::TransportCatalogue*
-Arena::CreateMaybeMessage< ::proto_serialization::TransportCatalogue >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::TransportCatalogue >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::TransportCatalogue*
+Arena::CreateMaybeMessage< ::catalog_proto::TransportCatalogue >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::TransportCatalogue >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Bus*
-Arena::CreateMaybeMessage< ::proto_serialization::Bus >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Bus >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Bus*
+Arena::CreateMaybeMessage< ::catalog_proto::Bus >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Bus >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Stop*
-Arena::CreateMaybeMessage< ::proto_serialization::Stop >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Stop >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Stop*
+Arena::CreateMaybeMessage< ::catalog_proto::Stop >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Stop >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Distance*
-Arena::CreateMaybeMessage< ::proto_serialization::Distance >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Distance >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Distance*
+Arena::CreateMaybeMessage< ::catalog_proto::Distance >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Distance >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::RoutingSettings*
-Arena::CreateMaybeMessage< ::proto_serialization::RoutingSettings >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::RoutingSettings >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::RoutingSettings*
+Arena::CreateMaybeMessage< ::catalog_proto::RoutingSettings >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::RoutingSettings >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::RenderSettings*
-Arena::CreateMaybeMessage< ::proto_serialization::RenderSettings >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::RenderSettings >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::RenderSettings*
+Arena::CreateMaybeMessage< ::catalog_proto::RenderSettings >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::RenderSettings >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Offset*
-Arena::CreateMaybeMessage< ::proto_serialization::Offset >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Offset >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Offset*
+Arena::CreateMaybeMessage< ::catalog_proto::Offset >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Offset >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Color*
-Arena::CreateMaybeMessage< ::proto_serialization::Color >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Color >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Color*
+Arena::CreateMaybeMessage< ::catalog_proto::Color >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Color >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Rgb*
-Arena::CreateMaybeMessage< ::proto_serialization::Rgb >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Rgb >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Rgb*
+Arena::CreateMaybeMessage< ::catalog_proto::Rgb >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Rgb >(arena);
 }
-template<> PROTOBUF_NOINLINE ::proto_serialization::Rgba*
-Arena::CreateMaybeMessage< ::proto_serialization::Rgba >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::proto_serialization::Rgba >(arena);
+template<> PROTOBUF_NOINLINE ::catalog_proto::Rgba*
+Arena::CreateMaybeMessage< ::catalog_proto::Rgba >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::catalog_proto::Rgba >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
