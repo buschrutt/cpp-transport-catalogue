@@ -20,16 +20,29 @@ namespace data_serialization {
                 : json_doc_(std::move(json_doc))
                 , catalogue_(catalogue)
                 , result_json_doc_({}) { }
+
         // %%%%%%%%%% %%%%%%%%%% Serialization to file db_files\transport_catalogue.db %%%%%%%%%% %%%%%%%%%%
-        // Remove db_files\ before github
+        // Remove db_files\ path before tests
         void ToFileSerializer();
+
         // %%%%%%%%%% %%%%%%%%%% Deserialization from file db_files\transport_catalogue.db %%%%%%%%%% %%%%%%%%%%
-        // Remove db_files\ before GitHub
+        // Remove db_files\ path before tests
         json::Document FromFileDeserializer();
+
         // %%%%%%%%%% %%%%%%%%%% Supporting funcs %%%%%%%%%% %%%%%%%%%%
-        // %%%%%%%%%% Get or set and get stop id %%%%%%%%%%
+        void StopAndBusDataSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+
+        void RenderSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+
+        void RoutingSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+
         int SetStopByName(const std::string& stop_name);
-        //json::Document JSONBuilder(const std::string& file_path);
+
+        void StopAndBusDataSet(const catalog_proto::TransportCatalogue& proto_catalogue);
+
+        void RenderSettingsSet(const catalog_proto::TransportCatalogue& proto_catalogue);
+
+        void RoutingSettingsSet(const catalog_proto::TransportCatalogue& proto_catalogue);
 
         // %%%%%%%%%% %%%%%%%%%% private %%%%%%%%%% %%%%%%%%%%
     private:
