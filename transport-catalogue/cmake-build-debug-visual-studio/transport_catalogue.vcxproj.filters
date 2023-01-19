@@ -4,6 +4,15 @@
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,6 +54,15 @@
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,6 +72,15 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\transport_catalogue.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\map_renderer.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\svg.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\transport_router.pb.h.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
     <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\CMakeLists.txt" />

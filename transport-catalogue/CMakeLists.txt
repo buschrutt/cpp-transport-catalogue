@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_PREFIX_PATH protobuf-cxxpac-x86-64)
 find_package(Protobuf REQUIRED)
 find_package(Threads REQUIRED)
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS transport_catalogue.proto)
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS transport_catalogue.proto map_renderer.proto svg.proto transport_router.proto)
 
 set(CATALOGUE_FILES main.cpp transport_catalogue.h geo.cpp domain.cpp json.cpp json_reader.cpp map_renderer.cpp
         request_handler.cpp json_builder.cpp svg.cpp request_handler.cpp transport_catalogue.cpp transport_router.cpp

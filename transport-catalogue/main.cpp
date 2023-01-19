@@ -28,9 +28,6 @@ int main() {
     json::JsonFileWrite(json_result, "json_files/json_result.json"s);
     //json::JsonConsoleOutput(json_result);
 
-
-    // %%%%%%%%%% %%%%%%%%%% custom route finder %%%%%%%%%% %%%%%%%%%%
-
     // %%%%%%%%%% %%%%%%%%%% map renderer %%%%%%%%%% %%%%%%%%%%
     //renderer::RenderSettings render_settings = json_reader::JSONReader::RenderSettingsBuilder (json_doc);
     //renderer::MapRenderer map_renderer = renderer::MapRenderer();

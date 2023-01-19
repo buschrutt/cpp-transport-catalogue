@@ -308,6 +308,174 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\map_renderer.pb.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running cpp protocol buffer compiler on map_renderer.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/map_renderer.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running cpp protocol buffer compiler on map_renderer.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/map_renderer.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Running cpp protocol buffer compiler on map_renderer.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/map_renderer.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Running cpp protocol buffer compiler on map_renderer.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/map_renderer.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\map_renderer.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\svg.pb.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running cpp protocol buffer compiler on svg.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/svg.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running cpp protocol buffer compiler on svg.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/svg.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Running cpp protocol buffer compiler on svg.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/svg.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Running cpp protocol buffer compiler on svg.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/svg.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\svg.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\CMakeFiles\372e2f2b8c355db9f176e0ce45db7ff2\transport_router.pb.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running cpp protocol buffer compiler on transport_router.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_router.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running cpp protocol buffer compiler on transport_router.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_router.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Running cpp protocol buffer compiler on transport_router.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_router.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Running cpp protocol buffer compiler on transport_router.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\protobuf-cxxpac-x86-64\bin\protoc.exe --cpp_out C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/cmake-build-debug-visual-studio -I C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/transport_router.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_router.proto;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\protobuf-cxxpac-x86-64\bin\protoc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h;C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/busch/CLionProjects/cpp-transport-catalogue/transport-catalogue/CMakeLists.txt</Message>
@@ -366,7 +534,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.cc" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.cc" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.cc" />
+    <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.cc" />
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_catalogue.pb.h" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\map_renderer.pb.h" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\svg.pb.h" />
+    <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\cmake-build-debug-visual-studio\transport_router.pb.h" />
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\main.cpp" />
     <ClInclude Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\transport_catalogue.h" />
     <ClCompile Include="C:\Users\busch\CLionProjects\cpp-transport-catalogue\transport-catalogue\geo.cpp" />

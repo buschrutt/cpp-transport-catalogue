@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package map_proto;
+package catalog_proto;
+
+import "svg.proto";
 
 message RenderSettings {
     double weight = 1;
@@ -15,30 +17,4 @@ message RenderSettings {
     Offset stop_label_offset = 10;
     Color underlayer_color = 11;
     repeated Color color_palette = 12;
-}
-
-message Offset {
-    double x = 1;
-    double y = 2;
-}
-
-message Color {
-    oneof variant{
-        string str = 1;
-        Rgb rgb = 2;
-        Rgba rgba = 3;
-    }
-}
-
-message Rgb {
-    uint32 red = 1;
-    uint32 green = 2;
-    uint32 blue = 3;
-}
-
-message Rgba{
-    uint32 red = 1;
-    uint32 green = 2;
-    uint32 blue = 3;
-    double opacity = 4;
 }
