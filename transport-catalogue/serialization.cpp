@@ -22,109 +22,13 @@ namespace data_serialization {
             std::ofstream out_file(file_path, std::ios::binary);
 
             // %%%%% %%%%% Getting stop and bus data %%%%% %%%%%
-            //StopAndBusDataSerializer(proto_catalogue);
-            if (json_doc_.GetRoot().AsDict().count("base_requests"s) > 0){
-                auto db_request_arr = json_doc_.GetRoot().AsDict().at("base_requests"s);
-                if (std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
-                    return;
-                }
-                for (const auto& db_request : db_request_arr.AsArray()){
-                    auto node = db_request.AsDict().at("type"s);
-                    if(node.AsString() == "Bus"s){
-                        catalog_proto::Bus bus;
-                        for (const auto& stop : db_request.AsDict().at("stops"s).AsArray()){
-                            if (stop.IsString()){
-                                bus.mutable_stop_ids()->Add(SetStopByName(stop.AsString()));
-                            }
-                        }
-                        bus.set_name(db_request.AsDict().at("name"s).AsString());
-                        bus.set_is_roundtrip(db_request.AsDict().at("is_roundtrip"s).AsBool());
-                        proto_catalogue.mutable_buses()->Add(std::move(bus));
-                    } else if (node.AsString() == "Stop"s){
-                        std::string stop_name = db_request.AsDict().at("name"s).AsString();
-                        int stop_id = SetStopByName(stop_name);
-                        catalog_proto::Stop stop;
-                        catalog_proto::Distance distance{};
-                        stop.set_name(stop_name);
-                        stop.set_id(stop_id);
-                        stop.set_latitude((double)db_request.AsDict().at("latitude"s).AsDouble());
-                        stop.set_longitude((double)db_request.AsDict().at("longitude"s).AsDouble());
-                        proto_catalogue.mutable_stops()->Add(std::move(stop));
-                        if(db_request.AsDict().count("road_distances"s) > 0){
-                            for (auto [key, length] : db_request.AsDict().at("road_distances"s).AsDict()){
-                                distance.set_stop_from_id(stop_id);
-                                distance.set_stop_to_id(SetStopByName(key));
-                                distance.set_distance((double)length.AsDouble());
-                                proto_catalogue.mutable_distances()->Add(std::move(distance));
-                            }
-                        }
-                    } else {
-                        continue;
-                    }
-                }
-            }
+            StopAndBusDataSerializer(proto_catalogue);
 
             // %%%%% %%%%% Getting Render Settings %%%%% %%%%%
-            //RenderSettingsSerializer(proto_catalogue);
-            if (json_doc_.GetRoot().AsDict().count("render_settings"s) > 0 ){
-                auto json_rs = json_doc_.GetRoot().AsDict().at("render_settings"s);
-                proto_catalogue.mutable_render_set()->set_weight(json_rs.AsDict().at("width").AsDouble());
-                proto_catalogue.mutable_render_set()->set_height(json_rs.AsDict().at("height").AsDouble());
-                proto_catalogue.mutable_render_set()->set_bus_label_font_size(json_rs.AsDict().at("bus_label_font_size").AsInt());
-                proto_catalogue.mutable_render_set()->set_stop_label_font_size(json_rs.AsDict().at("stop_label_font_size").AsInt());
-                proto_catalogue.mutable_render_set()->set_padding(json_rs.AsDict().at("padding").AsDouble());
-                proto_catalogue.mutable_render_set()->set_stop_radius(json_rs.AsDict().at("stop_radius").AsDouble());
-                proto_catalogue.mutable_render_set()->set_line_width(json_rs.AsDict().at("line_width").AsDouble());
-                proto_catalogue.mutable_render_set()->set_underlayer_width(json_rs.AsDict().at("underlayer_width").AsDouble());
-                proto_catalogue.mutable_render_set()->mutable_bus_label_offset()->set_x(json_rs.AsDict().at("bus_label_offset").AsArray()[0].AsDouble());
-                proto_catalogue.mutable_render_set()->mutable_bus_label_offset()->set_y(json_rs.AsDict().at("bus_label_offset").AsArray()[1].AsDouble());
-                proto_catalogue.mutable_render_set()->mutable_stop_label_offset()->set_x(json_rs.AsDict().at("stop_label_offset").AsArray()[0].AsDouble());
-                proto_catalogue.mutable_render_set()->mutable_stop_label_offset()->set_y(json_rs.AsDict().at("stop_label_offset").AsArray()[1].AsDouble());
-                // %%%%% Color underlayer_color
-                if (json_rs.AsDict().at("underlayer_color").IsArray()){
-                    if (json_rs.AsDict().at("underlayer_color").AsArray().size() == 3){
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgb()->set_red(json_rs.AsDict().at("underlayer_color").AsArray()[0].AsInt());
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgb()->set_green(json_rs.AsDict().at("underlayer_color").AsArray()[1].AsInt());
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgb()->set_blue(json_rs.AsDict().at("underlayer_color").AsArray()[2].AsInt());
-                    } else {
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgba()->set_red(json_rs.AsDict().at("underlayer_color").AsArray()[0].AsInt());
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgba()->set_green(json_rs.AsDict().at("underlayer_color").AsArray()[1].AsInt());
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgba()->set_blue(json_rs.AsDict().at("underlayer_color").AsArray()[2].AsInt());
-                        proto_catalogue.mutable_render_set()->mutable_underlayer_color()->mutable_rgba()->set_opacity(json_rs.AsDict().at("underlayer_color").AsArray()[3].AsDouble());
-                    }
-                } else {
-                    proto_catalogue.mutable_render_set()->mutable_underlayer_color()->set_str(json_rs.AsDict().at("underlayer_color").AsString());
-                }
-                // %%%%% Repeated Color color_palette
-                for (const auto& color : json_rs.AsDict().at("color_palette").AsArray()){
-                    if (color.IsArray()){
-                        if (color.AsArray().size() == 3){
-                            catalog_proto::Color clr;
-                            clr.mutable_rgb()->set_red(color.AsArray()[0].AsInt());
-                            clr.mutable_rgb()->set_green(color.AsArray()[1].AsInt());
-                            clr.mutable_rgb()->set_blue(color.AsArray()[2].AsInt());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add(std::move(clr));
-                        } else {
-                            catalog_proto::Color clr;
-                            clr.mutable_rgba()->set_red(color.AsArray()[0].AsInt());
-                            clr.mutable_rgba()->set_green(color.AsArray()[1].AsInt());
-                            clr.mutable_rgba()->set_blue(color.AsArray()[2].AsInt());
-                            clr.mutable_rgba()->set_opacity(color.AsArray()[3].AsDouble());
-                            proto_catalogue.mutable_render_set()->mutable_color_palette()->Add(std::move(clr));
-                        }
-                    } else {
-                        proto_catalogue.mutable_render_set()->mutable_color_palette()->Add()->set_str(color.AsString());
-                    }
-                }
-            }
+            RenderSettingsSerializer(proto_catalogue);
 
             // %%%%% %%%%% Getting Routing Settings %%%%% %%%%%
-            //RoutingSettingsSerializer(proto_catalogue);
-            if (json_doc_.GetRoot().AsDict().count("routing_settings"s) > 0) {
-                auto json_rs = json_doc_.GetRoot().AsDict().at("routing_settings"s);
-                proto_catalogue.mutable_routing_set()->set_bus_wait_time(json_rs.AsDict().at("bus_wait_time").AsInt());
-                proto_catalogue.mutable_routing_set()->set_bus_velocity(json_rs.AsDict().at("bus_velocity").AsInt());
-            }
+            RoutingSettingsSerializer(proto_catalogue);
 
             // %%%%% %%%%% Serializing %%%%% %%%%%
             proto_catalogue.SerializeToOstream(&out_file);
@@ -134,7 +38,7 @@ namespace data_serialization {
 
     }
 
-    void Serializer::StopAndBusDataSerializer(catalog_proto::TransportCatalogue proto_catalogue) {
+    void Serializer::StopAndBusDataSerializer(catalog_proto::TransportCatalogue & proto_catalogue) {
         if (json_doc_.GetRoot().AsDict().count("base_requests"s) > 0){
             auto db_request_arr = json_doc_.GetRoot().AsDict().at("base_requests"s);
             if (std::count(db_request_arr.AsArray().begin(), db_request_arr.AsArray().end(), nullptr)){
@@ -177,7 +81,7 @@ namespace data_serialization {
         }
     }
 
-    void Serializer::RenderSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue) {
+    void Serializer::RenderSettingsSerializer(catalog_proto::TransportCatalogue & proto_catalogue) {
         if (json_doc_.GetRoot().AsDict().count("render_settings"s) > 0 ){
             auto json_rs = json_doc_.GetRoot().AsDict().at("render_settings"s);
             proto_catalogue.mutable_render_set()->set_weight(json_rs.AsDict().at("width").AsDouble());
@@ -231,7 +135,7 @@ namespace data_serialization {
         }
     }
 
-    void Serializer::RoutingSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue) {
+    void Serializer::RoutingSettingsSerializer(catalog_proto::TransportCatalogue & proto_catalogue) {
         if (json_doc_.GetRoot().AsDict().count("routing_settings"s) > 0) {
             auto json_rs = json_doc_.GetRoot().AsDict().at("routing_settings"s);
             proto_catalogue.mutable_routing_set()->set_bus_wait_time(json_rs.AsDict().at("bus_wait_time").AsInt());

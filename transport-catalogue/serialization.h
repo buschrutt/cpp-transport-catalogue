@@ -30,11 +30,11 @@ namespace data_serialization {
         json::Document FromFileDeserializer();
 
         // %%%%%%%%%% %%%%%%%%%% Supporting funcs %%%%%%%%%% %%%%%%%%%%
-        void StopAndBusDataSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+        void StopAndBusDataSerializer(catalog_proto::TransportCatalogue & proto_catalogue);
 
-        void RenderSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+        void RenderSettingsSerializer(catalog_proto::TransportCatalogue & proto_catalogue);
 
-        void RoutingSettingsSerializer(catalog_proto::TransportCatalogue proto_catalogue);
+        void RoutingSettingsSerializer(catalog_proto::TransportCatalogue & proto_catalogue);
 
         int SetStopByName(const std::string& stop_name);
 
